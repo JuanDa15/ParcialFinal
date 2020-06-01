@@ -6,7 +6,7 @@ pygame.init()
 
 Screen = pygame.display.set_mode([1080,720])
 Container = pygame.Rect(100,50,900,620)
-caja = pygame.transform.scale(pygame.image.load('Idle.png'),[50,40])
+caja = pygame.transform.scale(pygame.image.load('Idle.png'),[32,32])
 #------------------------------
 def Main_Menu():
     #Definition of variables-----------------
