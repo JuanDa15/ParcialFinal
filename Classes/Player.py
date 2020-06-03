@@ -2,13 +2,14 @@ import pygame
 from CRUD import Functions
 
 class Jugador(pygame.sprite.Sprite):
-    def __init__(self,position):
+    def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface([25,25])
         self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
-        self.rect.x = position[0]
-        self.rect.y = position[1]
+        self.position = [100,100]
+        self.rect.x = self.position[0]
+        self.rect.y = self.position[1]
         self.velx = 0
         self.vely = 0
         
