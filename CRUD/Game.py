@@ -10,11 +10,11 @@ from Classes import Block
 from pygame.locals import *
 
 def StarGame():
-    
+    mapa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
+    jugadores = pygame.sprite.Group()
+    j = P.Jugador([100,100])
+    jugadores.add(j)
     while (True):
-        jugadores = pygame.sprite.Group()
-        j = P.Jugador()
-        jugadores.add(j)
         #event managment
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -51,6 +51,7 @@ def StarGame():
         Bloques.draw(Constants.Screen)
         """
         Constants.Screen.fill([0,0,0])
+        Constants.Screen.blit(mapa,[0,0])
         jugadores.update()
         jugadores.draw(Constants.Screen)
         pygame.display.flip()
