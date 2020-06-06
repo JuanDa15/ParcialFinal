@@ -10,7 +10,12 @@ from Classes import Block
 from pygame.locals import *
 
 def StarGame():
-    mapa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
+    index = 0
+    limitemovimiento = 780
+    mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
+    mapab = pygame.image.load('Assets\Levels\Level1\Level1b.png')
+    level1 = [mapaa,mapab]
+    rectfondo = mapaa.get_rect()
     jugadores = pygame.sprite.Group()
     j = P.Jugador([100,100])
     jugadores.add(j)
@@ -50,8 +55,11 @@ def StarGame():
         Bloques.update()
         Bloques.draw(Constants.Screen)
         """
+        if j.rect.x > limitemovimiento:
+            j.rect.x = 0
+            index = 1
         Constants.Screen.fill([0,0,0])
-        Constants.Screen.blit(mapa,[0,0])
+        Constants.Screen.blit(level1[index],[0,0])
         jugadores.update()
         jugadores.draw(Constants.Screen)
         pygame.display.flip()
