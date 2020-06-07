@@ -1,3 +1,4 @@
-from CRUD import Game as G
+from CRUD import Mapa1 as m1
+from CRUD import Mapa2 as m2
 
-G.StarGame()
+m2.StarGame()
