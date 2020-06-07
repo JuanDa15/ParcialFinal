@@ -21,10 +21,8 @@ class Jugador(pygame.sprite.Sprite):
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
         for b in listaColision:
             if ((self.rect.right >= b.rect.left) and (self.rect.right <= b.rect.right)):
-                self.velx=0
                 self.rect.right = b.rect.left
             elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
-                self.velx=0
                 self.rect.left = b.rect.right
 
         
