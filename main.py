@@ -1,4 +1,3 @@
-from CRUD import Mapa1 as m1
-from CRUD import Mapa2 as m2
+from CRUD import Habitacion1 as H1
 
-m1.StarGame()
+H1.StartGame(50,250)

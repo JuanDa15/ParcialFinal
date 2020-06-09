@@ -10,10 +10,14 @@ from Classes import Block
 from Classes import PlataformaMovilHorizontal as PMH
 from Classes import PlataformaMovilVertical as PMV
 from Classes import CajaEstatica as CS
+from Classes import Cerdo
+
+
+from CRUD import Habitacion2 as H2
 
 from pygame.locals import *
 
-def StarGame():
+def StartGame(posx,posy):
     index = 0
     limitemovimiento = 780
     mapaa = pygame.image.load('Assets\Level1\Level1a.png')
@@ -22,11 +26,26 @@ def StarGame():
     jugadores = pygame.sprite.Group()
     Plataformas = pygame.sprite.Group()
     Bloques = pygame.sprite.Group()
+    Cerdos=pygame.sprite.Group()
+
 
 
     #Creacion Jugador
-    j = P.Jugador([50,250])
+    j = P.Jugador([posx,posy])
     jugadores.add(j)
+
+
+    C = Cerdo.cerdo([100,320], 130)
+    Cerdos.add(C)
+
+    C = Cerdo.cerdo([610,345], 100)
+    C.Movidos = 0
+    Cerdos.add(C)
+
+    """
+    Ca = Cañon.Cañon([200,200])
+    Cañones.add(Ca)
+    """
 
 
     #Lectura de archivo json
@@ -52,7 +71,14 @@ def StarGame():
     for i in jugadores:
         i.Bloques = Bloques
 
-    
+    for c in Cerdos:
+        c.Bloques = Bloques
+
+    """
+    for c in Cañones:
+        c.Bloques = Bloques
+    """
+
     reloj = pygame.time.Clock()
 
     while (True):
@@ -79,19 +105,49 @@ def StarGame():
                 if event.key == pygame.K_LEFT:
                     j.velx = 0
 
+        """
+        for c in Cañones:
+            if c.Disparo == 0:
+                B = BolaCañon.BolaCañon([c.rect.x, c.rect.y])
+                B.Bloques = Bloques
+                BolasCañon.add(B)
+                c.Disparo = 80
+            else:
+                c.Disparo -= 1
+        """
+        for j in jugadores:
+            listaColisionCerdos=pygame.sprite.spritecollide(j,Cerdos,False)
+            for b in listaColisionCerdos:
+                if ((j.rect.right >= b.rect.left) and (j.rect.right <= b.rect.right)):
+                    print("Encerdado pai")
+                elif ((j.rect.left <= b.rect.right) and (j.rect.left >= b.rect.left)):
+                    print("Encerdado pai")
 
+                if ((j.rect.bottom >= b.rect.top) and (j.rect.bottom <= b.rect.bottom)):
+                    print("Encerdado pai")
+                elif ((j.rect.top <= b.rect.bottom) and (j.rect.top >= b.rect.top)):
+                    print("Encerdado pai")
+
+            for j in jugadores:
+                if j.rect.y >= Constants.Height + 10:
+                    StartGame(50,250)
 
 
         if j.rect.x > limitemovimiento:
-            j.rect.x = 0
-            index = 1
+            H2.StartGame(j.rect.x, j.rect.y)
+
         
+ 
+
+
         Constants.Screen.fill([0,0,0])
-        Constants.Screen.blit(mapaa,[0,0])
         jugadores.update()
         Bloques.update()
         Plataformas.update()
-        jugadores.draw(Constants.Screen)
+        Cerdos.update()
         Bloques.draw(Constants.Screen)
+        Constants.Screen.blit(mapaa,[0,0])
+        jugadores.draw(Constants.Screen)
+        Cerdos.draw(Constants.Screen)
         pygame.display.flip()
         reloj.tick(40)
