@@ -1,3 +1,4 @@
+"""
 #Import of libraries
 import json
 import pygame
@@ -120,3 +121,4 @@ def StarGame():
         jugadores.update()
         jugadores.draw(Constants.Screen)
         pygame.display.flip()
+"""
