@@ -11,6 +11,7 @@ class Jugador(pygame.sprite.Sprite):
         self.rect.y = position[1]
         self.velx = 0
         self.vely = 0
+        self.vida = 100
         self.EnAire = False
         self.Bloques = None
         
@@ -31,12 +32,9 @@ class Jugador(pygame.sprite.Sprite):
         #colision y--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
         for b in listaColision:
-            if self.rect.colliderect(b.rect):
-                self.EnAire = False
-            else:
-                self.EnAire = True
             if ((self.rect.bottom >= b.rect.top) and (self.rect.bottom <= b.rect.bottom)):
                 self.vely = 0
+                self.EnAire = False
                 self.rect.bottom = b.rect.top       
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0

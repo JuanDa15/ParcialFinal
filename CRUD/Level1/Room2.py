@@ -19,13 +19,13 @@ from CRUD.Level1 import Room1
 
 from pygame.locals import *
 
-def StartGame(posx, posy):
+def StartGame(j, jugadores):
     index = 0
     limitemovimiento = 780
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
 
     #Definicion de Grupos
-    jugadores = pygame.sprite.Group()
+    #jugadores = pygame.sprite.Group()
     Plataformas = pygame.sprite.Group()
     Bloques = pygame.sprite.Group()
     Cañones = pygame.sprite.Group()
@@ -33,16 +33,20 @@ def StartGame(posx, posy):
     Cerdos = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
     
-
+    """
     #Creacion Jugador
     j = P.Jugador([posx,posy])
     jugadores.add(j)
+    """
 
     C = pork.cerdo([257,370], 130)
     Cerdos.add(C)
 
     for j in jugadores:
         j.rect.x = 0
+    
+    for j in jugadores:
+        print(j.vida)
 
     #Lectura de archivo json
     nom_archivo='Assets\Levels\Level1\Level1b.json'
@@ -185,7 +189,7 @@ def StartGame(posx, posy):
 
         if j.rect.x > limitemovimiento:
             j.velx=0
-        if j.rect.x < 0:
+        if j.rect.right < 5:
             Room1.StartGame(limitemovimiento, j.rect.y)
         
         Constants.Screen.fill([0,0,0])

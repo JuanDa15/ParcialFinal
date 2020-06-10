@@ -17,7 +17,7 @@ from pygame.locals import *
 
 def StartGame(posx,posy):
     index = 0
-    limitemovimiento = 780
+    limitemovimiento = 790
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
 
     #Definicion de Grupos
@@ -118,21 +118,24 @@ def StartGame(posx,posy):
             for b in listaColisionCerdos:
                 if ((j.rect.right >= b.rect.left) and (j.rect.right <= b.rect.right)):
                     print("Encerdado pai")
+                    j.vida -= 1
                 elif ((j.rect.left <= b.rect.right) and (j.rect.left >= b.rect.left)):
                     print("Encerdado pai")
-
+                    j.vida -= 1
                 if ((j.rect.bottom >= b.rect.top) and (j.rect.bottom <= b.rect.bottom)):
                     print("Encerdado pai")
+                    j.vida -= 1
                 elif ((j.rect.top <= b.rect.bottom) and (j.rect.top >= b.rect.top)):
                     print("Encerdado pai")
+                    j.vida -= 1
 
             for j in jugadores:
                 if j.rect.y >= Constants.Height + 10:
                     StartGame(50,250)
 
 
-        if j.rect.x > limitemovimiento:
-            Room2.StartGame(j.rect.x, j.rect.y)
+        if j.rect.left > limitemovimiento:
+            Room2.StartGame(j, jugadores)
 
         
  
