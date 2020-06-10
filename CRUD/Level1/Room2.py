@@ -22,7 +22,7 @@ from pygame.locals import *
 def StartGame(posx, posy):
     index = 0
     limitemovimiento = 780
-    mapaa = pygame.image.load('Assets\Level1\Level1b.png')
+    mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
 
     #Definicion de Grupos
     jugadores = pygame.sprite.Group()
@@ -45,7 +45,7 @@ def StartGame(posx, posy):
         j.rect.x = 0
 
     #Lectura de archivo json
-    nom_archivo='Assets\Level1\Level1b.json'
+    nom_archivo='Assets\Levels\Level1\Level1b.json'
     mapa_info = None
     with open(nom_archivo) as info:
         mapa_info=json.load(info)
