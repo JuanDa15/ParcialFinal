@@ -15,7 +15,7 @@ from CRUD.Level1 import Room2
 
 from pygame.locals import *
 
-def StartGame(posx,posy):
+def StartGame(j, posx,posy):
     index = 0
     limitemovimiento = 790
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
@@ -26,12 +26,11 @@ def StartGame(posx,posy):
     Bloques = pygame.sprite.Group()
     Cerdos=pygame.sprite.Group()
 
-
-
-    #Creacion Jugador
-    j = P.Jugador([posx,posy])
     jugadores.add(j)
 
+    for j in jugadores:
+        j.rect.x = posx
+        j.rect.y = posy
 
     C = pork.cerdo([100,320], 130)
     Cerdos.add(C)
@@ -131,11 +130,11 @@ def StartGame(posx,posy):
 
             for j in jugadores:
                 if j.rect.y >= Constants.Height + 10:
-                    StartGame(50,250)
+                    StartGame(j,50,250)
 
 
         if j.rect.left > limitemovimiento:
-            Room2.StartGame(j, jugadores)
+            Room2.StartGame(j, 5,j.rect.y)
 
         
  
