@@ -16,7 +16,7 @@ from Classes import pork
 from Classes import Spikes
 
 from CRUD.Level1 import Room2
-#from CRUD.Level1 import Room2
+from CRUD.Level1 import Room4
 
 from pygame.locals import *
 
@@ -39,9 +39,11 @@ def StartGame(j,posx, posy):
     """
     jugadores.add(j)
 
+    """
     C = pork.cerdo([257,370], 130)
     Cerdos.add(C)
-
+    """
+    
     for j in jugadores:
         j.rect.x = posx
         j.rect.y = posy
@@ -94,10 +96,10 @@ def StartGame(j,posx, posy):
     for c in Cañones:
         c.Bloques = Bloques
 
-
+    """
     for c in Cerdos:
         c.Bloques = Bloques
-
+    """
     
     reloj = pygame.time.Clock()
 
@@ -187,15 +189,16 @@ def StartGame(j,posx, posy):
                     print("Encerdado pai")
 
             for j in jugadores:
-                if j.rect.y >= Constants.Height + 10:
-                    StartGame(j,5, 250)
+                if j.rect.y >= Constants.Height:
+                    Room4.StartGame(j, j.rect.x, 5)
 
         """
-        if j.rect.x > limitemovimiento:
+        if j.rect.left > limitemovimiento:
             Room3.StartGame(j, jugadores)
         """
+        
         if j.rect.right < 0:
-            Room2.StartGame(j,limitemovimiento - 10, j.rect.y - 2)
+            Room2.StartGame(j,limitemovimiento - 26, j.rect.y - 2)
         
         Constants.Screen.fill([0,0,0])
         jugadores.update()

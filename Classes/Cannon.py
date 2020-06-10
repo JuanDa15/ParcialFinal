@@ -13,6 +13,12 @@ class cannon(pygame.sprite.Sprite):
         self.vely = 0
         self.Disparo = 30
         self.Direccion = False
+        if self.Direccion == False:
+            self.image =  pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),(38,32))
+        else:
+            self.image =  pygame.transform.flip(pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),(38,32)),True,False)
+
+
         self.Bloques = None
         
     def update(self):

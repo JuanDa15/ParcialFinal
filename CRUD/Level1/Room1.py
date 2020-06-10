@@ -130,11 +130,11 @@ def StartGame(j, posx,posy):
 
             for j in jugadores:
                 if j.rect.y >= Constants.Height + 10:
-                    StartGame(j,50,250)
+                    StartGame(j,38,254)
 
 
         if j.rect.left > limitemovimiento:
-            Room2.StartGame(j, 5,j.rect.y)
+            Room2.StartGame(j, 0,j.rect.y)
 
         
  
