@@ -13,4 +13,14 @@ class cannonball(pygame.sprite.Sprite):
         self.vely = 0
     
     def update(self):
+<<<<<<< HEAD
         pass
+=======
+        #Posicion y velocidad en x
+        self.rect.x+=self.velx      
+        
+        #Posicion y velocidad en y
+        self.rect.y+=self.vely
+
+        
+>>>>>>> Gandhi

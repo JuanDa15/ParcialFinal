@@ -134,7 +134,10 @@ def StartGame(posx,posy):
         if j.rect.x > limitemovimiento:
             Room2.StartGame(j.rect.x, j.rect.y)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Gandhi
         
  
 

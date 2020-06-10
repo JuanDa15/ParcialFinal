@@ -76,9 +76,15 @@ def StartGame(posx, posy):
     for i in range(len(Dicc_Cañones)):
         C = Cannon.cannon([(Dicc_Cañones[i]['x']),(Dicc_Cañones[i]['y'])],(Dicc_Cañones[i]['width']),(Dicc_Cañones[i]['height']))
         if Dicc_Cañones[i]['name'] == 'False':
+<<<<<<< HEAD
             Cannon.Direccion = False
         else:
             Cannon.Direccion = True
+=======
+            C.Direccion = False
+        else:
+            C.Direccion = True
+>>>>>>> Gandhi
         Cañones.add(C)
 
     for i in jugadores:
