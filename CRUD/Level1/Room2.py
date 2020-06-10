@@ -21,7 +21,7 @@ from pygame.locals import *
 
 def StartGame(posx, posy):
     index = 0
-    limitemovimiento = 780
+    limitemovimiento = 795
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
 
     #Definicion de Grupos

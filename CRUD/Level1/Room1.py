@@ -16,8 +16,7 @@ from CRUD.Level1 import Room2
 from pygame.locals import *
 
 def StartGame(posx,posy):
-    index = 0
-    limitemovimiento = 780
+    limitemovimiento = 795
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
 
     #Definicion de Grupos
@@ -29,8 +28,8 @@ def StartGame(posx,posy):
 
 
     #Creacion Jugador
-    j = P.Jugador([posx,posy])
-    jugadores.add(j)
+    Player = P.Jugador([posx,posy])
+    jugadores.add(Player)
 
 
     C = pork.cerdo([100,320], 130)
@@ -87,21 +86,18 @@ def StartGame(posx,posy):
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    j.velx = 3
+                    Player.velx = 3
                 if event.key == pygame.K_LEFT:
-                    j.velx = -3
+                    Player.velx = -3
                 if event.key == pygame.K_SPACE:
-                    if j.EnAire == False:
-                        j.vely = -8
-                        j.EnAire = True
-
-
-                    
+                    if Player.EnAire == False:
+                        Player.vely = -8
+                        Player.EnAire = True 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
-                    j.velx = 0
+                    Player.velx = 0
                 if event.key == pygame.K_LEFT:
-                    j.velx = 0
+                    Player.velx = 0
 
         """
         for c in Cañones:
@@ -131,8 +127,8 @@ def StartGame(posx,posy):
                     StartGame(50,250)
 
 
-        if j.rect.x > limitemovimiento:
-            Room2.StartGame(j.rect.x, j.rect.y)
+        if Player.rect.left > limitemovimiento:
+            Room2.StartGame(Player.rect.x, Player.rect.y)
 
         
  
