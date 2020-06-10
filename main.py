@@ -1,3 +1,7 @@
-from CRUD import Habitacion1 as H1
+"""from CRUD import Game as G
+1
+G.StarGame()
+"""
+from CRUD.Level1 import Room1 as R1
 
-H1.StartGame(50,250)
+R1.StartGame(50,250)
