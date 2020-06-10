@@ -17,7 +17,7 @@ from pygame.locals import *
 
 def StartGame(posx,posy):
     limitemovimiento = 795
-    mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
+    mapa = Constants.mapa1A
 
     #Definicion de Grupos
     jugadores = pygame.sprite.Group()
@@ -133,9 +133,6 @@ def StartGame(posx,posy):
         if j.rect.left > limitemovimiento:
             Room2.StartGame(j, jugadores)
 
-        
- 
-
 
         Constants.Screen.fill([0,0,0])
         jugadores.update()
@@ -143,7 +140,7 @@ def StartGame(posx,posy):
         Plataformas.update()
         Cerdos.update()
         Bloques.draw(Constants.Screen)
-        Constants.Screen.blit(mapaa,[0,0])
+        Constants.Screen.blit(mapa,[0,0])
         jugadores.draw(Constants.Screen)
         Cerdos.draw(Constants.Screen)
         pygame.display.flip()

@@ -16,13 +16,13 @@ from Classes import pork
 from Classes import Spikes
 
 from CRUD.Level1 import Room1
+from CRUD.Level1 import Room3
 
 from pygame.locals import *
 
 def StartGame(j, jugadores):
-    index = 0
     limitemovimiento = 795
-    mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
+    mapa = Constants.mapa1B
 
     #Definicion de Grupos
     #jugadores = pygame.sprite.Group()
@@ -43,7 +43,7 @@ def StartGame(j, jugadores):
     Cerdos.add(C)
 
     for j in jugadores:
-        j.rect.x = 0
+        j.rect.x = 6
     
     for j in jugadores:
         print(j.vida)
@@ -112,9 +112,6 @@ def StartGame(j, jugadores):
                     if j.EnAire == False:
                         j.vely = -8
                         j.EnAire = True
-
-
-                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     j.velx = 0
@@ -187,8 +184,8 @@ def StartGame(j, jugadores):
                     StartGame(50,250)
 
 
-        if j.rect.x > limitemovimiento:
-            j.velx=0
+        if j.rect.left > limitemovimiento:
+            Room3.StartGame(j,jugadores)
         if j.rect.right < 5:
             Room1.StartGame(limitemovimiento, j.rect.y)
         
@@ -200,7 +197,7 @@ def StartGame(j, jugadores):
         Cerdos.update()
         Bloques.draw(Constants.Screen)
         Puas.draw(Constants.Screen)
-        Constants.Screen.blit(mapaa,[0,0])
+        Constants.Screen.blit(mapa,[0,0])
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)
