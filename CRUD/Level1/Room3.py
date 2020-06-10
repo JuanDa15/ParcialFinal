@@ -16,8 +16,7 @@ from Classes import pork
 from Classes import Spikes
 
 from CRUD.Level1 import Room2
-
-from CRUD.Level1 import Room4
+#from CRUD.Level1 import Room2
 
 from pygame.locals import *
 
@@ -34,7 +33,6 @@ def StartGame(j,posx, posy):
     BolasCañon = pygame.sprite.Group()
     Cerdos = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
-
     """
     #Creacion Jugador
     j = j
@@ -54,7 +52,7 @@ def StartGame(j,posx, posy):
     for j in jugadores:
         print(j.vida)
 
-
+    #Lectura de archivo json
     nom_archivo='Assets\Levels\Level1\Level1c.json'
     mapa_info = None
     with open(nom_archivo) as info:
@@ -62,7 +60,6 @@ def StartGame(j,posx, posy):
     info.close()
 
     Dicc_Colisiones=mapa_info['layers'][10]['objects']
-
     Dicc_Plataformas= mapa_info['layers'][17]['objects']
     Dicc_Cañones= mapa_info['layers'][16]['objects']
     Dicc_Pinchos= mapa_info['layers'][12]['objects']
@@ -84,14 +81,12 @@ def StartGame(j,posx, posy):
 
     #Creacion de los cañones
     for i in range(len(Dicc_Cañones)):
-
         C = Cannon.cannon([(Dicc_Cañones[i]['x']),(Dicc_Cañones[i]['y'] - 15)],(Dicc_Cañones[i]['width']),(Dicc_Cañones[i]['height']))
         if Dicc_Cañones[i]['name'] == 'False':
             C.Direccion = False
         else:
             C.Direccion = True
         Cañones.add(C)
-
 
 
     for i in jugadores:
@@ -101,10 +96,8 @@ def StartGame(j,posx, posy):
     for c in Cañones:
         c.Bloques = Bloques
 
-    """
     for c in Cerdos:
         c.Bloques = Bloques
-    """
     
     reloj = pygame.time.Clock()
 
@@ -123,7 +116,6 @@ def StartGame(j,posx, posy):
                     if j.EnAire == False:
                         j.vely = -8
                         j.EnAire = True
-
 
 
                     
@@ -195,9 +187,8 @@ def StartGame(j,posx, posy):
                     print("Encerdado pai")
 
             for j in jugadores:
-
-                if j.rect.y >= Constants.Height:
-                    Room4.StartGame(j, j.rect.x, 5)
+                if j.rect.y >= Constants.Height + 10:
+                    StartGame(j,5, 250)
 
         """
         if j.rect.left > limitemovimiento:
@@ -205,7 +196,7 @@ def StartGame(j,posx, posy):
         """
         
         if j.rect.right < 0:
-            Room2.StartGame(j,limitemovimiento - 26, j.rect.y - 2)
+            Room2.StartGame(j,limitemovimiento - 10, j.rect.y - 2)
         
         Constants.Screen.fill([0,0,0])
         jugadores.update()
@@ -213,7 +204,6 @@ def StartGame(j,posx, posy):
         Cañones.update()
         BolasCañon.update()
         Cerdos.update()
-
         Puas.draw(Constants.Screen)
         Constants.Screen.blit(mapaa,[0,0])
         Bloques.draw(Constants.Screen)
@@ -222,5 +212,4 @@ def StartGame(j,posx, posy):
         BolasCañon.draw(Constants.Screen)
         Cerdos.draw(Constants.Screen)
         pygame.display.flip()
-
         reloj.tick(40)
