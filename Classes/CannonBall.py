@@ -4,7 +4,7 @@ from CRUD import Functions
 class cannonball(pygame.sprite.Sprite):
     def __init__(self,position,direccion):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Cannon Ball.png'),(18,18))
+        self.image = pygame.image.load('Assets\Sprites\Cannon\Cannon Ball.png')
         #self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
@@ -13,9 +13,6 @@ class cannonball(pygame.sprite.Sprite):
         self.vely = 0
     
     def update(self):
-<<<<<<< HEAD
-        pass
-=======
         #Posicion y velocidad en x
         self.rect.x+=self.velx      
         
@@ -23,4 +20,3 @@ class cannonball(pygame.sprite.Sprite):
         self.rect.y+=self.vely
 
         
->>>>>>> Gandhi
