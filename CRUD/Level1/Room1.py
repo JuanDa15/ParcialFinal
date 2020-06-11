@@ -15,21 +15,6 @@ from CRUD.Level1 import Room2
 
 from pygame.locals import *
 
-#Map Information
-#Lectura de archivo json
-FileName= 'Assets\Levels\Level1\Level1a.json'
-MapInfo = None
-with open(FileName) as Information:
-    MapInfo=json.load(Information)
-Information.close()
-#Extraccion Objetos Json
-Collisions = MapInfo['layers'][13]['objects']
-Platforms = MapInfo['layers'][14]['objects']
-DiamondsPos = MapInfo['layers'][10]['objects']
-ApplesPos = MapInfo['layers'][11]['objects']
-CoinsPos = MapInfo['layers'][12]['objects']
-Door = MapInfo['layers'][15]['objects']
-
 def StartRoom1(Player, PositionX,PositionY):
     Clock = pygame.time.Clock()
     mapa = Constants.mapa1A
@@ -38,9 +23,6 @@ def StartRoom1(Player, PositionX,PositionY):
     Players = pygame.sprite.Group()
     Blocks = pygame.sprite.Group()
     Cerdos=pygame.sprite.Group()
-    Coins = pygame.sprite.Group()
-    Apples = pygame.sprite.Group()
-    Diamonds = pygame.sprite.Group()
 
     Players.add(Player)
     #Definicion Posicion Inicial
@@ -58,25 +40,13 @@ def StartRoom1(Player, PositionX,PositionY):
     Cerdos.add(C2)
     
     #Creacion de las paredes
-    for i in range(len(Collisions)):
-        Bloque = Block.Bloque([(Collisions[i]['x']),(Collisions[i]['y'])],Collisions[i]['width'],Collisions[i]['height'])
+    for i in range(len(Constants.Collisions)):
+        Bloque = Block.Bloque([(Constants.Collisions[i]['x']),(Constants.Collisions[i]['y'])],Constants.Collisions[i]['width'],Constants.Collisions[i]['height'])
         Blocks.add(Bloque)
     #Creacion de las plataformas
-    for i in range(len(Platforms)):
-        Platform = Block.Bloque([(Platforms[i]['x']),(Platforms[i]['y'])],Platforms[i]['width'],Platforms[i]['height'])
+    for i in range(len(Constants.Platforms)):
+        Platform = Block.Bloque([(Constants.Platforms[i]['x']),(Constants.Platforms[i]['y'])],Constants.Platforms[i]['width'],Constants.Platforms[i]['height'])
         Blocks.add(Platform)
-    #Creacion de las monedas
-    for i in range(len(CoinsPos)):
-        Moneda = co.Coin((CoinsPos[i]['x'],CoinsPos[i]['y']))
-        Coins.add(Moneda)
-    #Creacion de las manzanas
-    for i in range(len(ApplesPos)):
-        Manzana = ap.Apple((ApplesPos[i]['x'],ApplesPos[i]['y']))
-        Apples.add(Manzana)
-    #Creacion de las manzanas
-    for i in range(len(DiamondsPos)):
-        Diamante = d.Diamond((DiamondsPos[i]['x'],DiamondsPos[i]['y']))
-        Diamonds.add(Diamante)
 
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
@@ -123,8 +93,8 @@ def StartRoom1(Player, PositionX,PositionY):
                     print("Encerdado pai")
                     Player.vida -= 1
             #Recoger Monedas
-            ListaMonedas = pygame.sprite.spritecollide(Player, Coins,True)
-            if ListaMonedas:
+            ListaMonedas = pygame.sprite.spritecollide(Player, Constants.CoinsList,True)
+            for Moneda in ListaMonedas:
                 Player.Coins = Player.Coins + 1
             #Recoger Manzanas
             ListaManzanas = pygame.sprite.spritecollide(Player, Apples,True)
@@ -134,7 +104,8 @@ def StartRoom1(Player, PositionX,PositionY):
             ListaDiamantes = pygame.sprite.spritecollide(Player, Diamonds,True)
             if ListaDiamantes:
                 Player.Diamonds = Player.Diamonds + 1
-
+                
+        print (ListaMonedas)
         print (Player.Coins)
         #Muerte por salir de pantalla
         for Player in Players:
@@ -151,8 +122,8 @@ def StartRoom1(Player, PositionX,PositionY):
         Cerdos.update()
         Constants.Screen.blit(mapa,[0,0])
         Players.draw(Constants.Screen)
-        Cerdos.draw(Constants.Screen)
-        Coins.draw(Constants.Screen)
+        Cerdos.draw(Constants.Screen)   
+        Constants.CoinsList.draw(Constants.Screen)
         Apples.draw(Constants.Screen)
         Diamonds.draw(Constants.Screen)
         pygame.display.flip()

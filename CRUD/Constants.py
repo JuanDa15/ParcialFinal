@@ -1,5 +1,8 @@
 #Libraries Import
 import pygame
+import json
+from Classes import Coin as co
+from Classes import Apple as ap
 from pygame.locals import *
 #CONSTANTS
 Width = 800
@@ -36,3 +39,35 @@ mapa2J = pygame.image.load('Assets\Levels\Level2\Level2j.png')
 #Mapa Final Boss
 MapaFinalA = pygame.image.load('Assets\Levels\Final Boss\FinalBossA.png')
 MapaFinalB = pygame.image.load('Assets\Levels\Final Boss\FinalBossB.png')
+#Lista Monedas
+CoinsList = pygame.sprite.Group()
+ApplesList = pygame.sprite.Group()
+DiamondsList = pygame.sprite.Group()
+#-----------------------------------------------------------------------------------------------
+#Map Information A
+#Lectura de archivo json
+FileName= 'Assets\Levels\Level1\Level1a.json'
+MapInfo = None
+with open(FileName) as Information:
+    MapInfo=json.load(Information)
+Information.close()
+#Extraccion Objetos Json
+Collisions = MapInfo['layers'][13]['objects']
+Platforms = MapInfo['layers'][14]['objects']
+DiamondsPos = MapInfo['layers'][10]['objects']
+ApplesPos = MapInfo['layers'][11]['objects']
+CoinsPos = MapInfo['layers'][12]['objects']
+Door = MapInfo['layers'][15]['objects']
+
+#Creacion de las monedas
+for i in range(len(CoinsPos)):
+    Moneda = co.Coin((CoinsPos[i]['x'],CoinsPos[i]['y']))
+    CoinsList.add(Moneda)
+#Creacion de las manzanas
+for i in range(len(ApplesPos)):
+    Manzana = ap.Apple((ApplesPos[i]['x'],ApplesPos[i]['y']))
+    Apples.add(Manzana)
+#Creacion de las manzanas
+for i in range(len(DiamondsPos)):
+    Diamante = d.Diamond((DiamondsPos[i]['x'],DiamondsPos[i]['y']))
+    Diamonds.add(Diamante)
