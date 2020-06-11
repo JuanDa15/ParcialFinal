@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"Level2c.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Level2\/Level2c.json"
         }
     },
  "height":19,
@@ -796,67 +796,67 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Shadow.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Shadow.tsx"
         }, 
         {
          "firstgid":57,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
         }, 
         {
          "firstgid":113,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Decorations (32x32).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Decorations (32x32).tsx"
         }, 
         {
          "firstgid":155,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Medieval_tiles_free_2.0.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Medieval_tiles_free_2.0.tsx"
         }, 
         {
          "firstgid":955,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
         }, 
         {
          "firstgid":1255,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Ventana.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Ventana.tsx"
         }, 
         {
          "firstgid":1256,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box4.tsx"
         }, 
         {
          "firstgid":1257,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/pointer5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/pointer5.tsx"
         }, 
         {
          "firstgid":1258,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Stones5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Stones5.tsx"
         }, 
         {
          "firstgid":1259,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Chain1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Chain1.tsx"
         }, 
         {
          "firstgid":1260,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/10.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/10.tsx"
         }, 
         {
          "firstgid":1261,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/8.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/8.tsx"
         }, 
         {
          "firstgid":1262,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/pointer6.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/pointer6.tsx"
         }, 
         {
          "firstgid":1263,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/5.tsx"
         }, 
         {
          "firstgid":1264,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/4.tsx"
         }, 
         {
          "firstgid":1265,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
         }],
  "tilewidth":32,
  "type":"map",

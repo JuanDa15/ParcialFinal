@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"Level2f.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Level2\/Level2f.json"
         }
     },
  "height":19,
@@ -631,51 +631,51 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Shadow.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Shadow.tsx"
         }, 
         {
          "firstgid":57,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
         }, 
         {
          "firstgid":113,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
         }, 
         {
          "firstgid":413,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
         }, 
         {
          "firstgid":414,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/stones2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/stones2.tsx"
         }, 
         {
          "firstgid":415,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Pointer1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Pointer1.tsx"
         }, 
         {
          "firstgid":416,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder6.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder6.tsx"
         }, 
         {
          "firstgid":417,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder5.tsx"
         }, 
         {
          "firstgid":418,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box4.tsx"
         }, 
         {
          "firstgid":419,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/8.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/8.tsx"
         }, 
         {
          "firstgid":420,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/5.tsx"
         }, 
         {
          "firstgid":421,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"FinalBossA.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Final Boss\/FinalBossA.json"
         }
     },
  "height":19,
@@ -112,202 +112,202 @@
          "name":"Wall Collisions",
          "objects":[
                 {
-                 "height":32.0588492862773,
+                 "height":32.0588,
                  "id":1,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":352.64734214905,
-                 "x":190.89587529556,
-                 "y":127.506786934057
+                 "width":352.647,
+                 "x":190.896,
+                 "y":127.507
                 }, 
                 {
-                 "height":62.660478150451,
+                 "height":62.6605,
                  "id":2,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":186.524214029249,
-                 "x":5.1002714773623,
-                 "y":127.506786934057
+                 "width":186.524,
+                 "x":5.10027,
+                 "y":127.507
                 }, 
                 {
-                 "height":224.411945003941,
+                 "height":224.412,
                  "id":3,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29.873018653122,
+                 "width":29.873,
                  "x":0,
-                 "y":190.167265084508
+                 "y":190.167
                 }, 
                 {
-                 "height":33.5160697083808,
+                 "height":33.5161,
                  "id":4,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":353.375952360102,
-                 "x":29.873018653122,
-                 "y":382.520360802172
+                 "width":353.376,
+                 "x":29.873,
+                 "y":382.52
                 }, 
                 {
-                 "height":31.3302390752255,
+                 "height":31.3302,
                  "id":5,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":314.031000963307,
-                 "x":355.561782993257,
-                 "y":416.036430510553
+                 "width":314.031,
+                 "x":355.562,
+                 "y":416.036
                 }, 
                 {
-                 "height":35.701900341536,
+                 "height":35.7019,
                  "id":6,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":62.660478150451,
-                 "x":736.624923373325,
-                 "y":413.850599877397
+                 "width":62.6605,
+                 "x":736.625,
+                 "y":413.851
                 }, 
                 {
-                 "height":222.226114370786,
+                 "height":222.226,
                  "id":7,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32.0588492862772,
-                 "x":769.412382870654,
-                 "y":191.624485506612
+                 "width":32.0588,
+                 "x":769.412,
+                 "y":191.624
                 }, 
                 {
-                 "height":29.873018653122,
+                 "height":29.873,
                  "id":8,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":128.235397145109,
-                 "x":671.778614589719,
-                 "y":160.294246431386
+                 "width":128.235,
+                 "x":671.779,
+                 "y":160.294
                 }, 
                 {
-                 "height":158.837026009283,
+                 "height":158.837,
                  "id":9,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":33.5160697083808,
-                 "x":768.683772659602,
-                 "y":0.728610211051745
+                 "width":33.5161,
+                 "x":768.684,
+                 "y":0.72861
                 }, 
                 {
-                 "height":126.778176723006,
+                 "height":126.778,
                  "id":10,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.3302390752254,
-                 "x":512.212978369384,
-                 "y":0.728610211051759
+                 "width":31.3302,
+                 "x":512.213,
+                 "y":0.72861
                 }, 
                 {
-                 "height":29.873018653122,
+                 "height":29.873,
                  "id":11,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":227.326385848148,
-                 "x":543.54321744461,
+                 "width":227.326,
+                 "x":543.543,
                  "y":0
                 }, 
                 {
-                 "height":32.787459497329,
+                 "height":32.7875,
                  "id":12,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":165.394517908749,
-                 "x":641.176985725545,
-                 "y":543.54321744461
+                 "width":165.395,
+                 "x":641.177,
+                 "y":543.543
                 }, 
                 {
-                 "height":10.9291531657763,
+                 "height":10.9292,
                  "id":13,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":96.9051580698835,
-                 "x":158.837026009283,
-                 "y":256.470794290218
+                 "width":96.9052,
+                 "x":158.837,
+                 "y":256.471
                 }, 
                 {
-                 "height":12.3863735878798,
+                 "height":12.3864,
                  "id":14,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":94.7193274367282,
-                 "x":351.918731937998,
-                 "y":255.013573868115
+                 "width":94.7193,
+                 "x":351.919,
+                 "y":255.014
                 }, 
                 {
-                 "height":13.1149837989316,
+                 "height":13.115,
                  "id":15,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":95.44793764778,
-                 "x":545.000437866713,
-                 "y":254.284963657063
+                 "width":95.4479,
+                 "x":545,
+                 "y":254.285
                 }, 
                 {
-                 "height":9.47193274367282,
+                 "height":9.47193,
                  "id":18,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":79.4185130046414,
-                 "x":126.778176723006,
-                 "y":351.918731937998
+                 "width":79.4185,
+                 "x":126.778,
+                 "y":351.919
                 }, 
                 {
-                 "height":21.1296961205009,
+                 "height":21.1297,
                  "id":19,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":7.28610211051756,
-                 "x":186.524214029249,
-                 "y":362.847885103774
+                 "width":7.2861,
+                 "x":186.524,
+                 "y":362.848
                 }, 
                 {
-                 "height":21.8583063315527,
+                 "height":21.8583,
                  "id":20,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":9.47193274367282,
-                 "x":138.435940099834,
-                 "y":361.390664681671
+                 "width":9.47193,
+                 "x":138.436,
+                 "y":361.391
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -321,15 +321,15 @@
          "name":"ladder",
          "objects":[
                 {
-                 "height":158.837026009283,
+                 "height":158.837,
                  "id":16,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32.0588492862772,
-                 "x":671.050004378667,
-                 "y":383.977581224275
+                 "width":32.0588,
+                 "x":671.05,
+                 "y":383.978
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -343,15 +343,15 @@
          "name":"door",
          "objects":[
                 {
-                 "height":57.5602066730887,
+                 "height":57.5602,
                  "id":17,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":47.3596637183641,
-                 "x":479.425518872055,
-                 "y":359.204834048516
+                 "width":47.3597,
+                 "x":479.426,
+                 "y":359.205
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -368,75 +368,75 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
         }, 
         {
          "firstgid":2,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Terrain (32x32).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Terrain (32x32).tsx"
         }, 
         {
          "firstgid":249,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Ventana.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Ventana.tsx"
         }, 
         {
          "firstgid":250,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Decorations (32x32).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Decorations (32x32).tsx"
         }, 
         {
          "firstgid":292,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/3.tsx"
         }, 
         {
          "firstgid":293,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/2.tsx"
         }, 
         {
          "firstgid":294,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/1.tsx"
         }, 
         {
          "firstgid":295,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/fence.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/fence.tsx"
         }, 
         {
          "firstgid":296,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/chain.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/chain.tsx"
         }, 
         {
          "firstgid":297,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/smallchain.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/smallchain.tsx"
         }, 
         {
          "firstgid":298,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/candle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/candle.tsx"
         }, 
         {
          "firstgid":299,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/light.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/light.tsx"
         }, 
         {
          "firstgid":300,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":732,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Idle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Idle.tsx"
         }, 
         {
          "firstgid":733,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Cannon Ball.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Cannon Ball.tsx"
         }, 
         {
          "firstgid":734,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Idleb.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Idleb.tsx"
         }, 
         {
          "firstgid":735,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Table.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Table.tsx"
         }, 
         {
          "firstgid":736,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/FinalBoss\/Chair.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/FinalBoss\/Chair.tsx"
         }],
  "tilewidth":32,
  "type":"map",
