@@ -15,15 +15,15 @@ from Classes import CannonBall
 from Classes import pork
 from Classes import Spikes
 
-from CRUD.Level1 import Room1
-from CRUD.Level1 import Room3
+from CRUD.Level2 import Room2
+from CRUD.Level2 import Room4
 
 from pygame.locals import *
 
 def StartGame(j ,posx, posy):
     index = 0
     limitemovimiento = 790
-    mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
+    mapaa = pygame.image.load('Assets\Levels\Level2\Level2c.png')
 
     #Definicion de Grupos
     jugadores = pygame.sprite.Group()
@@ -50,16 +50,16 @@ def StartGame(j ,posx, posy):
         print(j.vida)
 
     #Lectura de archivo json
-    nom_archivo='Assets\Levels\Level1\Level1b.json'
+    nom_archivo='Assets\Levels\Level2\Level2c.json'
     mapa_info = None
     with open(nom_archivo) as info:
         mapa_info=json.load(info)
     info.close()
 
-    Dicc_Colisiones=mapa_info['layers'][10]['objects']
-    Dicc_Plataformas= mapa_info['layers'][11]['objects']
-    Dicc_Cañones= mapa_info['layers'][15]['objects']
-    Dicc_Pinchos= mapa_info['layers'][16]['objects']
+    Dicc_Colisiones=mapa_info['layers'][7]['objects']
+    Dicc_Plataformas= mapa_info['layers'][12]['objects']
+    #Dicc_Cañones= mapa_info['layers'][15]['objects']
+    Dicc_Pinchos= mapa_info['layers'][8]['objects']
 
     
     #Creacion de los spikes
@@ -76,7 +76,7 @@ def StartGame(j ,posx, posy):
     for i in range(len(Dicc_Plataformas)):
         Plataforma = Block.Bloque([(Dicc_Plataformas[i]['x']),(Dicc_Plataformas[i]['y'])],Dicc_Plataformas[i]['width'],Dicc_Plataformas[i]['height'])
         Bloques.add(Plataforma)
-
+    """
     #Creacion de los cañones
     for i in range(len(Dicc_Cañones)):
         C = Cannon.cannon([(Dicc_Cañones[i]['x']),(Dicc_Cañones[i]['y'])],(Dicc_Cañones[i]['width']),(Dicc_Cañones[i]['height']))
@@ -85,10 +85,12 @@ def StartGame(j ,posx, posy):
         else:
             C.Direccion = True
         Cañones.add(C)
+    """
+
 
     for i in jugadores:
         i.Bloques = Bloques
-
+    
     for c in Cañones:
         c.Bloques = Bloques
 
@@ -189,7 +191,7 @@ def StartGame(j ,posx, posy):
 
 
         if j.rect.left > limitemovimiento:
-            Room3.StartGame(j,0, j.rect.y)
+            Room4.StartGame(j,0, j.rect.y)
 
         if j.rect.right < 0:
             Room1.StartGame(j,limitemovimiento - 26, j.rect.y)
@@ -200,9 +202,9 @@ def StartGame(j ,posx, posy):
         Cañones.update()
         BolasCañon.update()
         Cerdos.update()
-        Bloques.draw(Constants.Screen)
         Puas.draw(Constants.Screen)
         Constants.Screen.blit(mapaa,[0,0])
+        Bloques.draw(Constants.Screen)
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)

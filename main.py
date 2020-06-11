@@ -9,12 +9,12 @@ from CRUD.Level1 import Room4 as R4
 from CRUD.Level1 import Room6 as R6
 from CRUD.Level1 import Room8 as R8
 
-
-
-
+from CRUD.Level2 import Room8 as R8
 
 
 from Classes import Player as P
 #Creacion Jugador
 j = P.Jugador([0,0])
-R8.StartGame(j,500, 380)
+
+
+R8.StartGame(j,100, 100)
