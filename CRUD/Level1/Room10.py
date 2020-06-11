@@ -15,15 +15,15 @@ from Classes import CannonBall
 from Classes import pork
 from Classes import Spikes
 
-from CRUD.Level1 import Room8
-from CRUD.Level1 import Room10
+
+from CRUD.Level1 import Room9
 
 from pygame.locals import *
 
 def StartGame(j,posx, posy):
     index = 0
     limitemovimiento = 790
-    mapaa = pygame.image.load('Assets\Levels\Level1\Level1i.png')
+    mapaa = pygame.image.load('Assets\Levels\Level1\Level1j.png')
 
     #Definicion de Grupos
     jugadores = pygame.sprite.Group()
@@ -53,34 +53,34 @@ def StartGame(j,posx, posy):
         print(j.vida)
 
     #Lectura de archivo json
-    nom_archivo='Assets\Levels\Level1\Level1i.json'
+    nom_archivo='Assets\Levels\Level1\Level1j.json'
     mapa_info = None
     with open(nom_archivo) as info:
         mapa_info=json.load(info)
     info.close()
 
     Dicc_Colisiones=mapa_info['layers'][7]['objects']
-    Dicc_Plataformas= mapa_info['layers'][11]['objects']
+    #Dicc_Plataformas= mapa_info['layers'][11]['objects']
     #Dicc_Cañones= mapa_info['layers'][17]['objects']
-    #Dicc_Pinchos= mapa_info['layers'][2]['objects']
+    Dicc_Pinchos= mapa_info['layers'][10]['objects']
     
-    """
     #Creacion de los spikes
     for i in range(len(Dicc_Pinchos)):
         pincho = Spikes.spikes([(Dicc_Pinchos[i]['x']),(Dicc_Pinchos[i]['y'])],Dicc_Pinchos[i]['width'],Dicc_Pinchos[i]['height'])
         Puas.add(pincho)
-    """
+
 
     #Creacion de los bloques
     for i in range(len(Dicc_Colisiones)):
         Bloque = Block.Bloque([(Dicc_Colisiones[i]['x']),(Dicc_Colisiones[i]['y'])],Dicc_Colisiones[i]['width'],Dicc_Colisiones[i]['height'])
         Bloques.add(Bloque)
 
+    """
     #Creacion de las plataformas
     for i in range(len(Dicc_Plataformas)):
         Plataforma = Block.Bloque([(Dicc_Plataformas[i]['x']),(Dicc_Plataformas[i]['y'])],Dicc_Plataformas[i]['width'],Dicc_Plataformas[i]['height'])
         Bloques.add(Plataforma)
-
+    """
     """
     #Creacion de los cañones
     for i in range(len(Dicc_Cañones)):
@@ -190,13 +190,11 @@ def StartGame(j,posx, posy):
                     print("Encerdado pai")
                 elif ((j.rect.top <= b.rect.bottom) and (j.rect.top >= b.rect.top)):
                     print("Encerdado pai")
-            
-            for j in jugadores:
-                if j.rect.y >= Constants.Height + 10:
-                    Room8.StartGame(j, j.rect.x, - 10)
-            
-            if j.rect.left > limitemovimiento:
-                Room10.StartGame(j, 0, j.rect.y)
+
+
+            if j.rect.right < 0:
+                Room9.StartGame(j,limitemovimiento - 26, j.rect.y - 2)
+
 
         """
         if j.rect.right < 0:
