@@ -4,7 +4,7 @@ from CRUD import Functions
 class cannon(pygame.sprite.Sprite):
     def __init__(self,position,widht,height):
         pygame.sprite.Sprite.__init__(self)
-        self.image =  pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),(38,32))
+        self.image = pygame.image.load('Assets\Sprites\Cannon\Idle.png')
         #self.image.fill(Functions.SelectColor('Blue'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
@@ -14,9 +14,9 @@ class cannon(pygame.sprite.Sprite):
         self.Disparo = 30
         self.Direccion = False
         if self.Direccion == False:
-            self.image =  pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),(38,32))
+            self.image =  pygame.image.load('Assets\Sprites\Cannon\Idle.png')
         else:
-            self.image =  pygame.transform.flip(pygame.transform.scale(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),(38,32)),True,False)
+            self.image =  pygame.transform.flip(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),True,False)
 
 
         self.Bloques = None
