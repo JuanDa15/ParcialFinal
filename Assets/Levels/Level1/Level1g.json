@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1g.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1g.json"
         }
     },
  "height":19,
@@ -940,31 +940,31 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
         }, 
         {
          "firstgid":248,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
         }, 
         {
          "firstgid":290,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Idle box.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Idle box.tsx"
         }, 
         {
          "firstgid":291,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
         }, 
         {
          "firstgid":292,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/candle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/candle.tsx"
         }, 
         {
          "firstgid":293,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":725,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/window.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/window.tsx"
         }],
  "tilewidth":32,
  "type":"map",
