@@ -4,6 +4,7 @@ from pygame.locals import *
 #CONSTANTS
 Width = 800
 Height = 608
+limitemovimientoX = 795
 #Pygame Init
 pygame.init()
 pygame.display.set_caption('Tittle Game')
