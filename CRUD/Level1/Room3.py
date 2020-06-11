@@ -16,49 +16,56 @@ from Classes import pork
 from Classes import Spikes
 
 from CRUD.Level1 import Room2
+
+from CRUD.Level1 import Room4
+
 from pygame.locals import *
 
-
-def StartGame(j, jugadores):
-    limitemovimiento = 795
-    mapa = Constants.mapa1C
+def StartGame(j,posx, posy):
+    index = 0
+    limitemovimiento = 780
+    mapaa = pygame.image.load('Assets\Levels\Level1\Level1c.png')
 
     #Definicion de Grupos
-    #jugadores = pygame.sprite.Group()
+    jugadores = pygame.sprite.Group()
     Plataformas = pygame.sprite.Group()
     Bloques = pygame.sprite.Group()
     Cañones = pygame.sprite.Group()
     BolasCañon = pygame.sprite.Group()
     Cerdos = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
-    
+
     """
     #Creacion Jugador
-    j = P.Jugador([posx,posy])
-    jugadores.add(j)
+    j = j
     """
+    jugadores.add(j)
 
+    """
     C = pork.cerdo([257,370], 130)
     Cerdos.add(C)
-
+    """
+    
     for j in jugadores:
-        j.rect.x = 6
+        j.rect.x = posx
+        j.rect.y = posy
+
     
     for j in jugadores:
         print(j.vida)
 
-    #Lectura de archivo json
-    nom_archivo='Assets\Levels\Level1\Level1b.json'
+
+    nom_archivo='Assets\Levels\Level1\Level1c.json'
     mapa_info = None
     with open(nom_archivo) as info:
         mapa_info=json.load(info)
     info.close()
 
     Dicc_Colisiones=mapa_info['layers'][10]['objects']
-    Dicc_Plataformas= mapa_info['layers'][11]['objects']
-    Dicc_Cañones= mapa_info['layers'][15]['objects']
-    Dicc_Pinchos= mapa_info['layers'][16]['objects']
 
+    Dicc_Plataformas= mapa_info['layers'][17]['objects']
+    Dicc_Cañones= mapa_info['layers'][16]['objects']
+    Dicc_Pinchos= mapa_info['layers'][12]['objects']
     
     #Creacion de los bloques
     for i in range(len(Dicc_Pinchos)):
@@ -77,22 +84,27 @@ def StartGame(j, jugadores):
 
     #Creacion de los cañones
     for i in range(len(Dicc_Cañones)):
-        C = Cannon.cannon([(Dicc_Cañones[i]['x']),(Dicc_Cañones[i]['y'])],(Dicc_Cañones[i]['width']),(Dicc_Cañones[i]['height']))
+
+        C = Cannon.cannon([(Dicc_Cañones[i]['x']),(Dicc_Cañones[i]['y'] - 15)],(Dicc_Cañones[i]['width']),(Dicc_Cañones[i]['height']))
         if Dicc_Cañones[i]['name'] == 'False':
             C.Direccion = False
         else:
             C.Direccion = True
         Cañones.add(C)
 
+
+
     for i in jugadores:
         i.Bloques = Bloques
+
 
     for c in Cañones:
         c.Bloques = Bloques
 
+    """
     for c in Cerdos:
         c.Bloques = Bloques
-
+    """
     
     reloj = pygame.time.Clock()
 
@@ -111,6 +123,10 @@ def StartGame(j, jugadores):
                     if j.EnAire == False:
                         j.vely = -8
                         j.EnAire = True
+
+
+
+                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     j.velx = 0
@@ -179,14 +195,17 @@ def StartGame(j, jugadores):
                     print("Encerdado pai")
 
             for j in jugadores:
-                if j.rect.y >= Constants.Height + 10:
-                    StartGame(50,250)
 
+                if j.rect.y >= Constants.Height:
+                    Room4.StartGame(j, j.rect.x, 5)
 
+        """
         if j.rect.left > limitemovimiento:
-            j.velx = 0
-        if j.rect.right < 5:
-            Room2.StartGame(limitemovimiento, j.rect.y)
+            Room3.StartGame(j, jugadores)
+        """
+        
+        if j.rect.right < 0:
+            Room2.StartGame(j,limitemovimiento - 26, j.rect.y - 2)
         
         Constants.Screen.fill([0,0,0])
         jugadores.update()
@@ -194,12 +213,14 @@ def StartGame(j, jugadores):
         Cañones.update()
         BolasCañon.update()
         Cerdos.update()
-        Bloques.draw(Constants.Screen)
+
         Puas.draw(Constants.Screen)
-        Constants.Screen.blit(mapa,[0,0])
+        Constants.Screen.blit(mapaa,[0,0])
+        Bloques.draw(Constants.Screen)
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)
         Cerdos.draw(Constants.Screen)
         pygame.display.flip()
+
         reloj.tick(40)
