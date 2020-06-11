@@ -20,6 +20,7 @@ from CRUD.Level1 import Room3
 
 from pygame.locals import *
 
+
 def StartGame(j ,posx, posy):
     index = 0
     limitemovimiento = 790
@@ -113,9 +114,6 @@ def StartGame(j ,posx, posy):
                     if j.EnAire == False:
                         j.vely = -8
                         j.EnAire = True
-
-
-                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     j.velx = 0
@@ -191,6 +189,7 @@ def StartGame(j ,posx, posy):
         if j.rect.left > limitemovimiento:
             Room3.StartGame(j,0, j.rect.y)
 
+
         if j.rect.right < 0:
             Room1.StartGame(j,limitemovimiento - 26, j.rect.y)
         
@@ -202,7 +201,7 @@ def StartGame(j ,posx, posy):
         Cerdos.update()
         Bloques.draw(Constants.Screen)
         Puas.draw(Constants.Screen)
-        Constants.Screen.blit(mapaa,[0,0])
+        Constants.Screen.blit(mapa,[0,0])
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)

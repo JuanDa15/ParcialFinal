@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1c.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1c.json"
         }
     },
  "height":19,
@@ -699,7 +699,7 @@
                 {
                  "height":18.875,
                  "id":91,
-                 "name":"",
+                 "name":"False",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -710,7 +710,7 @@
                 {
                  "height":18.125,
                  "id":92,
-                 "name":"",
+                 "name":"False",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -810,35 +810,35 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
         }, 
         {
          "firstgid":248,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
         }, 
         {
          "firstgid":290,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Medieval_tiles_free_2.0.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Medieval_tiles_free_2.0.tsx"
         }, 
         {
          "firstgid":1090,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Idle canon.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Idle canon.tsx"
         }, 
         {
          "firstgid":1091,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":1523,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/candle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/candle.tsx"
         }, 
         {
          "firstgid":1524,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
         }, 
         {
          "firstgid":1525,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/window.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/window.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -15,6 +15,7 @@ from CRUD.Level1 import Room2
 
 from pygame.locals import *
 
+
 def StartGame(j, posx,posy):
     index = 0
     limitemovimiento = 790
@@ -26,6 +27,7 @@ def StartGame(j, posx,posy):
     Bloques = pygame.sprite.Group()
     Cerdos=pygame.sprite.Group()
 
+    
     jugadores.add(j)
 
     for j in jugadores:
@@ -86,21 +88,18 @@ def StartGame(j, posx,posy):
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    j.velx = 3
+                    Player.velx = 3
                 if event.key == pygame.K_LEFT:
-                    j.velx = -3
+                    Player.velx = -3
                 if event.key == pygame.K_SPACE:
-                    if j.EnAire == False:
-                        j.vely = -8
-                        j.EnAire = True
-
-
-                    
+                    if Player.EnAire == False:
+                        Player.vely = -8
+                        Player.EnAire = True 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
-                    j.velx = 0
+                    Player.velx = 0
                 if event.key == pygame.K_LEFT:
-                    j.velx = 0
+                    Player.velx = 0
 
         """
         for c in Cañones:
@@ -136,9 +135,6 @@ def StartGame(j, posx,posy):
         if j.rect.left > limitemovimiento:
             Room2.StartGame(j, 0,j.rect.y)
 
-        
- 
-
 
         Constants.Screen.fill([0,0,0])
         jugadores.update()
@@ -146,7 +142,7 @@ def StartGame(j, posx,posy):
         Plataformas.update()
         Cerdos.update()
         Bloques.draw(Constants.Screen)
-        Constants.Screen.blit(mapaa,[0,0])
+        Constants.Screen.blit(mapa,[0,0])
         jugadores.draw(Constants.Screen)
         Cerdos.draw(Constants.Screen)
         pygame.display.flip()
