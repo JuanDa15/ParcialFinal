@@ -16,10 +16,9 @@ from CRUD.Level1 import Room2
 from pygame.locals import *
 
 
-def StartGame(j, posx,posy):
-    index = 0
-    limitemovimiento = 790
-    mapaa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
+def StartRoom1(j, posx,posy):
+    limitemovimiento = 795
+    mapa = pygame.image.load('Assets\Levels\Level1\Level1a.png')
 
     #Definicion de Grupos
     jugadores = pygame.sprite.Group()
@@ -88,18 +87,18 @@ def StartGame(j, posx,posy):
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    Player.velx = 3
+                    j.velx = 3
                 if event.key == pygame.K_LEFT:
-                    Player.velx = -3
+                    j.velx = -3
                 if event.key == pygame.K_SPACE:
-                    if Player.EnAire == False:
-                        Player.vely = -8
-                        Player.EnAire = True 
+                    if j.EnAire == False:
+                        j.vely = -8
+                        j.EnAire = True 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
-                    Player.velx = 0
+                    j.velx = 0
                 if event.key == pygame.K_LEFT:
-                    Player.velx = 0
+                    j.velx = 0
 
         """
         for c in Cañones:
@@ -133,7 +132,7 @@ def StartGame(j, posx,posy):
 
 
         if j.rect.left > limitemovimiento:
-            Room2.StartGame(j, 0,j.rect.y)
+            Room2.StartGame(j,-5,j.rect.y - 1)
 
 
         Constants.Screen.fill([0,0,0])

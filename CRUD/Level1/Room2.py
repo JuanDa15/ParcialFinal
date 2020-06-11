@@ -23,7 +23,7 @@ from pygame.locals import *
 
 def StartGame(j ,posx, posy):
     index = 0
-    limitemovimiento = 790
+    limitemovimiento = 795
     mapaa = pygame.image.load('Assets\Levels\Level1\Level1b.png')
 
     #Definicion de Grupos
@@ -201,7 +201,7 @@ def StartGame(j ,posx, posy):
         Cerdos.update()
         Bloques.draw(Constants.Screen)
         Puas.draw(Constants.Screen)
-        Constants.Screen.blit(mapa,[0,0])
+        Constants.Screen.blit(mapaa,[0,0])
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)
