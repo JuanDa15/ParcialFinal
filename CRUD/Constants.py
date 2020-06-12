@@ -3,11 +3,13 @@ import pygame
 import json
 from Classes import Coin as co
 from Classes import Apple as ap
+from Classes import Diamond as d
 from pygame.locals import *
 #CONSTANTS
 Width = 800
 Height = 608
 limitemovimientoX = 795
+limitemovimientoY = 595
 #Pygame Init
 pygame.init()
 pygame.display.set_caption('Tittle Game')
@@ -52,22 +54,52 @@ with open(FileName) as Information:
     MapInfo=json.load(Information)
 Information.close()
 #Extraccion Objetos Json
-Collisions = MapInfo['layers'][13]['objects']
-Platforms = MapInfo['layers'][14]['objects']
-DiamondsPos = MapInfo['layers'][10]['objects']
-ApplesPos = MapInfo['layers'][11]['objects']
-CoinsPos = MapInfo['layers'][12]['objects']
-Door = MapInfo['layers'][15]['objects']
+CollisionsA = MapInfo['layers'][13]['objects']
+PlatformsA = MapInfo['layers'][14]['objects']
+DiamondsPosA = MapInfo['layers'][10]['objects']
+ApplesPosA = MapInfo['layers'][11]['objects']
+CoinsPosA = MapInfo['layers'][12]['objects']
+DoorA = MapInfo['layers'][15]['objects']
+
+#Se agregan las monedas cuarto a
+for i in range(len(CoinsPosA)):
+    Moneda = co.Coin((CoinsPosA[i]['x'],CoinsPosA[i]['y']))
+    CoinsList.add(Moneda)
+#Se agregan las Manzanas cuarto a
+for i in range(len(ApplesPosA)):
+    Manzana = ap.Apple((ApplesPosA[i]['x'],ApplesPosA[i]['y']))
+    ApplesList.add(Manzana)
+#Se agregan los diamantes cuarto a
+for i in range(len(DiamondsPosA)):
+    Diamante = d.Diamond((DiamondsPosA[i]['x'],DiamondsPosA[i]['y']))
+    DiamondsList.add(Diamante)
+
+#Map Information b
+#Map Information
+#Lectura de archivo json
+FileName= 'Assets\Levels\Level1\Level1b.json'
+
+with open(FileName) as Information:
+    MapInfo=json.load(Information)
+Information.close()
+#Extraccion Objetos Json
+CollisionsB = MapInfo['layers'][10]['objects']
+PlatformsB = MapInfo['layers'][11]['objects']
+CoinsPosB = MapInfo['layers'][12]['objects']
+ApplesPosB = MapInfo['layers'][13]['objects']
+DiamondsPosB = MapInfo['layers'][14]['objects']
+CannonsPosB= MapInfo['layers'][15]['objects']
+SpikesPosB= MapInfo['layers'][16]['objects']
 
 #Creacion de las monedas
-for i in range(len(CoinsPos)):
-    Moneda = co.Coin((CoinsPos[i]['x'],CoinsPos[i]['y']))
+for i in range(len(CoinsPosB)):
+    Moneda = co.Coin((CoinsPosB[i]['x'],CoinsPosB[i]['y']))
     CoinsList.add(Moneda)
 #Creacion de las manzanas
-for i in range(len(ApplesPos)):
-    Manzana = ap.Apple((ApplesPos[i]['x'],ApplesPos[i]['y']))
-    Apples.add(Manzana)
+for i in range(len(ApplesPosB)):
+    Manzana = ap.Apple((ApplesPosB[i]['x'],ApplesPosB[i]['y']))
+    ApplesList.add(Manzana)
 #Creacion de las manzanas
-for i in range(len(DiamondsPos)):
-    Diamante = d.Diamond((DiamondsPos[i]['x'],DiamondsPos[i]['y']))
-    Diamonds.add(Diamante)
+for i in range(len(DiamondsPosB)):
+    Diamante = d.Diamond((DiamondsPosB[i]['x'],DiamondsPosB[i]['y']))
+    DiamondsList.add(Diamante)

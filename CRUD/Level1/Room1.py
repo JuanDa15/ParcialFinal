@@ -8,9 +8,6 @@ from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
 from Classes import pork
-from Classes import Coin as co
-from Classes import Apple as ap
-from Classes import Diamond as d
 from CRUD.Level1 import Room2
 
 from pygame.locals import *
@@ -40,12 +37,12 @@ def StartRoom1(Player, PositionX,PositionY):
     Cerdos.add(C2)
     
     #Creacion de las paredes
-    for i in range(len(Constants.Collisions)):
-        Bloque = Block.Bloque([(Constants.Collisions[i]['x']),(Constants.Collisions[i]['y'])],Constants.Collisions[i]['width'],Constants.Collisions[i]['height'])
+    for i in range(len(Constants.CollisionsA)):
+        Bloque = Block.Bloque([(Constants.CollisionsA[i]['x']),(Constants.CollisionsA[i]['y'])],Constants.CollisionsA[i]['width'],Constants.CollisionsA[i]['height'])
         Blocks.add(Bloque)
     #Creacion de las plataformas
-    for i in range(len(Constants.Platforms)):
-        Platform = Block.Bloque([(Constants.Platforms[i]['x']),(Constants.Platforms[i]['y'])],Constants.Platforms[i]['width'],Constants.Platforms[i]['height'])
+    for i in range(len(Constants.PlatformsA)):
+        Platform = Block.Bloque([(Constants.PlatformsA[i]['x']),(Constants.PlatformsA[i]['y'])],Constants.PlatformsA[i]['width'],Constants.PlatformsA[i]['height'])
         Blocks.add(Platform)
 
     #Asignacion de lista de coliciones a las entidades
@@ -94,19 +91,17 @@ def StartRoom1(Player, PositionX,PositionY):
                     Player.vida -= 1
             #Recoger Monedas
             ListaMonedas = pygame.sprite.spritecollide(Player, Constants.CoinsList,True)
-            for Moneda in ListaMonedas:
+            if ListaMonedas:
                 Player.Coins = Player.Coins + 1
             #Recoger Manzanas
-            ListaManzanas = pygame.sprite.spritecollide(Player, Apples,True)
+            ListaManzanas = pygame.sprite.spritecollide(Player, Constants.ApplesList,True)
             if ListaManzanas:
                 Player.Apples = Player.Apples + 1
             #Recoger Manzanas
-            ListaDiamantes = pygame.sprite.spritecollide(Player, Diamonds,True)
+            ListaDiamantes = pygame.sprite.spritecollide(Player, Constants.DiamondsList,True)
             if ListaDiamantes:
                 Player.Diamonds = Player.Diamonds + 1
                 
-        print (ListaMonedas)
-        print (Player.Coins)
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
@@ -124,7 +119,7 @@ def StartRoom1(Player, PositionX,PositionY):
         Players.draw(Constants.Screen)
         Cerdos.draw(Constants.Screen)   
         Constants.CoinsList.draw(Constants.Screen)
-        Apples.draw(Constants.Screen)
-        Diamonds.draw(Constants.Screen)
+        Constants.ApplesList.draw(Constants.Screen)
+        Constants.DiamondsList.draw(Constants.Screen)
         pygame.display.flip()
         Clock.tick(30)
