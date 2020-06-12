@@ -60,11 +60,16 @@ DiamondsPosA = MapInfo['layers'][10]['objects']
 ApplesPosA = MapInfo['layers'][11]['objects']
 CoinsPosA = MapInfo['layers'][12]['objects']
 DoorA = MapInfo['layers'][15]['objects']
+CoinsA = 0
+CoinsB = 0
+CoinsC = 0
+CoinsD = 0
 
 #Se agregan las monedas cuarto a
 for i in range(len(CoinsPosA)):
     Moneda = co.Coin((CoinsPosA[i]['x'],CoinsPosA[i]['y']))
     CoinsList.add(Moneda)
+    
 #Se agregan las Manzanas cuarto a
 for i in range(len(ApplesPosA)):
     Manzana = ap.Apple((ApplesPosA[i]['x'],ApplesPosA[i]['y']))
