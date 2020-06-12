@@ -110,7 +110,6 @@ def StartRoom1(Player, PositionX,PositionY):
         if Player.rect.left > Constants.limitemovimientoX:
             Room2.StartRoom2(Player,-5,Player.rect.y - 1)
 
-
         Constants.Screen.fill([0,0,0])
         Players.update()
         Blocks.update()

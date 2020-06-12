@@ -9,11 +9,7 @@ from Classes import Player as P
 from Classes import Block
 from Classes import pork
 from Classes import Spikes
-from Classes import Coin as co
-from Classes import Apple as ap
-from Classes import Diamond as d
 from Classes import Cannon as ca
-from Classes import CannonBall as CB
 from CRUD.Level1 import Room1
 from CRUD.Level1 import Room3
 
@@ -124,7 +120,7 @@ def StartRoom2(Player,PositionX, PositionY):
             ListaManzanas = pygame.sprite.spritecollide(Player, Constants.ApplesList,True)
             if ListaManzanas:
                 Player.Apples = Player.Apples + 1
-            #Recoger Manzanas
+            #Recoger Diamantes
             ListaDiamantes = pygame.sprite.spritecollide(Player, Constants.DiamondsList,True)
             if ListaDiamantes:
                 Player.Diamonds = Player.Diamonds + 1
@@ -135,7 +131,7 @@ def StartRoom2(Player,PositionX, PositionY):
                 Room1.StartRoom1(Player,70,260)
         #Cambia de Nivel
         if Player.rect.left > Constants.limitemovimientoX:
-            Room3.StartGame(Player,-5,Player.rect.y)
+            Room3.StartRoom3(Player,-5,Player.rect.y - 1)
 
         if Player.rect.right < 5:
             Room1.StartRoom1(Player,779, Player.rect.y + 1)
@@ -153,50 +149,3 @@ def StartRoom2(Player,PositionX, PositionY):
         Cannons.draw(Constants.Screen)
         pygame.display.flip()
         Clock.tick(40)
-
-"""
-Cannon Code
-
-
-CannonBalls = pygame.sprite.Group()
-
-for Cannon in Cannons:
-    if Cannon.Disparo == 0:
-        if Cannon.Direccion == True:
-            B = CB.cannonball([Cannon.rect.x, Cannon.rect.y + 4], 5)
-            B.Bloques = Blocks
-            CannonBalls.add(B)
-            Cannon.Disparo = 80
-        else:
-            B = CB.cannonball([Cannon.rect.x, Cannon.rect.y + 4], -5)
-            B.Bloques = Blocks
-            CannonBalls.add(B)
-            Cannon.Disparo = 80
-    else:
-        Cannon.Disparo -= 1
-
-for Bola in CannonBalls:
-    listaColision=pygame.sprite.spritecollide(Bola,Blocks,False)
-    for b in listaColision:
-        if ((Bola.rect.right >= b.rect.left) and (Bola.rect.right <= b.rect.right)):
-            CannonBalls.remove(Bola)
-        elif ((Bola.rect.left <= b.rect.right) and (Bola.rect.left >= b.rect.left)):
-            CannonBalls.remove(Bola)
-
-listaColisionBolasCañon=pygame.sprite.spritecollide(Player,CannonBalls,False)
-for b in listaColisionBolasCañon:
-    if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-        print("Bolazo pai")
-    elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-        print("Bolazo pai")
-
-    if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-        print("Bolazo pai")
-    elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-        print("Bolazo pai")
-
-CannonBalls.update()
-
-
-CannonBalls.draw(Constants.Screen)
-"""

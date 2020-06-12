@@ -207,7 +207,7 @@ def StartGame(j,posx, posy):
         Cerdos.update()
         Puas.draw(Constants.Screen)
         Constants.Screen.blit(mapaa,[0,0])
-        Bloques.draw(Constants.Screen)
+        Blocks.draw(Constants.Screen)
         jugadores.draw(Constants.Screen)
         Cañones.draw(Constants.Screen)
         BolasCañon.draw(Constants.Screen)

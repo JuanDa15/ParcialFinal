@@ -41,15 +41,15 @@ mapa2J = pygame.image.load('Assets\Levels\Level2\Level2j.png')
 #Mapa Final Boss
 MapaFinalA = pygame.image.load('Assets\Levels\Final Boss\FinalBossA.png')
 MapaFinalB = pygame.image.load('Assets\Levels\Final Boss\FinalBossB.png')
-#Lista Monedas
+#Listas Colecionables Nivel 1
 CoinsList = pygame.sprite.Group()
 ApplesList = pygame.sprite.Group()
 DiamondsList = pygame.sprite.Group()
 #-----------------------------------------------------------------------------------------------
-#Map Information A
+MapInfo = None
+#Room Information A
 #Lectura de archivo json
 FileName= 'Assets\Levels\Level1\Level1a.json'
-MapInfo = None
 with open(FileName) as Information:
     MapInfo=json.load(Information)
 Information.close()
@@ -74,7 +74,7 @@ for i in range(len(DiamondsPosA)):
     Diamante = d.Diamond((DiamondsPosA[i]['x'],DiamondsPosA[i]['y']))
     DiamondsList.add(Diamante)
 
-#Map Information b
+#Room Information b
 #Map Information
 #Lectura de archivo json
 FileName= 'Assets\Levels\Level1\Level1b.json'
@@ -103,3 +103,68 @@ for i in range(len(ApplesPosB)):
 for i in range(len(DiamondsPosB)):
     Diamante = d.Diamond((DiamondsPosB[i]['x'],DiamondsPosB[i]['y']))
     DiamondsList.add(Diamante)
+    
+#Room information C
+#Lectura de archivo json
+FileName='Assets\Levels\Level1\Level1c.json'
+with open(FileName) as information:
+    MapInfo=json.load(information)
+information.close()
+
+CollisionsC = MapInfo['layers'][10]['objects']
+MovingPlatformSC = MapInfo['layers'][11]['objects']
+SpikesPosC = MapInfo['layers'][12]['objects']
+CoinsPosC = MapInfo['layers'][13]['objects']
+DiamondsPosC = MapInfo['layers'][14]['objects']
+ApplesPosC = MapInfo['layers'][15]['objects']
+PlatformsC= MapInfo['layers'][17]['objects']
+CannonsPosC = MapInfo['layers'][16]['objects']
+
+#Creacion de las monedas
+for i in range(len(CoinsPosC)):
+    Moneda = co.Coin((CoinsPosC[i]['x'],CoinsPosC[i]['y']))
+    CoinsList.add(Moneda)
+#Creacion de las manzanas
+for i in range(len(ApplesPosC)):
+    Manzana = ap.Apple((ApplesPosC[i]['x'],ApplesPosC[i]['y']))
+    ApplesList.add(Manzana)
+#Creacion de las manzanas
+for i in range(len(DiamondsPosC)):
+    Diamante = d.Diamond((DiamondsPosC[i]['x'],DiamondsPosC[i]['y']))
+    DiamondsList.add(Diamante)
+#Room information D
+#Lectura de archivo json
+FileName='Assets\Levels\Level1\Level1d.json'
+with open(FileName) as information:
+    MapInfo=json.load(information)
+information.close()
+
+CollisionsD = MapInfo['layers'][15]['objects']
+PlatformsD= MapInfo['layers'][13]['objects']
+SpikesPosD = MapInfo['layers'][4]['objects']
+LeverPosD = MapInfo['layers'][5]['objects']
+MovingPlatformSD = MapInfo['layers'][12]['objects']
+MovingPlatformED = MapInfo['layers'][14]['objects']
+CoinsPosD = MapInfo['layers'][16]['objects']
+DiamondsPosD = MapInfo['layers'][17]['objects']
+ApplesPosD = MapInfo['layers'][18]['objects']
+CannonsPosD = MapInfo['layers'][19]['objects']
+
+#Creacion de las monedas
+for i in range(len(CoinsPosD)):
+    Moneda = co.Coin((CoinsPosD[i]['x'],CoinsPosD[i]['y']))
+    CoinsList.add(Moneda)
+#Creacion de las manzanas
+for i in range(len(ApplesPosD)):
+    Manzana = ap.Apple((ApplesPosD[i]['x'],ApplesPosD[i]['y']))
+    ApplesList.add(Manzana)
+#Creacion de las manzanas
+for i in range(len(DiamondsPosD)):
+    Diamante = d.Diamond((DiamondsPosD[i]['x'],DiamondsPosD[i]['y']))
+    DiamondsList.add(Diamante)
+#Room information E
+#Room information F
+#Room information G
+#Room information H
+#Room information I
+#Room information J
