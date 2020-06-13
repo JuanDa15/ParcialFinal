@@ -116,7 +116,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
                 #Cambia de Nivel
                 if Player.rect.left > Constants.limitemovimientoX:
                     if nextRoom != None:
-                        return eval('R' + nextRoom + '.StartRoom(Player,Players,6,Player.rect.y - 1)')
+                        return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 1)')
     if level_type == 1:
         #Muerte por salir de pantalla
         for Player in Players:
@@ -124,20 +124,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
                 return R1.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,6,Player.rect.y - 1)')
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y + 1)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,794,Player.rect.y - 1)')
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 1)')
             
     if level_type == 2:
-        #Muerte por salir de pantalla
-        for Player in Players:
-            if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
-            if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,6,Player.rect.y - 1)')
+            if Player.rect.top > Constants.limitemovimientoY:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,794,Player.rect.y - 1)')
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
 
     Constants.Screen.fill([0,0,0])
     Players.update()
