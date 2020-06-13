@@ -22,7 +22,7 @@ def StartRoom(Player, Players, PositionX, PositionY):
     for Player in Players:
         Player.rect.x = PositionX
         Player.rect.y = PositionY
-    
+
     #Creacion de los spikes
     for i in range(len(Constants.SpikesPosJ)):
         Temporal = Spikes.spikes([(Constants.SpikesPosJ[i]['x']),(Constants.SpikesPosJ[i]['y'])],Constants.SpikesPosJ[i]['width'],Constants.SpikesPosJ[i]['height'])
@@ -37,4 +37,5 @@ def StartRoom(Player, Players, PositionX, PositionY):
     for Player in Players:
         Player.Bloques = Blocks
 
-    return [Players ,Blocks ,None ,Constants.Clock ,mapa ,Puas ,None ,0 ,'9','1','10']
+    #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, None, Puas, None, None, None, None, 'Una puerta', None, None, None, Constants.Clock, mapa, 8, None,'9','1','10']

@@ -9,7 +9,11 @@ from Classes import Block
 from pygame.locals import *
 
 def StartRoom(Player ,Players ,PositionsX, PositionsY):
+<<<<<<< HEAD
     mapaa = Constants.mapa1I
+=======
+    mapa = Constants.mapa1I
+>>>>>>> Potter
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
@@ -34,4 +38,8 @@ def StartRoom(Player ,Players ,PositionsX, PositionsY):
     for Player in Players:
         Player.Bloques = Blocks
     
+<<<<<<< HEAD
     return [Players, Blocks, None, Constants.Clock, None, None, 7, '8', '10','1','9']
+=======
+    return [Players, Blocks, None, None, None, None, None, None, None, None, None, None, Constants.Clock, mapa, 7, '8', '10','1','9']
+>>>>>>> Potter

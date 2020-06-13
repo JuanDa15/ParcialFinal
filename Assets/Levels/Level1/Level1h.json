@@ -4,7 +4,11 @@
      "export":
         {
          "format":"json",
+<<<<<<< HEAD
          "target":"Level1h.json"
+=======
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1h.json"
+>>>>>>> Potter
         }
     },
  "height":19,
@@ -97,7 +101,11 @@
          "name":"doors",
          "opacity":1,
          "type":"tilelayer",
+<<<<<<< HEAD
          "visible":false,
+=======
+         "visible":true,
+>>>>>>> Potter
          "width":25,
          "x":0,
          "y":0
@@ -994,12 +1002,18 @@
          "name":"Canons",
          "objects":[
                 {
+<<<<<<< HEAD
                  "height":17.9773,
                  "id":89,
+=======
+                 "height":18.6364,
+                 "id":32,
+>>>>>>> Potter
                  "name":"False",
                  "rotation":0,
                  "type":"",
                  "visible":true,
+<<<<<<< HEAD
                  "width":25.6023,
                  "x":722.199,
                  "y":333.636
@@ -1014,6 +1028,22 @@
                  "width":25.6023,
                  "x":418.324,
                  "y":461.136
+=======
+                 "width":25,
+                 "x":721,
+                 "y":330.545
+                }, 
+                {
+                 "height":17.7273,
+                 "id":33,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24.5455,
+                 "x":418.727,
+                 "y":459.455
+>>>>>>> Potter
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1108,6 +1138,7 @@
          "visible":false,
          "x":0,
          "y":0
+<<<<<<< HEAD
         }, 
         {
          "draworder":"topdown",
@@ -1144,6 +1175,11 @@
         }],
  "nextlayerid":25,
  "nextobjectid":94,
+=======
+        }],
+ "nextlayerid":23,
+ "nextobjectid":89,
+>>>>>>> Potter
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.5",

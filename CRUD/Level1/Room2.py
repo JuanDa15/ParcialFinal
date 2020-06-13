@@ -20,7 +20,7 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     Cerdos = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
-    
+
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = PositionX
@@ -29,7 +29,7 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     #Creacion Enemigo
     C1 = pork.cerdo([257,370], 130)
     Cerdos.add(C1)
-    
+
     #Creacion de las puas
     for i in range(len(Constants.SpikesPosB)):
         Temporal = Spikes.spikes([(Constants.SpikesPosB[i]['x']),(Constants.SpikesPosB[i]['y'])],Constants.SpikesPosB[i]['width'],Constants.SpikesPosB[i]['height'])
@@ -47,7 +47,7 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
         Temp = ca.cannon([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])])
         Blocks.add(Temporal)
         Cannons.add(Temp)
-    
+
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
@@ -55,4 +55,5 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     for Cerdo in Cerdos:
         Cerdo.Bloques = Blocks
 
-    return [Players ,Blocks ,Cerdos ,Constants.Clock ,mapa ,Puas ,Cannons ,1 ,'1','3','1','2']
+    #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, Cerdos, Puas, Cannons, None, None, None, None, None, None, None, Constants.Clock, mapa, 1,'1','3','1','2']

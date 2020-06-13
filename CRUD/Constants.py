@@ -11,6 +11,7 @@ Width = 800
 Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
+Space = False
 #Pygame Init
 pygame.init()
 pygame.display.set_caption('Tittle Game')
@@ -103,7 +104,7 @@ for i in range(len(CoinsPosA)):
     Temporal = co.Coin((CoinsPosA[i]['x'],CoinsPosA[i]['y']))
     CoinsList.add(Temporal)
     Coins11.add(Temporal)
-    
+
 #Se agregan las Manzanas cuarto a
 for i in range(len(ApplesPosA)):
     Temporal = ap.Apple((ApplesPosA[i]['x'],ApplesPosA[i]['y']))
@@ -151,7 +152,7 @@ for i in range(len(DiamondsPosB)):
     Temporal = d.Diamond((DiamondsPosB[i]['x'],DiamondsPosB[i]['y']))
     DiamondsList.add(Temporal)
     Diamonds12.add(Temporal)
-    
+
 #Room information C
 
 #Lectura de archivo json
@@ -827,4 +828,3 @@ for i in range(len(PotionsPos2J)):
     Temporal = p.Potion((PotionsPos2J[i]['x'],PotionsPos2J[i]['y']))
     PotionsList2.add(Temporal)
     Potions210.add(Temporal)
-

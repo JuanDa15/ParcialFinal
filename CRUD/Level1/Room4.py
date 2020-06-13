@@ -32,7 +32,7 @@ def StartRoom(Player, Players, positionX, positionY):
     for i in range(len(Constants.CollisionsD)):
         Temporal = Block.Bloque([(Constants.CollisionsD[i]['x']),(Constants.CollisionsD[i]['y'])],Constants.CollisionsD[i]['width'],Constants.CollisionsD[i]['height'])
         Blocks.add(Temporal)
-        
+
     for i in range(len(Constants.PlatformsD)):
         Temporal = Block.Bloque([(Constants.PlatformsD[i]['x']),(Constants.PlatformsD[i]['y'])],Constants.PlatformsD[i]['width'],Constants.PlatformsD[i]['height'])
         Blocks.add(Temporal)
@@ -46,5 +46,5 @@ def StartRoom(Player, Players, positionX, positionY):
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-    
-    return [Players, Blocks, None, Constants.Clock, mapa, Puas, Cannons, 3, '3', '5','1','4']
+
+    return [Players, Blocks, None, Puas, Cannons, None, None, None, None, None, None, None, Constants.Clock, mapa, 3, '3', '5','1','4']

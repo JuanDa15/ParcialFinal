@@ -22,7 +22,12 @@ from CRUD.Level1 import Room10 as R10
 
 from pygame.locals import *
 
+<<<<<<< HEAD
 def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,prevRoom,nextRoom,currentLevel,currentRoom):
+=======
+#(Jugador, Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,Moving_platforms,Levers,Instakill,Clock,mapa,level_type,prevRoom,nextRoom,currentLevel,currentRoom):
+>>>>>>> Potter
     #Movimiento Jugador
     # --type
     # 0 - StartLevel ->  [=
@@ -33,8 +38,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
     # 5 - Corridor + Climb 
     # 6 - Climb corridor
     # 7 - Climb + Corridor
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Potter
     #event managment
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -46,15 +54,33 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
             if event.key == pygame.K_LEFT:
                 Player.velx = -3
             if event.key == pygame.K_SPACE:
+<<<<<<< HEAD
                 if Player.EnAire == False:
                     Player.vely = -8
                     Player.EnAire = True
+=======
+                Constants.Space = True
+>>>>>>> Potter
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
             if event.key == pygame.K_LEFT:
                 Player.velx = 0
+<<<<<<< HEAD
 
+=======
+            if event.key == pygame.K_SPACE:
+                Constants.Space = False
+    
+    if Player.EnAire == False:
+        if Player.Charge <= 1.3 and Constants.Space:
+            Player.vely = -7 - Player.Charge
+            Player.Charge += 0.1
+        else:
+            Player.Charge = 1.0
+            Player.EnAire = True
+                    
+>>>>>>> Potter
     #Colisiones Jugador con Puas
     if Puas != None:
         for Player in Players:
@@ -109,6 +135,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
             Player.Diamonds = Player.Diamonds + 1
 
     if level_type == 0:
+<<<<<<< HEAD
             # 1 Left - 2 Right - 3 Restart     
             #Muerte por salir de pantalla
             for Player in Players:
@@ -118,6 +145,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
                 if Player.rect.left > Constants.limitemovimientoX:
                     if nextRoom != None:
                         return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 1)')
+=======
+        #Muerte por salir de pantalla
+        for Player in Players:
+            if Player.rect.y >= Constants.Height + 10:
+                return R1.StartRoom(Player,Players,100, 280)
+            #Cambia de Nivel
+            if Player.rect.left > Constants.limitemovimientoX:
+                if nextRoom != None:
+                    return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+>>>>>>> Potter
     if level_type == 1:
         #Muerte por salir de pantalla
         for Player in Players:
@@ -135,7 +172,60 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
                 return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
                 return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+<<<<<<< HEAD
 
+=======
+    
+    if level_type == 3:
+        #Cambia de Nivel
+            if Player.rect.top > Constants.limitemovimientoY:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+            if Player.rect.bottom < 5:
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+
+    if level_type == 4:
+        #Muerte por salir de pantalla
+        for Player in Players:
+            if Player.rect.y >= Constants.Height + 10:
+                return R1.StartRoom(Player,Players,100, 280)
+        #Cambia de Nivel
+            if Player.rect.left > Constants.limitemovimientoX:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+            if Player.rect.bottom < 5:
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+    
+    if level_type == 5:
+        #Muerte por salir de pantalla
+        for Player in Players:
+            if Player.rect.y >= Constants.Height + 10:
+                return R1.StartRoom(Player,Players,100, 280)
+        #Cambia de Nivel
+            if Player.rect.bottom < 5:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+            if Player.rect.right < 5:
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+    
+    if level_type == 6:
+        #Cambia de Nivel
+            if Player.rect.bottom < 5:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+            if Player.rect.top > Constants.limitemovimientoY:
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+    
+    if level_type == 7:
+        #Cambia de Nivel
+            if Player.rect.left > Constants.limitemovimientoX:
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+            if Player.rect.top > Constants.limitemovimientoY:
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+
+    if level_type == 8:
+        #Muerte por salir de pantalla
+        for Player in Players:
+            if Player.rect.y >= Constants.Height + 10:
+                return R1.StartRoom(Player,Players,100, 280)
+    
+>>>>>>> Potter
     Constants.Screen.fill([0,0,0])
     Players.update()
     Blocks.update()
@@ -146,7 +236,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
     Constants.Screen.blit(mapa,[0,0])
     Players.draw(Constants.Screen)
     if Cerdos != None:
+<<<<<<< HEAD
         Cerdos.draw(Constants.Screen)   
+=======
+        Cerdos.draw(Constants.Screen)
+>>>>>>> Potter
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')

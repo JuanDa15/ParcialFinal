@@ -18,7 +18,7 @@ def StartRoom(Player ,Players, positionX, positionY):
     Blocks = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
-    
+
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = positionX
@@ -43,9 +43,9 @@ def StartRoom(Player ,Players, positionX, positionY):
         Temp = ca.cannon([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])])
         Blocks.add(Temporal)
         Cannons.add(Temp)
-    
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
 
-    return [Players ,Blocks ,None ,Constants.Clock ,mapa ,Puas ,Cannons ,4 ,'4' ,'6' ,'1','5']
+    return [Players ,Blocks ,None , Puas, Cannons, None, None, None, None, None, None, None, Constants.Clock, mapa ,4 ,'4' ,'6' ,'1','5']

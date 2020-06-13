@@ -36,4 +36,8 @@ def StartRoom(Player, Players ,PositionX, PositionY):
     for Player in Players:
         Player.Bloques = Blocks
 
+<<<<<<< HEAD
     return [Players, Blocks, None, Constants.Clock, mapa, None, None,5,'6','8','1','7']
+=======
+    return [Players, Blocks, None, None, None, None, None, None, None, None, None, None, Constants.Clock, mapa, 5,'6','8','1','7']
+>>>>>>> Potter
