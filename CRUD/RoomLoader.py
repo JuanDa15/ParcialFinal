@@ -22,7 +22,7 @@ from CRUD.Level1 import Room10 as R10
 
 from pygame.locals import *
 
-def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,prevRoom,nextRoom,currentLevel,currentRoom):
+def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,prevRoom,nextRoom,currentoLevel,currentRom):
     #Movimiento Jugador
     # --type
     # 0 - StartLevel ->  [=
@@ -33,6 +33,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
     # 5 - Corridor + Climb 
     # 6 - Climb corridor
     # 7 - Climb + Corridor
+
 
     #event managment
     for event in pygame.event.get():

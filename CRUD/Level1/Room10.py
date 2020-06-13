@@ -37,4 +37,4 @@ def StartRoom(Player, Players, PositionX, PositionY):
     for Player in Players:
         Player.Bloques = Blocks
 
-    return [Players ,Blocks ,None ,Constants.Clock ,mapa ,Puas ,None ,1 ,'9','1','10']
+    return [Players ,Blocks ,None ,Constants.Clock ,mapa ,Puas ,None ,0 ,'9','1','10']
