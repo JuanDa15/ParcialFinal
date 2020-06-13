@@ -124,9 +124,9 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Clock,mapa,Puas,Cannons,level_type,pre
                 return R1.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y + 1)')
+                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 1)')
+                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
             
     if level_type == 2:
         #Cambia de Nivel
