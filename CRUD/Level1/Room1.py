@@ -5,15 +5,12 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
-from Classes import Player as P
 from Classes import Block
 from Classes import pork
-from CRUD.Level1 import Room2
 
 from pygame.locals import *
 
-def StartRoom(Player, Players, PositionX, PositionY):
-    Clock = pygame.time.Clock()
+def StartRoom(Player, Players ,PositionX ,PositionY):
     mapa = Constants.mapa1A
 
     #Definicion de Grupos
@@ -22,7 +19,7 @@ def StartRoom(Player, Players, PositionX, PositionY):
 
     #Definicion Posicion Inicial
     for Player in Players:
-        Player.rect.right = PositionX
+        Player.rect.x = PositionX
         Player.rect.y = PositionY
 
     #Creacion Enemigos
@@ -33,15 +30,15 @@ def StartRoom(Player, Players, PositionX, PositionY):
     #Pixeles antes de devolverse
     C2.Movidos = 0
     Cerdos.add(C2)
-    
+
     #Creacion de las paredes
     for i in range(len(Constants.CollisionsA)):
-        Bloque = Block.Bloque([(Constants.CollisionsA[i]['x']),(Constants.CollisionsA[i]['y'])],Constants.CollisionsA[i]['width'],Constants.CollisionsA[i]['height'])
-        Blocks.add(Bloque)
+        Temporal = Block.Bloque([(Constants.CollisionsA[i]['x']),(Constants.CollisionsA[i]['y'])],Constants.CollisionsA[i]['width'],Constants.CollisionsA[i]['height'])
+        Blocks.add(Temporal)
     #Creacion de las plataformas
     for i in range(len(Constants.PlatformsA)):
-        Platform = Block.Bloque([(Constants.PlatformsA[i]['x']),(Constants.PlatformsA[i]['y'])],Constants.PlatformsA[i]['width'],Constants.PlatformsA[i]['height'])
-        Blocks.add(Platform)
+        Temporal = Block.Bloque([(Constants.PlatformsA[i]['x']),(Constants.PlatformsA[i]['y'])],Constants.PlatformsA[i]['width'],Constants.PlatformsA[i]['height'])
+        Blocks.add(Temporal)
 
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
@@ -49,5 +46,6 @@ def StartRoom(Player, Players, PositionX, PositionY):
 
     for Cerdo in Cerdos:
         Cerdo.Bloques = Blocks
-
-    return [Players,Blocks,Cerdos,Clock,mapa,None,None,0,None,'2','1']
+    
+        #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, Cerdos, None, None, None, None, None, 'Una puerta', None, None, None, Constants.Clock, mapa, 0, None,'2','1','1']
