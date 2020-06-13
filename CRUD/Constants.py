@@ -419,7 +419,7 @@ for i in range(len(ApplesPosJ)):
     Temporal = ap.Apple((ApplesPosJ[i]['x'],ApplesPosJ[i]['y']))
     ApplesList.add(Temporal)
     Apples110.add(Temporal)
-
+    
 #------------------------------------------------------Informacion de los json segundo nivel--------------------------------------------------
 #Listas Colecionables Globales Nivel 2
 CoinsList2 = pygame.sprite.Group()
