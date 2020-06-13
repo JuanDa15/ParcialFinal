@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1g.json"
+         "target":"Level1g.json"
         }
     },
  "height":19,
@@ -144,15 +144,15 @@
                  "y":511.994
                 }, 
                 {
-                 "height":48.1042,
+                 "height":47.7405636363636,
                  "id":4,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":107.042,
-                 "x":414.958,
-                 "y":512
+                 "width":106.405636363636,
+                 "x":416.048909090909,
+                 "y":511.909090909091
                 }, 
                 {
                  "height":32,
@@ -194,8 +194,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32.7604,
-                 "x":639.24,
+                 "width":32.0331272727272,
+                 "x":639.967272727273,
                  "y":448
                 }, 
                 {
@@ -205,8 +205,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":9.71875,
-                 "x":672.031,
+                 "width":9.44602272727275,
+                 "x":672.303727272727,
                  "y":415.969
                 }, 
                 {

@@ -48,3 +48,4 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Cerdo.Bloques = Blocks
         
     return [Players, Blocks ,Cerdos ,Constants.Clock ,mapa ,None,None,0,None,'2','1','1']
+    
