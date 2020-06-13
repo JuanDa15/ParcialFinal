@@ -7,9 +7,6 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
-from Classes import HorizontalMovingPlatform as HMP
-from Classes import VerticalMovingPlatform as VMP
-from Classes import StaticBox as SB
 from Classes import pork
 from CRUD.Level2 import Room3
 

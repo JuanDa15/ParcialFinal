@@ -1,9 +1,16 @@
+  
 from CRUD.Level1 import Room1 as R1
-from CRUD import Constants
+from CRUD import RoomLoader as RL
 
+import pygame
 from Classes import Player as P
 #Creacion Jugador
-print (len(Constants.CoinsList))
-
 j = P.Jugador([0,0])
-R1.StartRoom1(j,100, 280)
+Players = pygame.sprite.Group()
+Players.add(j)
+currentLevel = R1.StartRoom(j,Players,100, 280)
+while(True):
+    nextLevel = RL.LoadRoom(j,currentLevel[0],currentLevel[1],currentLevel[2],currentLevel[3],currentLevel[4],currentLevel[5],currentLevel[6],currentLevel[7],currentLevel[8],currentLevel[9],currentLevel[10],currentLevel[11])
+    if nextLevel != None:
+        currentLevel = nextLevel.copy()
+        nextLevel = None
