@@ -42,11 +42,18 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     for i in range(len(Constants.PlatformsB)):
         Temporal = Block.Bloque([(Constants.PlatformsB[i]['x']),(Constants.PlatformsB[i]['y'])],Constants.PlatformsB[i]['width'],Constants.PlatformsB[i]['height'])
         Blocks.add(Temporal)
+        
     for i in range(len(Constants.CannonsPosB)):
-        Temporal = Block.Bloque([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])],Constants.CannonsPosB[i]['width'],Constants.CannonsPosB[i]['height'])
-        Temp = ca.cannon([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])])
-        Blocks.add(Temporal)
-        Cannons.add(Temp)
+        if Constants.CannonsPosB[i]['name'] == 'False':
+            Temporal = Block.Bloque([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])],Constants.CannonsPosB[i]['width'],Constants.CannonsPosB[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])],Constants.CannonIDLEL,1)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
+        else:
+            Temporal = Block.Bloque([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])],Constants.CannonsPosB[i]['width'],Constants.CannonsPosB[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosB[i]['x']),(Constants.CannonsPosB[i]['y'])],Constants.CannonIDLER,0)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
     
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:

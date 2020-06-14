@@ -127,6 +127,14 @@ Diamonds17 = pygame.sprite.Group()
 Diamonds18 = pygame.sprite.Group()
 Diamonds19 = pygame.sprite.Group()
 Diamonds110 = pygame.sprite.Group()
+#Cañones
+CannonBalls01 = pygame.sprite.Group()
+CannonBalls12 = pygame.sprite.Group()
+CannonBalls13 = pygame.sprite.Group()
+CannonBalls14 = pygame.sprite.Group()
+CannonBalls15 = pygame.sprite.Group()
+CannonBalls18 = pygame.sprite.Group()
+CannonBalls32 = pygame.sprite.Group()
 
 #Room Information A
 
@@ -919,3 +927,5 @@ for i in range(len(PotionsPosFB)):
 #-------------------------------------------------------Sprites-----------------------------#
 SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
 LongPlatform = pygame.image.load('Assets\Sprites\Platforms\LongPlatform.png')
+CannonIDLEL = pygame.image.load('Assets\Sprites\Cannon\Idle.png')
+CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),True,False)

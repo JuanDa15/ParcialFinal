@@ -17,7 +17,7 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
-    cannons = pygame.sprite.Group()
+    Cannons = pygame.sprite.Group()
     Platforms = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
 
@@ -38,10 +38,16 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
 
     #Creacion de cañones
     for i in range(len(Constants.CannonsPosTuto)):
-        Temporal = Block.Bloque([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])],Constants.CannonsPosTuto[i]['width'],Constants.CannonsPosTuto[i]['height'])
-        Temp = ca.cannon([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])])
-        Blocks.add(Temporal)
-        cannons.add(Temp)
+        if Constants.CannonsPosTuto[i]['name'] == 'False':
+            Temporal = Block.Bloque([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])],Constants.CannonsPosTuto[i]['width'],Constants.CannonsPosTuto[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])],Constants.CannonIDLEL,1)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
+        else:
+            Temporal = Block.Bloque([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])],Constants.CannonsPosTuto[i]['width'],Constants.CannonsPosTuto[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])],Constants.CannonIDLER,0)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
     
     Distance = (Constants.VMovingPlatformET[0]['y'])-(Constants.VMovingPlatformST[0]['y'])
     for i in range(len(Constants.VMovingPlatformST)):
@@ -57,4 +63,4 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Player.PlataformasY = Platforms
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, cannons, None, None, None, 'Una puerta', Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']
+    return [Players, Blocks, None, Puas, Cannons, None, None, None, 'Una puerta', Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

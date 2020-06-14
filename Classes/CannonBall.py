@@ -2,21 +2,22 @@ import pygame
 from CRUD import Functions
 
 class cannonball(pygame.sprite.Sprite):
-    def __init__(self,position,direccion):
+    def __init__(self,position,direction):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('Assets\Sprites\Cannon\Cannon Ball.png')
         #self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
-        self.velx = direccion
-        self.vely = 0
+        self.distance = 0
+        self.velx = direction
+        self.bloques = None
     
     def update(self):
         #Posicion y velocidad en x
-        self.rect.x+=self.velx      
-        
-        #Posicion y velocidad en y
-        self.rect.y+=self.vely
+        self.rect.x+=self.velx 
+        self.distance += 1
 
+    def getDistance(self):
+        return self.distance
         

@@ -9,6 +9,8 @@ from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
 from Classes import pork
+from Classes import Cannon as ca
+from Classes import CannonBall as cb
 from CRUD.Tutorial import TutorialRoom as R01
 from CRUD.Level1 import Room1 as R11
 from CRUD.Level1 import Room2 as R12
@@ -89,6 +91,35 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
 
+    if Cannons != None:
+        for Cannon in Cannons:
+            if Cannon.direccion == 1:
+                if Cannon.timer < 0:
+                    position = Cannon.returnPos()
+                    CannonBall = cb.cannonball([(Cannon.rect.x - 12),Cannon.rect.y],-5)
+                    CannonBall.bloques = Blocks
+                    eval('Constants.CannonBalls'+currentLevel+currentRoom+'.add(CannonBall)')
+                    Cannon.timer = 60
+            elif Cannon.direccion == 0:
+                if Cannon.timer < 0:
+                    position = Cannon.returnPos()
+                    CannonBall = cb.cannonball([(Cannon.rect.x + 25),Cannon.rect.y],5)
+                    CannonBall.bloques = Blocks
+                    eval('Constants.CannonBalls'+currentLevel+currentRoom+'.add(CannonBall)')
+                    Cannon.timer = 60
+
+        for ball in eval('Constants.CannonBalls'+currentLevel+currentRoom+''):
+            ListaColision = pygame.sprite.spritecollide(ball, Blocks, False)
+            for b in ListaColision:
+                if ((ball.rect.right >= b.rect.left) and (ball.rect.right <= b.rect.right)):
+                    eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
+                elif ((ball.rect.left <= b.rect.right) and (ball.rect.left >= b.rect.left)):
+                    eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
+            
+            if ball.getDistance() == 50:
+                eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
+
+
     if Cerdos != None:
         for Player in Players:
             listaColisionCerdos=pygame.sprite.spritecollide(Player,Cerdos,False)
@@ -107,6 +138,21 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     Player.vida -= 1
 
     for Player in Players:
+        if Cannons != None:
+            ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),False)
+            for b in ListaBolasCañon:
+                if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
+                    print("balazo pai")
+                    Player.vida -= 1
+                elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
+                    print("balazo pai")
+                    Player.vida -= 1
+                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    print("balazo pai")
+                    Player.vida -= 1
+                elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
+                    print("balazo pai")
+                    Player.vida -= 1
         #Recoger Monedas
         ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
         for i in ListaMonedas:
@@ -210,6 +256,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Cerdos.update()
     if Cannons != None:
         Cannons.update()
+        eval('Constants.CannonBalls'+currentLevel+currentRoom+'.update()')
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
@@ -221,6 +268,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Cannons != None:
         Cannons.draw(Constants.Screen)
+        eval('Constants.CannonBalls'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Moving_platforms != None:
         Moving_platforms.draw(Constants.Screen)
     pygame.display.flip()
