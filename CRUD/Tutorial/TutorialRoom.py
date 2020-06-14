@@ -18,6 +18,7 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     cannons = pygame.sprite.Group()
+    Platforms = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
@@ -41,9 +42,13 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Temp = ca.cannon([(Constants.CannonsPosTuto[i]['x']),(Constants.CannonsPosTuto[i]['y'])])
         Blocks.add(Temporal)
         cannons.add(Temp)
+    
+    for i in range(len(Constants.VMovingPlatformST)):
+        Temporal = Block.Bloque([(Constants.VMovingPlatformST[i]['x']),(Constants.VMovingPlatformST[i]['y'])],Constants.VMovingPlatformST[i]['width'],Constants.VMovingPlatformST[i]['height'])
+        Platforms.add(Temporal)
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, cannons, None, None, None, 'Una puerta', None, None, None, Constants.Clock, mapa, 0, None,None,'0','1']
+    return [Players, Blocks, None, Puas, cannons, None, None, None, 'Una puerta', Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

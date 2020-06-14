@@ -219,5 +219,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Cannons != None:
         Cannons.draw(Constants.Screen)
+    if Moving_platforms != None:
+        Moving_platforms.draw(Constants.Screen)
     pygame.display.flip()
     Clock.tick(30)

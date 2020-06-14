@@ -3,7 +3,7 @@ import pygame
 from CRUD import Functions
 
 class PlataformaMovil(pygame.sprite.Sprite):
-    def __init__(self,position, Pixeles):
+    def __init__(self,position,Width,Height, Pixeles):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface([100,10])
         self.image.fill(Functions.SelectColor('Yellow'))
