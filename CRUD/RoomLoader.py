@@ -73,7 +73,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         else:
             Player.Charge = 1.0
             Player.EnAire = True
-                    
+               
     #Colisiones Jugador con Puas
     if Puas != None:
         for Player in Players:
