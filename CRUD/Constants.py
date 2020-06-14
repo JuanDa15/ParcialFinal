@@ -12,6 +12,7 @@ Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
 Space = False
+PlataformaMovil = False
 MapInfo = None
 #Pygame Init
 pygame.init()

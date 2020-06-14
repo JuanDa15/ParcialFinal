@@ -1,4 +1,5 @@
 import pygame
+from CRUD import Constants
 from CRUD import Functions
 
 class Jugador(pygame.sprite.Sprite):
@@ -20,7 +21,7 @@ class Jugador(pygame.sprite.Sprite):
         self.Apples = 0
         self.Diamonds = 0
         self.Charge = 1.0
-        
+
     def update(self):
         #Posicion y velocidad en x
         self.rect.x += self.velx
@@ -40,7 +41,8 @@ class Jugador(pygame.sprite.Sprite):
             if ((self.rect.bottom >= b.rect.top) and (self.rect.bottom <= b.rect.bottom)):
                 self.vely = 0
                 self.EnAire = False
-                self.rect.bottom = b.rect.top       
+                self.rect.bottom = b.rect.top
+                Constants.PlataformaMovil = False
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
@@ -65,7 +67,7 @@ class Jugador(pygame.sprite.Sprite):
                     self.rect.right = b.rect.left
                 elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
                     self.rect.left = b.rect.right
-        
+
         #PLATAFORMAS MOVIMIENTO HORIZONTAL
         #PLATAFORMAS X - Y
         if self.PlataformasX != None:
