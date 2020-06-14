@@ -157,7 +157,7 @@
          "name":"Canon",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":25,
          "x":0,
          "y":0
@@ -1029,7 +1029,7 @@
                 {
                  "height":17.9773,
                  "id":90,
-                 "name":"False",
+                 "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1039,7 +1039,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

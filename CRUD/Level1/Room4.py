@@ -39,11 +39,17 @@ def StartRoom(Player, Players, positionX, positionY):
         Temporal = Block.Bloque([(Constants.PlatformsD[i]['x']),(Constants.PlatformsD[i]['y'])],Constants.PlatformsD[i]['width'],Constants.PlatformsD[i]['height'])
         Blocks.add(Temporal)
 
-    for i in range (len(Constants.CannonsPosD)):
-        Temporal = Block.Bloque([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])],Constants.CannonsPosD[i]['width'],Constants.CannonsPosD[i]['height'])
-        Temp = ca.cannon([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])])
-        Blocks.add(Temporal)
-        Cannons.add(Temp)
+    for i in range(len(Constants.CannonsPosD)):
+        if Constants.CannonsPosD[i]['name'] == 'False':
+            Temporal = Block.Bloque([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])],Constants.CannonsPosD[i]['width'],Constants.CannonsPosD[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])],Constants.CannonIDLEL,1)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
+        else:
+            Temporal = Block.Bloque([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])],Constants.CannonsPosD[i]['width'],Constants.CannonsPosD[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosD[i]['x']),(Constants.CannonsPosD[i]['y'])],Constants.CannonIDLER,0)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
     
     #Creacion de Plataformas movibles
     Temporal = VMP.PlataformaMovil([(Constants.MovingPlatformED[0]['x']),(Constants.MovingPlatformED[0]['y'])],160,Constants.SmallPlatform,-1)
