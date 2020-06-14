@@ -1,5 +1,5 @@
 
-from CRUD.Level1 import Room1 as R1
+from CRUD.Level1 import Room10 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level2 import Room2 as R2
 from CRUD import RoomLoader as RL
@@ -12,7 +12,7 @@ j = P.Jugador([0,0])
 Players = pygame.sprite.Group()
 Players.add(j)
 #currentLevel = R3.StartRoom(j,Players,150,200)
-currentLevel = R2.StartRoom(j,Players,100, 0)
+#currentLevel = R2.StartRoom(j,Players,100, 0)
 #currentLevel = R1.StartRoom(j,Players,300, 280)
 #currentLevel = TR.StartRoom(j,Players,100,80)
 while(True):
