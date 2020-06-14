@@ -30,5 +30,5 @@ def StartRoom(Player, Players, PositionX, PositionY):
     #Asignacion de bloques a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-    
+    #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
     return [Players, Blocks, None, None, None, None, None, None, None, None, None, None,Constants.Clock, mapa, 3, None, '2', '2', '1']
