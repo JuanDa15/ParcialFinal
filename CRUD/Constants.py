@@ -425,8 +425,7 @@ CoinsPosI = MapInfo['layers'][8]['objects']
 ApplesPosI = MapInfo['layers'][9]['objects']
 DiamondsPosI = MapInfo['layers'][10]['objects']
 PlatformsI= MapInfo['layers'][11]['objects']
-VMovingPlatformEI = MapInfo['layers'][12]['objects']
-LeverPosI = MapInfo['layers'][13]['objects']
+LeverPosI = MapInfo['layers'][12]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosI)):
@@ -919,3 +918,4 @@ for i in range(len(PotionsPosFB)):
 
 #-------------------------------------------------------Sprites-----------------------------#
 SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
+LongPlatform = pygame.image.load('Assets\Sprites\Platforms\LongPlatform.png')
