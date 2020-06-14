@@ -11,7 +11,7 @@ from Classes import Player as P
 j = P.Jugador([0,0])
 Players = pygame.sprite.Group()
 Players.add(j)
-currentLevel = R3.StartRoom(j,Players,150,200)
+#currentLevel = R3.StartRoom(j,Players,150,200)
 #currentLevel = R2.StartRoom(j,Players,100, 0)
 #currentLevel = R1.StartRoom(j,Players,100, 280)
 #currentLevel = TR.StartRoom(j,Players,100,80)
