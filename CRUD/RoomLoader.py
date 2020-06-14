@@ -9,17 +9,29 @@ from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
 from Classes import pork
-from CRUD.Level1 import Room1 as R1
-from CRUD.Level1 import Room2 as R2
-from CRUD.Level1 import Room3 as R3
-from CRUD.Level1 import Room4 as R4
-from CRUD.Level1 import Room5 as R5
-from CRUD.Level1 import Room6 as R6
-from CRUD.Level1 import Room7 as R7
-from CRUD.Level1 import Room8 as R8
-from CRUD.Level1 import Room9 as R9
-from CRUD.Level1 import Room10 as R10
-
+from CRUD.Tutorial import TutorialRoom as R01
+from CRUD.Level1 import Room1 as R11
+from CRUD.Level1 import Room2 as R12
+from CRUD.Level1 import Room3 as R13
+from CRUD.Level1 import Room4 as R14
+from CRUD.Level1 import Room5 as R15
+from CRUD.Level1 import Room6 as R16
+from CRUD.Level1 import Room7 as R17
+from CRUD.Level1 import Room8 as R18
+from CRUD.Level1 import Room9 as R19
+from CRUD.Level1 import Room10 as R110
+from CRUD.Level2 import Room1 as R21
+from CRUD.Level2 import Room2 as R22
+from CRUD.Level2 import Room3 as R23
+from CRUD.Level2 import Room4 as R24
+from CRUD.Level2 import Room5 as R25
+from CRUD.Level2 import Room6 as R26
+from CRUD.Level2 import Room7 as R27
+from CRUD.Level2 import Room8 as R28
+from CRUD.Level2 import Room9 as R29
+from CRUD.Level2 import Room10 as R210
+from CRUD.FinalBoss import Room1 as R31
+from CRUD.FinalBoss import Room2 as R32
 from pygame.locals import *
 
 #(Jugador, Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
@@ -61,7 +73,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         else:
             Player.Charge = 1.0
             Player.EnAire = True
-                    
+               
     #Colisiones Jugador con Puas
     if Puas != None:
         for Player in Players:
@@ -80,20 +92,20 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Cerdos != None:
         for Player in Players:
             listaColisionCerdos=pygame.sprite.spritecollide(Player,Cerdos,False)
-        for b in listaColisionCerdos:
-            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                print("Encerdado pai")
-                Player.vida -= 1
-    
+            for b in listaColisionCerdos:
+                if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+
     for Player in Players:
         #Recoger Monedas
         ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
@@ -119,77 +131,77 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
+                return R11.StartRoom(Player,Players,100, 280)
             #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if nextRoom != None:
-                    return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
     if level_type == 1:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
+                return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
             
     if level_type == 2:
         #Cambia de Nivel
             if Player.rect.top > Constants.limitemovimientoY:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
     
     if level_type == 3:
         #Cambia de Nivel
             if Player.rect.top > Constants.limitemovimientoY:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.bottom < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
 
     if level_type == 4:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
+                return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.bottom < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
     
     if level_type == 5:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
+                return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.bottom < 5:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.right < 5:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
     
     if level_type == 6:
         #Cambia de Nivel
             if Player.rect.bottom < 5:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.top > Constants.limitemovimientoY:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
     
     if level_type == 7:
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.top > Constants.limitemovimientoY:
-                return eval('R' + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
 
     if level_type == 8:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R1.StartRoom(Player,Players,100, 280)
+                return R32.StartRoom(Player,Players,100, 280)
     
     Constants.Screen.fill([0,0,0])
     Players.update()
@@ -198,6 +210,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Cerdos.update()
     if Cannons != None:
         Cannons.update()
+    if Moving_platforms != None:
+        Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Players.draw(Constants.Screen)
     if Cerdos != None:
@@ -207,5 +221,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Cannons != None:
         Cannons.draw(Constants.Screen)
+    if Moving_platforms != None:
+        Moving_platforms.draw(Constants.Screen)
     pygame.display.flip()
     Clock.tick(30)
