@@ -44,7 +44,7 @@ class Jugador(pygame.sprite.Sprite):
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
- 
+        #PLATAFORMAS MOVIMIENTO VERTICAL
         # PLATAFORMAS Y - Y
         if self.PlataformasY != None:
             listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasY, False)
@@ -66,6 +66,7 @@ class Jugador(pygame.sprite.Sprite):
                 elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
                     self.rect.left = b.rect.right
         
+        #PLATAFORMAS MOVIMIENTO HORIZONTAL
         #PLATAFORMAS X - Y
         if self.PlataformasX != None:
             listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasX, False)
@@ -75,7 +76,6 @@ class Jugador(pygame.sprite.Sprite):
                     self.EnAire = False
                     self.vely = b.vely
                     self.velx = b.velx
-                    self.EnPlataforma = True
                 elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                     self.vely = 0
                     self.rect.top = b.rect.bottom

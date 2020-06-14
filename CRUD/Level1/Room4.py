@@ -45,14 +45,11 @@ def StartRoom(Player, Players, positionX, positionY):
         Blocks.add(Temporal)
         Cannons.add(Temp)
     
-    print(Constants.MovingPlatformED[0]['y'])  
-    print(Constants.MovingPlatformSD[0]['y'])
-    for i in range(len(Constants.MovingPlatformSD)):
-        if Constants.MovingPlatformSD[i]['width'] > 33:
-            pass
-    else:
-        Temporal = VMP.PlataformaMovil([(Constants.MovingPlatformSD[i]['x']),(Constants.MovingPlatformSD[i]['y'])],538.52,Constants.SmallPlatform,1)
-        Platforms.add(Temporal)
+    #Creacion de Plataformas movibles
+    Temporal = VMP.PlataformaMovil([(Constants.MovingPlatformED[0]['x']),(Constants.MovingPlatformED[0]['y'])],160,Constants.SmallPlatform,-1)
+    Platforms.add(Temporal)
+    Temporal = VMP.PlataformaMovil([(Constants.MovingPlatformSD[0]['x']),(Constants.MovingPlatformSD[0]['y'])],185,Constants.SmallPlatform,2)
+    Platforms.add(Temporal)
 
     #Asignacion de coliciones a las entidades
     for Player in Players:

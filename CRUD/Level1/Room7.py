@@ -34,10 +34,8 @@ def StartRoom(Player, Players ,PositionX, PositionY):
         Temporal = Block.Bloque([(Constants.PlatformsG[i]['x']),(Constants.PlatformsG[i]['y'])],Constants.PlatformsG[i]['width'],Constants.PlatformsG[i]['height'])
         Blocks.add(Temporal)
 
-    print(Constants.VMovingPlatformSG[0]['y'])  
-    print(Constants.VMovingPlatformEH[0]['y'])
-
-    Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformSG[0]['x']),(Constants.VMovingPlatformSG[0]['y'])],503,Constants.SmallPlatform, -1)
+    #Creacion de Plataformas movibles
+    Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformSG[0]['x']),(Constants.VMovingPlatformSG[0]['y'])],160,Constants.SmallPlatform, -2)
     PlatformsY.add(Temporal)
 
     #Asignacion de coliciones a las entidades

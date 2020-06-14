@@ -390,11 +390,9 @@ DiamondsPosH = MapInfo['layers'][14]['objects']
 ApplesPosH = MapInfo['layers'][15]['objects']
 LeverPosH = MapInfo['layers'][16]['objects']
 CannonsPosH = MapInfo['layers'][17]['objects']
-VMovingPlatformEH = MapInfo['layers'][18]['objects']
-VMovingPlatformSSR = MapInfo['layers'][19]['objects']
-VMovingPlatformESR = MapInfo['layers'][20]['objects']
-VMovingPlatformE2H = MapInfo['layers'][21]['objects']
-DoorPosH = MapInfo['layers'][22]['objects']
+VMovingPlatformSSR = MapInfo['layers'][18]['objects']
+VMovingPlatformESR = MapInfo['layers'][19]['objects']
+DoorPosH = MapInfo['layers'][20]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosH)):

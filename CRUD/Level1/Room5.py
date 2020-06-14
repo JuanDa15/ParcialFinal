@@ -47,13 +47,10 @@ def StartRoom(Player ,Players, positionX, positionY):
         Blocks.add(Temporal)
         Cannons.add(Temp)
 
+    #Creacion de Plataformas movibles
     Distance = Constants.HMovingPlatformEE[0]['x'] - Constants.HMovingPlatformSE[0]['x']
-    for i in range(len(Constants.HMovingPlatformSE)):
-        if Constants.HMovingPlatformSE[i]['width'] > 33:
-            pass
-    else:
-        Temporal = HMP.PlataformaMovil([(Constants.HMovingPlatformSE[i]['x']),(Constants.HMovingPlatformSE[i]['y'])],Distance,Constants.SmallPlatform)
-        PlatformsX.add(Temporal)
+    Temporal = HMP.PlataformaMovil([(Constants.HMovingPlatformSE[0]['x']),(Constants.HMovingPlatformSE[0]['y'])],Distance,Constants.SmallPlatform)
+    PlatformsX.add(Temporal)
 
     #Asignacion de coliciones a las entidades
     for Player in Players:
