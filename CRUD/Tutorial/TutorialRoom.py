@@ -9,7 +9,7 @@ from Classes import Block
 from Classes import pork
 from Classes import Cannon as ca
 from Classes import Spikes
-
+from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
 
 def StartRoom(Player, Players ,PositionX ,PositionY):
@@ -43,12 +43,18 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Blocks.add(Temporal)
         cannons.add(Temp)
     
+    Distance = (Constants.VMovingPlatformET[0]['y'])-(Constants.VMovingPlatformST[0]['y'])
     for i in range(len(Constants.VMovingPlatformST)):
-        Temporal = Block.Bloque([(Constants.VMovingPlatformST[i]['x']),(Constants.VMovingPlatformST[i]['y'])],Constants.VMovingPlatformST[i]['width'],Constants.VMovingPlatformST[i]['height'])
-        Platforms.add(Temporal)
+        if Constants.VMovingPlatformST[i]['width'] > 33:
+            pass
+        else:
+            Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformST[i]['x']),(Constants.VMovingPlatformST[i]['y'])],Distance,Constants.SmallPlatform,1)
+            Platforms.add(Temporal)
+
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
+        Player.PlataformasY = Platforms
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
     return [Players, Blocks, None, Puas, cannons, None, None, None, 'Una puerta', Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

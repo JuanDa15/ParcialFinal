@@ -13,6 +13,8 @@ class Jugador(pygame.sprite.Sprite):
         self.vely = 0
         self.vida = 100
         self.EnAire = False
+        self.PlataformasY = None
+        self.PlataformasX = None
         self.Bloques = None
         self.Coins = 0
         self.Apples = 0
@@ -30,7 +32,6 @@ class Jugador(pygame.sprite.Sprite):
             elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
                 self.rect.left = b.rect.right
 
-        
         #Posicion y velocidad en x
         self.rect.y+=self.vely
         #colision y--------------------------------------------------------------------------------------
@@ -43,5 +44,50 @@ class Jugador(pygame.sprite.Sprite):
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
+ 
+        # PLATAFORMAS Y - Y
+        if self.PlataformasY != None:
+            listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasY, False)
+            for b in listaColisionPla:
+                if ((self.rect.bottom >= b.rect.top) and (self.rect.bottom <= b.rect.bottom)):
+                    self.rect.bottom = b.rect.top
+                    self.EnAire = False
+                    self.vely = b.vely
+                elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
+                    self.vely = 0
+                    self.rect.top = b.rect.bottom
+
+        #PLATAFORMAS Y - X
+        if self.PlataformasY != None:
+            listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasY, False)
+            for b in listaColisionPla:
+                if ((self.rect.right >= b.rect.left) and (self.rect.right <= b.rect.right)):
+                    self.rect.right = b.rect.left
+                elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
+                    self.rect.left = b.rect.right
         
+        #PLATAFORMAS X - Y
+        if self.PlataformasX != None:
+            listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasX, False)
+            for b in listaColisionPla:
+                if ((self.rect.bottom >= b.rect.top) and (self.rect.bottom <= b.rect.bottom)):
+                    self.rect.bottom = b.rect.top
+                    self.EnAire = False
+                    self.vely = b.vely
+                    self.velx = b.velx
+                    self.EnPlataforma = True
+                elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
+                    self.vely = 0
+                    self.rect.top = b.rect.bottom
+
+
+        #PLATAFORMAS X - X
+        if self.PlataformasX != None:
+            listaColisionPla = pygame.sprite.spritecollide(self, self.PlataformasX, False)
+            for b in listaColisionPla:
+                if ((self.rect.right >= b.rect.left) and (self.rect.right <= b.rect.right)):
+                    self.rect.right = b.rect.left
+                elif ((self.rect.left <= b.rect.right) and (self.rect.left >= b.rect.left)):
+                    self.rect.left = b.rect.right
+
         self.vely += 0.5

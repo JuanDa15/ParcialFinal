@@ -8,6 +8,8 @@ from CRUD import Constants
 from Classes import Block
 from Classes import Cannon as ca
 from Classes import Spikes
+from Classes import VerticalMovingPlatform as VMP
+from Classes import HorizontalMovingPlatform as HMP
 
 from pygame.locals import *
 
@@ -17,6 +19,7 @@ def StartRoom(Player ,Players, positionX, positionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
+    PlatformsX = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
     
     #Definicion Posicion Inicial
@@ -43,9 +46,18 @@ def StartRoom(Player ,Players, positionX, positionY):
         Temp = ca.cannon([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])])
         Blocks.add(Temporal)
         Cannons.add(Temp)
-    
+
+    Distance = Constants.HMovingPlatformEE[0]['x'] - Constants.HMovingPlatformSE[0]['x']
+    for i in range(len(Constants.HMovingPlatformSE)):
+        if Constants.HMovingPlatformSE[i]['width'] > 33:
+            pass
+    else:
+        Temporal = HMP.PlataformaMovil([(Constants.HMovingPlatformSE[i]['x']),(Constants.HMovingPlatformSE[i]['y'])],Distance,Constants.SmallPlatform)
+        PlatformsX.add(Temporal)
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-
-    return [Players ,Blocks ,None , Puas, Cannons, None, None, None, None, None, None, None, Constants.Clock, mapa ,4 ,'4' ,'6' ,'1','5']
+        Player.PlataformasX = PlatformsX
+     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players ,Blocks ,None , Puas, Cannons, None, None, None, None, PlatformsX, None, None, Constants.Clock, mapa ,4 ,'4' ,'6' ,'1','5']

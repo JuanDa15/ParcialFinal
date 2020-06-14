@@ -92,20 +92,20 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Cerdos != None:
         for Player in Players:
             listaColisionCerdos=pygame.sprite.spritecollide(Player,Cerdos,False)
-        for b in listaColisionCerdos:
-            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                print("Encerdado pai")
-                Player.vida -= 1
-            elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                print("Encerdado pai")
-                Player.vida -= 1
-    
+            for b in listaColisionCerdos:
+                if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+                elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
+                    print("Encerdado pai")
+                    Player.vida -= 1
+
     for Player in Players:
         #Recoger Monedas
         ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
@@ -210,6 +210,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Cerdos.update()
     if Cannons != None:
         Cannons.update()
+    if Moving_platforms != None:
+        Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Players.draw(Constants.Screen)
     if Cerdos != None:

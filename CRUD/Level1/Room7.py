@@ -8,6 +8,7 @@ from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
 from Classes import Cannon as ca
+from Classes import VerticalMovingPlatform as VMP
 
 from pygame.locals import *
 
@@ -16,6 +17,7 @@ def StartRoom(Player, Players ,PositionX, PositionY):
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
+    PlatformsY = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
@@ -32,8 +34,15 @@ def StartRoom(Player, Players ,PositionX, PositionY):
         Temporal = Block.Bloque([(Constants.PlatformsG[i]['x']),(Constants.PlatformsG[i]['y'])],Constants.PlatformsG[i]['width'],Constants.PlatformsG[i]['height'])
         Blocks.add(Temporal)
 
+    print(Constants.VMovingPlatformSG[0]['y'])  
+    print(Constants.VMovingPlatformEH[0]['y'])
+
+    Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformSG[0]['x']),(Constants.VMovingPlatformSG[0]['y'])],503,Constants.SmallPlatform, -1)
+    PlatformsY.add(Temporal)
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-
-    return [Players, Blocks, None, None, None, None, None, None, None, None, None, None, Constants.Clock, mapa, 5,'6','8','1','7']
+        Player.PlataformasY = PlatformsY
+     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, None, None, None, None, None, None, None, PlatformsY, None, None, Constants.Clock, mapa, 5,'6','8','1','7']

@@ -918,3 +918,5 @@ for i in range(len(PotionsPosFB)):
     Potions32.add(Temporal)
 
 
+#-------------------------------------------------------Sprites-----------------------------#
+SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
