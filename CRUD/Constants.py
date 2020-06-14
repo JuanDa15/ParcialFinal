@@ -12,6 +12,7 @@ Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
 Space = False
+MapInfo = None
 #Pygame Init
 pygame.init()
 pygame.display.set_caption('Tittle Game')
@@ -45,6 +46,49 @@ mapa2J = pygame.image.load('Assets\Levels\Level2\Level2j.png')
 #Mapa Final Boss
 MapaFinalA = pygame.image.load('Assets\Levels\Final Boss\FinalBossA.png')
 MapaFinalB = pygame.image.load('Assets\Levels\Final Boss\FinalBossB.png')
+#--------------------------------------Tutorial------------------------------------------------------------------------
+Coins01 = pygame.sprite.Group()
+Diamonds01 = pygame.sprite.Group()
+Apples01 = pygame.sprite.Group()
+Potions01 = pygame.sprite.Group()
+#Lectura de archivo json
+FileName= 'Assets\Levels\Tutorial\Tutorial.json'
+with open(FileName) as Information:
+    MapInfo=json.load(Information)
+Information.close()
+
+WallsTutorial = MapInfo['layers'][8]['objects']
+CoinsPosTuto = MapInfo['layers'][9]['objects']
+DiamondsPosTuto = MapInfo['layers'][10]['objects']
+ApplesPosTuto = MapInfo['layers'][11]['objects']
+SpikesPosTutos = MapInfo['layers'][12]['objects']
+VMovingPlatformST = MapInfo['layers'][13]['objects']
+VMovingPlatformET = MapInfo['layers'][14]['objects']
+WaterTutorialPos = MapInfo['layers'][15]['objects']
+LavaTutorial = MapInfo['layers'][16]['objects']
+PotionsPosTuto =  MapInfo['layers'][17]['objects']
+CannonsPosTuto =  MapInfo['layers'][18]['objects']
+LaddersPosTuto =  MapInfo['layers'][19]['objects']
+DoorPosTuto =  MapInfo['layers'][20]['objects']
+
+#Creacion de las monedas
+for i in range(len(CoinsPosTuto)):
+    Temporal = co.Coin((CoinsPosTuto[i]['x'],CoinsPosTuto[i]['y']))
+    Coins01.add(Temporal)
+#Creacion de las manzanas
+for i in range(len(ApplesPosTuto)):
+    Temporal = ap.Apple((ApplesPosTuto[i]['x'],ApplesPosTuto[i]['y']))
+    Apples01.add(Temporal)
+#Creacion de los diamantes
+for i in range(len(DiamondsPosTuto)):
+    Temporal = d.Diamond((DiamondsPosTuto[i]['x'],DiamondsPosTuto[i]['y']))
+    Diamonds01.add(Temporal)
+#Creacion de las posiones
+for i in range(len(PotionsPosTuto)):
+    Temporal = p.Potion((PotionsPosTuto[i]['x'],PotionsPosTuto[i]['y']))
+    Potions01.add(Temporal)
+
+#-------------------------------------------------------Nivel 1--------------------------------------------------------
 #Listas Colecionables Globales Nivel 1
 CoinsList = pygame.sprite.Group()
 ApplesList = pygame.sprite.Group()
@@ -82,8 +126,7 @@ Diamonds17 = pygame.sprite.Group()
 Diamonds18 = pygame.sprite.Group()
 Diamonds19 = pygame.sprite.Group()
 Diamonds110 = pygame.sprite.Group()
-#--------------------------------------------NIVEL 1-----------------------------
-MapInfo = None
+
 #Room Information A
 
 #Lectura de archivo json
@@ -351,6 +394,7 @@ VMovingPlatformEH = MapInfo['layers'][18]['objects']
 VMovingPlatformSSR = MapInfo['layers'][19]['objects']
 VMovingPlatformESR = MapInfo['layers'][20]['objects']
 VMovingPlatformE2H = MapInfo['layers'][21]['objects']
+DoorPosH = MapInfo['layers'][22]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosH)):
@@ -828,3 +872,49 @@ for i in range(len(PotionsPos2J)):
     Temporal = p.Potion((PotionsPos2J[i]['x'],PotionsPos2J[i]['y']))
     PotionsList2.add(Temporal)
     Potions210.add(Temporal)
+
+#---------------------------------------------------- Nivel 3 (Boss)--------------------------------------------------------
+Coins31 = pygame.sprite.Group()
+Apples31 = pygame.sprite.Group()
+Potions31 = pygame.sprite.Group()
+Diamonds31 = pygame.sprite.Group()
+
+Coins32 = pygame.sprite.Group()
+Apples32 = pygame.sprite.Group()
+Potions32 = pygame.sprite.Group()
+Diamonds32 = pygame.sprite.Group()
+
+#Room A Final Boss
+FileName ='Assets\Levels\Final Boss\FinalBossA.json'
+with open(FileName) as information:
+    MapInfo=json.load(information)
+information.close()
+
+WallsFinalBoss = MapInfo['layers'][8]['objects']
+LaddersFinalBoss = MapInfo['layers'][9]['objects']
+DoorFinalBoss = MapInfo['layers'][10]['objects']
+
+#Room B Final Boss
+FileName ='Assets\Levels\Final Boss\FinalBossB.json'
+with open(FileName) as information:
+    MapInfo=json.load(information)
+information.close()
+
+WallsFinalBossB = MapInfo['layers'][6]['objects']
+LavaPosFB = MapInfo['layers'][7]['objects']
+ApplesPosFB = MapInfo['layers'][8]['objects']
+PotionsPosFB = MapInfo['layers'][9]['objects']
+CannonsPosFB = MapInfo['layers'][10]['objects']
+LaddersPosFB = MapInfo['layers'][11]['objects']
+WaterPosFB =  MapInfo['layers'][12]['objects']
+
+#Creacion de las manzanas
+for i in range(len(ApplesPosFB)):
+    Temporal = ap.Apple((ApplesPosFB[i]['x'],ApplesPosFB[i]['y']))
+    Apples32.add(Temporal)
+#Creacion de las posiones
+for i in range(len(PotionsPosFB)):
+    Temporal = p.Potion((PotionsPosFB[i]['x'],PotionsPosFB[i]['y']))
+    Potions32.add(Temporal)
+
+
