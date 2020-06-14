@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1h.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Assets\/Levels\/Level1\/Level1h.json"
         }
     },
  "height":19,
@@ -996,7 +996,7 @@
                 {
                  "height":18.6364,
                  "id":32,
-                 "name":"",
+                 "name":"False",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1118,39 +1118,39 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/tileset lv1.tsx"
         }, 
         {
          "firstgid":248,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Opening Door(46x56).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Opening Door(46x56).tsx"
         }, 
         {
          "firstgid":253,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/decoration level1.tsx"
         }, 
         {
          "firstgid":295,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":727,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Bomb Off.tsx"
         }, 
         {
          "firstgid":728,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Idle canon.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Idle canon.tsx"
         }, 
         {
          "firstgid":729,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/Idle box.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/Idle box.tsx"
         }, 
         {
          "firstgid":730,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/candle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/candle.tsx"
         }, 
         {
          "firstgid":731,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level1\/window.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level1\/window.tsx"
         }],
  "tilewidth":32,
  "type":"map",

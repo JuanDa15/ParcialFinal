@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"Tutorial.json"
+        }
+    },
  "height":19,
  "infinite":false,
  "layers":[
@@ -75,7 +83,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 401, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 1680, 1680, 0, 1679, 1679, 0, 1680, 1680, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1823, 97, 98, 98, 98, 110, 98, 98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1825, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 1680, 1680, 0, 1679, 1679, 0, 1680, 1680, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1823, 97, 98, 98, 98, 110, 98, 98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1825, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":19,
          "id":7,
          "name":"lava,water",
@@ -104,147 +112,147 @@
          "name":"Collisions",
          "objects":[
                 {
-                 "height":33.404905298071,
+                 "height":33.4049,
                  "id":1,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":737.086497337872,
-                 "x":31.2263245177621,
-                 "y":29.7739373308894
+                 "width":737.086,
+                 "x":31.2263,
+                 "y":29.7739
                 }, 
                 {
-                 "height":513.418870559483,
+                 "height":513.419,
                  "id":2,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29.7739373308894,
-                 "x":31.9525181111984,
-                 "y":62.4526490355241
+                 "width":29.7739,
+                 "x":31.9525,
+                 "y":62.4526
                 }, 
                 {
-                 "height":33.4049052980711,
+                 "height":33.4049,
                  "id":3,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":384.882604521253,
-                 "x":61.7264554420878,
-                 "y":159.036396962556
+                 "width":384.883,
+                 "x":61.7265,
+                 "y":159.036
                 }, 
                 {
-                 "height":30.5001309243257,
+                 "height":30.5001,
                  "id":4,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.2263245177621,
-                 "x":287.572663000786,
-                 "y":128.53626603823
+                 "width":31.2263,
+                 "x":287.573,
+                 "y":128.536
                 }, 
                 {
-                 "height":31.9525181111984,
+                 "height":31.9525,
                  "id":5,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.9525181111984,
-                 "x":351.477699223182,
-                 "y":127.083878851357
+                 "width":31.9525,
+                 "x":351.478,
+                 "y":127.084
                 }, 
                 {
-                 "height":30.5001309243258,
+                 "height":30.5001,
                  "id":6,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":158.310203369119,
-                 "x":416.108929039015,
-                 "y":193.167495854063
+                 "width":158.31,
+                 "x":416.109,
+                 "y":193.167
                 }, 
                 {
-                 "height":64.6312298158331,
+                 "height":64.6312,
                  "id":7,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":30.5001309243258,
-                 "x":511.966483372611,
-                 "y":127.810072444794
+                 "width":30.5001,
+                 "x":511.966,
+                 "y":127.81
                 }, 
                 {
-                 "height":31.9525181111984,
+                 "height":31.9525,
                  "id":8,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":159.036396962556,
-                 "x":543.919001483809,
-                 "y":224.393820371825
+                 "width":159.036,
+                 "x":543.919,
+                 "y":224.394
                 }, 
                 {
-                 "height":96.5837479270315,
+                 "height":96.5837,
                  "id":9,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.2263245177621,
-                 "x":639.776555817404,
-                 "y":128.53626603823
+                 "width":31.2263,
+                 "x":639.777,
+                 "y":128.536
                 }, 
                 {
-                 "height":31.2263245177621,
+                 "height":31.2263,
                  "id":10,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":606.371650519333,
-                 "x":96.5837479270315,
-                 "y":352.203892816619
+                 "width":606.372,
+                 "x":96.5837,
+                 "y":352.204
                 }, 
                 {
-                 "height":31.2263245177621,
+                 "height":31.2263,
                  "id":11,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.9525181111984,
-                 "x":223.667626778389,
-                 "y":320.25137470542
+                 "width":31.9525,
+                 "x":223.668,
+                 "y":320.251
                 }, 
                 {
-                 "height":31.2274036515984,
+                 "height":31.2274,
                  "id":12,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":30.5001309243257,
-                 "x":320.25137470542,
-                 "y":320.977568298857
+                 "width":30.5001,
+                 "x":320.251,
+                 "y":320.978
                 }, 
                 {
-                 "height":31.2273727272727,
+                 "height":31.2274,
                  "id":13,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":30.5001,
-                 "x":416.108944501178,
-                 "y":320.97758376102
+                 "x":416.109,
+                 "y":320.978
                 }, 
                 {
                  "height":30.5001,
@@ -254,8 +262,8 @@
                  "type":"",
                  "visible":true,
                  "width":30.5001,
-                 "x":511.966498834774,
-                 "y":321.703777354456
+                 "x":511.966,
+                 "y":321.704
                 }, 
                 {
                  "height":30.5001,
@@ -265,52 +273,52 @@
                  "type":"",
                  "visible":true,
                  "width":30.5001,
-                 "x":705.133994688837,
-                 "y":384.15642638998
+                 "x":705.134,
+                 "y":384.156
                 }, 
                 {
-                 "height":512.692676966047,
+                 "height":512.693,
                  "id":16,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.9525181111984,
-                 "x":736.360303744436,
-                 "y":63.9050362223968
+                 "width":31.9525,
+                 "x":736.36,
+                 "y":63.905
                 }, 
                 {
-                 "height":32.6787117046347,
+                 "height":32.6787,
                  "id":17,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":673.907654708912,
-                 "x":62.4526490355241,
-                 "y":544.645195077245
+                 "width":673.908,
+                 "x":62.4526,
+                 "y":544.645
                 }, 
                 {
-                 "height":10.892903901545,
+                 "height":10.8929,
                  "id":18,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.2263245177621,
-                 "x":127.810072444794,
-                 "y":512.692676966047
+                 "width":31.2263,
+                 "x":127.81,
+                 "y":512.693
                 }, 
                 {
-                 "height":15.9762590555992,
+                 "height":15.9763,
                  "id":19,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.2263245177621,
-                 "x":191.71510866719,
-                 "y":480.740158854849
+                 "width":31.2263,
+                 "x":191.715,
+                 "y":480.74
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -324,26 +332,26 @@
          "name":"Coins",
          "objects":[
                 {
-                 "height":20.3334206162172,
+                 "height":20.3334,
                  "id":20,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":26.1429693637078,
-                 "x":66.0836170027058,
-                 "y":132.893427598848
+                 "width":26.143,
+                 "x":66.0836,
+                 "y":132.893
                 }, 
                 {
-                 "height":21.7858078030898,
+                 "height":21.7858,
                  "id":21,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":25.4167757702715,
-                 "x":98.0361351139042,
-                 "y":131.441040411975
+                 "width":25.4168,
+                 "x":98.0361,
+                 "y":131.441
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -357,15 +365,15 @@
          "name":"Diamonds",
          "objects":[
                 {
-                 "height":23.2381949899625,
+                 "height":23.2382,
                  "id":22,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":28.3215501440168,
-                 "x":225.846207558698,
-                 "y":130.714846818539
+                 "width":28.3216,
+                 "x":225.846,
+                 "y":130.715
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -379,15 +387,15 @@
          "name":"Apple",
          "objects":[
                 {
-                 "height":26.8691629571441,
+                 "height":26.8692,
                  "id":23,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":27.5953565505804,
-                 "x":385.60879811469,
-                 "y":129.262459631666
+                 "width":27.5954,
+                 "x":385.609,
+                 "y":129.262
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -467,15 +475,15 @@
          "name":"Water",
          "objects":[
                 {
-                 "height":25.2727272727273,
+                 "height":25.2727,
                  "id":27,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":63.8181818181818,
-                 "x":351.818181818182,
-                 "y":326.727272727273
+                 "width":63.8182,
+                 "x":351.818,
+                 "y":326.727
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -489,15 +497,15 @@
          "name":"Lava",
          "objects":[
                 {
-                 "height":24.9090909090909,
+                 "height":24.9091,
                  "id":28,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":63.8181818181818,
+                 "width":63.8182,
                  "x":256,
-                 "y":326.909090909091
+                 "y":326.909
                 }, 
                 {
                  "height":25.5,
@@ -522,13 +530,13 @@
          "name":"Potion",
          "objects":[
                 {
-                 "height":27.6666666666666,
+                 "height":27.6667,
                  "id":32,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":24.6666666666666,
+                 "width":24.6667,
                  "x":323,
                  "y":289
                 }],
@@ -546,7 +554,7 @@
                 {
                  "height":18.25,
                  "id":33,
-                 "name":"",
+                 "name":"False",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -566,15 +574,15 @@
          "name":"Ladder",
          "objects":[
                 {
-                 "height":192.666666666667,
+                 "height":192.667,
                  "id":34,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.6666666666667,
-                 "x":63.6666666666667,
-                 "y":351.333333333333
+                 "width":31.6667,
+                 "x":63.6667,
+                 "y":351.333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -594,7 +602,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":45.3333333333333,
+                 "width":45.3333,
                  "x":672,
                  "y":488
                 }],
@@ -613,47 +621,47 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Terrain (32x32).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Terrain (32x32).tsx"
         }, 
         {
          "firstgid":248,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/puerta.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/puerta.tsx"
         }, 
         {
          "firstgid":249,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":681,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Medieval_tiles_free_2.0.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Medieval_tiles_free_2.0.tsx"
         }, 
         {
          "firstgid":1481,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Decorations (32x32).tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Decorations (32x32).tsx"
         }, 
         {
          "firstgid":1523,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Tileset.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Tileset.tsx"
         }, 
         {
          "firstgid":1823,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/3.tsx"
         }, 
         {
          "firstgid":1824,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/2.tsx"
         }, 
         {
          "firstgid":1825,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/1.tsx"
         }, 
         {
          "firstgid":1826,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Idle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Idle.tsx"
         }, 
         {
          "firstgid":1827,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Tutorial\/Sprite-0001.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Tutorial\/Sprite-0001.tsx"
         }],
  "tilewidth":32,
  "type":"map",

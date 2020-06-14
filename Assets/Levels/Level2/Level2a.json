@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"Level2a.json"
+         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Level2\/Level2a.json"
         }
     },
  "height":19,
@@ -709,167 +709,167 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Background.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Background.tsx"
         }, 
         {
          "firstgid":2,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Jungle.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Jungle.tsx"
         }, 
         {
          "firstgid":62,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Puerta.tsx"
         }, 
         {
          "firstgid":63,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Ladder1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Ladder1.tsx"
         }, 
         {
          "firstgid":64,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder3.tsx"
         }, 
         {
          "firstgid":65,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder4.tsx"
         }, 
         {
          "firstgid":66,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder2.tsx"
         }, 
         {
          "firstgid":67,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/willow3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/willow3.tsx"
         }, 
         {
          "firstgid":68,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/willow2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/willow2.tsx"
         }, 
         {
          "firstgid":69,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/trees1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/trees1.tsx"
         }, 
         {
          "firstgid":70,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Stones4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Stones4.tsx"
         }, 
         {
          "firstgid":71,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Stones5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Stones5.tsx"
         }, 
         {
          "firstgid":72,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/Stones1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/Stones1.tsx"
         }, 
         {
          "firstgid":73,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ridges5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ridges5.tsx"
         }, 
         {
          "firstgid":74,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ridges3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ridges3.tsx"
         }, 
         {
          "firstgid":75,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/pointer6.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/pointer6.tsx"
         }, 
         {
          "firstgid":76,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/ladder5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/ladder5.tsx"
         }, 
         {
          "firstgid":77,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/pointer2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/pointer2.tsx"
         }, 
         {
          "firstgid":78,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/grass1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/grass1.tsx"
         }, 
         {
          "firstgid":79,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/grass2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/grass2.tsx"
         }, 
         {
          "firstgid":80,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/grass8.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/grass8.tsx"
         }, 
         {
          "firstgid":81,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/fence1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/fence1.tsx"
         }, 
         {
          "firstgid":82,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/fence3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/fence3.tsx"
         }, 
         {
          "firstgid":83,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/fence2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/fence2.tsx"
         }, 
         {
          "firstgid":84,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush1.tsx"
         }, 
         {
          "firstgid":85,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush2.tsx"
         }, 
         {
          "firstgid":86,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush3.tsx"
         }, 
         {
          "firstgid":87,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush4.tsx"
         }, 
         {
          "firstgid":88,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush5.tsx"
         }, 
         {
          "firstgid":89,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush6.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush6.tsx"
         }, 
         {
          "firstgid":90,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush7.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush7.tsx"
         }, 
         {
          "firstgid":91,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush9.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush9.tsx"
         }, 
         {
          "firstgid":92,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/bush8.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/bush8.tsx"
         }, 
         {
          "firstgid":93,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box2.tsx"
         }, 
         {
          "firstgid":94,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box5.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box5.tsx"
         }, 
         {
          "firstgid":95,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box1.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box1.tsx"
         }, 
         {
          "firstgid":96,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box3.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box3.tsx"
         }, 
         {
          "firstgid":97,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/box4.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/box4.tsx"
         }, 
         {
          "firstgid":98,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/mapa2.tsx"
         }, 
         {
          "firstgid":398,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/#1 - Transparent Icons.tsx"
         }, 
         {
          "firstgid":830,
-         "source":"..\/..\/..\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
+         "source":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Mapas Tilemaps files\/Level2\/[32x32] Dungeon Bricks Plain.tsx"
         }],
  "tilewidth":32,
  "type":"map",
