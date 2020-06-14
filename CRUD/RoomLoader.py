@@ -12,6 +12,8 @@ from Classes import pork
 from Classes import Cannon as ca
 from Classes import CannonBall as cb
 from CRUD.Tutorial import TutorialRoom as R01
+from Classes import VerticalMovingPlatform as VMP
+from Classes import HorizontalMovingPlatform as HMP
 from CRUD.Level1 import Room1 as R11
 from CRUD.Level1 import Room2 as R12
 from CRUD.Level1 import Room3 as R13
@@ -137,6 +139,57 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     print("Encerdado pai")
                     Player.vida -= 1
 
+    #PLATAFORMAS MOVILES
+    if Moving_platforms != None:
+        for i in Moving_platforms:
+            currentPlatform = pygame.sprite.Group()
+            currentPlatform.add(i)
+            #PLATAFORMAS MOVIMIENTO VERTICAL
+            if isinstance(i,VMP.PlataformaMovil):
+                # PLATAFORMAS Y - Y
+                listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
+                for b in listaColisionPla:
+                    if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                        Player.rect.bottom = b.rect.top
+                        Player.EnAire = False
+                        Player.vely = b.vely
+                    elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
+                        Player.vely = 0
+                        Player.rect.top = b.rect.bottom
+                    #PLATAFORMAS Y - X
+                    if currentPlatform != None:
+                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
+                        for b in listaColisionPla:
+                            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
+                                Player.rect.right = b.rect.left
+                            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
+                                Player.rect.left = b.rect.right
+            #PLATAFORMAS MOVIMIENTO HORIZONTAL                    
+            if isinstance(i,HMP.PlataformaMovil):
+                #PLATAFORMAS X - Y
+                listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
+                for b in listaColisionPla:
+                    if currentPlatform != None:
+                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
+                        for b in listaColisionPla:
+                            if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                                Player.rect.bottom = b.rect.top
+                                Player.EnAire = False
+                                Player.vely = b.vely
+                                Player.velx = b.velx
+                            elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
+                                Player.vely = 0
+                                Player.rect.top = b.rect.bottom
+                    #PLATAFORMAS X - X
+                    if currentPlatform != None:
+                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
+                        for b in listaColisionPla:
+                            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
+                                Player.rect.right = b.rect.left
+                            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
+                                Player.rect.left = b.rect.right
+
+
     for Player in Players:
         if Cannons != None:
             ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),False)
@@ -239,7 +292,10 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if level_type == 7:
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                if (currentLevel + nextRoom) == '110':
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,10,Player.rect.y - 2)')
+                else:
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.top > Constants.limitemovimientoY:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
 
@@ -247,8 +303,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
-                return R32.StartRoom(Player,Players,100, 280)
-    
+                if (currentLevel + currentRoom) == '110':
+                    return R19.StartRoom(Player,Players,100, 280)
+                else:
+                    return R11.StartRoom(Player,Players,100, 280)
+
     Constants.Screen.fill([0,0,0])
     Players.update()
     Blocks.update()
