@@ -15,8 +15,9 @@ Screen = Constants.Screen
 def Main_Menu():
     #Definition of variables-----------------
     #music upload
-    #pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
-    #pygame.mixer.music.play(-1)
+    pygame.mixer.init()
+    pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
+    pygame.mixer.music.play(-1)
     Click = False
     while True:
     
