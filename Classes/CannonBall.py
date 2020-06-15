@@ -4,7 +4,7 @@ from CRUD import Functions
 class cannonball(pygame.sprite.Sprite):
     def __init__(self,position,direction):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('Assets\Sprites\Cannon\Cannon Ball.png')
+        self.image = pygame.image.load('Assets\Images\Sprites\Cannon\Cannon Ball.png')
         #self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
