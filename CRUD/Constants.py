@@ -11,7 +11,9 @@ Width = 800
 Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
+LifeManager = None
 Space = False
+PlataformaMovil = False
 MapInfo = None
 #Pygame Init
 pygame.init()
@@ -126,6 +128,14 @@ Diamonds17 = pygame.sprite.Group()
 Diamonds18 = pygame.sprite.Group()
 Diamonds19 = pygame.sprite.Group()
 Diamonds110 = pygame.sprite.Group()
+#Cañones
+CannonBalls01 = pygame.sprite.Group()
+CannonBalls12 = pygame.sprite.Group()
+CannonBalls13 = pygame.sprite.Group()
+CannonBalls14 = pygame.sprite.Group()
+CannonBalls15 = pygame.sprite.Group()
+CannonBalls18 = pygame.sprite.Group()
+CannonBalls32 = pygame.sprite.Group()
 
 #Room Information A
 
@@ -390,11 +400,9 @@ DiamondsPosH = MapInfo['layers'][14]['objects']
 ApplesPosH = MapInfo['layers'][15]['objects']
 LeverPosH = MapInfo['layers'][16]['objects']
 CannonsPosH = MapInfo['layers'][17]['objects']
-VMovingPlatformEH = MapInfo['layers'][18]['objects']
-VMovingPlatformSSR = MapInfo['layers'][19]['objects']
-VMovingPlatformESR = MapInfo['layers'][20]['objects']
-VMovingPlatformE2H = MapInfo['layers'][21]['objects']
-DoorPosH = MapInfo['layers'][22]['objects']
+VMovingPlatformSSR = MapInfo['layers'][18]['objects']
+VMovingPlatformESR = MapInfo['layers'][19]['objects']
+DoorPosH = MapInfo['layers'][20]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosH)):
@@ -426,8 +434,7 @@ CoinsPosI = MapInfo['layers'][8]['objects']
 ApplesPosI = MapInfo['layers'][9]['objects']
 DiamondsPosI = MapInfo['layers'][10]['objects']
 PlatformsI= MapInfo['layers'][11]['objects']
-VMovingPlatformEI = MapInfo['layers'][12]['objects']
-LeverPosI = MapInfo['layers'][13]['objects']
+LeverPosI = MapInfo['layers'][12]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosI)):
@@ -918,3 +925,8 @@ for i in range(len(PotionsPosFB)):
     Potions32.add(Temporal)
 
 
+#-------------------------------------------------------Sprites-----------------------------#
+SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
+LongPlatform = pygame.image.load('Assets\Sprites\Platforms\LongPlatform.png')
+CannonIDLEL = pygame.image.load('Assets\Sprites\Cannon\Idle.png')
+CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),True,False)

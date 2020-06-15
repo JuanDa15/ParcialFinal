@@ -8,6 +8,8 @@ from CRUD import Constants
 from Classes import Block
 from Classes import Cannon as ca
 from Classes import Spikes
+from Classes import VerticalMovingPlatform as VMP
+from Classes import HorizontalMovingPlatform as HMP
 
 from pygame.locals import *
 
@@ -17,6 +19,7 @@ def StartRoom(Player ,Players, positionX, positionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
+    PlatformsX = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
     
     #Definicion Posicion Inicial
@@ -39,13 +42,25 @@ def StartRoom(Player ,Players, positionX, positionY):
         Blocks.add(Temporal)
 
     for i in range(len(Constants.CannonsPosE)):
-        Temporal = Block.Bloque([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])],Constants.CannonsPosE[i]['width'],Constants.CannonsPosE[i]['height'])
-        Temp = ca.cannon([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])])
-        Blocks.add(Temporal)
-        Cannons.add(Temp)
-    
+        if Constants.CannonsPosE[i]['name'] == 'False':
+            Temporal = Block.Bloque([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])],Constants.CannonsPosE[i]['width'],Constants.CannonsPosE[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])],Constants.CannonIDLEL,1)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
+        else:
+            Temporal = Block.Bloque([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])],Constants.CannonsPosE[i]['width'],Constants.CannonsPosE[i]['height'])
+            Temp = ca.cannon([(Constants.CannonsPosE[i]['x']),(Constants.CannonsPosE[i]['y'])],Constants.CannonIDLER,0)
+            Blocks.add(Temporal)
+            Cannons.add(Temp)
+
+    #Creacion de Plataformas movibles
+    Distance = Constants.HMovingPlatformEE[0]['x'] - Constants.HMovingPlatformSE[0]['x']
+    Temporal = HMP.PlataformaMovil([(Constants.HMovingPlatformSE[0]['x']),(Constants.HMovingPlatformSE[0]['y'])],Distance,Constants.SmallPlatform)
+    PlatformsX.add(Temporal)
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-
-    return [Players ,Blocks ,None , Puas, Cannons, None, None, None, None, None, None, None, Constants.Clock, mapa ,4 ,'4' ,'6' ,'1','5']
+        Player.PlataformasX = PlatformsX
+     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players ,Blocks ,None , Puas, Cannons, None, None, None, None, PlatformsX, None, None, Constants.Clock, mapa ,4 ,'4' ,'6' ,'1','5']

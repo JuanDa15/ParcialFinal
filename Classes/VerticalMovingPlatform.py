@@ -3,15 +3,14 @@ import pygame
 from CRUD import Functions
 
 class PlataformaMovil(pygame.sprite.Sprite):
-    def __init__(self,position, Pixeles):
+    def __init__(self,position,Pixeles, Image,vel):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([100,10])
-        self.image.fill(Functions.SelectColor('Yellow'))
+        self.image = Image
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
         self.velx = 0
-        self.vely = 1
+        self.vely = vel
         self.Pixeles = Pixeles
         self.Movidos = self.Pixeles
         self.Bloques = None
@@ -45,10 +44,8 @@ class PlataformaMovil(pygame.sprite.Sprite):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
         """
-
         if self.Movidos > 0:
             self.Movidos -= 1
         else:
             self.Movidos = self.Pixeles
             self.vely = self.vely * -1
-        
