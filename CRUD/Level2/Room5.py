@@ -7,6 +7,7 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
+from Classes import Ladder as La
 
 from pygame.locals import *
 
@@ -15,6 +16,7 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
+    Ladders = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
@@ -30,4 +32,8 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for Playeri in Players:
         Player.Bloques = Blocks
     
-    return [Players, Blocks, None, None, None, None, None, None, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']
+    for i in range(len(Constants.LaddersPosE)):
+        Temporal = La.Ladder([(Constants.LaddersPosE[i]['x']),(Constants.LaddersPosE[i]['y'])],Constants.LaddersPosE[i]['width'],Constants.LaddersPosE[i]['height'])
+        Ladders.add(Temporal)
+    
+    return [Players, Blocks, None, None, None, Ladders, None, None, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']
