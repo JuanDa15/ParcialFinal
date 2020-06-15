@@ -28,6 +28,7 @@ def Main_Menu():
 
         #Draw in screen
         Screen.fill(Functions.SelectColor('Black'))  
+        Functions.MakeImage(0,0,Screen,UF.getArchive('background1'))
         Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonImage'))
         Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonImage'))
         Functions.MakeImage(300,370,Screen,UF.getArchive('ButtonImage'))
@@ -65,7 +66,7 @@ def Main_Menu():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == K_ESCAPE:
+                if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sis.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -73,7 +74,7 @@ def Main_Menu():
                     Click = True
         #refresh
         #update
-        Functions.draw_text('MAIN MENU',UF.TittleFont(40),Functions.SelectColor('White'),Screen,155.5,50)
+        Functions.draw_text('MAIN MENU',UF.TittleFont(40),Functions.SelectColor('White'),Screen,155.5,30)
         Functions.draw_text('START',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,351,258.5)
         Functions.draw_text('CREDITS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,331.5,318.5)
         Functions.draw_text('CONTROLS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,319,378.5)

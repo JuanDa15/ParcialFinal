@@ -6,6 +6,7 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Player as P
+from Classes import Water
 from Classes import Block
 from Classes import Ladder as La
 
@@ -17,11 +18,17 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     Ladders = pygame.sprite.Group()
+    WaterG = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = PositionX
         Player.rect.y = PositionY
+
+    #Creacion Agua
+    for i in range(len(Constants.WaterPosE)):
+        Temporal = Water.Water([(Constants.WaterPosE[i]['x']),(Constants.WaterPosE[i]['y'])], Constants.WaterPosE[i]['width'],Constants.WaterPosE[i]['height'])
+        WaterG.add(Temporal)
 
     #Creacion de los bloques
     for i in range(len(Constants.WallsE)):
@@ -36,4 +43,4 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
         Temporal = La.Ladder([(Constants.LaddersPosE[i]['x']),(Constants.LaddersPosE[i]['y'])],Constants.LaddersPosE[i]['width'],Constants.LaddersPosE[i]['height'])
         Ladders.add(Temporal)
     
-    return [Players, Blocks, None, None, None, Ladders, None, None, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']
+    return [Players, Blocks, None, None, None, Ladders, None, WaterG, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']

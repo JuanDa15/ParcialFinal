@@ -23,6 +23,7 @@ BackImage = pygame.image.load("Assets\Images\MenuImages\Back-Arrow.png")
 BackImageSelected = pygame.image.load("Assets\Images\MenuImages\Back-ArrowSelected.png")
 NextImage = pygame.image.load(r"Assets\Images\MenuImages\Next-Button.png")
 NextImageSelected = pygame.image.load(r"Assets\Images\MenuImages\Next-Buttonselected.png")
+background1 = pygame.image.load("Assets\Images\BackGrounds\Pantalla principal.png")
 #Images
 Container = pygame.image.load("Assets\Images\MenuImages\Contenedor.png")
 LeftArrow =pygame.image.load("Assets\Images\MenuImages\Left-Arrow.png")
@@ -86,3 +87,5 @@ def getArchive(ArchiveID):
         return NextImage
     if ArchiveID == 'NextImageSelected':
         return NextImageSelected
+    if ArchiveID == 'background1':
+        return background1

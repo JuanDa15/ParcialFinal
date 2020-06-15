@@ -6,6 +6,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Vida
 from Classes import HorizontalMovingPlatform as HMP
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
@@ -13,6 +14,7 @@ from Classes import Block
 from Classes import pork
 from Classes import Score as Sc
 from Classes import Cannon as ca
+from Classes import Lava
 from Classes import CannonBall as cb
 from CRUD.Tutorial import TutorialRoom as R0
 from Classes import VerticalMovingPlatform as VMP
@@ -50,7 +52,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     # 2 - Corridor + downfall ->  = + ╗
     # 3 - downfall corridor -> ║ + ║
     # 4 - downfall + corridor -> ╗ + =
-    # 5 - Corridor + Climb 
+    # 5 - Corridor + Climb
     # 6 - Climb corridor
     # 7 - Climb + Corridor
     #event managment
@@ -61,13 +63,25 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 3
+                if Player.EnLava == True:
+                    Player.velx = 2
+                if Player.EnAgua == True:
+                    Player.velx = 2.5
             if event.key == pygame.K_LEFT:
                 Player.velx = -3
+                if Player.EnLava == True:
+                    Player.velx = -2
+                if Player.EnAgua == True:
+                    Player.velx = -2.5
             if event.key == pygame.K_UP:
                 if Constants.inLadder:
                     Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
                 Constants.Space = True
+                if Player.EnLava == True:
+                    Player.vely = -3
+                if Player.EnAgua == True:
+                    Player.vely = -4
             if event.key == pygame.K_e:
                 Constants.Interact = True
             if event.key == pygame.K_q:
@@ -85,7 +99,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.Interact = False
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = False
-    
+
     if Player.EnAire == False:
         if Player.Charge <= 1.3 and Constants.Space:
             Player.vely = -7 - Player.Charge
@@ -93,7 +107,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         else:
             Player.Charge = 1.0
             Player.EnAire = True
-    
+
     if Constants.AppleConsumed and Player.Apples > 0 and Player.vida < 100:
         if Constants.AppleTime == 0:
             Player.vida += 20
@@ -103,7 +117,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Constants.AppleTime > 0:
         Constants.AppleTime -= 1
 
-               
+
     #Colisiones Jugador con Puas
     if Puas != None:
         for Player in Players:
@@ -121,6 +135,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
+
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -145,7 +160,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
                 elif ((ball.rect.left <= b.rect.right) and (ball.rect.left >= b.rect.left)):
                     eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
-            
+
             if ball.getDistance() == 50:
                 eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
     #Enemigos
@@ -165,6 +180,42 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
                     Constants.LifeManager.hitPlayer(20)
+    #Water
+    if Water != None:
+        for Player in Players:
+            CollisionAgua = pygame.sprite.spritecollide(Player, Water, False)
+            if CollisionAgua:
+                Player.EnAgua = True
+                print('Mojado Pai')
+            else:
+                Player.EnAgua = False
+                Player.respiracion = 0
+            
+            for b in CollisionAgua:
+                if Player.rect.top <= b.rect.top:
+                    Player.respiracion = 0
+
+                if Player.rect.top  >= b.rect.top:
+                    if Player.EnAgua == True:
+                        Player.UpdateRespiration()
+                        if Player.getRespiracion() == 35:
+                            Constants.LifeManager.hitPlayer(10)
+                            Player.respiracion = 0
+        
+    #Lava
+    if Lava != None:
+        for Player in Players:
+            CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
+            if CollisionLava:
+                Player.EnLava = True
+                print('Quemado Pai')  
+            else:
+                Player.EnLava = False
+            
+        if Player.EnLava == True:
+            if Player.InmunidadFuego == False:
+                Constants.LifeManager.hitPlayer(15)
+
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
         for i in Moving_platforms:
@@ -190,7 +241,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                                 Player.rect.right = b.rect.left
                             elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                                 Player.rect.left = b.rect.right
-            #PLATAFORMAS MOVIMIENTO HORIZONTAL                    
+            #PLATAFORMAS MOVIMIENTO HORIZONTAL
             if isinstance(i,HMP.PlataformaMovil):
                 #PLATAFORMAS X - Y
                 listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
@@ -213,7 +264,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                             if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                                 Player.rect.right = b.rect.left
                             elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                                Player.rect.left = b.rect.right                    
+                                Player.rect.left = b.rect.right
     for Player in Players:
         if Cannons != None:
             ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),True)
@@ -238,7 +289,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.inLadder = True
             else:
                 Constants.inLadder = False
-            
+
     if Constants.Subiendo and Constants.inLadder:
         Player.vely = -1.4
 
@@ -261,7 +312,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Constants.DiamondsList.remove(i)
     if ListaDiamantes:
         Player.Diamonds = Player.Diamonds + 1
-    
+
     #Puertas
     if Doors != None:
         if len(Doors) == 2:
@@ -303,14 +354,14 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.right < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
-            
+
     if level_type == 2:
         #Cambia de Nivel
             if Player.rect.top > Constants.limitemovimientoY:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
-    
+
     if level_type == 3:
         #Cambia de Nivel
             if Player.rect.top > Constants.limitemovimientoY:
@@ -329,7 +380,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
-    
+
     if level_type == 5:
         #Muerte por salir de pantalla
         for Player in Players:
@@ -341,14 +392,14 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.right < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
-    
+
     if level_type == 6:
         #Cambia de Nivel
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.top > Constants.limitemovimientoY:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
-    
+
     if level_type == 7:
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
@@ -369,10 +420,14 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 else:
                     Constants.LifeManager.instakill()
                     return R11.StartRoom(Player,Players,100, 280)
-                  
+
     Constants.Screen.fill([0,0,0])
     Players.update()
+    print (Player.quemadura)
+    print (Player.TQuemadura)
     Blocks.update()
+    if Lava != None:
+        Lava.update()
     if Cerdos != None:
         Cerdos.update()
     if Cannons != None:
@@ -382,6 +437,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Players.draw(Constants.Screen)
+    if Lava != None:
+        pass
     if Cerdos != None:
         Cerdos.draw(Constants.Screen)
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')

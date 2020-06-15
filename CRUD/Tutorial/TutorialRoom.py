@@ -6,10 +6,12 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
+from Classes import Lava
 from Classes import pork
 from Classes import Door as Do
 from Classes import Ladder as La
 from Classes import Cannon as ca
+from Classes import Water
 from Classes import Spikes
 from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
@@ -24,11 +26,18 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     Puas = pygame.sprite.Group()
     Ladders = pygame.sprite.Group()
     Doors = pygame.sprite.Group()
+    LavaG = pygame.sprite.Group()
+    WaterG = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = PositionX
         Player.rect.y = PositionY
+
+    #Water
+    for i in range(len(Constants.WaterTutorialPos)):
+        Temporal = Water.Water([(Constants.WaterTutorialPos[i]['x']),(Constants.WaterTutorialPos[i]['y'])], Constants.WaterTutorialPos[i]['width'],Constants.WaterTutorialPos[i]['height'])
+        WaterG.add(Temporal)
 
     #Creacion de spykes
     for i in range(len(Constants.SpikesPosTutos)):
@@ -39,6 +48,11 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     for i in range(len(Constants.WallsTutorial)):
         Temporal = Block.Bloque([(Constants.WallsTutorial[i]['x']),(Constants.WallsTutorial[i]['y'])],Constants.WallsTutorial[i]['width'],Constants.WallsTutorial[i]['height'])
         Blocks.add(Temporal)
+
+    #Creacion Lava
+    for i in range(len(Constants.LavaTutorial)):
+        Temporal = Lava.Lava([(Constants.LavaTutorial[i]['x']),(Constants.LavaTutorial[i]['y'])], Constants.LavaTutorial[i]['width'], Constants.LavaTutorial[i]['height'])
+        LavaG.add(Temporal)
 
     #Creacion de cañones
     for i in range(len(Constants.CannonsPosTuto)):
@@ -75,4 +89,4 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Player.PlataformasY = Platforms
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, Cannons, Ladders, None, None, Doors, Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']
+    return [Players, Blocks, None, Puas, Cannons, Ladders, LavaG, WaterG, Doors, Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

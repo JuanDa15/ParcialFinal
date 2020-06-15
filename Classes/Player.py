@@ -18,11 +18,18 @@ class Jugador(pygame.sprite.Sprite):
         self.vida = 100
         self.invisibility = 0
         self.EnAire = False
+        self.EnLava = False
+        self.EnAgua = False
+        self.respiracion = 0
+        self.InmunidadFuego = False
         self.Bloques = None
         self.Coins = 0
         self.Apples = 0
         self.Diamonds = 0
         self.Charge = 1.0
+        self.quemadura = False
+        self.TQuemadura = 0
+        self.Fquemadura = 0
 
     def update(self):
         #Posicion y velocidad en x
@@ -51,3 +58,9 @@ class Jugador(pygame.sprite.Sprite):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
         self.vely += 0.5
+
+    def UpdateRespiration(self):
+        self.respiracion += 1
+        
+    def getRespiracion(self):
+        return self.respiracion

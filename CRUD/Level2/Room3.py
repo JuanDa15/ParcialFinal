@@ -8,7 +8,7 @@ from CRUD import Constants
 from Classes import Player as P
 from Classes import Spikes
 from Classes import Block
-
+from Classes import Lava
 from pygame.locals import *
 
 def StartRoom(Player ,Players ,PositionX , PositionY):
@@ -16,6 +16,7 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
+    LavaG = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
 
     #Definicion posicion inicial
@@ -23,7 +24,11 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
         Player.rect.x = PositionX
         Player.rect.y = PositionY
 
-    
+    #Creacion Lava
+    for i in range(len(Constants.LavaPosC)):
+        Temporal = Lava.Lava([(Constants.LavaPosC[i]['x']),(Constants.LavaPosC[i]['y'])], Constants.LavaPosC[i]['width'],Constants.LavaPosC[i]['height'])
+        LavaG.add(Temporal)
+
     #Creacion de los spikes
     for i in range(len(Constants.SpikesPos2C)):
         Temporal = Spikes.spikes([(Constants.SpikesPos2C[i]['x']),(Constants.SpikesPos2C[i]['y'])],Constants.SpikesPos2C[i]['width'],Constants.SpikesPos2C[i]['height'])
@@ -41,5 +46,5 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     #Definicion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
-
-    return [Players, Blocks, None, Puas, None, None, None, None, None, None, None, None, Constants.Clock, mapa, 4, '2', '4', '2', '3']
+    #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, None, Puas, None, None, LavaG, None, None, None, None, None, Constants.Clock, mapa, 4, '2', '4', '2', '3']
