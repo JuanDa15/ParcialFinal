@@ -140,16 +140,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in listaColisionCerdos:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(20)
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
         for i in Moving_platforms:
@@ -380,5 +380,9 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     Constants.LifeManager.update()
     if Doors != None:
         Doors.draw(Constants.Screen)
+
+    Constants.Screen.blit(Constants.LifeManager.image, [20,20])
+    Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
+
     pygame.display.flip()
     Clock.tick(30)
