@@ -5,6 +5,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
 from Classes import Cannon as ca

@@ -13,7 +13,7 @@ from Classes import Block
 from Classes import pork
 from Classes import Cannon as ca
 from Classes import CannonBall as cb
-from CRUD.Tutorial import TutorialRoom as R01
+from CRUD.Tutorial import TutorialRoom as R0
 from Classes import VerticalMovingPlatform as VMP
 from Classes import HorizontalMovingPlatform as HMP
 from CRUD.Level1 import Room1 as R11
@@ -62,15 +62,24 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Player.velx = 3
             if event.key == pygame.K_LEFT:
                 Player.velx = -3
+            if event.key == pygame.K_UP:
+                if Constants.inLadder:
+                    Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
                 Constants.Space = True
+            if event.key == pygame.K_e:
+                Constants.Interact = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
             if event.key == pygame.K_LEFT:
                 Player.velx = 0
+            if event.key == pygame.K_UP:
+                Constants.Subiendo = False
             if event.key == pygame.K_SPACE:
                 Constants.Space = False
+            if event.key == pygame.K_e:
+                Constants.Interact = False
     
     if Player.EnAire == False:
         if Player.Charge <= 1.3 and Constants.Space:
@@ -87,13 +96,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("chuzao pai")
+                    Constants.LifeManager.hitPlayer(5)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("chuzao pai")
-
-                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    Constants.LifeManager.hitPlayer(5)
+                elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("chuzao pai")
+                    Constants.LifeManager.hitPlayer(5)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
+                    Constants.LifeManager.hitPlayer(5)
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -128,16 +140,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in listaColisionCerdos:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("Encerdado pai")
-                    Player.vida -= 1
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("Encerdado pai")
-                    Player.vida -= 1
-                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    Constants.LifeManager.hitPlayer(20)
+                elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("Encerdado pai")
-                    Player.vida -= 1
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
-                    Player.vida -= 1
+                    Constants.LifeManager.hitPlayer(20)
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
         for i in Moving_platforms:
@@ -186,100 +198,80 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                             if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                                 Player.rect.right = b.rect.left
                             elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                                Player.rect.left = b.rect.right
-
-
-    #PLATAFORMAS MOVILES
-    if Moving_platforms != None:
-        for i in Moving_platforms:
-            currentPlatform = pygame.sprite.Group()
-            currentPlatform.add(i)
-            #PLATAFORMAS MOVIMIENTO VERTICAL
-            if isinstance(i,VMP.PlataformaMovil):
-                # PLATAFORMAS Y - Y
-                listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
-                for b in listaColisionPla:
-                    if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                        Player.rect.bottom = b.rect.top
-                        Player.EnAire = False
-                        Player.vely = b.vely
-                    elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                        Player.vely = 0
-                        Player.rect.top = b.rect.bottom
-                    #PLATAFORMAS Y - X
-                    if currentPlatform != None:
-                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
-                        for b in listaColisionPla:
-                            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                                Player.rect.right = b.rect.left
-                            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                                Player.rect.left = b.rect.right
-            #PLATAFORMAS MOVIMIENTO HORIZONTAL                    
-            if isinstance(i,HMP.PlataformaMovil):
-                #PLATAFORMAS X - Y
-                listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
-                for b in listaColisionPla:
-                    if currentPlatform != None:
-                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
-                        for b in listaColisionPla:
-                            if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                                Player.rect.bottom = b.rect.top
-                                Player.EnAire = False
-                                Player.vely = b.vely
-                                Player.velx = b.velx
-                            elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                                Player.vely = 0
-                                Player.rect.top = b.rect.bottom
-                    #PLATAFORMAS X - X
-                    if currentPlatform != None:
-                        listaColisionPla = pygame.sprite.spritecollide(Player, currentPlatform, False)
-                        for b in listaColisionPla:
-                            if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                                Player.rect.right = b.rect.left
-                            elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                                Player.rect.left = b.rect.right
-
-
+                                Player.rect.left = b.rect.right                    
     for Player in Players:
         if Cannons != None:
-            ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),False)
+            ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),True)
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("balazo pai")
-                    Player.vida -= 1
+                    Constants.LifeManager.hitPlayer(25)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("balazo pai")
-                    Player.vida -= 1
-                if ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
+                    Constants.LifeManager.hitPlayer(25)
+                elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("balazo pai")
-                    Player.vida -= 1
+                    Constants.LifeManager.hitPlayer(25)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
-                    Player.vida -= 1
-        #Recoger Monedas
-        ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
-        for i in ListaMonedas:
-            Constants.CoinsList.remove(i)
-        if ListaMonedas:
-            Player.Coins = Player.Coins + 1
+                    Constants.LifeManager.hitPlayer(25)
+    #Escaleras
+    for Player in Players:
+        if Ladders != None:
+            ListaLadders = pygame.sprite.spritecollide(Player,Ladders,False)
+            if ListaLadders:
+                Constants.inLadder = True
+            else:
+                Constants.inLadder = False
+            
+    if Constants.Subiendo and Constants.inLadder:
+        Player.vely = -1.4
 
-        #Recoger Manzanas
-        ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
-        for i in ListaManzanas:
-            Constants.ApplesList.remove(i)
-        if ListaManzanas:
-            Player.Apples = Player.Apples + 1
-        #Recoger Diamantes
-        ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
-        for i in ListaDiamantes:
-            Constants.DiamondsList.remove(i)
-        if ListaDiamantes:
-            Player.Diamonds = Player.Diamonds + 1
+    #Recoger Monedas
+    ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
+    for i in ListaMonedas:
+        Constants.CoinsList.remove(i)
+    if ListaMonedas:
+        Player.Coins = Player.Coins + 1
+
+    #Recoger Manzanas
+    ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
+    for i in ListaManzanas:
+        Constants.ApplesList.remove(i)
+    if ListaManzanas:
+        Player.Apples = Player.Apples + 1
+    #Recoger Diamantes
+    ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
+    for i in ListaDiamantes:
+        Constants.DiamondsList.remove(i)
+    if ListaDiamantes:
+        Player.Diamonds = Player.Diamonds + 1
+    
+    #Puertas
+    if Doors != None:
+        if len(Doors) == 2:
+            ListaDoors = pygame.sprite.spritecollide(Player,Doors,False)
+            for b in ListaDoors:
+                if Constants.Interact:
+                    for c in Doors:
+                        if b != c:
+                            nextDoor = c
+                    Constants.Interact = False
+                    return eval(b.enterDoor(nextDoor.position))
+        if len(Doors) == 1:
+            ListaDoors = pygame.sprite.spritecollide(Player,Doors,False)
+            for b in ListaDoors:
+                if Constants.Interact:
+                    destiny_doors = eval('R'+b.destiny+'.StartRoom(Player,Players,0,0)')[8]
+                    for c in destiny_doors:
+                        Constants.Interact = False
+                        return eval(b.enterDoor(c.position))
 
     if level_type == 0:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
+                Constants.LifeManager.instakill()
                 return R11.StartRoom(Player,Players,100, 280)
             #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
@@ -289,6 +281,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
+                Constants.LifeManager.instakill()
                 return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
@@ -301,7 +294,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             if Player.rect.top > Constants.limitemovimientoY:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
-                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
     
     if level_type == 3:
         #Cambia de Nivel
@@ -314,6 +307,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
+                Constants.LifeManager.instakill()
                 return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
@@ -325,12 +319,13 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
+                Constants.LifeManager.instakill()
                 return R11.StartRoom(Player,Players,100, 280)
         #Cambia de Nivel
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.right < 5:
-                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
     
     if level_type == 6:
         #Cambia de Nivel
@@ -354,8 +349,10 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 if (currentLevel + currentRoom) == '110':
+                    Constants.LifeManager.instakill()
                     return R19.StartRoom(Player,Players,100, 280)
                 else:
+                    Constants.LifeManager.instakill()
                     return R11.StartRoom(Player,Players,100, 280)
                   
     Constants.Screen.fill([0,0,0])
@@ -380,5 +377,12 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         eval('Constants.CannonBalls'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Moving_platforms != None:
         Moving_platforms.draw(Constants.Screen)
+    Constants.LifeManager.update()
+    if Doors != None:
+        Doors.draw(Constants.Screen)
+
+    Constants.Screen.blit(Constants.LifeManager.image, [20,20])
+    Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
+
     pygame.display.flip()
     Clock.tick(30)

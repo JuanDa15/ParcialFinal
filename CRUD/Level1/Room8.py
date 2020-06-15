@@ -5,6 +5,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
 from Classes import Cannon as ca
@@ -19,6 +20,7 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     Blocks = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
     PlatformsY = pygame.sprite.Group()
+    Doors = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
@@ -51,9 +53,13 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformSSR[0]['x']),((Constants.VMovingPlatformSSR[0]['y']) - 15)],Distance,Constants.LongPlatform,-1)
     PlatformsY.add(Temporal)
 
+    for i in range(len(Constants.DoorPosH)):
+        Temporal = Do.Door([(Constants.DoorPosH[i]['x']),(Constants.DoorPosH[i]['y'])],Constants.DoorPosH[i]['width'],Constants.DoorPosH[i]['height'],'18')
+        Doors.add(Temporal)
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = PlatformsY
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players,Blocks,None, None, Cannons, None, None, None, 'Una puerta', PlatformsY, None, None, Constants.Clock, mapa, 6,'7', '9','1','8']
+    return [Players,Blocks,None, None, Cannons, None, None, None, Doors, PlatformsY, None, None, Constants.Clock, mapa, 6,'7', '9','1','8']
