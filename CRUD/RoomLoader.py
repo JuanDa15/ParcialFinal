@@ -201,6 +201,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                         if Player.getRespiracion() == 35:
                             Constants.LifeManager.hitPlayer(10)
                             Player.respiracion = 0
+    if Player.EnAgua:
+        Player.TQuemadura = 0
+        Player.gravity = 0.1
+    else:
+        Player.gravity = 0.5
         
     #Lava
     if Lava != None:
@@ -215,6 +220,17 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         if Player.EnLava == True:
             if Player.InmunidadFuego == False:
                 Constants.LifeManager.hitPlayer(15)
+                Player.TQuemadura = 250
+    if Player.EnLava:
+        Player.gravity = 0.1
+    else:
+        Player.gravity = 0.5
+
+    if Player.TQuemadura > 0:
+        if Player.TQuemadura in [250,200,150,100,50]:
+            Constants.LifeManager.hitPlayer(5)
+        Player.TQuemadura -= 1
+
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -338,17 +354,20 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return R11.StartRoom(Player,Players,100, 280)
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
             #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if nextRoom != None:
-                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                    if (currentLevel + nextRoom) == '32':
+                        return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,10,Player.rect.y - 2)')
+                    else:
+                        return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
     if level_type == 1:
         #Muerte por salir de pantalla
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return R11.StartRoom(Player,Players,100, 280)
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
@@ -374,7 +393,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return R11.StartRoom(Player,Players,100, 280)
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
@@ -386,7 +405,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return R11.StartRoom(Player,Players,100, 280)
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
         #Cambia de Nivel
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
@@ -417,14 +436,15 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 if (currentLevel + currentRoom) == '110':
                     Constants.LifeManager.instakill()
                     return R19.StartRoom(Player,Players,100, 280)
-                else:
+                elif (currentLevel + currentRoom) == '210':
                     Constants.LifeManager.instakill()
-                    return R11.StartRoom(Player,Players,100, 280)
+                    return R29.StartRoom(Player,Players,100, 280)
+                elif (currentLevel + currentRoom) == '32':
+                    Constants.LifeManager.instakill()
+                    return R31.StartRoom(Player,Players,100, 280)
 
     Constants.Screen.fill([0,0,0])
     Players.update()
-    print (Player.quemadura)
-    print (Player.TQuemadura)
     Blocks.update()
     if Lava != None:
         Lava.update()
@@ -455,10 +475,15 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
 
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])
     Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
-    if (currentLevel + currentRoom == '14') or (currentLevel + currentRoom == '17'):
+    if (currentLevel + currentRoom == '14') or (currentLevel + currentRoom == '17') or (currentLevel + currentRoom == '21') or (currentLevel + currentRoom == '25'):
+        Constants.ScoreManager.rect.x = 670
+        Constants.ScoreManager.rect.y = 500
+    elif (currentLevel + currentRoom == '23') or (currentLevel + currentRoom == '24') or (currentLevel + currentRoom == '26'):
+        Constants.ScoreManager.rect.x = 20
         Constants.ScoreManager.rect.y = 500
     else:
-        Constants.ScoreManager.rect.y = 20
+        Constants.ScoreManager.rect.x = 670
+        Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
 

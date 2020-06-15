@@ -30,6 +30,7 @@ class Jugador(pygame.sprite.Sprite):
         self.quemadura = False
         self.TQuemadura = 0
         self.Fquemadura = 0
+        self.gravity = 0.5
 
     def update(self):
         #Posicion y velocidad en x
@@ -57,7 +58,7 @@ class Jugador(pygame.sprite.Sprite):
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
-        self.vely += 0.5
+        self.vely += self.gravity
 
     def UpdateRespiration(self):
         self.respiracion += 1

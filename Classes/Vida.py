@@ -35,7 +35,8 @@ class Vida(pygame.sprite.Sprite):
             self.player.vida = 100
             self.vida = self.SpriteVida.subsurface(0,34 * self.vidas,66,34)
         if self.vidas == 0:
-            quit()
+            self.player.vida = 100
+            
 
         if self.player.vida > 80:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,0,50,24), (150,72))

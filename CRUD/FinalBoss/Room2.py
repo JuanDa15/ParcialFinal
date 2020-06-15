@@ -72,4 +72,4 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, Cannons, Ladders, LavaG, WaterG, Doors, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']
+    return [Players, Blocks, None, None, Cannons, Ladders, LavaG, WaterG, None, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']

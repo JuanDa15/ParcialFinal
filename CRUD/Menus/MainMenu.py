@@ -40,8 +40,8 @@ def Main_Menu():
         if Start.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
-                return 0
                 Click = False
+                return 0
         if Creditos.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:

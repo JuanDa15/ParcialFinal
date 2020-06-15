@@ -27,6 +27,7 @@ pygame.display.set_caption('Tittle Game')
 Screen = pygame.display.set_mode([Width,Height])
 #Clock
 Clock = pygame.time.Clock()
+ClockStart = None
 #Mapa Tutorial
 MapaTutorial = pygame.image.load('Assets\Levels\Tutorial\Tutorial.png')
 #Mapa nivel 1

@@ -27,12 +27,12 @@ def lostMenu(Screen):
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
-                MM.Main_Menu()
+                return 1
         if StarAgain.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
-                Jugador.game(Screen)
                 Click = False
+                return 2
                 
         Click = SM.VolumeModule(Click,Screen)
 
