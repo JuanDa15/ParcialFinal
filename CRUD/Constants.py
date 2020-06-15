@@ -925,7 +925,7 @@ for i in range(len(PotionsPosFB)):
 
 
 #-------------------------------------------------------Sprites-----------------------------#
-SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
-LongPlatform = pygame.image.load('Assets\Sprites\Platforms\LongPlatform.png')
-CannonIDLEL = pygame.image.load('Assets\Sprites\Cannon\Idle.png')
-CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),True,False)
+SmallPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\SmallPlatform.png')
+LongPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\LongPlatform.png')
+CannonIDLEL = pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png')
+CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png'),True,False)
