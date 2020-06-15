@@ -7,6 +7,8 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
 from Classes import pork
+from Classes import Door as Do
+from Classes import Ladder as La
 from Classes import Cannon as ca
 from Classes import Spikes
 from Classes import VerticalMovingPlatform as VMP
@@ -20,6 +22,8 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     Cannons = pygame.sprite.Group()
     Platforms = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
+    Ladders = pygame.sprite.Group()
+    Doors = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
@@ -49,6 +53,10 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
             Blocks.add(Temporal)
             Cannons.add(Temp)
     
+    for i in range(len(Constants.LaddersPosTuto)):
+        Temporal = La.Ladder([(Constants.LaddersPosTuto[i]['x']),(Constants.LaddersPosTuto[i]['y'])],Constants.LaddersPosTuto[i]['width'],Constants.LaddersPosTuto[i]['height'])
+        Ladders.add(Temporal)
+    
     Distance = (Constants.VMovingPlatformET[0]['y'])-(Constants.VMovingPlatformST[0]['y'])
     for i in range(len(Constants.VMovingPlatformST)):
         if Constants.VMovingPlatformST[i]['width'] > 33:
@@ -56,11 +64,15 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         else:
             Temporal = VMP.PlataformaMovil([(Constants.VMovingPlatformST[i]['x']),(Constants.VMovingPlatformST[i]['y'])],Distance,Constants.SmallPlatform,1)
             Platforms.add(Temporal)
+    
+    for i in range(len(Constants.DoorPosTuto)):
+        Temporal = Do.Door([(Constants.DoorPosTuto[i]['x']),(Constants.DoorPosTuto[i]['y'])],Constants.DoorPosTuto[i]['width'],Constants.DoorPosTuto[i]['height'],'11')
+        Doors.add(Temporal)
 
     #Asignacion de lista de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = Platforms
     
-        #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, Cannons, None, None, None, 'Una puerta', Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']
+        #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
+    return [Players, Blocks, None, Puas, Cannons, Ladders, None, None, Doors, Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

@@ -11,7 +11,11 @@ Width = 800
 Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
+LifeManager = None
+inLadder = False
+Subiendo = False
 Space = False
+Interact = False
 PlataformaMovil = False
 MapInfo = None
 #Pygame Init

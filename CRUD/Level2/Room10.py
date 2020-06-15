@@ -5,6 +5,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
 
@@ -16,6 +17,7 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
 
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
+    Doors = pygame.sprite.Group()
 
     for Player in Players:
         Player.rect.x = PositionX
@@ -30,4 +32,8 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for Player in Players:
         Player.Bloques = Blocks
     
-    return [Players, Blocks, None, None, None, None, None, None, None, None, None ,None, Constants.Clock, mapa, 8, None, None, '2', '10']
+    for i in range(len(Constants.DoorFinalBoss)):
+        Temporal = Do.Door([(Constants.DoorFinalBoss[i]['x']),(Constants.DoorFinalBoss[i]['y'])],Constants.DoorFinalBoss[i]['width'],Constants.DoorFinalBoss[i]['height'],'31')
+        Doors.add(Temporal)
+    
+    return [Players, Blocks, None, None, None, None, None, None, Doors, None, None ,None, Constants.Clock, mapa, 8, None, None, '2', '10']
