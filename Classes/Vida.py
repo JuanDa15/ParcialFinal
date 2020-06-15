@@ -5,8 +5,8 @@ from CRUD import Functions
 class Vida(pygame.sprite.Sprite):
     def __init__(self,position,player):
         pygame.sprite.Sprite.__init__(self)
-        self.SpriteSalud = pygame.image.load('Assets\Sprites\Life\Vida Rey.png')
-        self.SpriteVida = pygame.image.load('Assets\Sprites\Life\Live Bar.png')
+        self.SpriteSalud = pygame.image.load('Assets\Images\Sprites\Life\Vida Rey.png')
+        self.SpriteVida = pygame.image.load('Assets\Images\Sprites\Life\Live Bar.png')
         self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,0,50,24), (150,72))
         self.vida = self.SpriteVida.subsurface(0,102,66,34)
         self.rect = self.image.get_rect()
