@@ -23,6 +23,7 @@ class Vida(pygame.sprite.Sprite):
     def instakill(self):
         self.vidas -= 1
         self.player.vida = 100
+        self.vida = self.SpriteVida.subsurface(0,34 * self.vidas,66,34)
 
     def update(self):
         #print("Healt: "+str(self.player.vida)+" Lifes: "+str(self.vidas))
