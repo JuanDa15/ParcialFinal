@@ -1,6 +1,6 @@
 from CRUD.Level1 import Room1 as R1
 from CRUD.Tutorial import TutorialRoom as TR
-from CRUD.Level2 import Room1 as R2
+from CRUD.Level2 import Room10 as R2
 from CRUD import RoomLoader as RL
 from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
@@ -21,7 +21,7 @@ Players.add(j)
 Constants.LifeManager = V.Vida([0,0],j)
 Constants.ScoreManager = Sc.Score([670,20],j)
 #currentLevel = R3.StartRoom(j,Players,150,200)
-currentLevel = R2.StartRoom(j,Players,100, 0)
+currentLevel = R2.StartRoom(j,Players,400, 300)
 #currentLevel = R1.StartRoom(j,Players,300, 280)
 MM.Main_Menu()
 #currentLevel = TR.StartRoom(j,Players,100,100)

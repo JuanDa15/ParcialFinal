@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Level2\/Level2j.json"
+         "target":"Level2j.json"
         }
     },
  "height":19,
@@ -262,6 +262,17 @@
                  "width":805.782,
                  "x":-0.267237,
                  "y":0.973067
+                }, 
+                {
+                 "height":449,
+                 "id":29,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":5,
+                 "x":-0.5,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -468,7 +479,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":29,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.5",

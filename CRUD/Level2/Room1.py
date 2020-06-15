@@ -10,6 +10,7 @@ from Classes import Player as P
 from Classes import Block
 from Classes import Lava
 from Classes import Ladder as La
+from Classes import Water
 
 from pygame.locals import *
 
@@ -20,6 +21,7 @@ def StartRoom(Player, Players, PositionX, PositionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     LavaG = pygame.sprite.Group()
+    WaterG = pygame.sprite.Group()
     Doors = pygame.sprite.Group()
     Ladders = pygame.sprite.Group()
 
@@ -37,10 +39,15 @@ def StartRoom(Player, Players, PositionX, PositionY):
     for Player in Players:
         Player.Bloques = Blocks
 
+    #Creacion Agua
+    for i in range(len(Constants.WaterPosA)):
+        Temporal = Water.Water([(Constants.WaterPosA[i]['x']),(Constants.WaterPosA[i]['y'])], Constants.WaterPosA[i]['width'],Constants.WaterPosA[i]['height'])
+        WaterG.add(Temporal)
     #Creacion Lava
     for i in range(len(Constants.LavaPosA)):
         Temporal = Lava.Lava([(Constants.LavaPosA[i]['x']),(Constants.LavaPosA[i]['y'])], Constants.LavaPosA[i]['width'],Constants.LavaPosA[i]['height'])
         LavaG.add(Temporal)
+        
     #Creacion Puertas
     for i in range(len(Constants.DoorPos2A)):
         Temporal = Do.Door([(Constants.DoorPos2A[i]['x']),(Constants.DoorPos2A[i]['y'])],Constants.DoorPos2A[i]['width'],Constants.DoorPos2A[i]['height'],'110')
@@ -51,4 +58,4 @@ def StartRoom(Player, Players, PositionX, PositionY):
         Ladders.add(Temporal)
 
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, None, Ladders, LavaG, None, Doors, None, None, None,Constants.Clock, mapa, 3, None, '2', '2', '1']
+    return [Players, Blocks, None, None, None, Ladders, LavaG, WaterG, Doors, None, None, None,Constants.Clock, mapa, 3, None, '2', '2', '1']

@@ -6,6 +6,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Vida
 from Classes import HorizontalMovingPlatform as HMP
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
@@ -62,8 +63,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 3
+                if Player.EnLava == True:
+                    Player.velx = 2
+                if Player.EnAgua == True:
+                    Player.velx = 2.5
             if event.key == pygame.K_LEFT:
                 Player.velx = -3
+                if Player.EnLava == True:
+                    Player.velx = -2
+                if Player.EnAgua == True:
+                    Player.velx = -2.5
             if event.key == pygame.K_UP:
                 if Constants.inLadder:
                     Constants.Subiendo = True
@@ -71,6 +80,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.Space = True
                 if Player.EnLava == True:
                     Player.vely = -3
+                if Player.EnAgua == True:
+                    Player.vely = -4
             if event.key == pygame.K_e:
                 Constants.Interact = True
             if event.key == pygame.K_q:
@@ -124,6 +135,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
+
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -168,15 +180,41 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
                     Constants.LifeManager.hitPlayer(20)
+    #Water
+    if Water != None:
+        for Player in Players:
+            CollisionAgua = pygame.sprite.spritecollide(Player, Water, False)
+            if CollisionAgua:
+                Player.EnAgua = True
+                print('Mojado Pai')
+            else:
+                Player.EnAgua = False
+                Player.respiracion = 0
+            
+            for b in CollisionAgua:
+                if Player.rect.top <= b.rect.top:
+                    Player.respiracion = 0
+
+                if Player.rect.top  >= b.rect.top:
+                    if Player.EnAgua == True:
+                        Player.UpdateRespiration()
+                        if Player.getRespiracion() == 35:
+                            Constants.LifeManager.hitPlayer(10)
+                            Player.respiracion = 0
+        
     #Lava
     if Lava != None:
         for Player in Players:
             CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
             if CollisionLava:
                 Player.EnLava = True
-                print('Quemado Pai')
+                print('Quemado Pai')  
             else:
                 Player.EnLava = False
+            
+        if Player.EnLava == True:
+            if Player.InmunidadFuego == False:
+                Constants.LifeManager.hitPlayer(15)
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -385,6 +423,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
 
     Constants.Screen.fill([0,0,0])
     Players.update()
+    print (Player.quemadura)
+    print (Player.TQuemadura)
     Blocks.update()
     if Lava != None:
         Lava.update()

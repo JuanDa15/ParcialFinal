@@ -794,6 +794,7 @@ ApplesPos2H = MapInfo['layers'][9]['objects']
 PotionsPos2H = MapInfo['layers'][10]['objects']
 DiamondPos2H = MapInfo['layers'][11]['objects']
 CoinsPos2H = MapInfo['layers'][12]['objects']
+LavaPos2H =  MapInfo['layers'][13]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2H)):
