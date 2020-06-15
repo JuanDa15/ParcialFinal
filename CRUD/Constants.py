@@ -11,6 +11,7 @@ Width = 800
 Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
+LifeManager = None
 Space = False
 PlataformaMovil = False
 MapInfo = None

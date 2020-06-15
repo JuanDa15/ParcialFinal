@@ -13,6 +13,7 @@ class Jugador(pygame.sprite.Sprite):
         self.velx = 0
         self.vely = 0
         self.vida = 100
+        self.invisibility = 0
         self.EnAire = False
         self.Bloques = None
         self.Coins = 0
