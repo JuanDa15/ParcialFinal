@@ -16,6 +16,7 @@ ScoreManager = None
 inLadder = False
 Subiendo = False
 Space = False
+Hit = False
 AppleConsumed = False
 AppleTime = 0
 Interact = False

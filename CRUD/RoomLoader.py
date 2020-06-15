@@ -12,6 +12,8 @@ from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
 from Classes import Block
 from Classes import pork
+from Classes import Brujas
+from Classes import Cobra
 from Classes import Score as Sc
 from Classes import Cannon as ca
 from Classes import Lava
@@ -44,7 +46,7 @@ from CRUD.FinalBoss import Room2 as R32
 from pygame.locals import *
 
 #(Jugador, Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,Moving_platforms,Levers,Instakill,Clock,mapa,level_type,prevRoom,nextRoom,currentLevel,currentRoom):
+def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors,Moving_platforms,Levers,Instakill,Clock,mapa,level_type,prevRoom,nextRoom,currentLevel,currentRoom):
     #Movimiento Jugador
     # --type
     # 0 - StartLevel ->  [=
@@ -62,12 +64,14 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
+                Player.DireccionHammer = 1
                 Player.velx = 3
                 if Player.EnLava == True:
                     Player.velx = 2
                 if Player.EnAgua == True:
                     Player.velx = 2.5
             if event.key == pygame.K_LEFT:
+                Player.DireccionHammer = 0
                 Player.velx = -3
                 if Player.EnLava == True:
                     Player.velx = -2
@@ -86,6 +90,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.Interact = True
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = True
+            if event.key == pygame.K_w:
+                Constants.Hit = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
@@ -99,6 +105,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.Interact = False
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = False
+            if event.key == pygame.K_w:
+                Constants.Hit = False
 
     if Player.EnAire == False:
         if Player.Charge <= 1.3 and Constants.Space:
@@ -164,22 +172,19 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             if ball.getDistance() == 50:
                 eval('Constants.CannonBalls'+currentLevel+currentRoom+'.remove(ball)')
     #Enemigos
-    if Cerdos != None:
+    if Enemies != None:
         for Player in Players:
-            listaColisionCerdos=pygame.sprite.spritecollide(Player,Cerdos,False)
-            for b in listaColisionCerdos:
-                if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                    print("Encerdado pai")
+            listaColisionEnemy = pygame.sprite.spritecollide(Player,Enemies,False)
+            for b in listaColisionEnemy:
+                if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.cobra):
+                    #El cerdito ataca (b)
                     Constants.LifeManager.hitPlayer(20)
-                elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                    print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(20)
-                elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                    print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(20)
-                elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                    print("Encerdado pai")
-                    Constants.LifeManager.hitPlayer(20)
+        for Hammer in Player.HammerGroup:
+            listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
+            for b in listaColisionHammer:
+                if Constants.Hit:
+                    Enemies.remove(b)
+                    print("hit - "+str(Hammer.rect.x))
     #Water
     if Water != None:
         for Player in Players:
@@ -448,19 +453,21 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     Blocks.update()
     if Lava != None:
         Lava.update()
-    if Cerdos != None:
-        Cerdos.update()
+    if Enemies != None:
+        Enemies.update()
     if Cannons != None:
         Cannons.update()
         eval('Constants.CannonBalls'+currentLevel+currentRoom+'.update()')
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
+    Player.HammerGroup.draw(Constants.Screen)
     Players.draw(Constants.Screen)
+    Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
-    if Cerdos != None:
-        Cerdos.draw(Constants.Screen)
+    if Enemies != None:
+        Enemies.draw(Constants.Screen)
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
@@ -477,10 +484,10 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
     if (currentLevel + currentRoom == '14') or (currentLevel + currentRoom == '17') or (currentLevel + currentRoom == '21') or (currentLevel + currentRoom == '25'):
         Constants.ScoreManager.rect.x = 670
-        Constants.ScoreManager.rect.y = 500
+        Constants.ScoreManager.rect.y = 490
     elif (currentLevel + currentRoom == '23') or (currentLevel + currentRoom == '24') or (currentLevel + currentRoom == '26'):
         Constants.ScoreManager.rect.x = 20
-        Constants.ScoreManager.rect.y = 500
+        Constants.ScoreManager.rect.y = 490
     else:
         Constants.ScoreManager.rect.x = 670
         Constants.ScoreManager.rect.y = 10
