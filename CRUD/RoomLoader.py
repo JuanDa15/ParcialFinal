@@ -67,21 +67,29 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     Player.velx = 2
                 if Player.EnAgua == True:
                     Player.velx = 2.5
+                Player.frame = 0
+                Player.direccion = True
             if event.key == pygame.K_LEFT:
+                Player.frame = 0
                 Player.velx = -3
                 if Player.EnLava == True:
                     Player.velx = -2
                 if Player.EnAgua == True:
                     Player.velx = -2.5
+                Player.frame = 0
+                Player.direccion = False
             if event.key == pygame.K_UP:
                 if Constants.inLadder:
                     Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
+                Player.frame = 0
+                Player.accion = 3
                 Constants.Space = True
                 if Player.EnLava == True:
                     Player.vely = -3
                 if Player.EnAgua == True:
                     Player.vely = -4
+                Player.EnAire = True
             if event.key == pygame.K_e:
                 Constants.Interact = True
             if event.key == pygame.K_q:
@@ -443,6 +451,12 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     Constants.LifeManager.instakill()
                     return R31.StartRoom(Player,Players,100, 280)
 
+                    #return R11.StartRoom(Player,Players,100, 280)
+
+    #Timer
+    Fuente = pygame.font.SysFont("Arial",30)
+    Tiempo = int(pygame.time.get_ticks() / 1000)
+
     Constants.Screen.fill([0,0,0])
     Players.update()
     Blocks.update()
@@ -473,6 +487,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Doors != None:
         Doors.draw(Constants.Screen)
 
+    #Mostrar vidas y salud
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])
     Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
     if (currentLevel + currentRoom == '14') or (currentLevel + currentRoom == '17') or (currentLevel + currentRoom == '21') or (currentLevel + currentRoom == '25'):
@@ -486,6 +501,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
+
+    #Mostrar Tiempo
+    Contador = Fuente.render(str(Tiempo),0,(255,255,255))
+    Constants.Screen.blit(Contador, [Constants.Width -80 ,5])
+
 
     pygame.display.flip()
     Clock.tick(30)
