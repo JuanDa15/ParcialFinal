@@ -11,6 +11,7 @@ from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
 from Classes import Block
 from Classes import pork
+from Classes import Score as Sc
 from Classes import Cannon as ca
 from Classes import Lava
 from Classes import CannonBall as cb
@@ -72,6 +73,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     Player.vely = -3
             if event.key == pygame.K_e:
                 Constants.Interact = True
+            if event.key == pygame.K_q:
+                Constants.AppleConsumed = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
@@ -83,6 +86,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Constants.Space = False
             if event.key == pygame.K_e:
                 Constants.Interact = False
+            if event.key == pygame.K_q:
+                Constants.AppleConsumed = False
 
     if Player.EnAire == False:
         if Player.Charge <= 1.3 and Constants.Space:
@@ -92,6 +97,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             Player.Charge = 1.0
             Player.EnAire = True
 
+    if Constants.AppleConsumed and Player.Apples > 0 and Player.vida < 100:
+        if Constants.AppleTime == 0:
+            Player.vida += 20
+            Player.Apples -= 1
+            Constants.AppleTime = 250
+            Constants.AppleConsumed = False
+    if Constants.AppleTime > 0:
+        Constants.AppleTime -= 1
+
+
     #Colisiones Jugador con Puas
     if Puas != None:
         for Player in Players:
@@ -99,17 +114,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(5)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(5)
-    #Interaccion Cañones
+                    Constants.LifeManager.hitPlayer(10)
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -219,16 +233,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
     #Escaleras
     for Player in Players:
         if Ladders != None:
@@ -401,6 +415,12 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
 
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])
     Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
+    if (currentLevel + currentRoom == '14') or (currentLevel + currentRoom == '17'):
+        Constants.ScoreManager.rect.y = 500
+    else:
+        Constants.ScoreManager.rect.y = 20
+    Constants.ScoreManager.Scores.draw(Constants.Screen)
+    Constants.ScoreManager.update()
 
     pygame.display.flip()
     Clock.tick(30)

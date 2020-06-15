@@ -36,6 +36,10 @@ def TittleFont(Size):
     TittleFont = pygame.font.Font("Assets\Fonts\Pixelmania.ttf", Size)
     return TittleFont
 
+def TextFont(Size):
+    textFont = pygame.font.Font("Assets\Fonts\pixelmix_bold.ttf", Size)
+    return textFont
+
 def getArchive(ArchiveID):
     if ArchiveID == 'TittleFont':
         return TittleFont
