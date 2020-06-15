@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/..\/Final-ProyectMaps-Information\/Assets\/Levels\/Level2\/Level2b.json"
+         "target":"Level2b.json"
         }
     },
  "height":19,
@@ -123,7 +123,7 @@
                  "y":-0.72861
                 }, 
                 {
-                 "height":25.0261289473684,
+                 "height":25.0261,
                  "id":2,
                  "name":"",
                  "rotation":0,
@@ -134,7 +134,7 @@
                  "y":63.3891
                 }, 
                 {
-                 "height":29.3978289473684,
+                 "height":29.3978,
                  "id":3,
                  "name":"",
                  "rotation":0,
@@ -145,7 +145,7 @@
                  "y":78.6899
                 }, 
                 {
-                 "height":23.9209210526316,
+                 "height":23.9209,
                  "id":4,
                  "name":"",
                  "rotation":0,
@@ -156,7 +156,7 @@
                  "y":97.6338
                 }, 
                 {
-                 "height":25.4027368421053,
+                 "height":25.4027,
                  "id":5,
                  "name":"",
                  "rotation":0,
@@ -167,7 +167,7 @@
                  "y":112.206
                 }, 
                 {
-                 "height":23.9455368421053,
+                 "height":23.9455,
                  "id":6,
                  "name":"",
                  "rotation":0,
@@ -178,7 +178,7 @@
                  "y":129.693
                 }, 
                 {
-                 "height":27.9406289473684,
+                 "height":27.9406,
                  "id":7,
                  "name":"",
                  "rotation":0,
@@ -189,7 +189,7 @@
                  "y":144.265
                 }, 
                 {
-                 "height":31.5096815789474,
+                 "height":31.5097,
                  "id":8,
                  "name":"",
                  "rotation":0,
@@ -244,14 +244,14 @@
                  "y":126.05
                 }, 
                 {
-                 "height":36.4305,
+                 "height":96.7941363636364,
                  "id":13,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32.0588,
-                 "x":479.426,
+                 "width":31.1497090909091,
+                 "x":480.335090909091,
                  "y":255.742
                 }, 
                 {
@@ -261,8 +261,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":193.082,
-                 "x":448.095,
+                 "width":158.150181818182,
+                 "x":483.026818181818,
                  "y":320.588
                 }, 
                 {
@@ -272,8 +272,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":160.294,
-                 "x":479.426,
+                 "width":153.384909090909,
+                 "x":486.335090909091,
                  "y":289.258
                 }, 
                 {
@@ -508,15 +508,15 @@
          "name":"Ladders",
          "objects":[
                 {
-                 "height":96.5,
+                 "height":95.9545454545454,
                  "id":37,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31,
+                 "width":31.6363636363636,
                  "x":448,
-                 "y":319.5
+                 "y":320.045454545455
                 }],
          "opacity":1,
          "type":"objectgroup",

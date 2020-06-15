@@ -857,6 +857,7 @@ DiamondPos2J = MapInfo['layers'][10]['objects']
 PotionsPos2J = MapInfo['layers'][11]['objects']
 CoinsPos2J = MapInfo['layers'][12]['objects']
 Limit2J = MapInfo['layers'][13]['objects']
+Door2j = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2J)):
@@ -913,6 +914,7 @@ PotionsPosFB = MapInfo['layers'][9]['objects']
 CannonsPosFB = MapInfo['layers'][10]['objects']
 LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
+DoorPosFB =  MapInfo['layers'][13]['objects']
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosFB)):
