@@ -55,7 +55,6 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     
     for i in range(len(Constants.LaddersPosTuto)):
         Temporal = La.Ladder([(Constants.LaddersPosTuto[i]['x']),(Constants.LaddersPosTuto[i]['y'])],Constants.LaddersPosTuto[i]['width'],Constants.LaddersPosTuto[i]['height'])
-        print(Temporal)
         Ladders.add(Temporal)
     
     Distance = (Constants.VMovingPlatformET[0]['y'])-(Constants.VMovingPlatformST[0]['y'])

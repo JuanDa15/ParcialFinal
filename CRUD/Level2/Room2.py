@@ -10,6 +10,7 @@ from Classes import Player as P
 from Classes import Block
 from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
+from Classes import Ladder as La
 
 def StartRoom(Player ,Players ,PositionX , PositionY):
     mapa = Constants.mapa2B
@@ -17,6 +18,7 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     Platforms = pygame.sprite.Group()
+    Ladders = pygame.sprite.Group()
     
     #Definicion posicion inicial
     for Player in Players:
@@ -38,5 +40,10 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = Platforms
+    
+    for i in range(len(Constants.LaddersPosB)):
+        Temporal = La.Ladder([(Constants.LaddersPosB[i]['x']),(Constants.LaddersPosB[i]['y'])],Constants.LaddersPosB[i]['width'],Constants.LaddersPosB[i]['height'])
+        Ladders.add(Temporal)
+
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, None, None, None, None, None, Platforms, None, None, Constants.Clock, mapa, 3, '1', '3', '2', '2']
+    return [Players, Blocks, None, None, None, Ladders, None, None, None, Platforms, None, None, Constants.Clock, mapa, 3, '1', '3', '2', '2']
