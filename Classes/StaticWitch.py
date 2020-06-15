@@ -1,7 +1,7 @@
 import pygame
 from CRUD import Functions
 
-class cerdo(pygame.sprite.Sprite):
+class StaticWitch(pygame.sprite.Sprite):
     def __init__(self,position, pixeles):
         pygame.sprite.Sprite.__init__(self)
         self.Correr = pygame.image.load('Assets\Sprites\Pork\Run (34x28).png')
@@ -17,10 +17,10 @@ class cerdo(pygame.sprite.Sprite):
         self.Bloques = None
 
         #animacion
-        self.frame = 0
-        self.direccion = True
-        self.espera = 4
-        self.animacion = (10,0,19,22,44,0,19,22,79,0,18,22,113,0,18,22,147,0,18,22,181,0,18,22)
+        #self.frame = 0
+        #self.direccion = True
+        #self.espera = 4
+        #self.animacion = (10,0,19,22,44,0,19,22,79,0,18,22,113,0,18,22,147,0,18,22,181,0,18,22)
         
     def update(self):
         #Posicion y velocidad en x
@@ -62,6 +62,7 @@ class cerdo(pygame.sprite.Sprite):
             self.Movidos = self.Pixeles
             self.velx = self.velx * -1
 
+        """
         if self.frame < len(self.animacion) - 1:
             if self.direccion == True:
                 self.image = pygame.transform.flip(self.Correr.subsurface(self.animacion[self.frame],self.animacion[self.frame+1],self.animacion[self.frame+2],self.animacion[self.frame+3]),True,False)
@@ -74,3 +75,4 @@ class cerdo(pygame.sprite.Sprite):
                 self.espera -= 1 
         else:
             self.frame = 0 
+            """
