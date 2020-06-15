@@ -1,3 +1,12 @@
+import pygame
+
+def draw_text(text, font, color,surface, x, y):
+    TittleText = font.render(text, 1, color)
+    TTrect = TittleText.get_rect()
+    print (TTrect.w)
+    TTrect.topleft = (x,y)
+    surface.blit(TittleText,TTrect)
+
 def SelectColor(ColorName):
     if ColorName == 'Yellow':
         return [255,255,0]
@@ -23,3 +32,13 @@ def SelectColor(ColorName):
         return [0,0,0]
     if ColorName == 'Orange':
         return [227,113,36]
+
+def MakeImage(X,Y,surface,image):
+    ButtonRect = image.get_rect()
+    ButtonRect.topleft = (X,Y)
+    surface.blit(image,ButtonRect)
+
+def getSpecifications():
+    #Specifications [width,height]
+    Specifications = [800,608]
+    return Specifications     

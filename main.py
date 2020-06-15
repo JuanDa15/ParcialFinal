@@ -3,7 +3,12 @@ from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level2 import Room1 as R2
 from CRUD import RoomLoader as RL
 from CRUD.FinalBoss import Room2 as R3
+from CRUD.Menus import MainMenu as MM
+from CRUD.Menus import LostScreen as LS
+from CRUD.Menus import VictoryScreen as VS
+from CRUD import Constants
 from Classes import Vida as V
+
 
 from CRUD import Constants
 import pygame
@@ -22,3 +27,8 @@ while(True):
     if nextLevel != None:
         currentLevel = nextLevel.copy()
         nextLevel = None
+"""
+
+MM.Main_Menu()
+#LS.lostMenu(Constants.Screen)
+#VS.Victory_Menu(Constants.Screen)
