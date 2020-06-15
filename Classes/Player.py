@@ -7,8 +7,8 @@ class Jugador(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         #Orden = (Idle, Correr, Hit)
-        self.Sprites = (pygame.image.load('Assets\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Sprites\Player\Run (78x58).png'),
-                        pygame.image.load('Assets\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Sprites\Player\Jump (78x58).png'))
+        self.Sprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),
+                        pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'))
         self.image = self.Sprites[0].subsurface(7,14,37,28)
         #self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
