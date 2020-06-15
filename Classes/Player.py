@@ -26,6 +26,8 @@ class Jugador(pygame.sprite.Sprite):
 
     def update(self):
         #Posicion y velocidad en x
+        if self.vida > 100:
+            self.vida = 100
         self.rect.x += self.velx
         #colision x--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)

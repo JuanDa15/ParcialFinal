@@ -15,8 +15,8 @@ Screen = Constants.Screen
 def Main_Menu():
     #Definition of variables-----------------
     #music upload
-    pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
-    pygame.mixer.music.play(-1)
+    #pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
+    #pygame.mixer.music.play(-1)
     Click = False
     while True:
     
@@ -39,6 +39,7 @@ def Main_Menu():
         if Start.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                return 0
                 Click = False
         if Creditos.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonSelectedImage'))
