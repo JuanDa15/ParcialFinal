@@ -2,46 +2,36 @@
 import pygame
 import sys
 #Import Packages
-from Functions import MenuFunctions as MF
-from GUI import MainMenu as MM
-from Classes import background as BG
-from Functions import UploadesFiles as UF
-from Functions import SoundModule as SM
-#Definition of constant
-pygame.display.set_caption('Victory')
-Screen = pygame.display.set_mode([MF.getSpecifications()[0],MF.getSpecifications()[1]])
+from CRUD import Functions
+from CRUD.Menus import MainMenu as MM
+from CRUD import UploadedFiles as UF
+from CRUD import SoundModule as SM
+
 #------------------------------
-def Victory_Menu():
+def Victory_Menu(Screen):
     #music upload
     pygame.mixer.music.load("Assets\Sounds\winner.ogg")
     pygame.mixer.music.play(-1)
     #Definition of variables-----------------
     Click = False
-    back = pygame.sprite.Group()
-    Background1 = BG.Background([0,0],MF.getSpecifications()[0],MF.getSpecifications()[1])
-    back.add(Background1)
-    
     while True:
         #buttons
-        MainMenu = pygame.Rect(440,110,200,50)
-        StarAgain = pygame.Rect(440,170,200,50)
+        MainMenu = pygame.Rect(300,110,200,50)
+        StarAgain = pygame.Rect(300,170,200,50)
         #Draw in screen
-        Screen.fill(MF.SelectColor('Black'))   
-        back.update()
-        back.draw(Screen)
-        MF.MakeImage(440,110,Screen,UF.getArchive('ButtonImage'))
-        MF.MakeImage(440,170,Screen,UF.getArchive('ButtonImage'))
-        MF.MakeImage(406,227,Screen,UF.getArchive('VictorySkeleton'))
+        Screen.fill(Functions.SelectColor('Black'))   
+        Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonImage'))
+        Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonImage'))
         #get mouse position--------------
         [mouse_x , mouse_y] = pygame.mouse.get_pos()
         
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
-            MF.MakeImage(440,110,Screen,UF.getArchive('ButtonSelectedImage'))
+            Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
                 MM.Main_Menu()
                 Click = False
         if StarAgain.collidepoint ([mouse_x,mouse_y]):
-            MF.MakeImage(440,170,Screen,UF.getArchive('ButtonSelectedImage'))
+            Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
                 pass
                 Click = False
@@ -61,7 +51,8 @@ def Victory_Menu():
                 if event.button == 1:
                     Click = True
         #update
-        MF.draw_text('YOU WIN',UF.TittleFont(50),MF.SelectColor('White'),Screen,314,500)
-        MF.draw_text('MAIN MENU',UF.getArchive('ButtonFont'),MF.SelectColor('White'),Screen,450.5,118.5)
-        MF.draw_text('RESTART',UF.getArchive('ButtonFont'),MF.SelectColor('White'),Screen,471,178.5)
+        Functions.draw_text('YOU WIN',UF.TittleFont(50),Functions.SelectColor('White'),Screen,174,400)
+        Functions.draw_text('MAIN MENU',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,310,118.5)
+        Functions.draw_text('RESTART',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,332,178.5)
+        pygame.display.update()
         pygame.display.flip()

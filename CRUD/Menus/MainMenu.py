@@ -7,6 +7,7 @@ from CRUD import UploadedFiles as UF
 from CRUD import SoundModule as SM
 from CRUD import Constants
 from CRUD.Menus import Credits
+from CRUD.Menus import Controls
 
 pygame.display.set_caption('Main Menu')
 Screen = Constants.Screen
@@ -14,7 +15,7 @@ Screen = Constants.Screen
 def Main_Menu():
     #Definition of variables-----------------
     #music upload
-    pygame.mixer.music.load("Assets\Sounds\opening_theme.wav")
+    pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
     pygame.mixer.music.play(-1)
     Click = False
     while True:
@@ -47,6 +48,7 @@ def Main_Menu():
         if Controles.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,370,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                Controls.ControlsScreen(Screen)
                 Click = False
         if Close.collidepoint([mouse_x,mouse_y]):
             Functions.MakeImage(300,430,Screen,UF.getArchive('ButtonSelectedImage'))
@@ -75,4 +77,5 @@ def Main_Menu():
         Functions.draw_text('CREDITS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,331.5,318.5)
         Functions.draw_text('CONTROLS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,319,378.5)
         Functions.draw_text('CLOSE',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,353,438.5)
+        pygame.display.update()
         pygame.display.flip()

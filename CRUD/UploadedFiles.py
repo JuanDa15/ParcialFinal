@@ -21,6 +21,8 @@ SoundDownImg = pygame.image.load("Assets\Images\MenuImages\Sound-Down.png")
 SoundDownSelectedImg = pygame.image.load("Assets\Images\MenuImages\Sound-DownSelected.png")
 BackImage = pygame.image.load("Assets\Images\MenuImages\Back-Arrow.png")
 BackImageSelected = pygame.image.load("Assets\Images\MenuImages\Back-ArrowSelected.png")
+NextImage = pygame.image.load(r"Assets\Images\MenuImages\Next-Button.png")
+NextImageSelected = pygame.image.load(r"Assets\Images\MenuImages\Next-Buttonselected.png")
 #Images
 Container = pygame.image.load("Assets\Images\MenuImages\Contenedor.png")
 LeftArrow =pygame.image.load("Assets\Images\MenuImages\Left-Arrow.png")
@@ -76,3 +78,7 @@ def getArchive(ArchiveID):
         return Ekey
     if ArchiveID == 'Bkey':
         return Bkey
+    if ArchiveID == 'NextImage':
+        return NextImage
+    if ArchiveID == 'NextImageSelected':
+        return NextImageSelected
