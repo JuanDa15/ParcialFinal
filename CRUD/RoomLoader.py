@@ -64,6 +64,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Player.velx = -3
             if event.key == pygame.K_SPACE:
                 Constants.Space = True
+                if Player.EnLava == True:
+                    Player.vely = -3
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
@@ -94,6 +96,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                     print("chuzao pai")
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
+    #Interaccion Cañones
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -138,6 +141,18 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
                     Player.vida -= 1
+    #Lava
+    if Lava != None:
+        for Player in Players:
+            CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
+            if CollisionLava:
+                Player.EnLava = True
+                print('Quemado Pai')
+            else:
+                Player.EnLava = False
+
+
+
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
         for i in Moving_platforms:
@@ -256,6 +271,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
                     Player.vida -= 1
+
         #Recoger Monedas
         ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
         for i in ListaMonedas:
@@ -361,6 +377,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     Constants.Screen.fill([0,0,0])
     Players.update()
     Blocks.update()
+    if Lava != None:
+        Lava.update()
     if Cerdos != None:
         Cerdos.update()
     if Cannons != None:
@@ -370,6 +388,8 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Players.draw(Constants.Screen)
+    if Lava != None:
+        pass
     if Cerdos != None:
         Cerdos.draw(Constants.Screen)
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')

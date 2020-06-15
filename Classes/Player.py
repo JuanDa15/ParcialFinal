@@ -14,6 +14,7 @@ class Jugador(pygame.sprite.Sprite):
         self.vely = 0
         self.vida = 100
         self.EnAire = False
+        self.EnLava = False
         self.Bloques = None
         self.Coins = 0
         self.Apples = 0
