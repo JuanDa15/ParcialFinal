@@ -453,9 +453,6 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
 
                     #return R11.StartRoom(Player,Players,100, 280)
 
-    #Timer
-    Fuente = pygame.font.SysFont("Arial",30)
-    Tiempo = int(pygame.time.get_ticks() / 1000)
 
     Constants.Screen.fill([0,0,0])
     Players.update()
@@ -473,11 +470,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     Players.draw(Constants.Screen)
     if Lava != None:
         pass
-    if Cerdos != None:
-        Cerdos.draw(Constants.Screen)
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
+    if Cerdos != None:
+        Cerdos.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
         eval('Constants.CannonBalls'+currentLevel+currentRoom+'.draw(Constants.Screen)')
@@ -501,10 +498,6 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
-
-    #Mostrar Tiempo
-    Contador = Fuente.render(str(Tiempo),0,(255,255,255))
-    Constants.Screen.blit(Contador, [Constants.Width -80 ,5])
 
 
     pygame.display.flip()

@@ -29,7 +29,7 @@ Screen = pygame.display.set_mode([Width,Height])
 Clock = pygame.time.Clock()
 ClockStart = None
 #Mapa Tutorial
-MapaTutorial = pygame.image.load('Assets\Levels\Tutorial\Tutorial.png')
+MapaTutorial = pygame.image.load('Assets\Levels\Tutorial\Tutorial2.png')
 #Mapa nivel 1
 mapa1A = pygame.image.load('Assets\Levels\Level1\Level1a.png')
 mapa1B = pygame.image.load('Assets\Levels\Level1\Level1b.png')

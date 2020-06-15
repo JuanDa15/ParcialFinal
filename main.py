@@ -1,4 +1,4 @@
-from CRUD.Level1 import Room1 as R1
+from CRUD.Level1 import Room4 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
@@ -26,7 +26,7 @@ def load_game():
     #currentLevel = R3.StartRoom(j,Players,150,200)
     #currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)
-    currentLevel = TR.StartRoom(j,Players,100,100)
+    currentLevel = R1.StartRoom(j,Players,100,100)
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players,currentLevel]
 
