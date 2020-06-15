@@ -5,13 +5,13 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
 from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
 
 def StartRoom(Player ,Players ,PositionX , PositionY):
-
     mapa = Constants.mapa2B
 
     #Definicion de Grupos

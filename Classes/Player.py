@@ -5,7 +5,7 @@ from CRUD import Functions
 class Jugador(pygame.sprite.Sprite):
     def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([26,32])
+        self.image = pygame.Surface([24,28])
         self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]

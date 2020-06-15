@@ -13,7 +13,7 @@ from Classes import Block
 from Classes import pork
 from Classes import Cannon as ca
 from Classes import CannonBall as cb
-from CRUD.Tutorial import TutorialRoom as R01
+from CRUD.Tutorial import TutorialRoom as R0
 from Classes import VerticalMovingPlatform as VMP
 from Classes import HorizontalMovingPlatform as HMP
 from CRUD.Level1 import Room1 as R11
@@ -62,15 +62,24 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 Player.velx = 3
             if event.key == pygame.K_LEFT:
                 Player.velx = -3
+            if event.key == pygame.K_UP:
+                if Constants.inLadder:
+                    Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
                 Constants.Space = True
+            if event.key == pygame.K_e:
+                Constants.Interact = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
             if event.key == pygame.K_LEFT:
                 Player.velx = 0
+            if event.key == pygame.K_UP:
+                Constants.Subiendo = False
             if event.key == pygame.K_SPACE:
                 Constants.Space = False
+            if event.key == pygame.K_e:
+                Constants.Interact = False
     
     if Player.EnAire == False:
         if Player.Charge <= 1.3 and Constants.Space:
@@ -206,25 +215,57 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
                     Constants.LifeManager.hitPlayer(25)
-        #Recoger Monedas
-        ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
-        for i in ListaMonedas:
-            Constants.CoinsList.remove(i)
-        if ListaMonedas:
-            Player.Coins = Player.Coins + 1
+    #Escaleras
+    for Player in Players:
+        if Ladders != None:
+            ListaLadders = pygame.sprite.spritecollide(Player,Ladders,False)
+            if ListaLadders:
+                Constants.inLadder = True
+            else:
+                Constants.inLadder = False
+            
+    if Constants.Subiendo and Constants.inLadder:
+        Player.vely = -1.4
 
-        #Recoger Manzanas
-        ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
-        for i in ListaManzanas:
-            Constants.ApplesList.remove(i)
-        if ListaManzanas:
-            Player.Apples = Player.Apples + 1
-        #Recoger Diamantes
-        ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
-        for i in ListaDiamantes:
-            Constants.DiamondsList.remove(i)
-        if ListaDiamantes:
-            Player.Diamonds = Player.Diamonds + 1
+    #Recoger Monedas
+    ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
+    for i in ListaMonedas:
+        Constants.CoinsList.remove(i)
+    if ListaMonedas:
+        Player.Coins = Player.Coins + 1
+
+    #Recoger Manzanas
+    ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
+    for i in ListaManzanas:
+        Constants.ApplesList.remove(i)
+    if ListaManzanas:
+        Player.Apples = Player.Apples + 1
+    #Recoger Diamantes
+    ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
+    for i in ListaDiamantes:
+        Constants.DiamondsList.remove(i)
+    if ListaDiamantes:
+        Player.Diamonds = Player.Diamonds + 1
+    
+    #Puertas
+    if Doors != None:
+        if len(Doors) == 2:
+            ListaDoors = pygame.sprite.spritecollide(Player,Doors,False)
+            for b in ListaDoors:
+                if Constants.Interact:
+                    for c in Doors:
+                        if b != c:
+                            nextDoor = c
+                    Constants.Interact = False
+                    return eval(b.enterDoor(nextDoor.position))
+        if len(Doors) == 1:
+            ListaDoors = pygame.sprite.spritecollide(Player,Doors,False)
+            for b in ListaDoors:
+                if Constants.Interact:
+                    destiny_doors = eval('R'+b.destiny+'.StartRoom(Player,Players,0,0)')[8]
+                    for c in destiny_doors:
+                        Constants.Interact = False
+                        return eval(b.enterDoor(c.position))
 
     if level_type == 0:
         #Muerte por salir de pantalla
@@ -253,7 +294,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             if Player.rect.top > Constants.limitemovimientoY:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,-6)')
             if Player.rect.right < 5:
-                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
     
     if level_type == 3:
         #Cambia de Nivel
@@ -284,7 +325,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
             if Player.rect.right < 5:
-                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y)')
+                return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
     
     if level_type == 6:
         #Cambia de Nivel
@@ -337,5 +378,7 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Moving_platforms != None:
         Moving_platforms.draw(Constants.Screen)
     Constants.LifeManager.update()
+    if Doors != None:
+        Doors.draw(Constants.Screen)
     pygame.display.flip()
     Clock.tick(30)

@@ -20,6 +20,7 @@ class Vida(pygame.sprite.Sprite):
     
     def instakill(self):
         self.vidas -= 1
+        self.player.vida = 100
 
     def update(self):
         #print("Healt: "+str(self.player.vida)+" Lifes: "+str(self.vidas))
