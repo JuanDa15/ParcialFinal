@@ -154,15 +154,15 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("Encerdado pai")
                     Constants.LifeManager.hitPlayer(20)
-        #Lava
-        if Lava != None:
-            for Player in Players:
-                CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
-                if CollisionLava:
-                    Player.EnLava = True
-                    print('Quemado Pai')
-                else:
-                    Player.EnLava = False
+    #Lava
+    if Lava != None:
+        for Player in Players:
+            CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
+            if CollisionLava:
+                Player.EnLava = True
+                print('Quemado Pai')
+            else:
+                Player.EnLava = False
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
