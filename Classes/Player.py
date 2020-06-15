@@ -6,15 +6,32 @@ class Jugador(pygame.sprite.Sprite):
     def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
 
-
         #Orden = (Idle, Correr, Hit)
-        self.Sprites = (pygame.image.load('Assets\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Sprites\Player\Run (78x58).png'),
-                        pygame.image.load('Assets\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Sprites\Player\Jump (78x58).png'))
+        self.Sprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),
+                        pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'))
         self.image = self.Sprites[0].subsurface(7,14,37,28)
         #self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
+
+        self.HammerGroup = pygame.sprite.Group()
+        self.Hammer = pygame.sprite.Sprite()
+        self.Hammer.image = pygame.surface.Surface([40,28])
+        self.Hammer.image.fill((255,0,0))
+        self.Hammer.rect = self.Hammer.image.get_rect()
+        self.Hammer.rect.x = position[0]
+        self.Hammer.rect.y = position[1]
+        self.HammerGroup.add(self.Hammer)
+        self.DireccionHammer = 0
+
+        self.Animacion = pygame.sprite.Sprite()
+        self.AnimacionSprites = pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png')
+        self.Animacion.image = self.AnimacionSprites.subsurface(9,18,37,25)
+        self.Animacion.rect = self.Animacion.image.get_rect()
+        self.Animacion.rect.x = position[0]
+        self.Animacion.rect.y = position[1]
+
         self.velx = 0
         self.vely = 0
         self.vida = 100
@@ -92,6 +109,13 @@ class Jugador(pygame.sprite.Sprite):
             self.frame = 0
 
         self.vely += self.gravity
+        self.Hammer.rect.x = self.rect.x
+        self.Hammer.rect.y = self.rect.y
+
+        self.Animacion.rect.x = self.rect.x
+        self.Animacion.rect.y = self.rect.y
+        if self.DireccionHammer == 0:
+            self.Hammer.rect.x -= 16
 
     def UpdateRespiration(self):
         self.respiracion += 1
