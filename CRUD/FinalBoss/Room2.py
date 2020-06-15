@@ -8,6 +8,9 @@ from CRUD import Constants
 from Classes import Block
 from Classes import Cannon as ca
 from Classes import Ladder as La
+from Classes import Lava
+from Classes import Water
+from Classes import Door as Do
 
 from pygame.locals import *
 
@@ -18,11 +21,19 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     Blocks = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
     Ladders = pygame.sprite.Group()
+    LavaG = pygame.sprite.Group()
+    WaterG = pygame.sprite.Group()
+    Doors = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = PositionX
         Player.rect.y = PositionY
+    
+    #Water
+    for i in range(len(Constants.WaterPosFB)):
+        Temporal = Water.Water([(Constants.WaterPosFB[i]['x']),(Constants.WaterPosFB[i]['y'])], Constants.WaterPosFB[i]['width'],Constants.WaterPosFB[i]['height'])
+        WaterG.add(Temporal)
 
     #Creacion de las paredes
     for i in range(len(Constants.WallsFinalBossB)):
@@ -51,5 +62,14 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Temporal = La.Ladder([(Constants.LaddersFinalBoss[i]['x']-635),(Constants.LaddersFinalBoss[i]['y'])],Constants.LaddersFinalBoss[i]['width'],Constants.LaddersFinalBoss[i]['height'])
         Ladders.add(Temporal)
     
+    for i in range(len(Constants.LavaPosFB)):
+        Temporal = Lava.Lava([(Constants.LavaPosFB[i]['x']),(Constants.LavaPosFB[i]['y'])], Constants.LavaPosFB[i]['width'],Constants.LavaPosFB[i]['height'])
+        LavaG.add(Temporal)
+    
+    for i in range(len(Constants.DoorPosFB)):
+        Temporal = Do.Door([(Constants.DoorPosFB[i]['x']),(Constants.DoorPosFB[i]['y'])],Constants.DoorPosFB[i]['width'],Constants.DoorPosFB[i]['height'],'31')
+        Doors.add(Temporal)
+    
+    
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, Cannons, Ladders, None, None, None, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']
+    return [Players, Blocks, None, None, Cannons, Ladders, LavaG, WaterG, None, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']

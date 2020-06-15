@@ -12,9 +12,12 @@ Height = 608
 limitemovimientoX = 795
 limitemovimientoY = 595
 LifeManager = None
+ScoreManager = None
 inLadder = False
 Subiendo = False
 Space = False
+AppleConsumed = False
+AppleTime = 0
 Interact = False
 PlataformaMovil = False
 MapInfo = None
@@ -24,6 +27,7 @@ pygame.display.set_caption('Tittle Game')
 Screen = pygame.display.set_mode([Width,Height])
 #Clock
 Clock = pygame.time.Clock()
+ClockStart = None
 #Mapa Tutorial
 MapaTutorial = pygame.image.load('Assets\Levels\Tutorial\Tutorial.png')
 #Mapa nivel 1
@@ -479,7 +483,7 @@ for i in range(len(ApplesPosJ)):
 CoinsList2 = pygame.sprite.Group()
 ApplesList2 = pygame.sprite.Group()
 DiamondsList2 = pygame.sprite.Group()
-PotionsList2 = pygame.sprite.Group()
+#PotionsList2 = pygame.sprite.Group()
 #Listas Indexadas monedas Nivel 2
 Coins21 = pygame.sprite.Group()
 Coins22 = pygame.sprite.Group()
@@ -514,6 +518,7 @@ Diamonds28 = pygame.sprite.Group()
 Diamonds29 = pygame.sprite.Group()
 Diamonds210 = pygame.sprite.Group()
 #Listas Indexadas Posiones Nivel 2
+"""
 Potions21 = pygame.sprite.Group()
 Potions22 = pygame.sprite.Group()
 Potions23 = pygame.sprite.Group()
@@ -524,6 +529,7 @@ Potions27 = pygame.sprite.Group()
 Potions28 = pygame.sprite.Group()
 Potions29 = pygame.sprite.Group()
 Potions210 = pygame.sprite.Group()
+"""
 
 #Room information A
 #Lectura de archivo json
@@ -592,10 +598,10 @@ for i in range(len(DiamondPos2B)):
     DiamondsList2.add(Temporal)
     Diamonds22.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2B)):
+"""for i in range(len(PotionsPos2B)):
     Temporal = p.Potion((PotionsPos2B[i]['x'],PotionsPos2B[i]['y']))
     PotionsList2.add(Temporal)
-    Potions22.add(Temporal)
+    Potions22.add(Temporal)"""
 
 #Room information C
 #Lectura de archivo json
@@ -630,10 +636,10 @@ for i in range(len(DiamondPos2C)):
     DiamondsList2.add(Temporal)
     Diamonds23.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2C)):
+"""for i in range(len(PotionsPos2C)):
     Temporal = p.Potion((PotionsPos2C[i]['x'],PotionsPos2C[i]['y']))
     PotionsList2.add(Temporal)
-    Potions23.add(Temporal)
+    Potions23.add(Temporal)"""
 
 #Room Information D
 #Lectura de archivo json
@@ -666,10 +672,10 @@ for i in range(len(DiamondPos2D)):
     DiamondsList2.add(Temporal)
     Diamonds24.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2D)):
+"""for i in range(len(PotionsPos2D)):
     Temporal = p.Potion((PotionsPos2D[i]['x'],PotionsPos2D[i]['y']))
     PotionsList2.add(Temporal)
-    Potions24.add(Temporal)
+    Potions24.add(Temporal)"""
 
 #Room Information E
 #Lectura de archivo json
@@ -702,10 +708,10 @@ for i in range(len(DiamondPos2E)):
     DiamondsList2.add(Temporal)
     Diamonds25.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2E)):
+"""for i in range(len(PotionsPos2E)):
     Temporal = p.Potion((PotionsPos2E[i]['x'],PotionsPos2E[i]['y']))
     PotionsList2.add(Temporal)
-    Potions25.add(Temporal)
+    Potions25.add(Temporal)"""
 
 #Room information F
 #Lectura de archivo json
@@ -737,11 +743,11 @@ for i in range(len(DiamondPos2F)):
     Temporal = d.Diamond((DiamondPos2F[i]['x'],DiamondPos2F[i]['y']))
     DiamondsList2.add(Temporal)
     Diamonds26.add(Temporal)
-#Creacion de las posiones
+"""#Creacion de las posiones
 for i in range(len(PotionsPos2F)):
     Temporal = p.Potion((PotionsPos2F[i]['x'],PotionsPos2F[i]['y']))
     PotionsList2.add(Temporal)
-    Potions26.add(Temporal)
+    Potions26.add(Temporal)"""
 
 #Room information G
 #Lectura de archivo json
@@ -789,6 +795,7 @@ ApplesPos2H = MapInfo['layers'][9]['objects']
 PotionsPos2H = MapInfo['layers'][10]['objects']
 DiamondPos2H = MapInfo['layers'][11]['objects']
 CoinsPos2H = MapInfo['layers'][12]['objects']
+LavaPos2H =  MapInfo['layers'][13]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2H)):
@@ -806,10 +813,10 @@ for i in range(len(DiamondPos2H)):
     DiamondsList2.add(Temporal)
     Diamonds28.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2H)):
+"""for i in range(len(PotionsPos2H)):
     Temporal = p.Potion((PotionsPos2H[i]['x'],PotionsPos2H[i]['y']))
     PotionsList2.add(Temporal)
-    Potions28.add(Temporal)
+    Potions28.add(Temporal)"""
 
 #Room Information I
 #Lectura de archivo json
@@ -841,10 +848,10 @@ for i in range(len(DiamondPos2I)):
     DiamondsList2.add(Temporal)
     Diamonds29.add(Temporal)
 #Creacion de las posiones
-for i in range(len(PotionsPos2I)):
+"""for i in range(len(PotionsPos2I)):
     Temporal = p.Potion((PotionsPos2I[i]['x'],PotionsPos2I[i]['y']))
     PotionsList2.add(Temporal)
-    Potions29.add(Temporal)
+    Potions29.add(Temporal)"""
 
 #Room Information J
 #Lectura de archivo json
@@ -861,6 +868,7 @@ DiamondPos2J = MapInfo['layers'][10]['objects']
 PotionsPos2J = MapInfo['layers'][11]['objects']
 CoinsPos2J = MapInfo['layers'][12]['objects']
 Limit2J = MapInfo['layers'][13]['objects']
+Door2j = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2J)):
@@ -877,11 +885,11 @@ for i in range(len(DiamondPos2J)):
     Temporal = d.Diamond((DiamondPos2J[i]['x'],DiamondPos2J[i]['y']))
     DiamondsList2.add(Temporal)
     Diamonds210.add(Temporal)
-#Creacion de las posiones
+"""#Creacion de las posiones
 for i in range(len(PotionsPos2J)):
     Temporal = p.Potion((PotionsPos2J[i]['x'],PotionsPos2J[i]['y']))
     PotionsList2.add(Temporal)
-    Potions210.add(Temporal)
+    Potions210.add(Temporal)"""
 
 #---------------------------------------------------- Nivel 3 (Boss)--------------------------------------------------------
 Coins31 = pygame.sprite.Group()
@@ -917,19 +925,20 @@ PotionsPosFB = MapInfo['layers'][9]['objects']
 CannonsPosFB = MapInfo['layers'][10]['objects']
 LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
+DoorPosFB =  MapInfo['layers'][13]['objects']
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosFB)):
     Temporal = ap.Apple((ApplesPosFB[i]['x'],ApplesPosFB[i]['y']))
     Apples32.add(Temporal)
-#Creacion de las posiones
+"""#Creacion de las posiones
 for i in range(len(PotionsPosFB)):
     Temporal = p.Potion((PotionsPosFB[i]['x'],PotionsPosFB[i]['y']))
-    Potions32.add(Temporal)
+    Potions32.add(Temporal)"""
 
 
 #-------------------------------------------------------Sprites-----------------------------#
-SmallPlatform = pygame.image.load('Assets\Sprites\Platforms\SmallPlatform.png')
-LongPlatform = pygame.image.load('Assets\Sprites\Platforms\LongPlatform.png')
-CannonIDLEL = pygame.image.load('Assets\Sprites\Cannon\Idle.png')
-CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Sprites\Cannon\Idle.png'),True,False)
+SmallPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\SmallPlatform.png')
+LongPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\LongPlatform.png')
+CannonIDLEL = pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png')
+CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png'),True,False)

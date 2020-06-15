@@ -6,6 +6,7 @@ class Jugador(pygame.sprite.Sprite):
     def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
 
+
         #Orden = (Idle, Correr, Hit)
         self.Sprites = (pygame.image.load('Assets\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Sprites\Player\Run (78x58).png'),
                         pygame.image.load('Assets\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Sprites\Player\Jump (78x58).png'))
@@ -19,11 +20,19 @@ class Jugador(pygame.sprite.Sprite):
         self.vida = 100
         self.invisibility = 0
         self.EnAire = False
+        self.EnLava = False
+        self.EnAgua = False
+        self.respiracion = 0
+        self.InmunidadFuego = False
         self.Bloques = None
         self.Coins = 0
         self.Apples = 0
         self.Diamonds = 0
         self.Charge = 1.0
+        self.quemadura = False
+        self.TQuemadura = 0
+        self.Fquemadura = 0
+        self.gravity = 0.5
 
 
         #Animaciones
@@ -37,6 +46,8 @@ class Jugador(pygame.sprite.Sprite):
 
     def update(self):
         #Posicion y velocidad en x
+        if self.vida > 100:
+            self.vida = 100
         self.rect.x += self.velx
         #colision x--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
@@ -59,7 +70,7 @@ class Jugador(pygame.sprite.Sprite):
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
-        self.vely += 0.5
+                self.vely += 0.5
             
         if self.velx == 0:
             self.accion = 2
@@ -79,4 +90,12 @@ class Jugador(pygame.sprite.Sprite):
                 self.espera -= 1 
         else:
             self.frame = 0
+
+        self.vely += self.gravity
+
+    def UpdateRespiration(self):
+        self.respiracion += 1
+        
+    def getRespiracion(self):
+        return self.respiracion
 
