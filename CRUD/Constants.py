@@ -196,6 +196,7 @@ ApplesPosB = MapInfo['layers'][13]['objects']
 DiamondsPosB = MapInfo['layers'][14]['objects']
 CannonsPosB= MapInfo['layers'][15]['objects']
 SpikesPosB= MapInfo['layers'][16]['objects']
+Enemys1B = MapInfo['layers'][17]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosB)):

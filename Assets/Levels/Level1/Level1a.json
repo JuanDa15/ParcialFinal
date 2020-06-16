@@ -623,6 +623,12 @@
                  "height":17.1818181818182,
                  "id":85,
                  "name":"CerdoC",
+                 "properties":[
+                        {
+                         "name":"Distancia",
+                         "type":"int",
+                         "value":-130
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -656,6 +662,12 @@
                  "height":17,
                  "id":90,
                  "name":"CerdoC",
+                 "properties":[
+                        {
+                         "name":"Distancia",
+                         "type":"int",
+                         "value":100
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
