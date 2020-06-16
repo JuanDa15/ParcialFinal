@@ -476,6 +476,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     Constants.Screen.blit(mapa,[0,0])
     if (currentLevel + currentRoom) == '19':
         Constants.Shop1.ShopItems.draw(Constants.Screen)
+        Constants.Shop1.update()
     Player.HammerGroup.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
