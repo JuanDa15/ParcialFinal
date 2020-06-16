@@ -60,13 +60,20 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 3
+                Player.frame = 0
+                Player.direccion = True
             if event.key == pygame.K_LEFT:
+                Player.frame = 0
                 Player.velx = -3
+                Player.direccion = False
             if event.key == pygame.K_UP:
                 if Constants.inLadder:
                     Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
+                Player.frame = 0
+                Player.accion = 3
                 Constants.Space = True
+                Player.EnAire = True
             if event.key == pygame.K_e:
                 Constants.Interact = True
         if event.type == pygame.KEYUP:
@@ -205,16 +212,16 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(25)
+                    Constants.LifeManager.hitPlayer(20)
     #Escaleras
     for Player in Players:
         if Ladders != None:
@@ -354,7 +361,11 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
                 else:
                     Constants.LifeManager.instakill()
                     return R11.StartRoom(Player,Players,100, 280)
-                  
+
+    #Timer
+    Fuente = pygame.font.SysFont("Arial",30)
+    Tiempo = int(pygame.time.get_ticks() / 1000)
+
     Constants.Screen.fill([0,0,0])
     Players.update()
     Blocks.update()
@@ -381,8 +392,14 @@ def LoadRoom(Player,Players,Blocks,Cerdos,Puas,Cannons,Ladders,Lava,Water,Doors,
     if Doors != None:
         Doors.draw(Constants.Screen)
 
+    #Mostrar vidas y salud
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])
     Constants.Screen.blit(Constants.LifeManager.vida, [15,80])
+
+    #Mostrar Tiempo
+    Contador = Fuente.render(str(Tiempo),0,(255,255,255))
+    Constants.Screen.blit(Contador, [Constants.Width -80 ,5])
+
 
     pygame.display.flip()
     Clock.tick(30)

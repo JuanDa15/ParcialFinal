@@ -6,6 +6,7 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
+from Classes import pork
 from Classes import Cannon as ca
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Spikes
@@ -17,6 +18,7 @@ def StartRoom(Player, Players, positionX, positionY):
     
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
+    Cerdos = pygame.sprite.Group()
     Cannons = pygame.sprite.Group()
     Platforms = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
@@ -25,6 +27,10 @@ def StartRoom(Player, Players, positionX, positionY):
     for Player in Players:
         Player.rect.x = positionX
         Player.rect.y = positionY
+
+    #Creacion Enemigos
+    C1 = pork.cerdo([388,490], 160)
+    Cerdos.add(C1)
 
     #Creacion de las puas
     for i in range(len(Constants.SpikesPosC)):
@@ -60,6 +66,9 @@ def StartRoom(Player, Players, positionX, positionY):
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = Platforms
+
+    for Cerdo in Cerdos:
+        Cerdo.Bloques = Blocks
     
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, Cannons, None, None, None, None, Platforms, None, None, Constants.Clock, mapa, 2,'2','4','1','3']
+    return [Players, Blocks, Cerdos, Puas, Cannons, None, None, None, None, Platforms, None, None, Constants.Clock, mapa, 2,'2','4','1','3']
