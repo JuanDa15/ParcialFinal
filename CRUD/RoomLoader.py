@@ -198,11 +198,21 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     b.frame = 0
                     b.velx = 0
         for b in Enemies:
+            if isinstance(b,Brujas.Estatica):
+                b.timer -= 1
+                if b.timer == 0:
+                    cobraBruja = Cobra.Cobra([b.rect.x,b.rect.y],Player)
+                    cobraBruja.Bloques = Blocks
+                    Enemies.add(cobraBruja)
+                    b.timer = 100
             if b.accion == 1:
                 if b.Muerte > 0:
                     b.Muerte -= 1
                 else:
                     Enemies.remove(b)
+        
+            
+
 
     #Water
     if Water != None:

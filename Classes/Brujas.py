@@ -99,6 +99,7 @@ class Estatica(pygame.sprite.Sprite):
         self.velx = 0
         self.vely = 0
         self.Bloques = None
+        self.timer = 100
 
         #animacion
         self.frame = 0
