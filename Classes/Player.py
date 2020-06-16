@@ -39,6 +39,7 @@ class Jugador(pygame.sprite.Sprite):
         self.EnAgua = False
         self.respiracion = 0
         self.InmunidadFuego = False
+        self.speeeeeeeeeeed = 3
         self.Bloques = None
         self.Coins = 0
         self.Apples = 0
