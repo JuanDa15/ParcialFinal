@@ -13,7 +13,6 @@ class Bomber(pygame.sprite.Sprite):
         self.timer = 30
         self.direccion = direccion
     
-
     def update(self):
        self.timer -= 1
     

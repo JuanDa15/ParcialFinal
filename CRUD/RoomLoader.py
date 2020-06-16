@@ -141,16 +141,16 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(10)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(10)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(10)
+                    Constants.LifeManager.hitPlayer(20)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(10)
+                    Constants.LifeManager.hitPlayer(20)
 
     if Cannons != None:
         for Cannon in Cannons:
@@ -192,7 +192,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             for b in listaColisionHammer:
                 if Constants.Hit:
                     Enemies.remove(b)
-                    print("hit - "+str(Hammer.rect.x))
     #Water
     if Water != None:
         for Player in Players:
