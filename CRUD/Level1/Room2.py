@@ -6,6 +6,7 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
+from Classes import Bomber
 from Classes import pork
 from Classes import Spikes
 from Classes import Cannon as ca
@@ -26,9 +27,14 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
         Player.rect.x = PositionX
         Player.rect.y = PositionY
 
-    #Creacion Enemigo
-    C1 = pork.cerdo([257,370], 130)
-    Cerdos.add(C1)
+    #Enemigos
+    for i in range(len(Constants.Enemys1B)):
+        if Constants.Enemys1B[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.Enemys1B[i]['x']),(Constants.Enemys1B[i]['y'])-12],(Constants.Enemys1B[i]['properties'][0]['value'])-20)
+            Cerdos.add(Temp)
+        elif Constants.Enemys1B[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.Enemys1B[i]['x']),(Constants.Enemys1B[i]['y'])],Constants.Bomber,1)
+            Cerdos.add(Temp)
     
     #Creacion de las puas
     for i in range(len(Constants.SpikesPosB)):

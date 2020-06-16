@@ -15,6 +15,9 @@ class cerdo(pygame.sprite.Sprite):
         self.Pixeles = pixeles
         self.Movidos = self.Pixeles
         self.Bloques = None
+        if self.Pixeles < 0:
+            self.Pixeles = self.Pixeles * -1
+            self.Movidos = 0
 
         #animacion
         self.accion = 0
