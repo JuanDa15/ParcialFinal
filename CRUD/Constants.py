@@ -557,6 +557,7 @@ WaterPosA = MapInfo['layers'][12]['objects']
 DiamondPos2A = MapInfo['layers'][13]['objects']
 ApplesPos2A = MapInfo['layers'][14]['objects']
 DoorPos2A = MapInfo['layers'][15]['objects']
+Enemys2A = MapInfo['layers'][16]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2A)):

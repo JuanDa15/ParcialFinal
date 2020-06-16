@@ -52,7 +52,7 @@ class Escoba(pygame.sprite.Sprite):
             self.velx = self.velx * -1
     
 class Escoba(pygame.sprite.Sprite):
-    def __init__(self,position, pixeles):
+    def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface([26,32])
         self.image.fill(Functions.SelectColor('White'))
