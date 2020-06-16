@@ -50,3 +50,20 @@ class Escoba(pygame.sprite.Sprite):
         else:
             self.Movidos = self.Pixeles
             self.velx = self.velx * -1
+    
+class Escoba(pygame.sprite.Sprite):
+    def __init__(self,position, pixeles):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface([26,32])
+        self.image.fill(Functions.SelectColor('White'))
+        self.rect = self.image.get_rect()
+        self.rect.x = position[0]
+        self.rect.y = position[1]
+        self.velx = 2
+        self.vely = 0
+        self.Pixeles = pixeles
+        self.Movidos = self.Pixeles
+        self.Bloques = None
+        
+    def update(self):
+        pass
