@@ -9,6 +9,7 @@ from Classes import Door as Do
 from Classes import Water
 from Classes import Player as P
 from Classes import Block
+from Classes import Brujas
 from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
 from Classes import Ladder as La
@@ -55,6 +56,19 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for i in range(len(Constants.LaddersPosB)):
         Temporal = La.Ladder([(Constants.LaddersPosB[i]['x']),(Constants.LaddersPosB[i]['y'])],Constants.LaddersPosB[i]['width'],Constants.LaddersPosB[i]['height'])
         Ladders.add(Temporal)
+    
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys2B)):
+        if Constants.Enemys2B[i]['name'] == 'BrujaE':
+            Temp = Brujas.Escoba([(Constants.Enemys2B[i]['x']),(Constants.Enemys2B[i]['y'])-12],(Constants.Enemys2B[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys2B[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2B[i]['x']),(Constants.Enemys2B[i]['y'])-12])
+            EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
+
 
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, None, Ladders, None, WaterG, None, Platforms, None, None, Constants.Clock, mapa, 3, '1', '3', '2', '2']
+    return [Players, Blocks, EnemysG, None, None, Ladders, None, WaterG, None, Platforms, None, None, Constants.Clock, mapa, 3, '1', '3', '2', '2']
