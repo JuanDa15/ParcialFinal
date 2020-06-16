@@ -194,9 +194,9 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
             for b in listaColisionHammer:
                 if Constants.Hit:
-                    if isinstance(b,pork.cerdo):
-                        b.accion = 1
-                        b.velx = 0
+                    b.accion = 1
+                    b.frame = 0
+                    b.velx = 0
         for b in Enemies:
             if b.accion == 1:
                 if b.Muerte > 0:
