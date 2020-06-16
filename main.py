@@ -1,6 +1,6 @@
 from CRUD.Level1 import Room9 as R1
 from CRUD.Tutorial import TutorialRoom as TR
-from CRUD.Level1 import Room1 as R2
+from CRUD.Level2 import Room1 as R2
 from CRUD import RoomLoader as RL
 from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
@@ -25,9 +25,9 @@ def load_game():
     Constants.ScoreManager = Sc.Score([670,10],j)
     Constants.Shop1 = Shop.Shop([200,240],j,[100,85,60])
     #currentLevel = R3.StartRoom(j,Players,150,200)
-    #currentLevel = R2.StartRoom(j,Players,400, 300)
+    currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)
-    currentLevel = R1.StartRoom(j,Players,100,250)
+    #currentLevel = TR.StartRoom(j,Players,100,250)
 
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players,currentLevel]
