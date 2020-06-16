@@ -184,7 +184,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             listaColisionEnemy = pygame.sprite.spritecollide(Player,Enemies,False)
             for b in listaColisionEnemy:
-                if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.cobra):
+                if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.Cobra):
                     #El cerdito ataca (b)
                     Constants.LifeManager.hitPlayer(20)
         for Hammer in Player.HammerGroup:
@@ -473,7 +473,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Player.HammerGroup.draw(Constants.Screen)
-    Players.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
@@ -483,8 +482,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
-    if Cerdos != None:
-        Cerdos.draw(Constants.Screen)
+    if Enemies != None:
+        Enemies.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
         eval('Constants.CannonBalls'+currentLevel+currentRoom+'.draw(Constants.Screen)')
