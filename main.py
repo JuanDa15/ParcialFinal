@@ -27,6 +27,7 @@ def load_game():
     #currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)
     currentLevel = R1.StartRoom(j,Players,100,250)
+
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players,currentLevel]
 

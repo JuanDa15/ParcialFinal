@@ -9,7 +9,7 @@ class Cobra(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
-        self.velx = 2
+        self.velx = 0
         self.vely = 0
         self.player = player
         self.Bloques = None
@@ -45,7 +45,7 @@ class Cobra(pygame.sprite.Sprite):
         self.vely += 0.5
 
         if self.player.rect.x < self.rect.x:
-            self.rect.x -= 1
+            self.velx = -2
         elif self.player.rect.x > self.rect.x:
-            self.rect.x += 1
+            self.velx = 2
 

@@ -184,7 +184,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             listaColisionEnemy = pygame.sprite.spritecollide(Player,Enemies,False)
             for b in listaColisionEnemy:
-                if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.cobra):
+                if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.Cobra):
                     #El cerdito ataca (b)
                     Constants.LifeManager.hitPlayer(20)
         for Hammer in Player.HammerGroup:
@@ -458,9 +458,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
 
                     #return R11.StartRoom(Player,Players,100, 280)
 
-    #Timer
-    Fuente = pygame.font.SysFont("Arial",30)
-    Tiempo = int(pygame.time.get_ticks() / 1000)
 
     Constants.Screen.fill([0,0,0])
     Players.update()
@@ -476,15 +473,17 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
     Player.HammerGroup.draw(Constants.Screen)
-    Players.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
     if Enemies != None:
         Enemies.draw(Constants.Screen)
+
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
+    if Enemies != None:
+        Enemies.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
         eval('Constants.CannonBalls'+currentLevel+currentRoom+'.draw(Constants.Screen)')
@@ -508,10 +507,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
-
-    #Mostrar Tiempo
-    Contador = Fuente.render(str(Tiempo),0,(255,255,255))
-    Constants.Screen.blit(Contador, [Constants.Width -80 ,5])
 
 
     pygame.display.flip()

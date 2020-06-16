@@ -7,10 +7,8 @@ class Jugador(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         #Orden = (Idle, Correr, Hit)
-        self.Sprites = (pygame.image.load('Assets\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Sprites\Player\Run (78x58).png'),
-                        pygame.image.load('Assets\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Sprites\Player\Jump (78x58).png'))
-        self.image = self.Sprites[0].subsurface(7,14,37,28)
-        #self.image.fill(Functions.SelectColor('White'))
+        self.image =  pygame.surface.Surface([24,28])
+        self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
@@ -26,10 +24,10 @@ class Jugador(pygame.sprite.Sprite):
         self.DireccionHammer = 0
 
         self.Animacion = pygame.sprite.Sprite()
-        self.AnimacionSprites = pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png')
-        self.Animacion.image = self.AnimacionSprites.subsurface(9,18,37,25)
+        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'))
+        self.Animacion.image = self.AnimacionSprites[0].subsurface(7,14,37,28)
         self.Animacion.rect = self.Animacion.image.get_rect()
-        self.Animacion.rect.x = position[0]
+        self.Animacion.rect.x = position[0]+20
         self.Animacion.rect.y = position[1]
 
         self.velx = 0
@@ -97,9 +95,9 @@ class Jugador(pygame.sprite.Sprite):
 
         if self.frame < len(self.animacion[self.accion]) - 1:
             if self.direccion == True:
-                self.image = self.Sprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
+                self.Animacion.image = self.AnimacionSprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
             else:
-                self.image = pygame.transform.flip(self.Sprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3]), True, False)
+                self.Animacion.image = pygame.transform.flip(self.AnimacionSprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3]), True, False)
             if self.espera == 0: 
                 self.frame += 4
                 self.espera = 2
@@ -116,6 +114,8 @@ class Jugador(pygame.sprite.Sprite):
         self.Animacion.rect.y = self.rect.y
         if self.DireccionHammer == 0:
             self.Hammer.rect.x -= 16
+        if self.DireccionHammer == 1:
+            self.Animacion.rect.x -= 13
 
     def UpdateRespiration(self):
         self.respiracion += 1

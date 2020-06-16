@@ -7,6 +7,7 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Door as Do
 from Classes import Block
+from Classes import Cobra
 from Classes import pork
 
 from pygame.locals import *
