@@ -54,5 +54,8 @@ def StartRoom(Player, Players ,PositionX, PositionY):
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = PlatformsY
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
      #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
     return [Players, Blocks, EnemysG, None, None, None, None, None, None, PlatformsY, None, None, Constants.Clock, mapa, 5,'6','8','1','7']

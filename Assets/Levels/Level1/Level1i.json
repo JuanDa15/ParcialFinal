@@ -351,39 +351,6 @@
                  "width":96.25,
                  "x":415.75,
                  "y":511.75
-                }, 
-                {
-                 "height":9.25,
-                 "id":37,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":80.125,
-                 "x":223.75,
-                 "y":287.625
-                }, 
-                {
-                 "height":23.125,
-                 "id":38,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":6.75,
-                 "x":284.5,
-                 "y":296.75
-                }, 
-                {
-                 "height":23.125,
-                 "id":39,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8.5,
-                 "x":236.25,
-                 "y":296.75
                 }],
          "opacity":1,
          "type":"objectgroup",

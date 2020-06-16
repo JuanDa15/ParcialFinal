@@ -4,7 +4,7 @@ from CRUD import Functions
 class Cobra(pygame.sprite.Sprite):
     def __init__(self,position,player):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([26,32])
+        self.image = pygame.Surface([16,14])
         self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]

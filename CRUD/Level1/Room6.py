@@ -20,6 +20,7 @@ def StartRoom(Player, Players, positionX, positionY):
     #Definicion de Grupos
     Blocks = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
+    EnemysG = pygame.sprite.Group()
 
     #Definicion Posicion Inicial
     for Player in Players:
@@ -40,7 +41,6 @@ def StartRoom(Player, Players, positionX, positionY):
         Temporal = Block.Bloque([(Constants.PlatformsF[i]['x']),(Constants.PlatformsF[i]['y'])],Constants.PlatformsF[i]['width'],Constants.PlatformsF[i]['height'])
         Blocks.add(Temporal)
 
-    EnemysG = pygame.sprite.Group()
     for i in range(len(Constants.Enemys1F)):
         if Constants.Enemys1F[i]['name'] == 'CerdoC':
             Temp = pork.cerdo([(Constants.Enemys1F[i]['x']),(Constants.Enemys1F[i]['y'])-12],(Constants.Enemys1F[i]['properties'][0]['value']))
@@ -53,4 +53,7 @@ def StartRoom(Player, Players, positionX, positionY):
     for Player in Players:
         Player.Bloques = Blocks
 
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
+        
     return [Players,Blocks,EnemysG,Puas,None, None, None, None, None, None, None, None, Constants.Clock, mapa,1,'5','7','1','6']

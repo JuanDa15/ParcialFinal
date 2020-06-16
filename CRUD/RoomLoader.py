@@ -188,23 +188,21 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             for b in listaColisionEnemy:
                 if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.Cobra):
                     #El cerdito ataca (b)
-                    Constants.LifeManager.hitPlayer(20)
+                    if b.accion != 1:
+                        Constants.LifeManager.hitPlayer(20)
         for Hammer in Player.HammerGroup:
             listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
             for b in listaColisionHammer:
                 if Constants.Hit:
-                    b.accion = 1
-                    print("hit - "+str(Hammer.rect.x))
-
-    if Enemies != None:
-        for e in Enemies:
-             if isinstance(e,pork.cerdo):
-                if e.accion == 1:
-                    if e.Muerte > 0:
-                        e.Muerte -= 1
-                    else:
-                        Enemies.remove(e)
-
+                    if isinstance(b,pork.cerdo):
+                        b.accion = 1
+                        b.velx = 0
+        for b in Enemies:
+            if b.accion == 1:
+                if b.Muerte > 0:
+                    b.Muerte -= 1
+                else:
+                    Enemies.remove(b)
 
     #Water
     if Water != None:
@@ -538,7 +536,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
         Constants.Shop1.update()
-    Player.HammerGroup.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
@@ -573,7 +570,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
-
-
+    
     pygame.display.flip()
     Clock.tick(30)

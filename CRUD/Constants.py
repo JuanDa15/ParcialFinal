@@ -271,7 +271,7 @@ CoinsPosD = MapInfo['layers'][16]['objects']
 DiamondsPosD = MapInfo['layers'][17]['objects']
 ApplesPosD = MapInfo['layers'][18]['objects']
 CannonsPosD = MapInfo['layers'][19]['objects']
-Enemys1D = [] #MapInfo['layers'][20]['objects']
+Enemys1D = MapInfo['layers'][21]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosD)):
@@ -309,7 +309,7 @@ HMovingPlatformEE = MapInfo['layers'][15]['objects']
 PlatformsE = MapInfo['layers'][16]['objects']
 HMovingPlatformSE = MapInfo['layers'][17]['objects']
 CannonsPosE = MapInfo['layers'][18]['objects']
-Enemys1E = [] #MapInfo['layers'][19]['objects']
+Enemys1E = MapInfo['layers'][19]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosE)):
@@ -344,7 +344,7 @@ CoinsPosF = MapInfo['layers'][9]['objects']
 DiamondsPosF = MapInfo['layers'][10]['objects']
 ApplesPosF = MapInfo['layers'][11]['objects']
 InstakillPosF = MapInfo['layers'][12]['objects']
-Enemys1F = [] #MapInfo['layers'][13]['objects']
+Enemys1F = MapInfo['layers'][13]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosF)):
@@ -380,7 +380,7 @@ CoinsPosG = MapInfo['layers'][12]['objects']
 DiamondsPosG = MapInfo['layers'][13]['objects']
 ApplesPosG = MapInfo['layers'][14]['objects']
 LeverPosG = MapInfo['layers'][15]['objects']
-Enemys1G = [] #MapInfo['layers'][16]['objects']
+Enemys1G = MapInfo['layers'][16]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosG)):
@@ -419,7 +419,7 @@ CannonsPosH = MapInfo['layers'][17]['objects']
 VMovingPlatformSSR = MapInfo['layers'][18]['objects']
 VMovingPlatformESR = MapInfo['layers'][19]['objects']
 DoorPosH = MapInfo['layers'][20]['objects']
-Enemys1H = [] #MapInfo['layers'][21]['objects']
+Enemys1H = MapInfo['layers'][21]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosH)):
@@ -481,7 +481,7 @@ CollisionsJ = MapInfo['layers'][7]['objects']
 ApplesPosJ = MapInfo['layers'][8]['objects']
 DoorPosJ = MapInfo['layers'][9]['objects']
 SpikesPosJ= MapInfo['layers'][10]['objects']
-Enemys1J = [] #MapInfo['layers'][11]['objects']
+Enemys1J = MapInfo['layers'][11]['objects']
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosJ)):
@@ -557,6 +557,7 @@ WaterPosA = MapInfo['layers'][12]['objects']
 DiamondPos2A = MapInfo['layers'][13]['objects']
 ApplesPos2A = MapInfo['layers'][14]['objects']
 DoorPos2A = MapInfo['layers'][15]['objects']
+Enemys2A = MapInfo['layers'][16]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2A)):
@@ -592,6 +593,7 @@ CoinsPos2B = MapInfo['layers'][14]['objects']
 DiamondPos2B = MapInfo['layers'][15]['objects']
 PotionsPos2B = MapInfo['layers'][16]['objects']
 ApplesPos2B = MapInfo['layers'][17]['objects']
+Enemys2B = MapInfo['layers'][18]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2B)):
@@ -630,6 +632,7 @@ Platforms2C = MapInfo['layers'][12]['objects']
 CoinsPos2C = MapInfo['layers'][13]['objects']
 ApplesPos2C = MapInfo['layers'][14]['objects']
 DiamondPos2C = MapInfo['layers'][15]['objects']
+Enemys2C = MapInfo['layers'][16]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2C)):
@@ -666,6 +669,7 @@ CoinsPos2D = MapInfo['layers'][10]['objects']
 ApplesPos2D = MapInfo['layers'][11]['objects']
 DiamondPos2D = MapInfo['layers'][12]['objects']
 PotionsPos2D = MapInfo['layers'][13]['objects']
+Enemys2D = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2D)):
@@ -702,6 +706,7 @@ CoinsPos2E = MapInfo['layers'][11]['objects']
 ApplesPos2E = MapInfo['layers'][12]['objects']
 DiamondPos2E = MapInfo['layers'][13]['objects']
 PotionsPos2E = MapInfo['layers'][14]['objects']
+Enemys2E = MapInfo['layers'][15]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2E)):
@@ -738,6 +743,7 @@ ApplesPos2F = MapInfo['layers'][9]['objects']
 PotionsPos2F = MapInfo['layers'][10]['objects']
 DiamondPos2F = MapInfo['layers'][11]['objects']
 LaddersPosF = MapInfo['layers'][12]['objects']
+Enemys2F = MapInfo['layers'][13]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2F)):
@@ -774,6 +780,7 @@ WaterPosG = MapInfo['layers'][10]['objects']
 ApplesPos2G = MapInfo['layers'][11]['objects']
 DiamondPos2G = MapInfo['layers'][12]['objects']
 DoorPos2G = MapInfo['layers'][13]['objects']
+Enemys2G = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2G)):
@@ -807,6 +814,7 @@ PotionsPos2H = MapInfo['layers'][10]['objects']
 DiamondPos2H = MapInfo['layers'][11]['objects']
 CoinsPos2H = MapInfo['layers'][12]['objects']
 LavaPos2H =  MapInfo['layers'][13]['objects']
+Enemys2H = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2H)):
@@ -880,6 +888,7 @@ PotionsPos2J = MapInfo['layers'][11]['objects']
 CoinsPos2J = MapInfo['layers'][12]['objects']
 Limit2J = MapInfo['layers'][13]['objects']
 Door2j = MapInfo['layers'][14]['objects']
+Boos2j = MapInfo['layers'][15]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2J)):
