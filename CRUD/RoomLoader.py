@@ -533,6 +533,9 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
+    #Pos mapa
+    if Doors != None:
+        Doors.draw(Constants.Screen)
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
@@ -554,8 +557,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.draw(Constants.Screen)
     Constants.LifeManager.update()
-    if Doors != None:
-        Doors.draw(Constants.Screen)
 
     #Mostrar vidas y salud
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])

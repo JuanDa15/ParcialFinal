@@ -30,7 +30,7 @@ class Door(pygame.sprite.Sprite):
         print("Entrar")
         return ('R' + self.destiny + '.StartRoom(Player,Players,'+ str(pos_destiny[0]) +','+ str(pos_destiny[1]) +')')
 
-    defExitRoom(self, pos_destiny):
+    def ExitRoom(self, pos_destiny):
         while (self.frame < len(self.animacion[self.accion])-1):
             self.image = self.recortes[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
             if self.espera == 0: 
