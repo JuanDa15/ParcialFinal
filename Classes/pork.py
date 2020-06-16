@@ -4,7 +4,7 @@ from CRUD import Functions
 class cerdo(pygame.sprite.Sprite):
     def __init__(self,position, pixeles):
         pygame.sprite.Sprite.__init__(self)
-        self.Correr = pygame.image.load('Assets\Sprites\Pork\Run (34x28).png')
+        self.Correr = pygame.image.load('Assets\Images\Sprites\Pork\Run (34x28).png')
         self.image = self.Correr.subsurface(10,0,19,15)
         #self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
