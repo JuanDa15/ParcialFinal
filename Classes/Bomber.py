@@ -12,6 +12,7 @@ class Bomber(pygame.sprite.Sprite):
         self.vely = 0
         self.timer = 30
         self.direccion = direccion
+        self.Bloques = None
     
 
     def update(self):

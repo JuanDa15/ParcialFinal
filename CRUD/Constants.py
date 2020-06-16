@@ -159,6 +159,7 @@ DiamondsPosA = MapInfo['layers'][10]['objects']
 ApplesPosA = MapInfo['layers'][11]['objects']
 CoinsPosA = MapInfo['layers'][12]['objects']
 DoorA = MapInfo['layers'][15]['objects']
+Enemys1A = MapInfo['layers'][16]['objects']
 
 #Se agregan las monedas cuarto a
 for i in range(len(CoinsPosA)):
@@ -943,3 +944,4 @@ SmallPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\SmallPlatform
 LongPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\LongPlatform.png')
 CannonIDLEL = pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png')
 CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png'),True,False)
+Bomber = pygame.image.load('Assets\Images\Sprites\Pork\Bomber.png')
