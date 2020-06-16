@@ -100,6 +100,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Constants.AppleConsumed = True
             if event.key == pygame.K_w:
                 Constants.Hit = True
+                Player.accion = 4
+                Player.frame = 0
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
@@ -191,7 +193,19 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
             for b in listaColisionHammer:
                 if Constants.Hit:
-                    Enemies.remove(b)
+                    b.accion = 1
+                    print("hit - "+str(Hammer.rect.x))
+
+    if Enemies != None:
+        for e in Enemies:
+             if isinstance(e,pork.cerdo):
+                if e.accion == 1:
+                    if e.Muerte > 0:
+                        e.Muerte -= 1
+                    else:
+                        Enemies.remove(e)
+
+
     #Water
     if Water != None:
         for Player in Players:

@@ -24,7 +24,7 @@ class Jugador(pygame.sprite.Sprite):
         self.DireccionHammer = 0
 
         self.Animacion = pygame.sprite.Sprite()
-        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'))
+        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Attack (78x58).png'))
         self.Animacion.image = self.AnimacionSprites[0].subsurface(7,14,37,28)
         self.Animacion.rect = self.Animacion.image.get_rect()
         self.Animacion.rect.x = position[0]+20
@@ -57,7 +57,7 @@ class Jugador(pygame.sprite.Sprite):
         self.frame = 0
         self.animacion = ((7,14,37,26,86,15,37,26),(9,18,37,28,87,16,37,28,165,17,37,28,243,20,37,28,321,18,37,28,399,16,37,28,477,17,37,28,555,20,37,28),
                         (9,0,37,28,87,0,37,28,165,0,37,28,243,0,37,28,321,0,37,28,399,0,37,28,477,0,37,28,555,0,37,28,633,0,37,28,711,0,37,28,789,0,37,28),
-                        (9,15,37,29))
+                        (9,15,37,29),(20,0,58,26,100,0,49,26,165,0,37,26))
 
     def update(self):
         #Posicion y velocidad en x
@@ -86,11 +86,12 @@ class Jugador(pygame.sprite.Sprite):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
                 self.vely += 0.5
-            
-        if self.velx == 0:
-            self.accion = 2
-        else:
-            self.accion = 1
+
+        if self.accion != 4:  
+            if self.velx == 0:
+                self.accion = 2
+            else:
+                self.accion = 1
 
 
         if self.frame < len(self.animacion[self.accion]) - 1:
@@ -105,6 +106,8 @@ class Jugador(pygame.sprite.Sprite):
                 self.espera -= 1 
         else:
             self.frame = 0
+            if self.accion == 4:
+                self.accion = 1
 
         self.vely += self.gravity
         self.Hammer.rect.x = self.rect.x
