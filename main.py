@@ -5,7 +5,7 @@ from CRUD import RoomLoader as RL
 from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
 from CRUD.Menus import LostScreen as LS
-from CRUD.Menus import VictoryScreen as VS
+from CRUD.Menus import VictoryScreen as VS         
 from CRUD import Constants
 from Classes import Vida as V
 from Classes import Score as Sc

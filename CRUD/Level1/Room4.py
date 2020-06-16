@@ -22,7 +22,7 @@ def StartRoom(Player, Players, positionX, positionY):
     Cannons = pygame.sprite.Group()
     Puas = pygame.sprite.Group()
     Platforms = pygame.sprite.Group()
-
+    EnemysG = pygame.sprite.Group()
     #Definicion Posicion Inicial
     for Player in Players:
         Player.rect.x = positionX
@@ -59,7 +59,6 @@ def StartRoom(Player, Players, positionX, positionY):
     Temporal = VMP.PlataformaMovil([(Constants.MovingPlatformSD[0]['x']),(Constants.MovingPlatformSD[0]['y'])],185,Constants.SmallPlatform,2)
     Platforms.add(Temporal)
 
-    EnemysG = pygame.sprite.Group()
     for i in range(len(Constants.Enemys1D)):
         if Constants.Enemys1D[i]['name'] == 'CerdoC':
             Temp = pork.cerdo([(Constants.Enemys1D[i]['x']),(Constants.Enemys1D[i]['y'])-12],(Constants.Enemys1D[i]['properties'][0]['value']))
@@ -72,6 +71,9 @@ def StartRoom(Player, Players, positionX, positionY):
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = Platforms
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
     
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
     return [Players, Blocks, EnemysG, Puas, Cannons, None, None, None, None, Platforms, None, None, Constants.Clock, mapa, 3, '3', '5','1','4']

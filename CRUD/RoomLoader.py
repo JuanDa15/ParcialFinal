@@ -572,7 +572,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
-
-
+    
     pygame.display.flip()
     Clock.tick(30)
