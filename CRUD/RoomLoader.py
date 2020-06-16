@@ -65,21 +65,21 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 Player.DireccionHammer = 1
-                Player.velx = 3
+                Player.velx = Player.speeeeeeeeeeed
                 if Player.EnLava == True:
-                    Player.velx = 2
+                    Player.velx = Player.speeeeeeeeeeed - 1
                 if Player.EnAgua == True:
-                    Player.velx = 2.5
+                    Player.velx = Player.speeeeeeeeeeed - 0.5
                 Player.frame = 0
                 Player.direccion = True
             if event.key == pygame.K_LEFT:
                 Player.DireccionHammer = 0
                 Player.frame = 0
-                Player.velx = -3
+                Player.velx = -Player.speeeeeeeeeeed
                 if Player.EnLava == True:
-                    Player.velx = -2
+                    Player.velx = -Player.speeeeeeeeeeed + 1
                 if Player.EnAgua == True:
-                    Player.velx = -2.5
+                    Player.velx = -Player.speeeeeeeeeeed + 0.5
                 Player.frame = 0
                 Player.direccion = False
             if event.key == pygame.K_UP:
@@ -100,6 +100,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Constants.AppleConsumed = True
             if event.key == pygame.K_w:
                 Constants.Hit = True
+                Player.accion = 4
+                Player.frame = 0
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 Player.velx = 0
@@ -191,7 +193,19 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
             for b in listaColisionHammer:
                 if Constants.Hit:
-                    Enemies.remove(b)
+                    b.accion = 1
+                    print("hit - "+str(Hammer.rect.x))
+
+    if Enemies != None:
+        for e in Enemies:
+             if isinstance(e,pork.cerdo):
+                if e.accion == 1:
+                    if e.Muerte > 0:
+                        e.Muerte -= 1
+                    else:
+                        Enemies.remove(e)
+
+
     #Water
     if Water != None:
         for Player in Players:
@@ -382,7 +396,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                if (currentLevel + nextRoom) == '210':
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,10,Player.rect.y - 2)')
+                else:
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.right < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
 
@@ -457,6 +474,52 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
 
                     #return R11.StartRoom(Player,Players,100, 280)
 
+    #Tienda
+    for Player in Players:
+        if (currentLevel + currentRoom) == '19':
+            Constants.Shop1.rect.x = 200
+            Constants.Shop1.rect.y = 240
+            ListaTienda = pygame.sprite.spritecollide(Player,Constants.Shop1.ShopItems,False)
+            for b in ListaTienda:
+                if Constants.Interact:
+                    if b.type == 0:
+                        if Player.Coins >= Constants.Shop1.precioPotiLava:
+                            Constants.Shop1.potiLava = False
+                            Player.Coins -= Constants.Shop1.precioPotiLava
+                            Player.InmunidadFuego = True
+                    if b.type == 1:
+                        if Player.Coins >= Constants.Shop1.precioPotiVel:
+                            Constants.Shop1.potiVel = False
+                            Player.Coins -= Constants.Shop1.precioPotiVel
+                            Player.speeeeeeeeeeed = 5
+                    if b.type == 2:
+                        if Player.Coins >= Constants.Shop1.precioGapple:
+                            Constants.Shop1.Gapple = False
+                            Player.Coins -= Constants.Shop1.precioGapple
+                            Player.Apples += 10
+        if (currentLevel + currentRoom) == '29':
+            Constants.Shop1.rect.x = 270
+            Constants.Shop1.rect.y = 368
+            ListaTienda = pygame.sprite.spritecollide(Player,Constants.Shop1.ShopItems,False)
+            for b in ListaTienda:
+                if Constants.Interact:
+                    if b.type == 0:
+                        if Player.Coins >= Constants.Shop1.precioPotiLava:
+                            Constants.Shop1.potiLava = False
+                            Player.Coins -= Constants.Shop1.precioPotiLava
+                            Player.InmunidadFuego = True
+                    if b.type == 1:
+                        if Player.Coins >= Constants.Shop1.precioPotiVel:
+                            Constants.Shop1.potiVel = False
+                            Player.Coins -= Constants.Shop1.precioPotiVel
+                            Player.speeeeeeeeeeed = 5
+                    if b.type == 2:
+                        if Player.Coins >= Constants.Shop1.precioGapple:
+                            Constants.Shop1.Gapple = False
+                            Player.Coins -= Constants.Shop1.precioGapple
+                            Player.Apples += 10
+
+
 
     Constants.Screen.fill([0,0,0])
     Players.update()
@@ -471,6 +534,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
+    if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
+        Constants.Shop1.Tendero.draw(Constants.Screen)
+        Constants.Shop1.ShopItems.draw(Constants.Screen)
+        Constants.Shop1.update()
     Player.HammerGroup.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
