@@ -29,7 +29,7 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     C1 = pork.cerdo([100,320], 130)
     Cerdos.add(C1)
 
-    C2 = Cobra.Cobra([610,345], 100)
+    C2 = pork.cerdo([610,345], 100)
     #Pixeles antes de devolverse
     C2.Movidos = 0
     Cerdos.add(C2)
