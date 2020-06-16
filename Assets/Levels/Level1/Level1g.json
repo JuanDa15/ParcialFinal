@@ -331,18 +331,18 @@
                  "y":207.75
                 }, 
                 {
-                 "height":74,
+                 "height":90,
                  "id":32,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":41.875,
+                 "width":33.875,
                  "x":63.875,
-                 "y":150
+                 "y":134
                 }, 
                 {
-                 "height":10.25,
+                 "height":29.25,
                  "id":35,
                  "name":"",
                  "rotation":0,
@@ -350,7 +350,7 @@
                  "visible":true,
                  "width":73.875,
                  "x":0,
-                 "y":150
+                 "y":131
                 }, 
                 {
                  "height":32.3333,
@@ -945,7 +945,7 @@
                  "visible":true,
                  "width":21.875,
                  "x":64,
-                 "y":298.9375
+                 "y":298.938
                 }, 
                 {
                  "height":21,
@@ -955,8 +955,8 @@
                  "type":"",
                  "visible":true,
                  "width":21.875,
-                 "x":479.9375,
-                 "y":299.0625
+                 "x":479.938,
+                 "y":299.063
                 }, 
                 {
                  "height":21,
@@ -966,11 +966,11 @@
                  "type":"",
                  "visible":true,
                  "width":21.875,
-                 "x":607.932065217391,
-                 "y":330.934782608696
+                 "x":607.932,
+                 "y":330.935
                 }, 
                 {
-                 "height":17.0434782608696,
+                 "height":17.0435,
                  "id":91,
                  "name":"CerdoC",
                  "properties":[
@@ -982,9 +982,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":17.9130434782609,
+                 "width":17.913,
                  "x":64,
-                 "y":526.95652173913
+                 "y":526.957
                 }, 
                 {
                  "height":17.0435,
@@ -1001,7 +1001,7 @@
                  "visible":true,
                  "width":17.913,
                  "x":255.981,
-                 "y":526.91575
+                 "y":526.916
                 }, 
                 {
                  "height":17.0435,
@@ -1011,14 +1011,14 @@
                         {
                          "name":"Distancia",
                          "type":"int",
-                         "value":128
+                         "value":108
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":17.913,
-                 "x":351.9185,
-                 "y":334.91575
+                 "x":351.918,
+                 "y":334.916
                 }, 
                 {
                  "height":17.0435,
@@ -1028,14 +1028,14 @@
                         {
                          "name":"Distancia",
                          "type":"int",
-                         "value":127
+                         "value":107
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":17.913,
-                 "x":512.134409090909,
-                 "y":462.841886363636
+                 "x":512.134,
+                 "y":462.842
                 }],
          "opacity":1,
          "type":"objectgroup",
