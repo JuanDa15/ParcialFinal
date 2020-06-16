@@ -5,6 +5,8 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from Classes import pork
+from Classes import Bomber
 from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
@@ -43,5 +45,14 @@ def StartRoom(Player, Players, PositionX, PositionY):
         Temporal = Do.Door([(Constants.DoorPosJ[i]['x']),(Constants.DoorPosJ[i]['y'])],Constants.DoorPosJ[i]['width'],Constants.DoorPosJ[i]['height'],'21')
         Doors.add(Temporal)
 
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys1J)):
+        if Constants.Enemys1J[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.Enemys1J[i]['x']),(Constants.Enemys1J[i]['y'])-12],(Constants.Enemys1J[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys1J[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.Enemys1J[i]['x']),(Constants.Enemys1J[i]['y'])],Constants.Bomber,1)
+            EnemysG.add(Temp)
+
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, None, None, None, None, Doors, None, None, None, Constants.Clock, mapa, 8, None,'9','1','10']
+    return [Players, Blocks, EnemysG, Puas, None, None, None, None, Doors, None, None, None, Constants.Clock, mapa, 8, None,'9','1','10']

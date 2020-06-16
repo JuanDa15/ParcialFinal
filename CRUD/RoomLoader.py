@@ -382,7 +382,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
-                return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
+                if (currentLevel + nextRoom) == '210':
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,10,Player.rect.y - 2)')
+                else:
+                    return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
             if Player.rect.right < 5:
                 return eval('R' + currentLevel + prevRoom + '.StartRoom(Player,Players,779,Player.rect.y - 2)')
 
@@ -471,6 +474,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
+    if (currentLevel + currentRoom) == '19':
+        Constants.Shop1.ShopItems.draw(Constants.Screen)
     Player.HammerGroup.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
