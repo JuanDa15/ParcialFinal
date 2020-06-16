@@ -28,7 +28,7 @@ class Escoba(pygame.sprite.Sprite):
 
         
         #Posicion y velocidad en x
-        self.rect.y+=self.vely
+        #self.rect.y+=self.vely
         #colision y--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
         for b in listaColision:
@@ -43,7 +43,7 @@ class Escoba(pygame.sprite.Sprite):
                 self.vely = 0
                 self.rect.top = b.rect.bottom
         
-        self.vely += 0.5
+        #self.vely += 0.5
 
         if self.Movidos > 0:
             self.Movidos -= 2

@@ -7,6 +7,7 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
 from Classes import pork
+from Classes import Bomber
 from Classes import Cannon as ca
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Spikes
@@ -29,8 +30,14 @@ def StartRoom(Player, Players, positionX, positionY):
         Player.rect.y = positionY
 
     #Creacion Enemigos
-    C1 = pork.cerdo([388,490], 160)
-    Cerdos.add(C1)
+    #Enemigos
+    for i in range(len(Constants.Enemys1C)):
+        if Constants.Enemys1C[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.Enemys1C[i]['x']),(Constants.Enemys1C[i]['y'])-12],(Constants.Enemys1C[i]['properties'][0]['value']))
+            Cerdos.add(Temp)
+        elif Constants.Enemys1C[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.Enemys1C[i]['x']),(Constants.Enemys1C[i]['y'])],Constants.Bomber,1)
+            Cerdos.add(Temp)
 
     #Creacion de las puas
     for i in range(len(Constants.SpikesPosC)):

@@ -8,6 +8,8 @@ from CRUD import Constants
 from Classes import Door as Do
 from Classes import Player as P
 from Classes import Block
+from Classes import pork
+from Classes import Bomber
 from Classes import Cannon as ca
 from Classes import VerticalMovingPlatform as VMP
 from pygame.locals import *
@@ -56,10 +58,19 @@ def StartRoom(Player ,Players ,PositionX, PositionY):
     for i in range(len(Constants.DoorPosH)):
         Temporal = Do.Door([(Constants.DoorPosH[i]['x']),(Constants.DoorPosH[i]['y'])],Constants.DoorPosH[i]['width'],Constants.DoorPosH[i]['height'],'18')
         Doors.add(Temporal)
+    
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys1H)):
+        if Constants.Enemys1H[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.Enemys1H[i]['x']),(Constants.Enemys1H[i]['y'])-12],(Constants.Enemys1H[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys1H[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.Enemys1H[i]['x']),(Constants.Enemys1H[i]['y'])],Constants.Bomber,1)
+            EnemysG.add(Temp)
 
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
         Player.PlataformasY = PlatformsY
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players,Blocks,None, None, Cannons, None, None, None, Doors, PlatformsY, None, None, Constants.Clock, mapa, 6,'7', '9','1','8']
+    return [Players,Blocks,EnemysG, None, Cannons, None, None, None, Doors, PlatformsY, None, None, Constants.Clock, mapa, 6,'7', '9','1','8']

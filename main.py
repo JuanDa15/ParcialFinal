@@ -1,4 +1,4 @@
-from CRUD.Level1 import Room1 as R1
+from CRUD.Level1 import Room9 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
@@ -9,6 +9,7 @@ from CRUD.Menus import VictoryScreen as VS
 from CRUD import Constants
 from Classes import Vida as V
 from Classes import Score as Sc
+from Classes import Shop
 
 
 from CRUD import Constants
@@ -23,6 +24,7 @@ def load_game():
     Players.add(j)
     Constants.LifeManager = V.Vida([0,0],j)
     Constants.ScoreManager = Sc.Score([670,10],j)
+    Constants.Shop1 = Shop.Shop([200,240],j,[25,30,45])
     #currentLevel = R3.StartRoom(j,Players,150,200)
     #currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)

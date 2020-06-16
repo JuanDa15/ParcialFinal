@@ -6,6 +6,8 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
+from Classes import pork
+from Classes import Bomber
 from Classes import Cannon as ca
 from Classes import Spikes
 
@@ -38,8 +40,17 @@ def StartRoom(Player, Players, positionX, positionY):
         Temporal = Block.Bloque([(Constants.PlatformsF[i]['x']),(Constants.PlatformsF[i]['y'])],Constants.PlatformsF[i]['width'],Constants.PlatformsF[i]['height'])
         Blocks.add(Temporal)
 
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys1F)):
+        if Constants.Enemys1F[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.Enemys1F[i]['x']),(Constants.Enemys1F[i]['y'])-12],(Constants.Enemys1F[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys1F[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.Enemys1F[i]['x']),(Constants.Enemys1F[i]['y'])],Constants.Bomber,1)
+            EnemysG.add(Temp)
+
     #Asignacion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
 
-    return [Players,Blocks,None,Puas,None, None, None, None, None, None, None, None, Constants.Clock, mapa,1,'5','7','1','6']
+    return [Players,Blocks,EnemysG,Puas,None, None, None, None, None, None, None, None, Constants.Clock, mapa,1,'5','7','1','6']
