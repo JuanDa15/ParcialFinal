@@ -538,7 +538,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
         Constants.Shop1.update()
-    Player.HammerGroup.draw(Constants.Screen)
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
