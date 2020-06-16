@@ -7,6 +7,7 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Player as P
 from Classes import Water
+from Classes import Brujas
 from Classes import Block
 from Classes import Ladder as La
 
@@ -43,4 +44,16 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
         Temporal = La.Ladder([(Constants.LaddersPosE[i]['x']),(Constants.LaddersPosE[i]['y'])],Constants.LaddersPosE[i]['width'],Constants.LaddersPosE[i]['height'])
         Ladders.add(Temporal)
     
-    return [Players, Blocks, None, None, None, Ladders, None, WaterG, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys2E)):
+        if Constants.Enemys2E[i]['name'] == 'BrujaE':
+            Temp = Brujas.Escoba([(Constants.Enemys2E[i]['x']),(Constants.Enemys2E[i]['y'])-12],(Constants.Enemys2E[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys2E[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2E[i]['x']),(Constants.Enemys2E[i]['y'])-12])
+            EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
+    
+    return [Players, Blocks, EnemysG, None, None, Ladders, None, WaterG, None, None, None, None, Constants.Clock, mapa, 5, '4', '6', '2', '5']

@@ -8,6 +8,7 @@ from CRUD import Constants
 from Classes import Door as Do
 from Classes import Player as P
 from Classes import Lava
+from Classes import Brujas
 from Classes import Block
 
 from pygame.locals import *
@@ -42,5 +43,17 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for Player in Players:
         Player.Bloques = Blocks
     
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys2H)):
+        if Constants.Enemys2H[i]['name'] == 'BrujaE':
+            Temp = Brujas.Escoba([(Constants.Enemys2H[i]['x']),(Constants.Enemys2H[i]['y'])-12],(Constants.Enemys2H[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys2H[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2H[i]['x']),(Constants.Enemys2H[i]['y'])-12])
+            EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
+    
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, None, None, LavaG, None, Doors, None, None, None, Constants.Clock, mapa, 0, '7', '9','2', '8']
+    return [Players, Blocks, EnemysG, None, None, None, LavaG, None, Doors, None, None, None, Constants.Clock, mapa, 0, '7', '9','2', '8']

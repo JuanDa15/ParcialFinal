@@ -62,11 +62,14 @@ def StartRoom(Player, Players, PositionX, PositionY):
     EnemysG = pygame.sprite.Group()
     for i in range(len(Constants.Enemys2A)):
         if Constants.Enemys2A[i]['name'] == 'BrujaE':
-            Temp = pork.cerdo([(Constants.Enemys2A[i]['x']),(Constants.Enemys2A[i]['y'])-12],(Constants.Enemys2A[i]['properties'][0]['value']))
+            Temp = Brujas.Escoba([(Constants.Enemys2A[i]['x']),(Constants.Enemys2A[i]['y'])-12],(Constants.Enemys2A[i]['properties'][0]['value']))
             EnemysG.add(Temp)
-        elif Constants.Enemys2A[i]['name'] == 'BrujaP':
-            Temp = Bomber.Bomber([(Constants.Enemys2A[i]['x']),(Constants.Enemys2A[i]['y'])],Constants.Bomber,1)
+        elif Constants.Enemys2A[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2A[i]['x']),(Constants.Enemys2A[i]['y'])-12])
             EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
 
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
     return [Players, Blocks, EnemysG, None, None, Ladders, LavaG, WaterG, Doors, None, None, None,Constants.Clock, mapa, 3, None, '2', '2', '1']
