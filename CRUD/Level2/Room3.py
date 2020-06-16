@@ -9,6 +9,7 @@ from Classes import Player as P
 from Classes import Spikes
 from Classes import Block
 from Classes import Lava
+from Classes import Brujas
 from pygame.locals import *
 
 def StartRoom(Player ,Players ,PositionX , PositionY):
@@ -42,9 +43,21 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for i in range(len(Constants.Platforms2C)):
         Temporal = Block.Bloque([(Constants.Platforms2C[i]['x']),(Constants.Platforms2C[i]['y'])],Constants.Platforms2C[i]['width'],Constants.Platforms2C[i]['height'])
         Blocks.add(Temporal)
+    
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys2C)):
+        if Constants.Enemys2C[i]['name'] == 'BrujaE':
+            Temp = Brujas.Escoba([(Constants.Enemys2C[i]['x']),(Constants.Enemys2C[i]['y'])-12],(Constants.Enemys2C[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys2C[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2C[i]['x']),(Constants.Enemys2C[i]['y'])-12])
+            EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
 
     #Definicion de coliciones a las entidades
     for Player in Players:
         Player.Bloques = Blocks
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, None, None, LavaG, None, None, None, None, None, Constants.Clock, mapa, 4, '2', '4', '2', '3']
+    return [Players, Blocks, EnemysG, Puas, None, None, LavaG, None, None, None, None, None, Constants.Clock, mapa, 4, '2', '4', '2', '3']

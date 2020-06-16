@@ -7,6 +7,7 @@ from CRUD import Functions
 from CRUD import Constants
 from Classes import Player as P
 from Classes import Block
+from Classes import Brujas
 from Classes import Ladder as La
 from Classes import Lava
 
@@ -43,5 +44,17 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for Player in Players:
         Player.Bloques = Blocks
     
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.Enemys2F)):
+        if Constants.Enemys2F[i]['name'] == 'BrujaE':
+            Temp = Brujas.Escoba([(Constants.Enemys2F[i]['x']),(Constants.Enemys2F[i]['y'])-12],(Constants.Enemys2F[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.Enemys2F[i]['name'] == 'BrujaC':
+            Temp = Brujas.Estatica([(Constants.Enemys2F[i]['x']),(Constants.Enemys2F[i]['y'])-12])
+            EnemysG.add(Temp)
+    
+    for Enemy in EnemysG:
+        Enemy.Bloques = Blocks
+    
 
-    return [Players, Blocks, None, None, None, Ladders, LavaG, None, None, None, None, None, Constants.Clock, mapa, 7, '5', '7', '2', '6']
+    return [Players, Blocks, EnemysG, None, None, Ladders, LavaG, None, None, None, None, None, Constants.Clock, mapa, 7, '5', '7', '2', '6']
