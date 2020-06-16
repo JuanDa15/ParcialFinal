@@ -198,12 +198,11 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     b.frame = 0
                     b.velx = 0
         for b in Enemies:
-            if isinstance(b,pork.cerdo):
-                if b.accion == 1:
-                    if b.Muerte > 0:
-                        b.Muerte -= 1
-                    else:
-                        Enemies.remove(b)
+            if b.accion == 1:
+                if b.Muerte > 0:
+                    b.Muerte -= 1
+                else:
+                    Enemies.remove(b)
 
     #Water
     if Water != None:
