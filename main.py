@@ -1,11 +1,11 @@
-from CRUD.Level1 import Room9 as R1
+from CRUD.Level1 import Room1 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level2 import Room1 as R2
 from CRUD import RoomLoader as RL
 from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
 from CRUD.Menus import LostScreen as LS
-from CRUD.Menus import VictoryScreen as VS         
+from CRUD.Menus import VictoryScreen as VS
 from CRUD import Constants
 from Classes import Vida as V
 from Classes import Score as Sc
@@ -46,14 +46,14 @@ while(True):
         nextLevel = None
     if Constants.LifeManager.vidas == 0:
         response = LS.lostMenu(Constants.Screen)
-        if response == 1:  
+        if response == 1:
             importlib.reload(Constants)
             MM.Main_Menu()
             currentGame = load_game()
             j = currentGame[0]
             Players = currentGame[1]
             currentLevel = currentGame[2]
-        elif response == 2: 
+        elif response == 2:
             importlib.reload(Constants)
             currentGame = load_game()
             j = currentGame[0]
