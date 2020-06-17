@@ -100,6 +100,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Player.EnAire = True
             if event.key == pygame.K_e:
                 Constants.Interact = True
+            if event.key == pygame.K_r:
+                Constants.WinGame = True
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = True
             if event.key == pygame.K_w:
@@ -128,6 +130,11 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         else:
             Player.Charge = 1.0
             Player.EnAire = True
+    
+    if currentLevel + currentRoom == '32':
+        collide = pygame.sprite.spritecollide(Constants.BossFinal, Players, False)
+        if collide:
+            Constants.WinGame = True
 
     if Constants.AppleConsumed and Player.Apples > 0 and Player.vida < 100:
         if Constants.AppleTime == 0:

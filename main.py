@@ -28,7 +28,7 @@ def load_game():
     #currentLevel = R3.StartRoom(j,Players,150,200)
     #currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)
-    currentLevel = R1.StartRoom(j,Players,40,200)
+    currentLevel = TR.StartRoom(j,Players,40,200)
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players, currentLevel]
 
@@ -44,6 +44,8 @@ while(True):
     if nextLevel != None:
         currentLevel = nextLevel.copy()
         nextLevel = None
+    if Constants.WinGame:
+        VS.Victory_Menu(Constants.Screen)
     if Constants.LifeManager.vidas == 0:
         response = LS.lostMenu(Constants.Screen)
         if response == 1:  

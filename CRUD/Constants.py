@@ -19,6 +19,7 @@ ScoreManager = None
 inLadder = False
 Subiendo = False
 SpaceKey = False
+WinGame = False
 Hit = False
 Shop1 = None
 AppleConsumed = False
