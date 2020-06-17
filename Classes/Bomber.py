@@ -21,12 +21,14 @@ class Bomber(pygame.sprite.Sprite):
         self.Muerte = 30
         self.frame = 0
         self.espera = 2
-        self.animacion = ((2,2,22,24,28,2,22,24,54,2,23,24,80,2,22,24,106,2,23,24,132,2,22,24,158,2,22,24,184,2,22,24,210,2,22,24,236,2,22,24),(11,4,19,24,48,4,18,24,83,4,18,24,119,4,17,24),(2,2,23,24,28,2,24,24,54,2,24,24,79,2,17,24,104,2,20,24))
+        self.animacion = ((2,2,22,24,28,2,22,24,54,2,23,24,80,2,22,24,106,2,23,24,132,2,22,24,158,2,22,24,184,2,22,24,210,2,22,24,236,2,22,24),(11,4,19,24,48,4,18,24,83,4,18,24,119,4,17,24),(2,2,23,24,28,2,24,24,54,2,24,24,79,2,17,24,104,2,20,24),(2,2,23,24,28,2,24,24,54,2,24,24,79,2,18,24,104,2,20,24))
     
     def update(self):
         self.timer -= 1
         if self.timer == 0:
             self.timer = 80
+            self.frame = 0
+            self.accion = 2
         #Posicion y velocidad en x
 
         if self.frame < len(self.animacion[self.accion]) - 1:
@@ -41,6 +43,7 @@ class Bomber(pygame.sprite.Sprite):
                 self.espera -= 1
         else:
             if self.accion != 1:
+                self.accion = 0
                 self.frame = 0
             else:
                 self.frame = 15
