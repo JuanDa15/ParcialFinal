@@ -37,6 +37,7 @@ def lostMenu(Screen):
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 1
         if StarAgain.collidepoint ([mouse_x,mouse_y]):

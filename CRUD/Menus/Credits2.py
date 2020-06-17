@@ -37,6 +37,7 @@ def Credits(Screen):
         if Back.collidepoint(mouse_x,mouse_y):
             Functions.MakeImage(55,530,Screen,UF.getArchive('BackImageSelected'))
             if Click:
+                pygame.mixer.music.stop()
                 return 0
                 
         Sprites = [C.Sound_Off_2,C.Sound_On_2,C.Sound_Up_2,C.Sound_Dowm_2,]
