@@ -38,14 +38,24 @@ class Vida(pygame.sprite.Sprite):
             self.player.vida = 100
             
 
-        if self.player.vida > 80:
+        if self.player.vida > 90:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,0,50,24), (150,72))
-        if self.player.vida <= 80 and self.player.vida > 60:
+        if self.player.vida <= 90 and self.player.vida > 80:
+            self.image = pygame.transform.scale(self.SpriteSalud.subsurface(50,0,50,24), (150,72))
+        if self.player.vida <= 80 and self.player.vida > 70:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,25,50,24), (150,72))
-        if self.player.vida <= 60 and self.player.vida > 40:
+        if self.player.vida <= 70 and self.player.vida > 60:
+            self.image = pygame.transform.scale(self.SpriteSalud.subsurface(50,25,50,24), (150,72))
+        if self.player.vida <= 60 and self.player.vida > 50:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,50,50,24), (150,72))
-        if self.player.vida <= 40 and self.player.vida > 20:
+        if self.player.vida <= 50 and self.player.vida > 40:
+            self.image = pygame.transform.scale(self.SpriteSalud.subsurface(50,50,50,24), (150,72))
+        if self.player.vida <= 40 and self.player.vida > 30:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,75,50,24), (150,72))
-        if self.player.vida <= 20:
+        if self.player.vida <= 30 and self.player.vida > 20:
+            self.image = pygame.transform.scale(self.SpriteSalud.subsurface(50,75,50,24), (150,72))
+        if self.player.vida <= 20 and self.player.vida > 10:
             self.image = pygame.transform.scale(self.SpriteSalud.subsurface(0,100,50,24), (150,72))
+        if self.player.vida <= 10:
+            self.image = pygame.transform.scale(self.SpriteSalud.subsurface(50,100,50,24), (150,72))
 
