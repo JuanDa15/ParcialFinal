@@ -16,6 +16,7 @@ class Minotauro(pygame.sprite.Sprite):
         self.intervalo = 20
         self.Angry = False
         self.AngryTime = 100
+        self.Dead = False
 
         self.AxeGroup = pygame.sprite.Group()
         self.Axe = pygame.sprite.Sprite()
@@ -89,36 +90,40 @@ class Minotauro(pygame.sprite.Sprite):
                 self.rect.top = b.rect.bottom
                 self.vely += 0.5
 
-        #Interacciones
-        #Golpear al jugador con el hacha
-        if not self.Angry:
-            if self.intervalo < 20:
-                self.intervalo += 1
-            listaColision=pygame.sprite.spritecollide(self.player,self.AxeGroup,False)
-            if listaColision:
-                if self.intervalo == 20:
-                    self.intervalo = 0
-                    self.frame = 0
-                    self.accion = 3
-                    Constants.LifeManager.hitPlayer(20)
-        #Golpear en area y ser invulnerable
-        if self.Angry:
-            self.velx = 0
-            if self.AngryTime < 30:
-                listaColision=pygame.sprite.spritecollide(self.player,self.AreaGroup,False)
+        if not self.Dead:
+            #Interacciones
+            #Golpear al jugador con el hacha
+            if not self.Angry:
+                if self.intervalo < 20:
+                    self.intervalo += 1
+                listaColision=pygame.sprite.spritecollide(self.player,self.AxeGroup,False)
                 if listaColision:
-                    self.frame = 0
-                    self.accion = 2
-                    self.player.vely = -10
-                    Constants.LifeManager.hitPlayer(20)
-                    self.Angry = False
-                    self.AngryTime = 100
+                    if self.intervalo == 20:
+                        self.intervalo = 0
+                        self.frame = 0
+                        self.accion = 3
+                        Constants.LifeManager.hitPlayer(20)
+            #Golpear en area y ser invulnerable
+            if self.Angry:
+                self.velx = 0
+                if self.AngryTime < 30:
+                    listaColision=pygame.sprite.spritecollide(self.player,self.AreaGroup,False)
+                    if listaColision:
+                        self.frame = 0
+                        self.accion = 2
+                        self.player.vely = -10
+                        Constants.LifeManager.hitPlayer(20)
+                        self.Angry = False
+                        self.AngryTime = 100
 
-        if self.Angry:
-            self.AngryTime -= 1
-        if self.AngryTime == 0:
-            self.AngryTime = 100
-            self.Angry = False
+        if not self.Dead:
+            if self.Angry:
+                self.AngryTime -= 1
+            if self.AngryTime == 0:
+                self.frame = 0
+                self.accion = 2
+                self.AngryTime = 100
+                self.Angry = False
 
 
         if self.frame < len(self.animacion[self.accion]) - 1:
@@ -132,31 +137,30 @@ class Minotauro(pygame.sprite.Sprite):
             else:
                 self.espera -= 1 
         else:
-            self.frame = 0
-            if self.accion != 0:
-                self.accion = 0
+            if self.accion == 1:
+                self.frame = len(self.animacion[self.accion])-1
+            else:
+                if self.accion != 0:
+                    self.frame = 0
+                    self.accion = 0
 
-        self.vely += self.gravity
-        self.Axe.rect.x = self.rect.x
-        self.Axe.rect.y = self.rect.y
+        if not self.Dead:
+            self.vely += self.gravity
+            self.Axe.rect.x = self.rect.x
+            self.Axe.rect.y = self.rect.y
 
-        self.Area.rect.x = self.rect.x - 22
-        self.Area.rect.y = self.rect.y - 10
+            self.Area.rect.x = self.rect.x - 10
+            self.Area.rect.y = self.rect.y - 10
 
-        self.Animacion.rect.x = self.rect.x
-        self.Animacion.rect.y = self.rect.y
-        if self.DireccionAxe == 0:
-            self.Axe.rect.x -= 22
-        if self.DireccionAxe == 1:
-            #self.Axe.rect.x += 30
-            self.Animacion.rect.x -= 13
-        
-        if not self.Angry:
-            if self.player.rect.x < self.rect.x - 22:
-                self.velx = -2
-                self.DireccionAxe = 0
-                self.direccion = False
-            elif self.player.rect.x > self.rect.x + 22:
-                self.DireccionAxe = 1
-                self.velx = 2
-                self.direccion = True
+            self.Animacion.rect.x = self.rect.x
+            self.Animacion.rect.y = self.rect.y
+            
+            if not self.Angry:
+                if self.player.rect.x < self.rect.x - 22:
+                    self.velx = -2
+                    self.DireccionAxe = 0
+                    self.direccion = False
+                elif self.player.rect.x > self.rect.x + 22:
+                    self.DireccionAxe = 1
+                    self.velx = 2
+                    self.direccion = True

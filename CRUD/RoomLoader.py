@@ -170,13 +170,14 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     TempBomb = Bomb.bomb([(Enemy.rect.x - 5),Enemy.rect.y],Enemy.direccion)
                     TempBomb.Bloques = Blocks
                     eval('Constants.Bombs'+currentLevel+currentRoom+'.add(TempBomb)')
-        for TempBomb in eval('Constants.Bombs'+currentLevel+currentRoom+''):
-            ListaColision = pygame.sprite.spritecollide(TempBomb, Players, False)
-            for b in ListaColision:
-                eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
-                Constants.LifeManager.hitPlayer(20)
-            if TempBomb.time == 0:
-                eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
+        if currentLevel == '1':
+            for TempBomb in eval('Constants.Bombs'+currentLevel+currentRoom+''):
+                ListaColision = pygame.sprite.spritecollide(TempBomb, Players, False)
+                for b in ListaColision:
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
+                    Constants.LifeManager.hitPlayer(20)
+                if TempBomb.time == 0:
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
 
     #Cañones
     if Cannons != None:
@@ -302,6 +303,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             Constants.LifeManager.hitPlayer(5)
         Player.TQuemadura -= 1
 
+    #BOSS 1
     if currentLevel + currentRoom == '110':
         for Player in Players:
             for Hammer in Player.HammerGroup:
@@ -309,10 +311,17 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 for b in listaColisionHammer:
                     if Constants.Hit:
                         if Constants.Jefe1.invisibility == 0:
-                            Constants.Jefe1.invisibility = 100
-                            Constants.Jefe1.Angry = True
                             Constants.Jefe1.vida -= 1
-
+                            if Constants.Jefe1.vida == 0:
+                                Player.Coins += Constants.Jefe1.premio
+                                Player.Diamonds += int(Constants.Jefe1.premio/10)
+                                Constants.Jefe1.velx = 0
+                                Constants.Jefe1.Dead = True
+                                Constants.Jefe1.accion = 1
+                            else:
+                                Constants.Jefe1.invisibility = 100
+                                Constants.Jefe1.Angry = True
+                            
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -583,7 +592,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Lava != None:
         Lava.update()
     if Enemies != None:
-        eval('Constants.Bombs'+currentLevel+currentRoom+'.update()')
+        if currentLevel == '1':
+            eval('Constants.Bombs'+currentLevel+currentRoom+'.update()')
         Enemies.update()
     if Cannons != None:
         Cannons.update()
@@ -598,8 +608,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Jefe1.Bloques = Blocks
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()
-        Constants.Jefe1.AreaGroup.draw(Constants.Screen)
-        Constants.Jefe1.AxeGroup.draw(Constants.Screen)
         Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
@@ -613,7 +621,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Enemies != None:
-        eval('Constants.Bombs'+currentLevel+currentRoom+'.draw(Constants.Screen)')
+        if currentLevel == '1':
+            eval('Constants.Bombs'+currentLevel+currentRoom+'.draw(Constants.Screen)')
         Enemies.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
