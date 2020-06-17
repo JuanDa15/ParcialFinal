@@ -483,6 +483,7 @@ DoorPosJ = MapInfo['layers'][9]['objects']
 SpikesPosJ= MapInfo['layers'][10]['objects']
 Enemys1J = MapInfo['layers'][11]['objects']
 
+
 #Creacion de las manzanas
 for i in range(len(ApplesPosJ)):
     Temporal = ap.Apple((ApplesPosJ[i]['x'],ApplesPosJ[i]['y']))
