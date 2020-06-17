@@ -349,6 +349,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             if Constants.Jefe2.nextAttack == 0 and Constants.Jefe2.attackFinished:
                 for i in range(5):
                     for i in range(5):
+                        Constants.Jefe2.frame = 0
+                        Constants.Jefe2.accion = 3
                         TempLaser = Laser.Laser([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,i)
                         Constants.LasersJefe2.add(TempLaser)
                         TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
@@ -356,7 +358,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                         Enemies.add(TempCobra)
                     Constants.LasersJefe2.update()
             if Constants.Jefe2.nextAttack == 1 and Constants.Jefe2.attackFinished:
-                    print(Constants.Jefe2.direccion)
+                    Constants.Jefe2.frame = 0
+                    Constants.Jefe2.accion = 4
                     TempRock = Roca.Roca([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,Constants.Jefe2.direccion)
                     Constants.RocaJefe2.add(TempRock)
                     TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
