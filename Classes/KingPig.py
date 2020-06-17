@@ -51,7 +51,6 @@ class King(pygame.sprite.Sprite):
         for b in listaColision:
             if ((self.rect.bottom >= b.rect.top) and (self.rect.bottom <= b.rect.bottom)):
                 self.vely = 0
-                self.EnAire = False
                 self.rect.bottom = b.rect.top
                 Constants.PlataformaMovil = False
             elif ((self.rect.top <= b.rect.bottom) and (self.rect.top >= b.rect.top)):
