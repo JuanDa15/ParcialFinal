@@ -1,8 +1,8 @@
-from CRUD.Level2 import Room10 as R1
+from CRUD.Level1 import Room1 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
-from CRUD.FinalBoss import Room1 as FB
+from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
 from CRUD.Menus import LostScreen as LS
 from CRUD.Menus import VictoryScreen as VS
@@ -17,6 +17,7 @@ import importlib
 import pygame
 from Classes import Player as P
 
+
 def load_game():
     #Creacion Jugador
     j = P.Jugador([0,0])
@@ -25,15 +26,11 @@ def load_game():
     Constants.LifeManager = V.Vida([0,0],j)
     Constants.ScoreManager = Sc.Score([670,10],j)
     Constants.Shop1 = Shop.Shop([200,240],j,[100,85,60])
-    #currentLevel = R3.StartRoom(j,Players,150,200)
-    #currentLevel = R2.StartRoom(j,Players,400, 300)
-    #currentLevel = R1.StartRoom(j,Players,300, 280)
-    currentLevel = FB.StartRoom(j,Players,40,200)
+    currentLevel = TR.StartRoom(j,Players,160,113)
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players, currentLevel]
 
-#GameIntro.introduccion()
-MM.Main_Menu(Constants.Screen)
+GameIntro.introduccion()
 currentGame = load_game()
 j = currentGame[0]
 Players = currentGame[1]
@@ -44,19 +41,36 @@ while(True):
     if nextLevel != None:
         currentLevel = nextLevel.copy()
         nextLevel = None
-    if Constants.LifeManager.vidas == 0:
-        response = LS.lostMenu(Constants.Screen)
-        if response == 1:  
+    if Constants.WinGame:
+        response = VS.Victory_Menu(Constants.Screen)
+        if response == 1:
             importlib.reload(Constants)
-            MM.Main_Menu()
+            MM.Main_Menu(Constants.Screen)
             currentGame = load_game()
             j = currentGame[0]
             Players = currentGame[1]
             currentLevel = currentGame[2]
-        elif response == 2: 
+        elif response == 2:
             importlib.reload(Constants)
             currentGame = load_game()
             j = currentGame[0]
             Players = currentGame[1]
-            currentLevel = R1.StartRoom(j,Players,400, 300)
+            currentLevel = R1.StartRoom(j,Players,32, 260)
+    if Constants.LifeManager.vidas == 0:
+        response = LS.lostMenu(Constants.Screen)
+        if response == 1:
+            importlib.reload(Constants)
+            MM.Main_Menu(Constants.Screen)
+            currentGame = load_game()
+            j = currentGame[0]
+            Players = currentGame[1]
+            currentLevel = currentGame[2]
+        elif response == 2:
+            importlib.reload(Constants)
+            currentGame = load_game()
+            j = currentGame[0]
+            Players = currentGame[1]
+            currentLevel = R1.StartRoom(j,Players,32, 260)
+
+#LS.lostMenu(Constants.Screen)
 #VS.Victory_Menu(Constants.Screen)

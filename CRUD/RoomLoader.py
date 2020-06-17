@@ -129,6 +129,11 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             Player.Charge = 1.0
             Player.EnAire = True
 
+    if currentLevel + currentRoom == '32':
+        collide = pygame.sprite.spritecollide(Constants.BossFinal, Players, False)
+        if collide:
+            Constants.WinGame = True
+
     if Constants.AppleConsumed and Player.Apples > 0 and Player.vida < 100:
         if Constants.AppleTime == 0:
             Player.vida += 20
@@ -150,16 +155,12 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             listaColisionPuas=pygame.sprite.spritecollide(Player,Puas,False)
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
 
     #Cañones
@@ -220,7 +221,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 if b.Muerte > 0:
                     b.Muerte -= 1
                 else:
-                    print("sa matao paco")
                     Enemies.remove(b)
         for Enemy in Enemies:
             if isinstance(Enemy,Bomber.Bomber):
@@ -244,11 +244,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             CollisionAgua = pygame.sprite.spritecollide(Player, Water, False)
             if CollisionAgua:
                 Player.EnAgua = True
-                print('Mojado Pai')
             else:
                 Player.EnAgua = False
                 Player.respiracion = 0
-            
+
             for b in CollisionAgua:
                 if Player.rect.top <= b.rect.top:
                     Player.respiracion = 0
@@ -264,7 +263,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Player.gravity = 0.1
     else:
         Player.gravity = 0.5
-    
+
     if Instakill != None:
         for Player in Players:
             CollisionInstakill = pygame.sprite.spritecollide(Player, Instakill, False)
@@ -285,10 +284,9 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
             if CollisionLava:
                 Player.EnLava = True
-                print('Quemado Pai')  
             else:
                 Player.EnLava = False
-            
+
         if Player.EnLava == True:
             if Player.InmunidadFuego == False:
                 Constants.LifeManager.hitPlayer(10)
@@ -365,8 +363,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
                     TempCobra.Bloques = Blocks
                     Enemies.add(TempCobra)
-                
-                            
+
+
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -422,16 +420,12 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),True)
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
     #Escaleras
     for Player in Players:
@@ -687,7 +681,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Jefe1.Bloques = Blocks
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()
-        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
+        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29') or ((currentLevel + currentRoom) == '31'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
@@ -728,6 +722,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Screen.blit(Constants.LifeManager.quemadura.image, [100,80])
     if Player.invisibility > 0:
         Constants.Screen.blit(Constants.LifeManager.shield.image, [130,82])
-    
+
     pygame.display.flip()
     Clock.tick(30)

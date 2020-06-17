@@ -50,7 +50,6 @@ class Vida(pygame.sprite.Sprite):
             self.showLost += 1
             Constants.Screen.blit(self.vidaLost.image, [self.player.rect.x,self.player.rect.y-self.showLost])
             
-        #print("Healt: "+str(self.player.vida)+" Lifes: "+str(self.vidas))
         if self.player.invisibility > 0:
             self.player.invisibility -= 1
         if self.player.vida <= 0:
