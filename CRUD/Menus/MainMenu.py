@@ -17,7 +17,7 @@ def Main_Menu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.1)
+    pygame.mixer.music.set_volume(0.001)
     Click = False
 
     while True:

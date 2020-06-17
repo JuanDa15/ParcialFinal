@@ -31,7 +31,7 @@ def introduccion():
     back = pygame.sprite.Group()
     Background1 = BG.Background([0,0],Video)
     back.add(Background1)
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.play(0)
     pygame.mixer.music.set_volume(1)
     for i in range(len(Video)):
         back.update()
@@ -39,6 +39,7 @@ def introduccion():
         pygame.display.update()
         pygame.display.flip()
     pygame.mixer.music.stop()
+    
     while not introduccion: 
         #event managment
         for event in pygame.event.get():
