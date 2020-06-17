@@ -54,12 +54,13 @@ class Cobra(pygame.sprite.Sprite):
         
         self.vely += 0.5
 
-        if self.player.rect.x < self.rect.x:
-            self.velx = -2
-            self.direccion = False
-        elif self.player.rect.x > self.rect.x:
-            self.velx = 2
-            self.direccion = True
+        if self.accion != 1:
+            if self.player.rect.x < self.rect.x:
+                self.velx = -2
+                self.direccion = False
+            elif self.player.rect.x > self.rect.x:
+                self.velx = 2
+                self.direccion = True
 
 
         if self.frame < len(self.animacion[self.accion]) - 1:
