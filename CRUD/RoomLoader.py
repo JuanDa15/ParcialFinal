@@ -249,12 +249,13 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         
     #Lava
     if Lava != None:
-        for Enemy in Enemies:
-            if isinstance(Enemy,Cobra.Cobra):
-                CollisionLava = pygame.sprite.spritecollide(Enemy, Lava, False)
-                if CollisionLava or Enemy.rect.y > Constants.Height + 10:
-                    Constants.CountCobras -= 1
-                    Enemies.remove(Enemy)
+        if Enemies != None:
+            for Enemy in Enemies:
+                if isinstance(Enemy,Cobra.Cobra):
+                    CollisionLava = pygame.sprite.spritecollide(Enemy, Lava, False)
+                    if CollisionLava or Enemy.rect.y > Constants.Height + 10:
+                        Constants.CountCobras -= 1
+                        Enemies.remove(Enemy)
         for Player in Players:
             CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
             if CollisionLava:
