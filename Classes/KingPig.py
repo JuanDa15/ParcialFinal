@@ -2,7 +2,7 @@ import pygame
 from CRUD import Constants
 from CRUD import Functions
 
-class Jugador(pygame.sprite.Sprite):
+class King(pygame.sprite.Sprite):
     def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
 
@@ -13,16 +13,6 @@ class Jugador(pygame.sprite.Sprite):
         self.rect.x = position[0]
         self.rect.y = position[1]
 
-        self.HammerGroup = pygame.sprite.Group()
-        self.Hammer = pygame.sprite.Sprite()
-        self.Hammer.image = pygame.surface.Surface([40,28])
-        self.Hammer.image.fill((255,0,0))
-        self.Hammer.rect = self.Hammer.image.get_rect()
-        self.Hammer.rect.x = position[0]
-        self.Hammer.rect.y = position[1]
-        self.HammerGroup.add(self.Hammer)
-        self.DireccionHammer = 0
-
         self.Animacion = pygame.sprite.Sprite()
         self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Attack (78x58).png'))
         self.Animacion.image = self.AnimacionSprites[0].subsurface(7,14,37,28)
@@ -32,25 +22,8 @@ class Jugador(pygame.sprite.Sprite):
 
         self.velx = 0
         self.vely = 0
-        self.vida = 100
-        self.invisibility = 0
-        self.EnAire = False
-        self.EnLava = False
-        self.EnAgua = False
-        self.respiracion = 0
-        self.InmunidadFuego = False
-        self.speeeeeeeeeeed = 3
         self.Bloques = None
-        self.Coins = 0
-        self.Apples = 0
-        self.Diamonds = 0
-        self.Charge = 1.0
-        self.quemadura = False
-        self.TQuemadura = 0
-        self.Fquemadura = 0
         self.gravity = 0.5
-        self.waitHit = 25
-
 
         #Animaciones
         self.accion = 2
@@ -63,15 +36,6 @@ class Jugador(pygame.sprite.Sprite):
 
     def update(self):
         #Posicion y velocidad en x
-        if self.vida > 100:
-            self.vida = 100
-        self.rect.x += self.velx
-        if not Constants.Jefe2.Angry and self.velx == -10:
-            if self.waitHit == 0:
-                self.velx = 0
-                self.waitHit = 25
-            else:
-                self.waitHit -= 1
         #colision x--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
         for b in listaColision:
@@ -118,19 +82,6 @@ class Jugador(pygame.sprite.Sprite):
                 self.accion = 1
 
         self.vely += self.gravity
-        self.Hammer.rect.x = self.rect.x
-        self.Hammer.rect.y = self.rect.y
-
         self.Animacion.rect.x = self.rect.x
         self.Animacion.rect.y = self.rect.y
-        if self.DireccionHammer == 0:
-            self.Hammer.rect.x -= 16
-        if self.DireccionHammer == 1:
-            self.Animacion.rect.x -= 13
-
-    def UpdateRespiration(self):
-        self.respiracion += 1
-        
-    def getRespiracion(self):
-        return self.respiracion
 

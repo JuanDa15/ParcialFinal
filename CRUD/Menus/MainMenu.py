@@ -9,7 +9,7 @@ from CRUD import Constants
 from CRUD.Menus import Credits
 from CRUD.Menus import Controls
 
-pygame.display.set_caption('Main Menu')
+pygame.display.set_caption('King & Pigs')
 #------------------------------
 def Main_Menu(Screen):
     #Definition of variables-----------------
@@ -57,9 +57,11 @@ def Main_Menu(Screen):
             Functions.MakeImage(300,430,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
                 pygame.quit()
-                sis.exit()
+                sys.exit()
         
-        Click = SM.VolumeModule(Click,Screen)
+        Sprites = [UF.getArchive('SoundOffImg'),UF.getArchive('SoundOnImg'),UF.getArchive('SoundUpImg'),UF.getArchive('SoundDownImg')]
+        SpritesSelected = [UF.getArchive('SoundOffSelectedImg'),UF.getArchive('SoundOnSelectedImg'),UF.getArchive('SoundUpSelectedImg'),UF.getArchive('SoundDownSelectedImg')]
+        Click = SM.VolumeModule(Click,Screen,Sprites,SpritesSelected)
         
         #event managment
         for event in pygame.event.get():
@@ -75,10 +77,13 @@ def Main_Menu(Screen):
                     Click = True
         #refresh
         #update
-        Functions.draw_text('MAIN MENU',UF.TittleFont(40),Functions.SelectColor('White'),Screen,155.5,30)
-        Functions.draw_text('START',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,351,258.5)
-        Functions.draw_text('CREDITS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,331.5,318.5)
-        Functions.draw_text('CONTROLS',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,319,378.5)
-        Functions.draw_text('CLOSE',UF.getArchive('ButtonFont'),Functions.SelectColor('White'),Screen,353,438.5)
+        Functions.draw_text('MAIN MENU',UF.TittleFont(39),[251,202,151],Screen,160.5,30)
+        Functions.draw_text('KING',UF.TittleFont(23),Functions.SelectColor('White'),Screen,8,375)
+        Functions.draw_text('AND',UF.TittleFont(20),Functions.SelectColor('White'),Screen,25,415)
+        Functions.draw_text('PIGS',UF.TittleFont(23),Functions.SelectColor('White'),Screen,8,450)
+        Functions.draw_text('START',UF.getArchive('ButtonFont'),[63,56,81],Screen,351,258.5)
+        Functions.draw_text('CREDITS',UF.getArchive('ButtonFont'),[63,56,81],Screen,331.5,318.5)
+        Functions.draw_text('CONTROLS',UF.getArchive('ButtonFont'),[63,56,81],Screen,319,378.5)
+        Functions.draw_text('CLOSE',UF.getArchive('ButtonFont'),[63,56,81],Screen,353,438.5)
         pygame.display.update()
         pygame.display.flip()

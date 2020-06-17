@@ -6,6 +6,8 @@ import sys
 from CRUD import Functions
 from CRUD import Constants
 from Classes import Block
+from Classes import pork
+from Classes import Bomber
 from Classes import Cannon as ca
 from Classes import Ladder as La
 from Classes import Lava
@@ -69,7 +71,15 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     for i in range(len(Constants.DoorPosFB)):
         Temporal = Do.Door([(Constants.DoorPosFB[i]['x']),(Constants.DoorPosFB[i]['y'])],Constants.DoorPosFB[i]['width'],Constants.DoorPosFB[i]['height'],'31')
         Doors.add(Temporal)
-    
+
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.EnemysPosFB)):
+        if Constants.EnemysPosFB[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.EnemysPosFB[i]['x']),(Constants.EnemysPosFB[i]['y'])-12],(Constants.EnemysPosFB[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.EnemysPosFB[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.EnemysPosFB[i]['x']),(Constants.EnemysPosFB[i]['y'])],Constants.Bomber,1)
+            EnemysG.add(Temp)
     
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, None, Cannons, Ladders, LavaG, WaterG, None, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']
+    return [Players, Blocks, EnemysG, None, Cannons, Ladders, LavaG, WaterG, None, None, None, None, Constants.Clock, mapa, 8, None,None,'3','2']
