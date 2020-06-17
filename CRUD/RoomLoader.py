@@ -92,7 +92,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             if event.key == pygame.K_SPACE:
                 Player.frame = 0
                 Player.accion = 3
-                Constants.Space = True
+                Constants.SpaceKey = True
                 if Player.EnLava == True:
                     Player.vely = -3
                 if Player.EnAgua == True:
@@ -100,6 +100,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Player.EnAire = True
             if event.key == pygame.K_e:
                 Constants.Interact = True
+            if event.key == pygame.K_r:
+                Constants.WinGame = True
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = True
             if event.key == pygame.K_w:
@@ -114,21 +116,25 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             if event.key == pygame.K_UP:
                 Constants.Subiendo = False
             if event.key == pygame.K_SPACE:
-                Constants.Space = False
+                Constants.SpaceKey = False
             if event.key == pygame.K_e:
                 Constants.Interact = False
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = False
             if event.key == pygame.K_w:
                 Constants.Hit = False
-
     if Player.EnAire == False:
-        if Player.Charge <= 1.3 and Constants.Space:
+        if Player.Charge <= 1.3 and Constants.SpaceKey:
             Player.vely = -7 - Player.Charge
             Player.Charge += 0.1
         else:
             Player.Charge = 1.0
             Player.EnAire = True
+    
+    if currentLevel + currentRoom == '32':
+        collide = pygame.sprite.spritecollide(Constants.BossFinal, Players, False)
+        if collide:
+            Constants.WinGame = True
 
     if Constants.AppleConsumed and Player.Apples > 0 and Player.vida < 100:
         if Constants.AppleTime == 0:
@@ -230,7 +236,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     TempBomb = Bomb.bomb([(Enemy.rect.x - 5),Enemy.rect.y],Enemy.direccion)
                     TempBomb.Bloques = Blocks
                     eval('Constants.Bombs'+currentLevel+currentRoom+'.add(TempBomb)')
-        if currentLevel == '1' or currentLevel == '0':
+        if currentLevel == '1' or currentLevel == '0' or currentLevel+currentRoom == '32':
             for TempBomb in eval('Constants.Bombs'+currentLevel+currentRoom+''):
                 ListaColision = pygame.sprite.spritecollide(TempBomb, Players, False)
                 for b in ListaColision:
@@ -656,7 +662,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Lava != None:
         Lava.update()
     if Enemies != None:
-        if currentLevel == '1' or currentLevel == '0':
+        if currentLevel == '1' or currentLevel == '0' or currentLevel+currentRoom == '32':
             eval('Constants.Bombs'+currentLevel+currentRoom+'.update()')
         Enemies.update()
     if Cannons != None:
@@ -698,7 +704,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Enemies != None:
-        if currentLevel == '1' or currentLevel == '0':
+        if currentLevel == '1' or currentLevel == '0' or currentLevel+currentRoom == '32':
             eval('Constants.Bombs'+currentLevel+currentRoom+'.draw(Constants.Screen)')
         Enemies.draw(Constants.Screen)
     if Cannons != None:

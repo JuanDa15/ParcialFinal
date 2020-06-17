@@ -18,7 +18,8 @@ LifeManager = None
 ScoreManager = None
 inLadder = False
 Subiendo = False
-Space = False
+SpaceKey = False
+WinGame = False
 Hit = False
 Shop1 = None
 AppleConsumed = False
@@ -969,6 +970,7 @@ WaterPosFB =  MapInfo['layers'][12]['objects']
 DoorPosFB =  MapInfo['layers'][13]['objects']
 EnemysPosFB =  MapInfo['layers'][14]['objects']
 BossFinal = KingPig.King([MapInfo['layers'][15]['objects'][0]['x'],MapInfo['layers'][15]['objects'][0]['y']])
+Bombs32 = pygame.sprite.Group()
 
 
 #Creacion de las manzanas
