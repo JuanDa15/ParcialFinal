@@ -37,7 +37,7 @@ def Credits(Screen):
         if Back.collidepoint(mouse_x,mouse_y):
             Functions.MakeImage(55,530,Screen,UF.getArchive('BackImageSelected'))
             if Click:
-                cre.Credits(Screen)
+                return 0
                 
         Sprites = [C.Sound_Off_2,C.Sound_On_2,C.Sound_Up_2,C.Sound_Dowm_2,]
         SelectedSprites = [C.Sound_Off_Selected_2,C.Sound_On_Selected_2,C.Sound_Up_Selected_2,C.Sound_Down_Selected_2]

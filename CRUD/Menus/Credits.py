@@ -58,7 +58,7 @@ def Credits(Screen):
         if Back.collidepoint(mouse_x,mouse_y):
             Functions.MakeImage(55,530,Screen,UF.getArchive('BackImageSelected'))
             if Click:
-                MainMenu.Main_Menu(Screen)
+                return 0
         if Next.collidepoint(mouse_x,mouse_y):
             Functions.MakeImage(650,530,Screen,UF.getArchive('NextImageSelected'))
             if Click:

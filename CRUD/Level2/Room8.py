@@ -35,9 +35,9 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
         Temporal = Do.Door([(Constants.DoorPos2H[i]['x']),(Constants.DoorPos2H[i]['y'])],Constants.DoorPos2H[i]['width'],Constants.DoorPos2H[i]['height'],'27')
         Doors.add(Temporal)
     
-    for i in range(len(Constants.LavaPos2H)):
-        Temporal = Lava.Lava([(Constants.LavaPos2H[i]['x']),(Constants.LavaPos2H[i]['y'])], Constants.LavaPos2H[i]['width'],Constants.LavaPos2H[i]['height'])
-    LavaG.add(Temporal)
+    for i in range(len(Constants.Instakill2H)):
+        Temporal = Block.Bloque([(Constants.Instakill2H[i]['x']),(Constants.Instakill2H[i]['y'])], Constants.Instakill2H[i]['width'],Constants.Instakill2H[i]['height'])
+        LavaG.add(Temporal)
     
     #Asignacion de las coliciones a las entidades
     for Player in Players:
@@ -56,4 +56,4 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
         Enemy.Bloques = Blocks
     
     #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, EnemysG, None, None, None, LavaG, None, Doors, None, None, None, Constants.Clock, mapa, 0, '7', '9','2', '8']
+    return [Players, Blocks, EnemysG, None, None, None, None, None, Doors, None, None, LavaG, Constants.Clock, mapa, 0, '7', '9','2', '8']

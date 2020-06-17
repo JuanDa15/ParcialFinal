@@ -20,6 +20,8 @@ class Score(pygame.sprite.Sprite):
         Functions.draw_text(' X '+str(self.player.Diamonds),UF.TittleFont(10),Functions.SelectColor('Black'),Constants.Screen,self.rect.x+35,self.rect.y+43)
         Functions.draw_text(' X '+str(self.player.Apples),UF.TittleFont(10),Functions.SelectColor('Black'),Constants.Screen,self.rect.x+35,self.rect.y+71)
         Functions.draw_text(''+str(datetime.timedelta(seconds=((pygame.time.get_ticks() - Constants.ClockStart) / 1000)))[:-4],UF.TextFont(10),Functions.SelectColor('Black'),Constants.Screen,self.rect.x+28,self.rect.y+3)
+        Constants.Total_Minutos = int(((pygame.time.get_ticks() - Constants.ClockStart) / 1000)/60)
+        Constants.Total_Time = ''+str(datetime.timedelta(seconds=((pygame.time.get_ticks() - Constants.ClockStart) / 1000)))[:-4]
         if Constants.AppleTime <= 250 and Constants.AppleTime > 200:
             Functions.draw_text('-',UF.TextFont(16),Functions.SelectColor('Black'),Constants.Screen,self.rect.x+26,self.rect.y+95)
         if Constants.AppleTime <= 200 and Constants.AppleTime > 150:
