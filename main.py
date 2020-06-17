@@ -2,7 +2,7 @@ from CRUD.Level2 import Room10 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
-from CRUD.FinalBoss import Room1 as R3
+from CRUD.FinalBoss import Room1 as R1
 from CRUD.Menus import MainMenu as MM
 from CRUD.Menus import LostScreen as LS
 from CRUD.Menus import VictoryScreen as VS
@@ -29,7 +29,7 @@ def load_game():
     #currentLevel = R3.StartRoom(j,Players,150,200)
     #currentLevel = R2.StartRoom(j,Players,400, 300)
     #currentLevel = R1.StartRoom(j,Players,300, 280)
-    currentLevel = TR.StartRoom(j,Players,200,200)
+    currentLevel = TR.StartRoom(j,Players,160,133)
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players, currentLevel]
 
@@ -45,6 +45,8 @@ while(True):
     if nextLevel != None:
         currentLevel = nextLevel.copy()
         nextLevel = None
+    if Constants.WinGame:
+        VS.Victory_Menu(Constants.Screen)
     if Constants.LifeManager.vidas == 0:
         response = LS.lostMenu(Constants.Screen)
         if response == 1:  
