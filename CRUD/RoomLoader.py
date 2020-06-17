@@ -11,6 +11,8 @@ from Classes import HorizontalMovingPlatform as HMP
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
 from Classes import Block
+from Classes import Bomber
+from Classes import Bomb
 from Classes import pork
 from Classes import Brujas
 from Classes import Cobra
@@ -159,6 +161,24 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     print("chuzao pai")
                     Constants.LifeManager.hitPlayer(20)
 
+    #Bombers
+    if Enemies != None:
+        for Enemy in Enemies:
+            if isinstance(Enemy,Bomber.Bomber):
+                Enemy.player = Player
+                if Enemy.timer == 1:
+                    TempBomb = Bomb.bomb([(Enemy.rect.x - 5),Enemy.rect.y],Enemy.direccion)
+                    TempBomb.Bloques = Blocks
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.add(TempBomb)')
+        for TempBomb in eval('Constants.Bombs'+currentLevel+currentRoom+''):
+            ListaColision = pygame.sprite.spritecollide(TempBomb, Players, False)
+            for b in ListaColision:
+                eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
+                Constants.LifeManager.hitPlayer(20)
+            if TempBomb.time == 0:
+                eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
+
+    #Cañones
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -216,9 +236,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                     b.Muerte -= 1
                 else:
                     Enemies.remove(b)
-        
-            
-
 
     #Water
     if Water != None:
@@ -246,7 +263,14 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Player.gravity = 0.1
     else:
         Player.gravity = 0.5
-        
+    
+    if Instakill != None:
+        for Player in Players:
+            CollisionInstakill = pygame.sprite.spritecollide(Player, Instakill, False)
+            if CollisionInstakill:
+                Constants.LifeManager.instakill()
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
+
     #Lava
     if Lava != None:
         if Enemies != None:
@@ -285,7 +309,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 for b in listaColisionHammer:
                     if Constants.Hit:
                         if Constants.Jefe1.invisibility == 0:
-                            print("golpe")
                             Constants.Jefe1.invisibility = 100
                             Constants.Jefe1.Angry = True
                             Constants.Jefe1.vida -= 1
@@ -413,7 +436,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
             #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if nextRoom != None:
@@ -426,7 +449,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if (currentLevel + nextRoom) == '210':
@@ -455,7 +478,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
@@ -467,7 +490,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
@@ -560,6 +583,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Lava != None:
         Lava.update()
     if Enemies != None:
+        eval('Constants.Bombs'+currentLevel+currentRoom+'.update()')
         Enemies.update()
     if Cannons != None:
         Cannons.update()
@@ -584,13 +608,12 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
-    if Enemies != None:
-        Enemies.draw(Constants.Screen)
 
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Enemies != None:
+        eval('Constants.Bombs'+currentLevel+currentRoom+'.draw(Constants.Screen)')
         Enemies.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
