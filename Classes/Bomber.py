@@ -15,6 +15,7 @@ class Bomber(pygame.sprite.Sprite):
         self.player = None
         self.direccion = direccion
         self.Bloques = None
+        self.muerto = False
 
         #animacion
         self.accion = 0
@@ -28,7 +29,8 @@ class Bomber(pygame.sprite.Sprite):
         if self.timer == 0:
             self.timer = 80
             self.frame = 0
-            self.accion = 2
+            if not self.muerto:
+                self.accion = 2
         #Posicion y velocidad en x
 
         if self.frame < len(self.animacion[self.accion]) - 1:
