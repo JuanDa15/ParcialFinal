@@ -140,9 +140,9 @@ class Minotauro(pygame.sprite.Sprite):
             if self.accion == 1:
                 self.frame = len(self.animacion[self.accion])-1
             else:
-                if self.accion != 0:
-                    self.frame = 0
-                    self.accion = 0
+                self.frame = 0
+                self.accion = 0
+                
         if not self.Dead:
             self.vely += self.gravity
             self.Axe.rect.x = self.rect.x

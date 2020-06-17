@@ -128,7 +128,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         else:
             Player.Charge = 1.0
             Player.EnAire = True
-    
+
     if currentLevel + currentRoom == '32':
         collide = pygame.sprite.spritecollide(Constants.BossFinal, Players, False)
         if collide:
@@ -247,7 +247,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             else:
                 Player.EnAgua = False
                 Player.respiracion = 0
-            
+
             for b in CollisionAgua:
                 if Player.rect.top <= b.rect.top:
                     Player.respiracion = 0
@@ -263,7 +263,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Player.gravity = 0.1
     else:
         Player.gravity = 0.5
-    
+
     if Instakill != None:
         for Player in Players:
             CollisionInstakill = pygame.sprite.spritecollide(Player, Instakill, False)
@@ -286,7 +286,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Player.EnLava = True
             else:
                 Player.EnLava = False
-            
+
         if Player.EnLava == True:
             if Player.InmunidadFuego == False:
                 Constants.LifeManager.hitPlayer(10)
@@ -347,6 +347,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             if Constants.Jefe2.nextAttack == 0 and Constants.Jefe2.attackFinished:
                 for i in range(5):
                     for i in range(5):
+                        Constants.Jefe2.frame = 0
+                        Constants.Jefe2.accion = 3
                         TempLaser = Laser.Laser([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,i)
                         Constants.LasersJefe2.add(TempLaser)
                         TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
@@ -354,13 +356,15 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                         Enemies.add(TempCobra)
                     Constants.LasersJefe2.update()
             if Constants.Jefe2.nextAttack == 1 and Constants.Jefe2.attackFinished:
+                    Constants.Jefe2.frame = 0
+                    Constants.Jefe2.accion = 4
                     TempRock = Roca.Roca([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,Constants.Jefe2.direccion)
                     Constants.RocaJefe2.add(TempRock)
                     TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
                     TempCobra.Bloques = Blocks
                     Enemies.add(TempCobra)
-                
-                            
+
+
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -677,7 +681,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Jefe1.Bloques = Blocks
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()
-        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
+        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29') or ((currentLevel + currentRoom) == '31'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
@@ -718,6 +722,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Screen.blit(Constants.LifeManager.quemadura.image, [100,80])
     if Player.invisibility > 0:
         Constants.Screen.blit(Constants.LifeManager.shield.image, [130,82])
-    
+
     pygame.display.flip()
     Clock.tick(30)
