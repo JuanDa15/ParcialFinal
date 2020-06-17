@@ -13,7 +13,7 @@ def lostMenu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Game Over II.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.001)
+    pygame.mixer.music.set_volume(0.2)
     #Definition of variables-----------------
     Click = False
     while True:

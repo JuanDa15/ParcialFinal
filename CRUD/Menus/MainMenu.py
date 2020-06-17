@@ -8,6 +8,7 @@ from CRUD import SoundModule as SM
 from CRUD import Constants
 from CRUD.Menus import Credits
 from CRUD.Menus import Controls
+from CRUD.Menus import VictoryScreen as VS
 
 pygame.display.set_caption('King & Pigs')
 #------------------------------
@@ -17,7 +18,7 @@ def Main_Menu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.001)
+    pygame.mixer.music.set_volume(0.019)
     Click = False
 
     while True:
@@ -41,16 +42,19 @@ def Main_Menu(Screen):
         if Start.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 0
         if Creditos.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Credits.Credits(Screen)
                 Click = False
         if Controles.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,370,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Controls.ControlsScreen(Screen)
                 Click = False
         if Close.collidepoint([mouse_x,mouse_y]):
