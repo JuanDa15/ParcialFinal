@@ -27,7 +27,6 @@ class Door(pygame.sprite.Sprite):
                 self.espera = 2
             else:
                 self.espera -= 1
-        print("Entrar")
         return ('R' + self.destiny + '.StartRoom(Player,Players,'+ str(pos_destiny[0]) +','+ str(pos_destiny[1]) +')')
 
     def ExitRoom(self, pos_destiny):
@@ -38,6 +37,5 @@ class Door(pygame.sprite.Sprite):
                 self.espera = 2
             else:
                 self.espera -= 1
-        print("Entrar")
         return ('R' + self.destiny + '.StartRoom(Player,Players,'+ str(pos_destiny[0]) +','+ str(pos_destiny[1]) +')')
         

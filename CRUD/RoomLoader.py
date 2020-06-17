@@ -100,8 +100,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 Player.EnAire = True
             if event.key == pygame.K_e:
                 Constants.Interact = True
-            if event.key == pygame.K_r:
-                Constants.WinGame = True
             if event.key == pygame.K_q:
                 Constants.AppleConsumed = True
             if event.key == pygame.K_w:
@@ -157,16 +155,12 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             listaColisionPuas=pygame.sprite.spritecollide(Player,Puas,False)
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                    print("chuzao pai")
                     Constants.LifeManager.hitPlayer(10)
 
     #Cañones
@@ -227,7 +221,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 if b.Muerte > 0:
                     b.Muerte -= 1
                 else:
-                    print("sa matao paco")
                     Enemies.remove(b)
         for Enemy in Enemies:
             if isinstance(Enemy,Bomber.Bomber):
@@ -251,7 +244,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             CollisionAgua = pygame.sprite.spritecollide(Player, Water, False)
             if CollisionAgua:
                 Player.EnAgua = True
-                print('Mojado Pai')
             else:
                 Player.EnAgua = False
                 Player.respiracion = 0
@@ -292,7 +284,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
             if CollisionLava:
                 Player.EnLava = True
-                print('Quemado Pai')  
             else:
                 Player.EnLava = False
             
@@ -363,7 +354,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                         Enemies.add(TempCobra)
                     Constants.LasersJefe2.update()
             if Constants.Jefe2.nextAttack == 1 and Constants.Jefe2.attackFinished:
-                    print(Constants.Jefe2.direccion)
                     TempRock = Roca.Roca([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,Constants.Jefe2.direccion)
                     Constants.RocaJefe2.add(TempRock)
                     TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
@@ -426,16 +416,12 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             ListaBolasCañon = pygame.sprite.spritecollide(Player, eval('Constants.CannonBalls'+currentLevel+currentRoom+''),True)
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
-                    print("balazo pai")
                     Constants.LifeManager.hitPlayer(10)
     #Escaleras
     for Player in Players:
