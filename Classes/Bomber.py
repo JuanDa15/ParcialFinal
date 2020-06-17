@@ -11,7 +11,8 @@ class Bomber(pygame.sprite.Sprite):
         self.rect.y = position[1]
         self.velx = 0
         self.vely = 0
-        self.timer = 30
+        self.timer = 80
+        self.player = None
         self.direccion = direccion
         self.Bloques = None
 
@@ -24,13 +25,15 @@ class Bomber(pygame.sprite.Sprite):
     
     def update(self):
         self.timer -= 1
+        if self.timer == 0:
+            self.timer = 80
         #Posicion y velocidad en x
 
         if self.frame < len(self.animacion[self.accion]) - 1:
             if self.direccion == True:
                 self.image = pygame.transform.flip(self.Sprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3]),True,False)
             else:
-                self.image = self.Correr[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
+                self.image = self.Sprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
             if self.espera == 0: 
                 self.frame += 4
                 self.espera = 2
@@ -42,6 +45,11 @@ class Bomber(pygame.sprite.Sprite):
             else:
                 self.frame = 15
                 self.velx = 0
+        
+        if self.player.rect.x < self.rect.x:
+            self.direccion = False
+        elif self.player.rect.x > self.rect.x:
+            self.direccion = True
     
     def returnPos(self):
         return self.rect.center
