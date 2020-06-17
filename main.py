@@ -43,14 +43,14 @@ while(True):
         nextLevel = None
     if Constants.WinGame:
         response = VS.Victory_Menu(Constants.Screen)
-        if response == 1:  
+        if response == 1:
             importlib.reload(Constants)
             MM.Main_Menu(Constants.Screen)
             currentGame = load_game()
             j = currentGame[0]
             Players = currentGame[1]
             currentLevel = currentGame[2]
-        elif response == 2: 
+        elif response == 2:
             importlib.reload(Constants)
             currentGame = load_game()
             j = currentGame[0]
