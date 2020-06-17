@@ -317,6 +317,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                                 Player.Diamonds += int(Constants.Jefe1.premio/10)
                                 Constants.Jefe1.velx = 0
                                 Constants.Jefe1.Dead = True
+                                Constants.Jefe1.frame = 0
                                 Constants.Jefe1.accion = 1
                             else:
                                 Constants.Jefe1.invisibility = 100
