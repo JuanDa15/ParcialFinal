@@ -49,5 +49,7 @@ def StartRoom(Player ,Players ,PositionX , PositionY):
     for i in range(len(Constants.Door2j)):
         Temporal = Do.Door([(Constants.Door2j[i]['x']),(Constants.Door2j[i]['y'])],Constants.Door2j[i]['width'],Constants.Door2j[i]['height'],'31')
         Doors.add(Temporal)
+
+    Enemies = pygame.sprite.Group()
     
-    return [Players, Blocks, None, None, None, None, LavaG, WaterG, Doors, None, None ,None, Constants.Clock, mapa, 8, None, None, '2', '10']
+    return [Players, Blocks, Enemies, None, None, None, LavaG, WaterG, Doors, None, None ,None, Constants.Clock, mapa, 8, None, None, '2', '10']

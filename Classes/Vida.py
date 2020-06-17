@@ -14,6 +14,25 @@ class Vida(pygame.sprite.Sprite):
         self.rect.y = position[1]
         self.player = player
         self.vidas = 3
+        self.showLost = 25
+
+        self.shield = pygame.sprite.Sprite()
+        self.shield.image = pygame.image.load('Assets\Images\Sprites\Life\Shield.png')
+        self.shield.rect = self.shield.image.get_rect()
+        self.shield.rect.x = position[0]
+        self.shield.rect.y = position[1]
+
+        self.quemadura = pygame.sprite.Sprite()
+        self.quemadura.image = pygame.transform.scale(pygame.image.load('Assets\Images\Sprites\Life\Fire.png'),(self.shield.image.get_rect()[2]+3,self.shield.image.get_rect()[3]+3))
+        self.quemadura.rect = self.quemadura.image.get_rect()
+        self.quemadura.rect.x = position[0]
+        self.quemadura.rect.y = position[1]
+
+        self.vidaLost = pygame.sprite.Sprite()
+        self.vidaLost.image = pygame.transform.scale(pygame.image.load('Assets\Images\Sprites\Life\LostLife.png'),(24,23))
+        self.vidaLost.rect = self.vidaLost.image.get_rect()
+        self.vidaLost.rect.x = position[0]
+        self.vidaLost.rect.y = position[1]
 
     def hitPlayer(self,amount):
         if self.player.invisibility == 0:
@@ -27,6 +46,10 @@ class Vida(pygame.sprite.Sprite):
         self.vida = self.SpriteVida.subsurface(0,34 * self.vidas,66,34)
 
     def update(self):
+        if self.showLost < 25:
+            self.showLost += 1
+            Constants.Screen.blit(self.vidaLost.image, [self.player.rect.x,self.player.rect.y-self.showLost])
+            
         #print("Healt: "+str(self.player.vida)+" Lifes: "+str(self.vidas))
         if self.player.invisibility > 0:
             self.player.invisibility -= 1
@@ -34,6 +57,7 @@ class Vida(pygame.sprite.Sprite):
             self.vidas -= 1
             self.player.vida = 100
             self.vida = self.SpriteVida.subsurface(0,34 * self.vidas,66,34)
+            self.showLost = 0
         if self.vidas == 0:
             self.player.vida = 100
             

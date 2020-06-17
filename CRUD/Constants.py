@@ -3,6 +3,8 @@ import pygame
 import json
 from Classes import Coin as co
 from Classes import Minotauro
+from Classes import Ciclope
+from Classes import KingPig
 from Classes import Apple as ap
 from Classes import Diamond as d
 from Classes import Potion as p
@@ -830,7 +832,7 @@ ApplesPos2H = MapInfo['layers'][9]['objects']
 PotionsPos2H = MapInfo['layers'][10]['objects']
 DiamondPos2H = MapInfo['layers'][11]['objects']
 CoinsPos2H = MapInfo['layers'][12]['objects']
-LavaPos2H =  MapInfo['layers'][13]['objects']
+Instakill2H =  MapInfo['layers'][13]['objects']
 Enemys2H = MapInfo['layers'][14]['objects']
 
 #Creacion de las monedas
@@ -905,7 +907,9 @@ PotionsPos2J = MapInfo['layers'][11]['objects']
 CoinsPos2J = MapInfo['layers'][12]['objects']
 Limit2J = MapInfo['layers'][13]['objects']
 Door2j = MapInfo['layers'][14]['objects']
-Boos2j = MapInfo['layers'][15]['objects']
+Jefe2 = Ciclope.Ciclope([MapInfo['layers'][15]['objects'][0]['x'],MapInfo['layers'][15]['objects'][0]['y']])
+LasersJefe2 = pygame.sprite.Group()
+RocaJefe2 = pygame.sprite.Group()
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2J)):
@@ -964,6 +968,7 @@ LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
 DoorPosFB =  MapInfo['layers'][13]['objects']
 EnemysPosFB =  MapInfo['layers'][14]['objects']
+BossFinal = KingPig.King([MapInfo['layers'][15]['objects'][0]['x'],MapInfo['layers'][15]['objects'][0]['y']])
 
 
 #Creacion de las manzanas
@@ -982,3 +987,18 @@ LongPlatform = pygame.image.load('Assets\Images\Sprites\Platforms\LongPlatform.p
 CannonIDLEL = pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png')
 CannonIDLER = pygame.transform.flip(pygame.image.load('Assets\Images\Sprites\Cannon\Idle.png'),True,False)
 Bomber = pygame.image.load('Assets\Images\Sprites\Pork\Bomber.png')
+Sound_Dowm_2 = pygame.image.load("Assets\Images\MenuImages\Sound-Down2.png")
+Sound_Off_2 = pygame.image.load("Assets\Images\MenuImages\Sound-Off2.png")
+Sound_On_2 = pygame.image.load("Assets\Images\MenuImages\Sound-On2.png")
+Sound_Up_2 = pygame.image.load("Assets\Images\MenuImages\Sound-Up2.png")
+Sound_Down_Selected_2 = pygame.image.load("Assets\Images\MenuImages\Sound-DownSelected2.png")
+Sound_Off_Selected_2 = pygame.image.load("Assets\Images\MenuImages\Sound-OffSelected2.png")
+Sound_On_Selected_2 = pygame.image.load("Assets\Images\MenuImages\Sound-OnSelected2.png")
+Sound_Up_Selected_2= pygame.image.load("Assets\Images\MenuImages\Sound-UpSelected2.png")
+Left_Arrow = pygame.transform.scale(pygame.image.load("Assets\Images\Keys\Left-Arrow.png"), ((16*4), (15*4))) 
+Right_Arrow = pygame.transform.scale(pygame.image.load("Assets\Images\Keys\Right-Arrow.png"), ((16*4), (15*4))) 
+Up_Arrow = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Up-Arrow.png"), ((16*4), (15*4))) 
+Space = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Space.png"), ((80*4), (15*4)))
+Q_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Q-Key.png"), ((80*4), (15*4)))
+#--------------------------------------------------------------Fonts------------------------------
+TextFont= pygame.font.Font("Assets\Fonts\pixelmix_bold.ttf", 20)

@@ -1,8 +1,9 @@
 import pygame
 
 def draw_text(text, font, color,surface, x, y):
-    TittleText = font.render(text, 1, color)
+    TittleText = font.render(text,True,color)
     TTrect = TittleText.get_rect()
+    print (TTrect)
     TTrect.topleft = (x,y)
     surface.blit(TittleText,TTrect)
 
