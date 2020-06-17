@@ -50,12 +50,14 @@ def Main_Menu(Screen):
             if Click:
                 pygame.mixer.music.stop()
                 Credits.Credits(Screen)
+                pygame.mixer.music.stop()
                 Click = False
         if Controles.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,370,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
                 pygame.mixer.music.stop()
                 Controls.ControlsScreen(Screen)
+                pygame.mixer.music.stop()
                 Click = False
         if Close.collidepoint([mouse_x,mouse_y]):
             Functions.MakeImage(300,430,Screen,UF.getArchive('ButtonSelectedImage'))
