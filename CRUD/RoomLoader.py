@@ -292,7 +292,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             
         if Player.EnLava == True:
             if Player.InmunidadFuego == False:
-                Constants.LifeManager.hitPlayer(15)
+                Constants.LifeManager.hitPlayer(10)
                 Player.TQuemadura = 250
     if Player.EnLava:
         Player.gravity = 0.1
@@ -301,7 +301,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
 
     if Player.TQuemadura > 0:
         if Player.TQuemadura in [250,200,150,100,50]:
-            Constants.LifeManager.hitPlayer(5)
+            Constants.LifeManager.hitPlayer(10)
         Player.TQuemadura -= 1
 
     #BOSS 1
@@ -626,6 +626,27 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                             Constants.Shop1.Gapple = False
                             Player.Coins -= Constants.Shop1.precioGapple
                             Player.Apples += 10
+        if (currentLevel + currentRoom) == '31':
+            Constants.Shop1.rect.x = 123
+            Constants.Shop1.rect.y = 305
+            ListaTienda = pygame.sprite.spritecollide(Player,Constants.Shop1.ShopItems,False)
+            for b in ListaTienda:
+                if Constants.Interact:
+                    if b.type == 0:
+                        if Player.Coins >= Constants.Shop1.precioPotiLava:
+                            Constants.Shop1.potiLava = False
+                            Player.Coins -= Constants.Shop1.precioPotiLava
+                            Player.InmunidadFuego = True
+                    if b.type == 1:
+                        if Player.Coins >= Constants.Shop1.precioPotiVel:
+                            Constants.Shop1.potiVel = False
+                            Player.Coins -= Constants.Shop1.precioPotiVel
+                            Player.speeeeeeeeeeed = 5
+                    if b.type == 2:
+                        if Player.Coins >= Constants.Shop1.precioGapple:
+                            Constants.Shop1.Gapple = False
+                            Player.Coins -= Constants.Shop1.precioGapple
+                            Player.Apples += 10
 
 
 
@@ -665,7 +686,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()
         Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
-    if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
+    if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29') or ((currentLevel + currentRoom) == '31'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
         Constants.Shop1.update()
@@ -701,6 +722,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
+    if Player.TQuemadura > 0:
+        Constants.Screen.blit(Constants.LifeManager.quemadura.image, [100,80])
+    if Player.invisibility > 0:
+        Constants.Screen.blit(Constants.LifeManager.shield.image, [130,82])
     
     pygame.display.flip()
     Clock.tick(30)
