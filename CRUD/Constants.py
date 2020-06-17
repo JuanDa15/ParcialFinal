@@ -487,6 +487,7 @@ SpikesPosJ= MapInfo['layers'][10]['objects']
 Jefe1 = Minotauro.Minotauro([MapInfo['layers'][11]['objects'][0]['x'],MapInfo['layers'][11]['objects'][0]['y']])
 
 
+
 #Creacion de las manzanas
 for i in range(len(ApplesPosJ)):
     Temporal = ap.Apple((ApplesPosJ[i]['x'],ApplesPosJ[i]['y']))

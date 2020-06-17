@@ -10,17 +10,17 @@ from CRUD.Menus import Credits
 from CRUD.Menus import Controls
 
 pygame.display.set_caption('Main Menu')
-Screen = Constants.Screen
 #------------------------------
-def Main_Menu():
+def Main_Menu(Screen):
     #Definition of variables-----------------
     #music upload
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
     pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.001)
     Click = False
+
     while True:
-    
         #buttons coords
         Start = pygame.Rect(300,250,200,50)
         Creditos = pygame.Rect(300,310,200,50)
@@ -57,7 +57,7 @@ def Main_Menu():
             Functions.MakeImage(300,430,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
                 pygame.quit()
-                sys.exit()
+                sis.exit()
         
         Click = SM.VolumeModule(Click,Screen)
         
