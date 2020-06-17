@@ -150,6 +150,17 @@ CannonBalls15 = pygame.sprite.Group()
 CannonBalls18 = pygame.sprite.Group()
 CannonBalls32 = pygame.sprite.Group()
 
+#Bombas
+Bombs01 = pygame.sprite.Group()
+Bombs11 = pygame.sprite.Group()
+Bombs12 = pygame.sprite.Group()
+Bombs13 = pygame.sprite.Group()
+Bombs14 = pygame.sprite.Group()
+Bombs15 = pygame.sprite.Group()
+Bombs16 = pygame.sprite.Group()
+Bombs17 = pygame.sprite.Group()
+Bombs18 = pygame.sprite.Group()
+
 #Room Information A
 
 #Lectura de archivo json

@@ -49,6 +49,11 @@ def StartRoom(Player, Players ,PositionX, PositionY):
         elif Constants.Enemys1G[i]['name'] == 'CerdoB':
             Temp = Bomber.Bomber([(Constants.Enemys1G[i]['x']),(Constants.Enemys1G[i]['y'])],Constants.Bomber,1)
             EnemysG.add(Temp)
+    
+    Instakill = pygame.sprite.Group()
+    for i in range(len(Constants.InstakillPosG)):
+        Temporal = Block.Bloque([(Constants.InstakillPosG[i]['x']),(Constants.InstakillPosG[i]['y'])],Constants.InstakillPosG[i]['width'],Constants.InstakillPosG[i]['height'])
+        Instakill.add(Temporal)
 
     #Asignacion de coliciones a las entidades
     for Player in Players:
@@ -58,4 +63,4 @@ def StartRoom(Player, Players ,PositionX, PositionY):
     for Enemy in EnemysG:
         Enemy.Bloques = Blocks
      #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, EnemysG, None, None, None, None, None, None, PlatformsY, None, None, Constants.Clock, mapa, 5,'6','8','1','7']
+    return [Players, Blocks, EnemysG, None, None, None, None, None, None, PlatformsY, None, Instakill, Constants.Clock, mapa, 5,'6','8','1','7']

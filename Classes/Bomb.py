@@ -4,22 +4,23 @@ from CRUD import Functions
 class bomb(pygame.sprite.Sprite):
     def __init__(self,position,direction):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([37,26])
+        self.image = pygame.Surface([20,20])
         self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
-        self.velx = direction
+        self.direccion = direction
+        if self.direccion:
+            self.velx = 2
+        else:
+            self.velx = -2
         self.vely = 0
         self.Bloques = None
         self.time = 60
         
     def update(self):
         #Posicion y velocidad en x
-        self.rect.x+=self.velx
-
-        if self.velx > 0:
-            self.velx -= 1
+        self.rect.x += self.velx
         
         if self.time > 0:
             self.time -= 1
