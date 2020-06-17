@@ -27,7 +27,7 @@ def load_game():
     Constants.LifeManager = V.Vida([0,0],j)
     Constants.ScoreManager = Sc.Score([670,10],j)
     Constants.Shop1 = Shop.Shop([200,240],j,[100,85,60])
-    currentLevel = TR.StartRoom(j,Players,160,113)
+    currentLevel = R3.StartRoom(j,Players,160,113)
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players, currentLevel]
 
@@ -44,6 +44,7 @@ while(True):
         currentLevel = nextLevel.copy()
         nextLevel = None
     if Constants.WinGame:
+        ShowHistory.show_history(3)
         response = VS.Victory_Menu(Constants.Screen)
         if response == 1:
             importlib.reload(Constants)
@@ -54,7 +55,7 @@ while(True):
             Players = currentGame[1]
             currentLevel = currentGame[2]
             ShowHistory.show_history(1)
-        elif response == 2: 
+        elif response == 2:
             importlib.reload(Constants)
             currentGame = load_game()
             j = currentGame[0]
