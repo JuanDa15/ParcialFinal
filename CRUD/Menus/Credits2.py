@@ -11,16 +11,16 @@ from CRUD import Constants as C
 
 def Credits(Screen):
     pygame.display.set_caption('King & Pigs - Credits')
-    #Load and play Music
+    pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\credits.ogg")
     pygame.mixer.music.play(-1)
+    #Load and play Music
     #Definition of variables-----------------
     Click = False
     running = True
     while running:
         #BUTTONS COORDS
         Back = pygame.Rect(55,530,100,50)
-        
         #LOAD ELEMENTS
         Screen.fill(Functions.SelectColor(r'Black'))
         Functions.MakeImage(0,0,Screen,UF.getArchive('background2'))

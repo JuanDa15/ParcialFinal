@@ -10,7 +10,10 @@ from CRUD import Constants as C
 
 def ControlsScreen(Screen):
     #Definition of variables-----------------
-    pygame.display.set_caption('Controls')
+    pygame.mixer.init()
+    pygame.display.set_caption('King & Pigs - Controls')
+    pygame.mixer.music.load("Assets\Sounds\credits.ogg")
+    pygame.mixer.music.play(-1)
     Click = False
     running = True
     while running:

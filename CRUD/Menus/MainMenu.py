@@ -8,6 +8,7 @@ from CRUD import SoundModule as SM
 from CRUD import Constants
 from CRUD.Menus import Credits
 from CRUD.Menus import Controls
+from CRUD.Menus import VictoryScreen as VS
 
 pygame.display.set_caption('King & Pigs')
 #------------------------------
@@ -17,7 +18,7 @@ def Main_Menu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Spring Village.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.001)
+    pygame.mixer.music.set_volume(0.019)
     Click = False
 
     while True:
