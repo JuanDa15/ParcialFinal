@@ -1,4 +1,4 @@
-from CRUD.Level2 import Room1 as R1
+from CRUD.Level1 import Room10 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
@@ -10,6 +10,7 @@ from CRUD import Constants
 from Classes import Vida as V
 from Classes import Score as Sc
 from Classes import Shop
+from CRUD.Menus import GameIntro
 
 from CRUD import Constants
 import importlib
@@ -26,13 +27,13 @@ def load_game():
     Constants.Shop1 = Shop.Shop([200,240],j,[100,85,60])
     #currentLevel = R3.StartRoom(j,Players,150,200)
     #currentLevel = R2.StartRoom(j,Players,400, 300)
-    currentLevel = R1.StartRoom(j,Players,300, 280)
-    #currentLevel = TR.StartRoom(j,Players,100,250)
+    #currentLevel = R1.StartRoom(j,Players,300, 280)
+    currentLevel = TR.StartRoom(j,Players,100,250)
 
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players,currentLevel]
 
-MM.Main_Menu()
+#GameIntro.introduccion()
 currentGame = load_game()
 j = currentGame[0]
 Players = currentGame[1]

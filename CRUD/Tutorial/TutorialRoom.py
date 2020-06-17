@@ -8,6 +8,7 @@ from CRUD import Constants
 from Classes import Block
 from Classes import Lava
 from Classes import pork
+from Classes import Bomber
 from Classes import Door as Do
 from Classes import Ladder as La
 from Classes import Cannon as ca
@@ -88,5 +89,17 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
         Player.Bloques = Blocks
         Player.PlataformasY = Platforms
     
+    EnemysG = pygame.sprite.Group()
+    for i in range(len(Constants.EnemysTuto)):
+        if Constants.EnemysTuto[i]['name'] == 'CerdoC':
+            Temp = pork.cerdo([(Constants.EnemysTuto[i]['x']),(Constants.EnemysTuto[i]['y'])-12],(Constants.EnemysTuto[i]['properties'][0]['value']))
+            EnemysG.add(Temp)
+        elif Constants.EnemysTuto[i]['name'] == 'CerdoB':
+            Temp = Bomber.Bomber([(Constants.EnemysTuto[i]['x']),(Constants.EnemysTuto[i]['y'])],Constants.Bomber,1)
+            EnemysG.add(Temp)
+    
+    for e in EnemysG:
+        e.Bloques = Blocks
+    
         #(Jugadores, Blocks, Enemigos, Puas, Cannons, Ladders, Lava, Water, Doors, Moving_platforms, Levers, instakill, Clock, Mapa, level_type, prevRoom, nextRoom, currentLevel, currentRoom)
-    return [Players, Blocks, None, Puas, Cannons, Ladders, LavaG, WaterG, Doors, Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']
+    return [Players, Blocks, EnemysG, Puas, Cannons, Ladders, LavaG, WaterG, Doors, Platforms, None, None, Constants.Clock, mapa, 0, None,None,'0','1']

@@ -2,6 +2,7 @@
 import pygame
 import json
 from Classes import Coin as co
+from Classes import Minotauro
 from Classes import Apple as ap
 from Classes import Diamond as d
 from Classes import Potion as p
@@ -20,6 +21,8 @@ Hit = False
 Shop1 = None
 AppleConsumed = False
 AppleTime = 0
+MaxCobras = 10
+CountCobras = 0
 Interact = False
 PlataformaMovil = False
 MapInfo = None
@@ -81,6 +84,7 @@ PotionsPosTuto =  MapInfo['layers'][17]['objects']
 CannonsPosTuto =  MapInfo['layers'][18]['objects']
 LaddersPosTuto =  MapInfo['layers'][19]['objects']
 DoorPosTuto =  MapInfo['layers'][20]['objects']
+EnemysTuto = MapInfo['layers'][21]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosTuto)):
@@ -481,7 +485,9 @@ CollisionsJ = MapInfo['layers'][7]['objects']
 ApplesPosJ = MapInfo['layers'][8]['objects']
 DoorPosJ = MapInfo['layers'][9]['objects']
 SpikesPosJ= MapInfo['layers'][10]['objects']
-Enemys1J = MapInfo['layers'][11]['objects']
+Jefe1 = Minotauro.Minotauro([MapInfo['layers'][11]['objects'][0]['x'],MapInfo['layers'][11]['objects'][0]['y']])
+
+
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosJ)):
@@ -946,6 +952,8 @@ CannonsPosFB = MapInfo['layers'][10]['objects']
 LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
 DoorPosFB =  MapInfo['layers'][13]['objects']
+EnemysPosFB =  MapInfo['layers'][14]['objects']
+
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosFB)):

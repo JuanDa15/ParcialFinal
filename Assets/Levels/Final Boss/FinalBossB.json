@@ -583,7 +583,7 @@
          "name":"Boos",
          "objects":[
                 {
-                 "height":20.0909090909091,
+                 "height":20.0909,
                  "id":41,
                  "name":"",
                  "rotation":0,
@@ -591,7 +591,7 @@
                  "visible":true,
                  "width":18,
                  "x":672,
-                 "y":235.818181818182
+                 "y":235.818
                 }],
          "opacity":1,
          "type":"objectgroup",
