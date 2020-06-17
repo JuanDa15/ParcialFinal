@@ -1007,10 +1007,10 @@ E_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\E-Key.png"
 KilledKing = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Player\killed.png"), ((38*4), (22*4)))
 KingPig = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\King\kingpig.png"), ((18*4), (20*4)))
 Minotaur = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Minotaur\Minotaur.png"), ((52*4), (41*4)))
-Cyclop = pygame.transform.flip(pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Cyclop.png"), ((24*4), (38*4))),True,False)
+Cyclop = pygame.transform.flip(pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Cyclope\Cyclop.png"), ((24*4), (38*4))),True,False)
 Witch = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Witch\Witch.png"), ((26*4), (25*4)))
 DeadMinotair = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Minotaur\DeadFrame.png"), ((54*4), (22*4)))
-Cyclopdead = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Cyclopdead.png"), ((34*4), (14*4)))
+Cyclopdead = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Cyclope\Cyclopdead.png"), ((34*4), (14*4)))
 KingPigDead = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\King\Kingdead.png"), ((21*4), (16*4)))
 KingHuman = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Player\1.png"), ((37*4), (26*4)))
 #--------------------------------------------------------------Fonts------------------------------
