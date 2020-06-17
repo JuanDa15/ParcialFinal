@@ -31,8 +31,8 @@ class Ciclope(pygame.sprite.Sprite):
         self.AreaGroup.add(self.Area)
 
         self.Animacion = pygame.sprite.Sprite()
-        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Minotaur\Run.png'), pygame.image.load('Assets\Images\Sprites\Minotaur\Dead.png'),pygame.image.load('Assets\Images\Sprites\Minotaur\stomp.png'),pygame.image.load('Assets\Images\Sprites\Minotaur\hack.png'))
-        self.Animacion.image = self.AnimacionSprites[0].subsurface(26,13,52,41)
+        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Cyclope\Idle.png'), pygame.image.load('Assets\Images\Sprites\Cyclope\dead.png'),pygame.image.load('Assets\Images\Sprites\Cyclope\stomp.png'),pygame.image.load('Assets\Images\Sprites\Cyclope\laser.png'),pygame.image.load('Assets\Images\Sprites\Cyclope\Lanzar.png'))
+        self.Animacion.image = self.AnimacionSprites[0].subsurface(19,10,24,42)
         self.Animacion.rect = self.Animacion.image.get_rect()
         self.Animacion.rect.x = position[0]+20
         self.Animacion.rect.y = position[1]
@@ -51,9 +51,11 @@ class Ciclope(pygame.sprite.Sprite):
         self.direccion = True
         self.espera = 2
         self.frame = 0
-        self.animacion = ((26,13,52,41,121,11,52,41,218,13,52,41,315,15,52,41,412,13,52,41,509,11,52,41,604,13,52,41,699,15,52,41),(28,7,52,41,125,7,53,41,226,6,54,41,322,7,55,41,418,7,53,41,514,7,53,41),
-                        (23,17,38,41,119,17,38,41,215,17,38,41,311,17,38,41,407,17,38,41,503,17,38,41),
-                        (5,16,56,45,126,20,58,41,220,20,57,41,316,20,57,41,412,20,55,41,508,20,55,41,603,20,50,41,700,20,48,41,796,20,52,41))
+        self.animacion = ((19,10,24,42,83,10,24,42,147,10,24,42,211,10,24,42,275,10,24,42,339,10,24,42,403,10,24,42,467,10,24,42,531,10,24,42,595,10,24,42,659,10,24,42,723,10,24,42,787,10,24,42,851,10,24,42,915,10,24,42),
+                        (19,4,24,42,84,4,24,42,151,4,24,42,215,3,25,42,278,4,27,42,339,4,31,42,403,4,34,42,467,4,34,42,531,4,34,42),
+                        (19,1,24,42,82,1,25,42,144,1,27,42,206,1,28,42,272,1,27,42,336,1,27,42,401,1,25,42),
+                        (19,3,24,42,82,3,25,42,144,3,27,42,206,3,28,42,272,3,27,42,335,3,30,42),
+                        (19,3,24,42,85,3,22,42,149,3,24,42,213,3,24,42,277,3,24,42,339,3,24,42,402,3,27,42,466,3,27,42,532,3,23,42,592,3,24,42,655,3,25,42,727,3,30,42,791,3,31,42))
 
     def update(self):
         if self.cooldown == 0:
@@ -137,9 +139,8 @@ class Ciclope(pygame.sprite.Sprite):
             if self.accion == 1:
                 self.frame = len(self.animacion[self.accion])-1
             else:
-                if self.accion != 0:
-                    self.frame = 0
-                    self.accion = 0
+                self.frame = 0
+                self.accion = 0
         if not self.Dead:
             self.vely += self.gravity
             self.Area.rect.x = self.rect.x - 10
