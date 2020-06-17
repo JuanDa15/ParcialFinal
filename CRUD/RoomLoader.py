@@ -446,6 +446,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.CoinsList.remove(i)
     if ListaMonedas:
         Player.Coins = Player.Coins + 1
+        Constants.Total_Monedas += 1
 
     #Recoger Manzanas
     ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
@@ -453,12 +454,14 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ApplesList.remove(i)
     if ListaManzanas:
         Player.Apples = Player.Apples + 1
+        Constants.Total_Manzanas += 1
     #Recoger Diamantes
     ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
     for i in ListaDiamantes:
         Constants.DiamondsList.remove(i)
     if ListaDiamantes:
         Player.Diamonds = Player.Diamonds + 1
+        Constants.Total_Diamantes += 1
 
     #Puertas
     if Doors != None:

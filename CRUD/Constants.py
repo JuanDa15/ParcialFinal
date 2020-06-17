@@ -64,6 +64,13 @@ mapa2J = pygame.image.load('Assets\Levels\Level2\Level2j.png')
 MapaFinalA = pygame.image.load('Assets\Levels\Final Boss\FinalBossA.png')
 MapaFinalB = pygame.image.load('Assets\Levels\Final Boss\FinalBossB.png')
 
+Total_Monedas = 0
+Total_Diamantes = 0
+Total_Manzanas = 0
+Total_Minutos = 0
+Total_Score = 0
+Total_Time = None
+
 #Video 1
 Image_Video1 = 1
 Video_historia_1 = []
@@ -86,6 +93,18 @@ while Image_Video2 <= 80:
     Temp = eval('pygame.transform.scale(pygame.image.load("Assets\Images\History\Interludio.jpg"),[Width,Height])')
     Video_historia_2.append(Temp)
     Image_Video2 += 1
+
+#Video 3
+Image_Video3 = 1
+Video_historia_3 = []
+while Image_Video3 <= 200:
+    frame = 1
+    if Image_Video3 <= 100:
+        frame = 0
+    Temp = eval('pygame.transform.scale(pygame.image.load("Assets\Images\History\Desarrollo-'+ str(frame) +'.jpg"),[Width,Height])')
+    Video_historia_3.append(Temp)
+    Image_Video3 += 1
+
 
 #--------------------------------------Tutorial------------------------------------------------------------------------
 Coins01 = pygame.sprite.Group()
