@@ -2,7 +2,7 @@ from CRUD.Level1 import Room10 as R1
 from CRUD.Tutorial import TutorialRoom as TR
 from CRUD.Level1 import Room1 as R2
 from CRUD import RoomLoader as RL
-from CRUD.FinalBoss import Room1 as R3
+from CRUD.FinalBoss import Room2 as R3
 from CRUD.Menus import MainMenu as MM
 from CRUD.Menus import LostScreen as LS
 from CRUD.Menus import VictoryScreen as VS
@@ -45,7 +45,7 @@ while(True):
         nextLevel = None
     if Constants.WinGame:
         response = VS.Victory_Menu(Constants.Screen)
-        if response == 1:  
+        if response == 1:
             importlib.reload(Constants)
             MM.Main_Menu(Constants.Screen)
             ShowHistory.show_history(1)
