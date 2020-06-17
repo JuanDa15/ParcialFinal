@@ -18,7 +18,6 @@ import importlib
 import pygame
 from Classes import Player as P
 
-
 def load_game():
     #Creacion Jugador
     j = P.Jugador([0,0])
@@ -44,6 +43,7 @@ while(True):
         currentLevel = nextLevel.copy()
         nextLevel = None
     if Constants.WinGame:
+        ShowHistory.show_history(3)
         response = VS.Victory_Menu(Constants.Screen)
         if response == 1:
             importlib.reload(Constants)
@@ -54,7 +54,7 @@ while(True):
             Players = currentGame[1]
             currentLevel = currentGame[2]
             ShowHistory.show_history(1)
-        elif response == 2: 
+        elif response == 2:
             importlib.reload(Constants)
             currentGame = load_game()
             j = currentGame[0]

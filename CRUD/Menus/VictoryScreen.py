@@ -7,6 +7,7 @@ from CRUD.Menus import MainMenu as MM
 from CRUD import UploadedFiles as UF
 from CRUD import SoundModule as SM
 from CRUD import Constants as C
+import datetime
 
 #------------------------------
 def Victory_Menu(Screen):
@@ -19,8 +20,8 @@ def Victory_Menu(Screen):
     Click = False
     while True:
         #buttons
-        MainMenu = pygame.Rect(300,110,200,50)
-        StarAgain = pygame.Rect(300,170,200,50)
+        MainMenu = pygame.Rect(300,110,220,50)
+        StarAgain = pygame.Rect(300,170,220,50)
         #Draw in screen 
         Screen.fill(Functions.SelectColor('Black'))
         Functions.MakeImage(0,0,Screen,UF.getArchive('background2'))
@@ -67,5 +68,10 @@ def Victory_Menu(Screen):
         Functions.draw_text('YOU WIN',UF.TittleFont(50),[63,56,81],Screen,174,400)
         Functions.draw_text('MAIN MENU',UF.getArchive('ButtonFont'),[63,56,81],Screen,310,118.5)
         Functions.draw_text('RESTART',UF.getArchive('ButtonFont'),[63,56,81],Screen,332,178.5)
+        Functions.draw_text(' Total Coins: '+str(C.Total_Monedas),UF.TextFont(16),Functions.SelectColor('Black'),C.Screen,70+35,220+20)
+        Functions.draw_text(' Total Diamonds: '+str(C.Total_Diamantes),UF.TextFont(16),Functions.SelectColor('Black'),C.Screen,70+35,220+40)
+        Functions.draw_text(' Total Apples: '+str(C.Total_Manzanas),UF.TextFont(16),Functions.SelectColor('Black'),C.Screen,70+35,220+60)
+        Functions.draw_text(' Time: '+C.Total_Time,UF.TextFont(16),Functions.SelectColor('Black'),C.Screen,70+35,220)
+        Functions.draw_text(' SCORE: '+str(C.Total_Monedas*10 + C.Total_Diamantes*50 + C.Total_Manzanas*5 - C.Total_Minutos*5),UF.TextFont(16),Functions.SelectColor('Black'),C.Screen,70+35,220+90)
         pygame.display.update()
         pygame.display.flip()
