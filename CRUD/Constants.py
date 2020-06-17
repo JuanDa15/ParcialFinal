@@ -1058,3 +1058,8 @@ KingPigDead = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\K
 KingHuman = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Player\1.png"), ((37*4), (26*4)))
 #--------------------------------------------------------------Fonts------------------------------
 TextFont= pygame.font.Font("Assets\Fonts\pixelmix_bold.ttf", 20)
+
+CoinsSound = pygame.mixer.Sound('Assets\Sounds\FX\coin7.wav')
+JumpSound = pygame.mixer.Sound('Assets\Sounds\FX\smw_jump.wav')
+SwimmingSound = pygame.mixer.Sound('Assets\Sounds\FX\smw_swimming.wav')
+PickObjects = pygame.mixer.Sound('Assets\Sounds\FX\pick.ogg')

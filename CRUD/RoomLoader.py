@@ -91,12 +91,15 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 if Constants.inLadder:
                     Constants.Subiendo = True
             if event.key == pygame.K_SPACE:
+                Constants.JumpSound.play()
                 Player.frame = 0
                 Player.accion = 3
                 Constants.SpaceKey = True
                 if Player.EnLava == True:
                     Player.vely = -3
                 if Player.EnAgua == True:
+                    Constants.JumpSound.stop()
+                    Constants.SwimmingSound.play()
                     Player.vely = -4
                 Player.EnAire = True
             if event.key == pygame.K_e:
@@ -443,6 +446,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     #Recoger Monedas
     ListaMonedas = eval('pygame.sprite.spritecollide(Player, Constants.Coins'+currentLevel+currentRoom+',True)')
     for i in ListaMonedas:
+        Constants.CoinsSound.play()
         Constants.CoinsList.remove(i)
     if ListaMonedas:
         Player.Coins = Player.Coins + 1
@@ -451,6 +455,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     #Recoger Manzanas
     ListaManzanas = eval('pygame.sprite.spritecollide(Player, Constants.Apples'+currentLevel+currentRoom+',True)')
     for i in ListaManzanas:
+        Constants.PickObjects.play()
         Constants.ApplesList.remove(i)
     if ListaManzanas:
         Player.Apples = Player.Apples + 1
@@ -458,6 +463,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     #Recoger Diamantes
     ListaDiamantes = eval('pygame.sprite.spritecollide(Player, Constants.Diamonds'+currentLevel+currentRoom+',True)')
     for i in ListaDiamantes:
+        Constants.PickObjects.play()
         Constants.DiamondsList.remove(i)
     if ListaDiamantes:
         Player.Diamonds = Player.Diamonds + 1

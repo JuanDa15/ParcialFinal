@@ -22,7 +22,7 @@ def StartRoom(Player, Players ,PositionX ,PositionY):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Tutorial.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.set_volume(0.3)
     mapa = Constants.MapaTutorial
 
     #Definicion de Grupos
