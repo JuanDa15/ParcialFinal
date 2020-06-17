@@ -42,12 +42,25 @@ while(True):
         currentLevel = nextLevel.copy()
         nextLevel = None
     if Constants.WinGame:
-        VS.Victory_Menu(Constants.Screen)
+        response = VS.Victory_Menu(Constants.Screen)
+        if response == 1:  
+            importlib.reload(Constants)
+            MM.Main_Menu(Constants.Screen)
+            currentGame = load_game()
+            j = currentGame[0]
+            Players = currentGame[1]
+            currentLevel = currentGame[2]
+        elif response == 2: 
+            importlib.reload(Constants)
+            currentGame = load_game()
+            j = currentGame[0]
+            Players = currentGame[1]
+            currentLevel = R1.StartRoom(j,Players,32, 260)
     if Constants.LifeManager.vidas == 0:
         response = LS.lostMenu(Constants.Screen)
         if response == 1:  
             importlib.reload(Constants)
-            MM.Main_Menu()
+            MM.Main_Menu(Constants.Screen)
             currentGame = load_game()
             j = currentGame[0]
             Players = currentGame[1]

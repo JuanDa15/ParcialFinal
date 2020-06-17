@@ -34,13 +34,13 @@ def Victory_Menu(Screen):
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
-                MM.Main_Menu()
                 Click = False
+                return 1
         if StarAgain.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
-                pass
                 Click = False
+                return 2
         
         Sprites = [UF.getArchive('SoundOffImg'),UF.getArchive('SoundOnImg'),UF.getArchive('SoundUpImg'),UF.getArchive('SoundDownImg')]
         SpritesSelected = [UF.getArchive('SoundOffSelectedImg'),UF.getArchive('SoundOnSelectedImg'),UF.getArchive('SoundUpSelectedImg'),UF.getArchive('SoundDownSelectedImg')]
