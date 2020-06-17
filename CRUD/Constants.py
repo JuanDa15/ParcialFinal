@@ -1001,6 +1001,12 @@ Left_Arrow = pygame.transform.scale(pygame.image.load("Assets\Images\Keys\Left-A
 Right_Arrow = pygame.transform.scale(pygame.image.load("Assets\Images\Keys\Right-Arrow.png"), ((16*4), (15*4))) 
 Up_Arrow = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Up-Arrow.png"), ((16*4), (15*4))) 
 Space = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Space.png"), ((80*4), (15*4)))
-Q_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Q-Key.png"), ((80*4), (15*4)))
+Q_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\Q-Key.png"), ((16*4), (15*4)))
+W_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\W-Key.png"), ((16*4), (15*4)))
+E_Key = pygame.transform.scale(pygame.image.load(r"Assets\Images\Keys\E-Key.png"), ((16*4), (15*4)))
+KilledKing = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Player\killed.png"), ((38*4), (22*4)))
+KingPig = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\King\kingpig.png"), ((18*4), (20*4)))
+Minotaur = pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Minotaur.png"), ((52*4), (41*4)))
+Cyclop = pygame.transform.flip(pygame.transform.scale(pygame.image.load(r"Assets\Images\Sprites\Cyclop.png"), ((24*4), (38*4))),True,False)
 #--------------------------------------------------------------Fonts------------------------------
 TextFont= pygame.font.Font("Assets\Fonts\pixelmix_bold.ttf", 20)
