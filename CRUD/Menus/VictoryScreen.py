@@ -24,10 +24,14 @@ def Victory_Menu(Screen):
         #Draw in screen 
         Screen.fill(Functions.SelectColor('Black'))
         Functions.MakeImage(0,0,Screen,UF.getArchive('background2'))
+        Functions.MakeImage(50,25,Screen,UF.getArchive('Container'))
         Functions.MakeImage(55,530,Screen,UF.getArchive('BackImage'))
         Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonImage'))
         Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonImage'))
-        Functions.MakeImage(300,300,Screen,C.KilledKing)
+        Functions.MakeImage(300,326,Screen,C.DeadMinotair)
+        Functions.MakeImage(485,350,Screen,C.Cyclopdead)
+        Functions.MakeImage(220,350,Screen,C.KingPigDead)
+        Functions.MakeImage(309,235,Screen,C.KingHuman)
         #get mouse position--------------
         [mouse_x , mouse_y] = pygame.mouse.get_pos()
         
@@ -52,7 +56,7 @@ def Victory_Menu(Screen):
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == K_ESCAPE:
+                if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sis.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
