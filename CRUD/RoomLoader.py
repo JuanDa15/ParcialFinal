@@ -135,6 +135,11 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Constants.AppleTime > 0:
         Constants.AppleTime -= 1
 
+    Constants.CountCobras = 0
+    if Enemies != None:
+        for b in Enemies:
+            if isinstance(b,Cobra.Cobra):
+                Constants.CountCobras += 1
 
     #Colisiones Jugador con Puas
     if Puas != None:
@@ -189,21 +194,31 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 if isinstance(b,pork.cerdo) or isinstance(b,Brujas.Escoba) or isinstance(b,Cobra.Cobra):
                     #El cerdito ataca (b)
                     if b.accion != 1:
-                        Constants.LifeManager.hitPlayer(20)
+                        Constants.LifeManager.hitPlayer(10)
         for Hammer in Player.HammerGroup:
             listaColisionHammer = pygame.sprite.spritecollide(Hammer,Enemies,False)
             for b in listaColisionHammer:
                 if Constants.Hit:
-                    if isinstance(b,pork.cerdo):
-                        b.accion = 1
-                        b.velx = 0
+                    b.accion = 1
+                    b.frame = 0
+                    b.velx = 0
         for b in Enemies:
-            if isinstance(b,pork.cerdo):
-                if b.accion == 1:
-                    if b.Muerte > 0:
-                        b.Muerte -= 1
-                    else:
-                        Enemies.remove(b)
+            if isinstance(b,Brujas.Estatica):
+                b.timer -= 1
+                if b.timer == 0:
+                    if Constants.MaxCobras >= Constants.CountCobras:
+                        cobraBruja = Cobra.Cobra([b.rect.x,b.rect.y],Player)
+                        cobraBruja.Bloques = Blocks
+                        Enemies.add(cobraBruja)
+                    b.timer = 150
+            if b.accion == 1:
+                if b.Muerte > 0:
+                    b.Muerte -= 1
+                else:
+                    Enemies.remove(b)
+        
+            
+
 
     #Water
     if Water != None:
@@ -234,6 +249,13 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         
     #Lava
     if Lava != None:
+        if Enemies != None:
+            for Enemy in Enemies:
+                if isinstance(Enemy,Cobra.Cobra):
+                    CollisionLava = pygame.sprite.spritecollide(Enemy, Lava, False)
+                    if CollisionLava or Enemy.rect.y > Constants.Height + 10:
+                        Constants.CountCobras -= 1
+                        Enemies.remove(Enemy)
         for Player in Players:
             CollisionLava = pygame.sprite.spritecollide(Player, Lava, False)
             if CollisionLava:
@@ -255,6 +277,18 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         if Player.TQuemadura in [250,200,150,100,50]:
             Constants.LifeManager.hitPlayer(5)
         Player.TQuemadura -= 1
+
+    if currentLevel + currentRoom == '110':
+        for Player in Players:
+            for Hammer in Player.HammerGroup:
+                listaColisionHammer = pygame.sprite.spritecollide(Constants.Jefe1,Player.HammerGroup,False)
+                for b in listaColisionHammer:
+                    if Constants.Hit:
+                        if Constants.Jefe1.invisibility == 0:
+                            print("golpe")
+                            Constants.Jefe1.invisibility = 100
+                            Constants.Jefe1.Angry = True
+                            Constants.Jefe1.vida -= 1
 
 
     #PLATAFORMAS MOVILES
@@ -533,6 +567,16 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.update()
     Constants.Screen.blit(mapa,[0,0])
+    #Pos mapa
+    if Doors != None:
+        Doors.draw(Constants.Screen)
+    if ((currentLevel + currentRoom) == '110') or ((currentLevel + currentRoom) == '210'):
+        Constants.Jefe1.Bloques = Blocks
+        Constants.Jefe1.player = Player
+        Constants.Jefe1.update()
+        Constants.Jefe1.AreaGroup.draw(Constants.Screen)
+        Constants.Jefe1.AxeGroup.draw(Constants.Screen)
+        Constants.Screen.blit(Constants.Jefe1.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
@@ -554,8 +598,6 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Moving_platforms != None:
         Moving_platforms.draw(Constants.Screen)
     Constants.LifeManager.update()
-    if Doors != None:
-        Doors.draw(Constants.Screen)
 
     #Mostrar vidas y salud
     Constants.Screen.blit(Constants.LifeManager.image, [20,20])
