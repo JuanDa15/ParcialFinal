@@ -14,7 +14,7 @@ def introduccion():
     #Definition of variables-----------------
     #music upload
     Screen = Constants.Screen
-    Temporizador = 1200
+    Temporizador = 1100
     limit = random.randrange(20)
     i = 0
     Image = 1
