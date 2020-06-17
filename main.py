@@ -17,7 +17,7 @@ import importlib
 import pygame
 from Classes import Player as P
 
-"""
+
 def load_game():
     #Creacion Jugador
     j = P.Jugador([0,0])
@@ -60,6 +60,6 @@ while(True):
             j = currentGame[0]
             Players = currentGame[1]
             currentLevel = R1.StartRoom(j,Players,400, 300)
-"""
-LS.lostMenu(Constants.Screen)
+
+#LS.lostMenu(Constants.Screen)
 #VS.Victory_Menu(Constants.Screen)
