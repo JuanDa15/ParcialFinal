@@ -23,15 +23,23 @@ def introduccion():
         Temp = eval('pygame.transform.scale(pygame.image.load("Assets\Images\Introduction\ezgif-frame-'+ str(Image) +'.jpg"),[Constants.Width,Constants.Height])')
         Video.append(Temp)
         Image += 1
-    
+    pygame.mixer.init()
+    pygame.mixer.music.load("Assets\Sounds\Sony_Playstation_1__Inicio.ogg")
     IntroImage = pygame.image.load("Assets\Images\BackGrounds\Kings and Pigs.png")
     IntroImageScallated = pygame.transform.scale(IntroImage,(134*5,14*5))
     introduccion = False
     back = pygame.sprite.Group()
     Background1 = BG.Background([0,0],Video)
     back.add(Background1)
-    
-    while not introduccion:
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(1)
+    for i in range(len(Video)):
+        back.update()
+        back.draw(Screen)
+        pygame.display.update()
+        pygame.display.flip()
+    pygame.mixer.music.stop()
+    while not introduccion: 
         #event managment
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -51,7 +59,5 @@ def introduccion():
         
         i += 1
         #update
-        back.update()
-        back.draw(Screen)
         pygame.display.update()
         pygame.display.flip()
