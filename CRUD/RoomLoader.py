@@ -13,6 +13,8 @@ from Classes import Player as P
 from Classes import Block
 from Classes import Bomber
 from Classes import Bomb
+from Classes import Roca
+from Classes import Laser
 from Classes import pork
 from Classes import Brujas
 from Classes import Cobra
@@ -321,6 +323,47 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                             else:
                                 Constants.Jefe1.invisibility = 100
                                 Constants.Jefe1.Angry = True
+
+    #BOSS 2
+    if currentLevel + currentRoom == '210':
+        Constants.MaxCobras = 5
+        for Player in Players:
+            for Hammer in Player.HammerGroup:
+                listaColisionHammer = pygame.sprite.spritecollide(Constants.Jefe2,Player.HammerGroup,False)
+                for b in listaColisionHammer:
+                    if Constants.Hit:
+                        if Constants.Jefe2.invisibility == 0:
+                            Constants.Jefe2.vida -= 1
+                            if Constants.Jefe2.vida == 0:
+                                Player.Coins += Constants.Jefe2.premio
+                                Player.Diamonds += int(Constants.Jefe2.premio/10)
+                                Constants.Jefe2.Dead = True
+                                Constants.Jefe2.frame = 0
+                                Constants.Jefe2.accion = 1
+                            else:
+                                Constants.Jefe2.invisibility = 100
+                                Constants.Jefe2.Angry = True
+        if not Constants.Jefe2.Dead:
+            for b in Constants.LasersJefe2:
+                if b.time == 0:
+                    Constants.LasersJefe2.remove(b)
+            if Constants.Jefe2.nextAttack == 0 and Constants.Jefe2.attackFinished:
+                for i in range(5):
+                    for i in range(5):
+                        TempLaser = Laser.Laser([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,i)
+                        Constants.LasersJefe2.add(TempLaser)
+                        TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
+                        TempCobra.Bloques = Blocks
+                        Enemies.add(TempCobra)
+                    Constants.LasersJefe2.update()
+            if Constants.Jefe2.nextAttack == 1 and Constants.Jefe2.attackFinished:
+                    print(Constants.Jefe2.direccion)
+                    TempRock = Roca.Roca([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,Constants.Jefe2.direccion)
+                    Constants.RocaJefe2.add(TempRock)
+                    TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
+                    TempCobra.Bloques = Blocks
+                    Enemies.add(TempCobra)
+                
                             
 
     #PLATAFORMAS MOVILES
@@ -604,7 +647,20 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     #Pos mapa
     if Doors != None:
         Doors.draw(Constants.Screen)
-    if ((currentLevel + currentRoom) == '110') or ((currentLevel + currentRoom) == '210'):
+    if ((currentLevel + currentRoom) == '32'):
+        Constants.BossFinal.Bloques = Blocks
+        Constants.BossFinal.update()
+        Constants.Screen.blit(Constants.BossFinal.Animacion.image,[Constants.BossFinal.rect.x,Constants.BossFinal.rect.y])
+    if ((currentLevel + currentRoom) == '210'):
+        Constants.Jefe2.Bloques = Blocks
+        Constants.Jefe2.player = Player
+        Constants.Jefe2.update()
+        Constants.LasersJefe2.update()
+        Constants.RocaJefe2.update()
+        Constants.LasersJefe2.draw(Constants.Screen)
+        Constants.RocaJefe2.draw(Constants.Screen)
+        Constants.Screen.blit(Constants.Jefe2.Animacion.image,[Constants.Jefe2.rect.x,Constants.Jefe2.rect.y])
+    if ((currentLevel + currentRoom) == '110'):
         Constants.Jefe1.Bloques = Blocks
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()

@@ -3,6 +3,8 @@ import pygame
 import json
 from Classes import Coin as co
 from Classes import Minotauro
+from Classes import Ciclope
+from Classes import KingPig
 from Classes import Apple as ap
 from Classes import Diamond as d
 from Classes import Potion as p
@@ -905,7 +907,9 @@ PotionsPos2J = MapInfo['layers'][11]['objects']
 CoinsPos2J = MapInfo['layers'][12]['objects']
 Limit2J = MapInfo['layers'][13]['objects']
 Door2j = MapInfo['layers'][14]['objects']
-Boos2j = MapInfo['layers'][15]['objects']
+Jefe2 = Ciclope.Ciclope([MapInfo['layers'][15]['objects'][0]['x'],MapInfo['layers'][15]['objects'][0]['y']])
+LasersJefe2 = pygame.sprite.Group()
+RocaJefe2 = pygame.sprite.Group()
 
 #Creacion de las monedas
 for i in range(len(CoinsPos2J)):
@@ -964,6 +968,7 @@ LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
 DoorPosFB =  MapInfo['layers'][13]['objects']
 EnemysPosFB =  MapInfo['layers'][14]['objects']
+BossFinal = KingPig.King([MapInfo['layers'][15]['objects'][0]['x'],MapInfo['layers'][15]['objects'][0]['y']])
 
 
 #Creacion de las manzanas
