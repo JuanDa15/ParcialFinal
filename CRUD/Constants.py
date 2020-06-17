@@ -84,6 +84,7 @@ PotionsPosTuto =  MapInfo['layers'][17]['objects']
 CannonsPosTuto =  MapInfo['layers'][18]['objects']
 LaddersPosTuto =  MapInfo['layers'][19]['objects']
 DoorPosTuto =  MapInfo['layers'][20]['objects']
+EnemysTuto = MapInfo['layers'][21]['objects']
 
 #Creacion de las monedas
 for i in range(len(CoinsPosTuto)):
@@ -951,6 +952,8 @@ CannonsPosFB = MapInfo['layers'][10]['objects']
 LaddersPosFB = MapInfo['layers'][11]['objects']
 WaterPosFB =  MapInfo['layers'][12]['objects']
 DoorPosFB =  MapInfo['layers'][13]['objects']
+EnemysPosFB =  MapInfo['layers'][14]['objects']
+
 
 #Creacion de las manzanas
 for i in range(len(ApplesPosFB)):
