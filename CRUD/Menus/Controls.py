@@ -10,7 +10,10 @@ from CRUD import Constants as C
 
 def ControlsScreen(Screen):
     #Definition of variables-----------------
-    pygame.display.set_caption('Controls')
+    pygame.mixer.init()
+    pygame.display.set_caption('King & Pigs - Controls')
+    pygame.mixer.music.load("Assets\Sounds\credits.ogg")
+    pygame.mixer.music.play(-1)
     Click = False
     running = True
     while running:
@@ -43,6 +46,7 @@ def ControlsScreen(Screen):
         if Back.collidepoint(mouse_x,mouse_y):
             Functions.MakeImage(55,530,Screen,UF.getArchive('BackImageSelected'))
             if Click:
+                pygame.mixer.music.stop()
                 return 0
                 
         Sprites = [C.Sound_Off_2,C.Sound_On_2,C.Sound_Up_2,C.Sound_Dowm_2,]

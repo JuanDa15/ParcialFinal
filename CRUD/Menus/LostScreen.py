@@ -13,7 +13,7 @@ def lostMenu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\Game Over II.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.001)
+    pygame.mixer.music.set_volume(0.2)
     #Definition of variables-----------------
     Click = False
     while True:
@@ -37,11 +37,13 @@ def lostMenu(Screen):
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,250,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 1
         if StarAgain.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,310,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 2
                 

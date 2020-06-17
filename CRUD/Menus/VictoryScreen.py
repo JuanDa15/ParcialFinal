@@ -15,7 +15,7 @@ def Victory_Menu(Screen):
     pygame.mixer.init()
     pygame.mixer.music.load("Assets\Sounds\winner.ogg")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.001)
+    pygame.mixer.music.set_volume(0.2)
     #Definition of variables-----------------
     Click = False
     while True:
@@ -26,7 +26,6 @@ def Victory_Menu(Screen):
         Screen.fill(Functions.SelectColor('Black'))
         Functions.MakeImage(0,0,Screen,UF.getArchive('background2'))
         Functions.MakeImage(50,25,Screen,UF.getArchive('Container'))
-        Functions.MakeImage(55,530,Screen,UF.getArchive('BackImage'))
         Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonImage'))
         Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonImage'))
         Functions.MakeImage(300,326,Screen,C.DeadMinotair)
@@ -39,11 +38,13 @@ def Victory_Menu(Screen):
         if MainMenu.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,110,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 1
         if StarAgain.collidepoint ([mouse_x,mouse_y]):
             Functions.MakeImage(300,170,Screen,UF.getArchive('ButtonSelectedImage'))
             if Click:
+                pygame.mixer.music.stop()
                 Click = False
                 return 2
         
