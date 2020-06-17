@@ -11,6 +11,10 @@ from Classes import HorizontalMovingPlatform as HMP
 from Classes import VerticalMovingPlatform as VMP
 from Classes import Player as P
 from Classes import Block
+from Classes import Bomber
+from Classes import Bomb
+from Classes import Roca
+from Classes import Laser
 from Classes import pork
 from Classes import Brujas
 from Classes import Cobra
@@ -148,17 +152,18 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             for b in listaColisionPuas:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("chuzao pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
 
+    #Cañones
     if Cannons != None:
         for Cannon in Cannons:
             if Cannon.direccion == 1:
@@ -212,13 +217,27 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                         Enemies.add(cobraBruja)
                     b.timer = 150
             if b.accion == 1:
+                b.muerto = True
                 if b.Muerte > 0:
                     b.Muerte -= 1
                 else:
+                    print("sa matao paco")
                     Enemies.remove(b)
-        
-            
-
+        for Enemy in Enemies:
+            if isinstance(Enemy,Bomber.Bomber):
+                Enemy.player = Player
+                if Enemy.timer == 1:
+                    TempBomb = Bomb.bomb([(Enemy.rect.x - 5),Enemy.rect.y],Enemy.direccion)
+                    TempBomb.Bloques = Blocks
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.add(TempBomb)')
+        if currentLevel == '1' or currentLevel == '0':
+            for TempBomb in eval('Constants.Bombs'+currentLevel+currentRoom+''):
+                ListaColision = pygame.sprite.spritecollide(TempBomb, Players, False)
+                for b in ListaColision:
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
+                    Constants.LifeManager.hitPlayer(10)
+                if TempBomb.time == 0:
+                    eval('Constants.Bombs'+currentLevel+currentRoom+'.remove(TempBomb)')
 
     #Water
     if Water != None:
@@ -246,7 +265,14 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Player.gravity = 0.1
     else:
         Player.gravity = 0.5
-        
+    
+    if Instakill != None:
+        for Player in Players:
+            CollisionInstakill = pygame.sprite.spritecollide(Player, Instakill, False)
+            if CollisionInstakill:
+                Constants.LifeManager.instakill()
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
+
     #Lava
     if Lava != None:
         if Enemies != None:
@@ -266,7 +292,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             
         if Player.EnLava == True:
             if Player.InmunidadFuego == False:
-                Constants.LifeManager.hitPlayer(15)
+                Constants.LifeManager.hitPlayer(10)
                 Player.TQuemadura = 250
     if Player.EnLava:
         Player.gravity = 0.1
@@ -275,9 +301,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
 
     if Player.TQuemadura > 0:
         if Player.TQuemadura in [250,200,150,100,50]:
-            Constants.LifeManager.hitPlayer(5)
+            Constants.LifeManager.hitPlayer(10)
         Player.TQuemadura -= 1
 
+    #BOSS 1
     if currentLevel + currentRoom == '110':
         for Player in Players:
             for Hammer in Player.HammerGroup:
@@ -285,11 +312,59 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                 for b in listaColisionHammer:
                     if Constants.Hit:
                         if Constants.Jefe1.invisibility == 0:
-                            print("golpe")
-                            Constants.Jefe1.invisibility = 100
-                            Constants.Jefe1.Angry = True
                             Constants.Jefe1.vida -= 1
+                            if Constants.Jefe1.vida == 0:
+                                Player.Coins += Constants.Jefe1.premio
+                                Player.Diamonds += int(Constants.Jefe1.premio/10)
+                                Constants.Jefe1.velx = 0
+                                Constants.Jefe1.Dead = True
+                                Constants.Jefe1.frame = 0
+                                Constants.Jefe1.accion = 1
+                            else:
+                                Constants.Jefe1.invisibility = 100
+                                Constants.Jefe1.Angry = True
 
+    #BOSS 2
+    if currentLevel + currentRoom == '210':
+        Constants.MaxCobras = 5
+        for Player in Players:
+            for Hammer in Player.HammerGroup:
+                listaColisionHammer = pygame.sprite.spritecollide(Constants.Jefe2,Player.HammerGroup,False)
+                for b in listaColisionHammer:
+                    if Constants.Hit:
+                        if Constants.Jefe2.invisibility == 0:
+                            Constants.Jefe2.vida -= 1
+                            if Constants.Jefe2.vida == 0:
+                                Player.Coins += Constants.Jefe2.premio
+                                Player.Diamonds += int(Constants.Jefe2.premio/10)
+                                Constants.Jefe2.Dead = True
+                                Constants.Jefe2.frame = 0
+                                Constants.Jefe2.accion = 1
+                            else:
+                                Constants.Jefe2.invisibility = 100
+                                Constants.Jefe2.Angry = True
+        if not Constants.Jefe2.Dead:
+            for b in Constants.LasersJefe2:
+                if b.time == 0:
+                    Constants.LasersJefe2.remove(b)
+            if Constants.Jefe2.nextAttack == 0 and Constants.Jefe2.attackFinished:
+                for i in range(5):
+                    for i in range(5):
+                        TempLaser = Laser.Laser([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,i)
+                        Constants.LasersJefe2.add(TempLaser)
+                        TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
+                        TempCobra.Bloques = Blocks
+                        Enemies.add(TempCobra)
+                    Constants.LasersJefe2.update()
+            if Constants.Jefe2.nextAttack == 1 and Constants.Jefe2.attackFinished:
+                    print(Constants.Jefe2.direccion)
+                    TempRock = Roca.Roca([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Players,Constants.Jefe2.direccion)
+                    Constants.RocaJefe2.add(TempRock)
+                    TempCobra = Cobra.Cobra([Constants.Jefe2.rect.x,Constants.Jefe2.rect.y],Player)
+                    TempCobra.Bloques = Blocks
+                    Enemies.add(TempCobra)
+                
+                            
 
     #PLATAFORMAS MOVILES
     if Moving_platforms != None:
@@ -346,16 +421,16 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             for b in ListaBolasCañon:
                 if ((Player.rect.right >= b.rect.left) and (Player.rect.right <= b.rect.right)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.left <= b.rect.right) and (Player.rect.left >= b.rect.left)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.bottom >= b.rect.top) and (Player.rect.bottom <= b.rect.bottom)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
                 elif ((Player.rect.top <= b.rect.bottom) and (Player.rect.top >= b.rect.top)):
                     print("balazo pai")
-                    Constants.LifeManager.hitPlayer(20)
+                    Constants.LifeManager.hitPlayer(10)
     #Escaleras
     for Player in Players:
         if Ladders != None:
@@ -413,7 +488,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
             #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if nextRoom != None:
@@ -426,7 +501,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 if (currentLevel + nextRoom) == '210':
@@ -455,7 +530,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.left > Constants.limitemovimientoX:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,-6,Player.rect.y - 2)')
@@ -467,7 +542,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         for Player in Players:
             if Player.rect.y >= Constants.Height + 10:
                 Constants.LifeManager.instakill()
-                return eval('R' + currentLevel + '1.StartRoom(Player,Players,100,280)')
+                return eval('R' + currentLevel + '1.StartRoom(Player,Players,32,(260-(191*(1%int(currentLevel)))))')
         #Cambia de Nivel
             if Player.rect.bottom < 5:
                 return eval('R' + currentLevel + nextRoom + '.StartRoom(Player,Players,Player.rect.x,594)')
@@ -551,6 +626,27 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
                             Constants.Shop1.Gapple = False
                             Player.Coins -= Constants.Shop1.precioGapple
                             Player.Apples += 10
+        if (currentLevel + currentRoom) == '31':
+            Constants.Shop1.rect.x = 123
+            Constants.Shop1.rect.y = 305
+            ListaTienda = pygame.sprite.spritecollide(Player,Constants.Shop1.ShopItems,False)
+            for b in ListaTienda:
+                if Constants.Interact:
+                    if b.type == 0:
+                        if Player.Coins >= Constants.Shop1.precioPotiLava:
+                            Constants.Shop1.potiLava = False
+                            Player.Coins -= Constants.Shop1.precioPotiLava
+                            Player.InmunidadFuego = True
+                    if b.type == 1:
+                        if Player.Coins >= Constants.Shop1.precioPotiVel:
+                            Constants.Shop1.potiVel = False
+                            Player.Coins -= Constants.Shop1.precioPotiVel
+                            Player.speeeeeeeeeeed = 5
+                    if b.type == 2:
+                        if Player.Coins >= Constants.Shop1.precioGapple:
+                            Constants.Shop1.Gapple = False
+                            Player.Coins -= Constants.Shop1.precioGapple
+                            Player.Apples += 10
 
 
 
@@ -560,6 +656,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     if Lava != None:
         Lava.update()
     if Enemies != None:
+        if currentLevel == '1' or currentLevel == '0':
+            eval('Constants.Bombs'+currentLevel+currentRoom+'.update()')
         Enemies.update()
     if Cannons != None:
         Cannons.update()
@@ -570,27 +668,38 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
     #Pos mapa
     if Doors != None:
         Doors.draw(Constants.Screen)
-    if ((currentLevel + currentRoom) == '110') or ((currentLevel + currentRoom) == '210'):
+    if ((currentLevel + currentRoom) == '32'):
+        Constants.BossFinal.Bloques = Blocks
+        Constants.BossFinal.update()
+        Constants.Screen.blit(Constants.BossFinal.Animacion.image,[Constants.BossFinal.rect.x,Constants.BossFinal.rect.y])
+    if ((currentLevel + currentRoom) == '210'):
+        Constants.Jefe2.Bloques = Blocks
+        Constants.Jefe2.player = Player
+        Constants.Jefe2.update()
+        Constants.LasersJefe2.update()
+        Constants.RocaJefe2.update()
+        Constants.LasersJefe2.draw(Constants.Screen)
+        Constants.RocaJefe2.draw(Constants.Screen)
+        Constants.Screen.blit(Constants.Jefe2.Animacion.image,[Constants.Jefe2.rect.x,Constants.Jefe2.rect.y])
+    if ((currentLevel + currentRoom) == '110'):
         Constants.Jefe1.Bloques = Blocks
         Constants.Jefe1.player = Player
         Constants.Jefe1.update()
-        Constants.Jefe1.AreaGroup.draw(Constants.Screen)
-        Constants.Jefe1.AxeGroup.draw(Constants.Screen)
-        Constants.Screen.blit(Constants.Jefe1.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
-    if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
+        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
+    if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29') or ((currentLevel + currentRoom) == '31'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
         Constants.Shop1.update()
     Constants.Screen.blit(Player.Animacion.image,[Player.Animacion.rect.x,Player.Animacion.rect.y])
     if Lava != None:
         pass
-    if Enemies != None:
-        Enemies.draw(Constants.Screen)
 
     eval('Constants.Coins'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Apples'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     eval('Constants.Diamonds'+currentLevel+currentRoom+'.draw(Constants.Screen)')
     if Enemies != None:
+        if currentLevel == '1' or currentLevel == '0':
+            eval('Constants.Bombs'+currentLevel+currentRoom+'.draw(Constants.Screen)')
         Enemies.draw(Constants.Screen)
     if Cannons != None:
         Cannons.draw(Constants.Screen)
@@ -613,6 +722,10 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.ScoreManager.rect.y = 10
     Constants.ScoreManager.Scores.draw(Constants.Screen)
     Constants.ScoreManager.update()
+    if Player.TQuemadura > 0:
+        Constants.Screen.blit(Constants.LifeManager.quemadura.image, [100,80])
+    if Player.invisibility > 0:
+        Constants.Screen.blit(Constants.LifeManager.shield.image, [130,82])
     
     pygame.display.flip()
     Clock.tick(30)

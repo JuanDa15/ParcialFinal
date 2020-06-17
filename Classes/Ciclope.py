@@ -1,36 +1,29 @@
 import pygame
 from CRUD import Constants
 from CRUD import Functions
+import random
 
-class Minotauro(pygame.sprite.Sprite):
+class Ciclope(pygame.sprite.Sprite):
     def __init__(self,position):
         pygame.sprite.Sprite.__init__(self)
 
         #Orden = (Idle, Correr, Hit)
-        self.image =  pygame.surface.Surface([30,41])
+        self.image =  pygame.surface.Surface([24,38])
         self.image.fill(Functions.SelectColor('White'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
         self.player = None
         self.intervalo = 20
+        self.Dead = False
         self.Angry = False
         self.AngryTime = 100
-        self.Dead = False
-
-        self.AxeGroup = pygame.sprite.Group()
-        self.Axe = pygame.sprite.Sprite()
-        self.Axe.image = pygame.surface.Surface([52,41])
-        self.Axe.image.fill((255,0,0))
-        self.Axe.rect = self.Axe.image.get_rect()
-        self.Axe.rect.x = position[0]
-        self.Axe.rect.y = position[1]
-        self.AxeGroup.add(self.Axe)
-        self.DireccionAxe = 0
+        self.nextAttack = 1
+        self.attackFinished = True
 
         self.AreaGroup = pygame.sprite.Group()
         self.Area = pygame.sprite.Sprite()
-        self.Area.image = pygame.surface.Surface([72,51])
+        self.Area.image = pygame.surface.Surface([44,48])
         self.Area.image.fill((0,255,0))
         self.Area.rect = self.Area.image.get_rect()
         self.Area.rect.x = position[0]
@@ -50,7 +43,8 @@ class Minotauro(pygame.sprite.Sprite):
         self.invisibility = 0
         self.Bloques = None
         self.gravity = 0.5
-        self.premio = 50
+        self.premio = 100
+        self.cooldown = 70
 
         #Animaciones
         self.accion = 0
@@ -62,10 +56,17 @@ class Minotauro(pygame.sprite.Sprite):
                         (5,16,56,45,126,20,58,41,220,20,57,41,316,20,57,41,412,20,55,41,508,20,55,41,603,20,50,41,700,20,48,41,796,20,52,41))
 
     def update(self):
+        if self.cooldown == 0:
+            self.cooldown = 70
+            self.attackFinished = True
+        else:
+            self.cooldown -= 1
+            self.attackFinished = False
+        
         if self.invisibility > 0:
             self.invisibility -= 1
         #Posicion y velocidad en x
-        self.rect.x += self.velx
+        #self.rect.x += self.velx
         #colision x--------------------------------------------------------------------------------------
         listaColision=pygame.sprite.spritecollide(self,self.Bloques,False)
         for b in listaColision:
@@ -92,29 +93,25 @@ class Minotauro(pygame.sprite.Sprite):
 
         if not self.Dead:
             #Interacciones
-            #Golpear al jugador con el hacha
-            if not self.Angry:
-                if self.intervalo < 20:
-                    self.intervalo += 1
-                listaColision=pygame.sprite.spritecollide(self.player,self.AxeGroup,False)
-                if listaColision:
-                    if self.intervalo == 20:
-                        self.intervalo = 0
-                        self.frame = 0
-                        self.accion = 3
-                        Constants.LifeManager.hitPlayer(20)
-            #Golpear en area y ser invulnerable
+            #Golpear en area cuando le peguen
             if self.Angry:
-                self.velx = 0
+                self.attackFinished = False
                 if self.AngryTime < 30:
                     listaColision=pygame.sprite.spritecollide(self.player,self.AreaGroup,False)
                     if listaColision:
                         self.frame = 0
                         self.accion = 2
-                        self.player.vely = -10
+                        self.player.velx = -10
                         Constants.LifeManager.hitPlayer(20)
                         self.Angry = False
                         self.AngryTime = 100
+            if self.nextAttack == 0:
+                if self.attackFinished:
+                    self.nextAttack = random.randint(0,1)
+            if self.nextAttack == 1:
+                if self.attackFinished:
+                    self.nextAttack = random.randint(0,1)
+            
 
         if not self.Dead:
             if self.Angry:
@@ -145,21 +142,13 @@ class Minotauro(pygame.sprite.Sprite):
                     self.accion = 0
         if not self.Dead:
             self.vely += self.gravity
-            self.Axe.rect.x = self.rect.x
-            self.Axe.rect.y = self.rect.y
-
             self.Area.rect.x = self.rect.x - 10
             self.Area.rect.y = self.rect.y - 10
 
             self.Animacion.rect.x = self.rect.x
             self.Animacion.rect.y = self.rect.y
             
-            if not self.Angry:
-                if self.player.rect.x < self.rect.x - 22:
-                    self.velx = -2
-                    self.DireccionAxe = 0
-                    self.direccion = False
-                elif self.player.rect.x > self.rect.x + 22:
-                    self.DireccionAxe = 1
-                    self.velx = 2
-                    self.direccion = True
+            if self.player.rect.x < self.rect.x:
+                self.direccion = False
+            elif self.player.rect.x > self.rect.x:
+                self.direccion = True
