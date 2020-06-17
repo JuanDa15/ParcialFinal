@@ -6,9 +6,9 @@ from CRUD import Constants
 class Roca(pygame.sprite.Sprite):
     def __init__(self,position,player,direction):
         pygame.sprite.Sprite.__init__(self)
-        #self.Sprites = pygame.Surface.Surface([50,50])
-        self.image = pygame.surface.Surface([50,50])
-        self.image.fill(Functions.SelectColor('Yellow'))
+        #self.Sprites = pygame.image.load('Assets\Images\Sprites\Roca\Idle.png')
+        self.image = pygame.image.load('Assets\Images\Sprites\Roca\Idle.png')
+        #self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
@@ -23,11 +23,6 @@ class Roca(pygame.sprite.Sprite):
         self.vely = self.possibleVel[random.randint(0,2)]
         self.player = player
         self.time = 100
-
-        #animacion
-        self.frame = 0
-        self.espera = 1
-        self.animacion=((0,1,13,16,15,1,16,16,33,1,13,16,48,2,16,15),(0,1,13,16,15,1,16,16,33,1,13,16,48,2,16,15))
         
     def update(self):
         listaColision=pygame.sprite.spritecollide(self,self.player,False)

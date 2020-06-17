@@ -14,8 +14,8 @@ class King(pygame.sprite.Sprite):
         self.rect.y = position[1]
 
         self.Animacion = pygame.sprite.Sprite()
-        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Attack (78x58).png'))
-        self.Animacion.image = self.AnimacionSprites[0].subsurface(7,14,37,28)
+        self.AnimacionSprites = pygame.image.load('Assets\Images\Sprites\King Pig\Idle (38x28).png')
+        self.Animacion.image = self.AnimacionSprites.subsurface(11,8,18,20)
         self.Animacion.rect = self.Animacion.image.get_rect()
         self.Animacion.rect.x = position[0]+20
         self.Animacion.rect.y = position[1]
@@ -26,13 +26,12 @@ class King(pygame.sprite.Sprite):
         self.gravity = 0.5
 
         #Animaciones
-        self.accion = 2
+        self.accion = 0
         self.direccion = True
         self.espera = 2
         self.frame = 0
-        self.animacion = ((7,14,37,26,86,15,37,26),(9,18,37,28,87,16,37,28,165,17,37,28,243,20,37,28,321,18,37,28,399,16,37,28,477,17,37,28,555,20,37,28),
-                        (9,0,37,28,87,0,37,28,165,0,37,28,243,0,37,28,321,0,37,28,399,0,37,28,477,0,37,28,555,0,37,28,633,0,37,28,711,0,37,28,789,0,37,28),
-                        (9,15,37,29),(20,0,58,26,100,0,49,26,165,0,37,26))
+        self.animacion = (11,6,18,22,49,6,18,22,87,6,18,22,125,6,18,22,163,6,18,22,201,6,18,22,239,6,18,22,277,6,18,22,315,6,18,22,352,6,18,22,390,6,19,22,429,6,18,22)
+                        
 
     def update(self):
         #Posicion y velocidad en x
@@ -58,18 +57,11 @@ class King(pygame.sprite.Sprite):
                 self.rect.top = b.rect.bottom
                 self.vely += 0.5
 
-        if self.accion != 4:  
-            if self.velx == 0:
-                self.accion = 2
-            else:
-                self.accion = 1
-
-
-        if self.frame < len(self.animacion[self.accion]) - 1:
+        if self.frame < 44:
             if self.direccion == True:
-                self.Animacion.image = self.AnimacionSprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3])
+                self.Animacion.image = self.AnimacionSprites.subsurface(self.animacion[self.frame],self.animacion[self.frame+1],self.animacion[self.frame+2],self.animacion[self.frame+3])
             else:
-                self.Animacion.image = pygame.transform.flip(self.AnimacionSprites[self.accion].subsurface(self.animacion[self.accion][self.frame],self.animacion[self.accion][self.frame+1],self.animacion[self.accion][self.frame+2],self.animacion[self.accion][self.frame+3]), True, False)
+                self.Animacion.image = pygame.transform.flip(self.AnimacionSprites.subsurface(self.animacion[self.frame],self.animacion[self.frame+1],self.animacion[self.frame+2],self.animacion[self.frame+3]), True, False)
             if self.espera == 0: 
                 self.frame += 4
                 self.espera = 2
@@ -77,8 +69,7 @@ class King(pygame.sprite.Sprite):
                 self.espera -= 1 
         else:
             self.frame = 0
-            if self.accion == 4:
-                self.accion = 1
+
 
         self.vely += self.gravity
         self.Animacion.rect.x = self.rect.x

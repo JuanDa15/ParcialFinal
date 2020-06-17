@@ -5,8 +5,8 @@ from CRUD import Constants
 class Laser(pygame.sprite.Sprite):
     def __init__(self,position,player,direction):
         pygame.sprite.Sprite.__init__(self)
-        self.Sprites = (pygame.image.load('Assets\Images\Sprites\Bomb\spin left.png'),pygame.image.load('Assets\Images\Sprites\Bomb\spin right.png'))
-        self.image = self.Sprites[0].subsurface(0,1,13,16)
+        self.Sprites = (pygame.image.load('Assets\Images\Sprites\Laser\Idle.png'),pygame.image.load('Assets\Images\Sprites\Bomb\spin right.png'))
+        self.image = self.Sprites[0].subsurface(0,0,35,5)
         #self.image.fill(Functions.SelectColor('Yellow'))
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
