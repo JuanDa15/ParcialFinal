@@ -37,8 +37,8 @@ class Minotauro(pygame.sprite.Sprite):
         self.AreaGroup.add(self.Area)
 
         self.Animacion = pygame.sprite.Sprite()
-        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Player\Hit (78x58).png'), pygame.image.load('Assets\Images\Sprites\Player\Run (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Idle (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Jump (78x58).png'),pygame.image.load('Assets\Images\Sprites\Player\Attack (78x58).png'))
-        self.Animacion.image = self.AnimacionSprites[0].subsurface(7,14,37,28)
+        self.AnimacionSprites = (pygame.image.load('Assets\Images\Sprites\Minotaur\Run.png'), pygame.image.load('Assets\Images\Sprites\Minotaur\Dead.png'),pygame.image.load('Assets\Images\Sprites\Minotaur\stomp.png'),pygame.image.load('Assets\Images\Sprites\Minotaur\hack.png'))
+        self.Animacion.image = self.AnimacionSprites[0].subsurface(26,13,52,41)
         self.Animacion.rect = self.Animacion.image.get_rect()
         self.Animacion.rect.x = position[0]+20
         self.Animacion.rect.y = position[1]
@@ -52,13 +52,13 @@ class Minotauro(pygame.sprite.Sprite):
         self.premio = 50
 
         #Animaciones
-        self.accion = 2
+        self.accion = 0
         self.direccion = True
         self.espera = 2
         self.frame = 0
-        self.animacion = ((7,14,37,26,86,15,37,26),(9,18,37,28,87,16,37,28,165,17,37,28,243,20,37,28,321,18,37,28,399,16,37,28,477,17,37,28,555,20,37,28),
-                        (9,0,37,28,87,0,37,28,165,0,37,28,243,0,37,28,321,0,37,28,399,0,37,28,477,0,37,28,555,0,37,28,633,0,37,28,711,0,37,28,789,0,37,28),
-                        (9,15,37,29),(20,0,58,26,100,0,49,26,165,0,37,26))
+        self.animacion = ((26,13,52,41,121,11,52,41,218,13,52,41,315,15,52,41,412,13,52,41,509,11,52,41,604,13,52,41,699,15,52,41),(28,7,52,41,125,7,53,41,226,6,54,41,322,7,55,41,418,7,53,41,514,7,53,41),
+                        (23,17,38,41,119,17,38,41,215,17,38,41,311,17,38,41,407,17,38,41,503,17,38,41),
+                        (5,16,56,45,126,20,58,41,220,20,57,41,316,20,57,41,412,20,55,41,508,20,55,41,603,20,50,41,700,20,48,41,796,20,52,41))
 
     def update(self):
         if self.invisibility > 0:
@@ -98,7 +98,8 @@ class Minotauro(pygame.sprite.Sprite):
             if listaColision:
                 if self.intervalo == 20:
                     self.intervalo = 0
-                    #Animacion de golpear con hacha
+                    self.frame = 0
+                    self.accion = 3
                     Constants.LifeManager.hitPlayer(20)
         #Golpear en area y ser invulnerable
         if self.Angry:
@@ -106,7 +107,8 @@ class Minotauro(pygame.sprite.Sprite):
             if self.AngryTime < 30:
                 listaColision=pygame.sprite.spritecollide(self.player,self.AreaGroup,False)
                 if listaColision:
-                    #Animacion de golpear en el suelo
+                    self.frame = 0
+                    self.accion = 2
                     self.player.vely = -10
                     Constants.LifeManager.hitPlayer(20)
                     self.Angry = False
@@ -118,11 +120,6 @@ class Minotauro(pygame.sprite.Sprite):
             self.AngryTime = 100
             self.Angry = False
 
-        if self.accion != 4:  
-            if self.velx == 0:
-                self.accion = 2
-            else:
-                self.accion = 1
 
         if self.frame < len(self.animacion[self.accion]) - 1:
             if self.direccion == True:
@@ -136,8 +133,8 @@ class Minotauro(pygame.sprite.Sprite):
                 self.espera -= 1 
         else:
             self.frame = 0
-            if self.accion == 4:
-                self.accion = 1
+            if self.accion != 0:
+                self.accion = 0
 
         self.vely += self.gravity
         self.Axe.rect.x = self.rect.x

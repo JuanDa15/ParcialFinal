@@ -576,7 +576,7 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
         Constants.Jefe1.update()
         Constants.Jefe1.AreaGroup.draw(Constants.Screen)
         Constants.Jefe1.AxeGroup.draw(Constants.Screen)
-        Constants.Screen.blit(Constants.Jefe1.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
+        Constants.Screen.blit(Constants.Jefe1.Animacion.image,[Constants.Jefe1.rect.x,Constants.Jefe1.rect.y])   
     if ((currentLevel + currentRoom) == '19') or ((currentLevel + currentRoom) == '29'):
         Constants.Shop1.Tendero.draw(Constants.Screen)
         Constants.Shop1.ShopItems.draw(Constants.Screen)
