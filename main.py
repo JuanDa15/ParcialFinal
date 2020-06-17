@@ -33,7 +33,7 @@ def load_game():
     Constants.ClockStart = pygame.time.get_ticks()
     return [j,Players,currentLevel]
 
-GameIntro.introduccion()
+#GameIntro.introduccion()
 currentGame = load_game()
 j = currentGame[0]
 Players = currentGame[1]
