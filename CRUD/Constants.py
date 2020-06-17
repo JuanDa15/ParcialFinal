@@ -63,6 +63,30 @@ mapa2J = pygame.image.load('Assets\Levels\Level2\Level2j.png')
 #Mapa Final Boss
 MapaFinalA = pygame.image.load('Assets\Levels\Final Boss\FinalBossA.png')
 MapaFinalB = pygame.image.load('Assets\Levels\Final Boss\FinalBossB.png')
+
+#Video 1
+Image_Video1 = 1
+Video_historia_1 = []
+while Image_Video1 <= 200:
+    frame = 3
+    if Image_Video1 <= 150:
+        frame = 2
+    if Image_Video1 <= 100:
+        frame = 1
+    if Image_Video1 <= 50:
+        frame = 0
+    Temp = eval('pygame.transform.scale(pygame.image.load("Assets\Images\History\Escena-'+ str(frame) +'.jpg"),[Width,Height])')
+    Video_historia_1.append(Temp)
+    Image_Video1 += 1
+
+#Video 2
+Image_Video2 = 1
+Video_historia_2 = []
+while Image_Video2 <= 80:
+    Temp = eval('pygame.transform.scale(pygame.image.load("Assets\Images\History\Interludio.jpg"),[Width,Height])')
+    Video_historia_2.append(Temp)
+    Image_Video2 += 1
+
 #--------------------------------------Tutorial------------------------------------------------------------------------
 Coins01 = pygame.sprite.Group()
 Diamonds01 = pygame.sprite.Group()

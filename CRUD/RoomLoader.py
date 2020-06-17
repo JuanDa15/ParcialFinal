@@ -6,6 +6,7 @@ import sys
 #Packages Import
 from CRUD import Functions
 from CRUD import Constants
+from CRUD import ShowHistory
 from Classes import Vida
 from Classes import HorizontalMovingPlatform as HMP
 from Classes import VerticalMovingPlatform as VMP
@@ -470,6 +471,8 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             ListaDoors = pygame.sprite.spritecollide(Player,Doors,False)
             for b in ListaDoors:
                 if Constants.Interact:
+                    if currentLevel + currentRoom == '110':
+                        ShowHistory.show_history(2)
                     destiny_doors = eval('R'+b.destiny+'.StartRoom(Player,Players,0,0)')[8]
                     for c in destiny_doors:
                         Constants.Interact = False
@@ -564,13 +567,13 @@ def LoadRoom(Player,Players,Blocks,Enemies,Puas,Cannons,Ladders,Lava,Water,Doors
             if Player.rect.y >= Constants.Height + 10:
                 if (currentLevel + currentRoom) == '110':
                     Constants.LifeManager.instakill()
-                    return R19.StartRoom(Player,Players,100, 280)
+                    return R19.StartRoom(Player,Players,351, 272)
                 elif (currentLevel + currentRoom) == '210':
                     Constants.LifeManager.instakill()
-                    return R29.StartRoom(Player,Players,100, 280)
+                    return R29.StartRoom(Player,Players,384, 400)
                 elif (currentLevel + currentRoom) == '32':
                     Constants.LifeManager.instakill()
-                    return R31.StartRoom(Player,Players,100, 280)
+                    return R31.StartRoom(Player,Players,120, 280)
 
                     #return R11.StartRoom(Player,Players,100, 280)
 
