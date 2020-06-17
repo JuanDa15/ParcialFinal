@@ -24,13 +24,9 @@ BackImageSelected = pygame.image.load("Assets\Images\MenuImages\Back-ArrowSelect
 NextImage = pygame.image.load(r"Assets\Images\MenuImages\Next-Button.png")
 NextImageSelected = pygame.image.load(r"Assets\Images\MenuImages\Next-Buttonselected.png")
 background1 = pygame.image.load("Assets\Images\BackGrounds\Pantalla principal.png")
+background2 = pygame.image.load("Assets\Images\BackGrounds\Background.png")
 #Images
 Container = pygame.image.load("Assets\Images\MenuImages\Contenedor.png")
-LeftArrow =pygame.image.load("Assets\Images\MenuImages\Left-Arrow.png")
-RightArrow = pygame.image.load("Assets\Images\MenuImages\Right-Arrow.png")
-Ckey = pygame.image.load("Assets\Images\MenuImages\C.png")
-Ekey = pygame.image.load("Assets\Images\MenuImages\E.png")
-Bkey = pygame.image.load("Assets\Images\MenuImages\B.png")
 
 def TittleFont(Size):
     TittleFont = pygame.font.Font("Assets\Fonts\Pixelmania.ttf", Size)
@@ -73,19 +69,11 @@ def getArchive(ArchiveID):
         return BackImage
     if ArchiveID == 'BackImageSelected':
         return BackImageSelected
-    if ArchiveID == 'LeftArrow':
-        return LeftArrow
-    if ArchiveID == 'RightArrow':
-        return RightArrow
-    if ArchiveID == 'Ckey':
-        return Ckey
-    if ArchiveID == 'Ekey':
-        return Ekey
-    if ArchiveID == 'Bkey':
-        return Bkey
     if ArchiveID == 'NextImage':
         return NextImage
     if ArchiveID == 'NextImageSelected':
         return NextImageSelected
     if ArchiveID == 'background1':
         return background1
+    if ArchiveID == 'background2':
+        return background2
